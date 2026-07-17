@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Aladdin's Castle — app design pack v1</title>
+<style>
+@page { size: letter; margin: 0.5in 0.5in 0.75in; }
+:root{
+  --bg:#FFFFFF; --panel:#FAF8FC; --ink:#241B2F; --ink2:#6B5F7A; --line:#E2DBEA;
+  --accent:#AB1E77; --gold:#8F6B14; --chip:#F1E9F5;
+  --display:'Futura','Century Gothic','Trebuchet MS',sans-serif;
+  --body:'Palatino','Palatino Linotype','Book Antiqua',Georgia,serif;
+  --mono:'SF Mono',Menlo,Consolas,monospace;
+}
+*{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+html{background:var(--bg);}
+body{margin:0;color:var(--ink);font-family:var(--body);font-size:12.5pt;line-height:1.6;}
+h1,h2,h3{font-family:var(--display);font-weight:500;margin:0;}
+h1{font-size:30pt;line-height:1.1;}
+h2{font-size:16pt;margin-bottom:4pt;}
+p{margin:.4em 0 .9em;max-width:64ch;}
+.eyebrow{font-family:var(--display);font-size:9pt;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:0 0 8pt;}
+.masthead{border-bottom:2pt solid var(--ink);padding-bottom:18pt;margin-bottom:8pt;}
+.meta{display:flex;gap:8pt;flex-wrap:wrap;margin-top:10pt;}
+.chip{font-family:var(--display);font-size:8.5pt;letter-spacing:.08em;text-transform:uppercase;
+  background:var(--chip);border:1pt solid var(--line);border-radius:999pt;padding:3pt 9pt;color:var(--ink2);}
+.chip b{color:var(--ink);font-weight:500;}
+section{margin-top:26pt;}
+.brk{page-break-before:always;margin-top:0;padding-top:4pt;}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:9pt;margin:12pt 0 4pt;}
+.card{background:var(--panel);border:1pt solid var(--line);border-radius:8pt;padding:11pt 13pt;page-break-inside:avoid;}
+.card h3{font-size:10pt;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:4pt;}
+.card p{font-size:10.5pt;margin:0;color:var(--ink2);line-height:1.45;}
+blockquote{margin:14pt 0;padding:12pt 16pt;border-left:2.5pt solid var(--gold);background:var(--panel);
+  font-style:italic;font-size:12pt;max-width:64ch;page-break-inside:avoid;}
+blockquote .term{font-style:normal;font-family:var(--display);color:var(--gold);}
+.diagram{background:var(--panel);border:1pt solid var(--line);border-radius:9pt;padding:12pt;margin-top:10pt;page-break-inside:avoid;text-align:center;}
+.note{font-size:10.5pt;color:var(--ink2);max-width:66ch;}
+
+.stage{display:flex;gap:18pt;flex-wrap:wrap;align-items:flex-start;margin-top:12pt;}
+.unit{page-break-inside:avoid;}
+.caption{font-family:var(--display);font-size:9pt;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);text-align:center;margin-top:7pt;}
+.phone{width:228px;background:#0B0512;border-radius:34px;padding:9px;}
+.screen{position:relative;background:#14091F;border-radius:27px;height:452px;overflow:hidden;color:#F6EDFB;
+  font-family:var(--display);display:flex;flex-direction:column;font-size:11px;}
+.notch{height:20px;display:flex;justify-content:center;align-items:flex-end;}
+.notch i{width:80px;height:14px;background:#0B0512;border-radius:0 0 10px 10px;}
+.sc{display:flex;flex-direction:column;flex:1;padding:7px 14px 0;overflow:hidden;}
+.tabbar{display:flex;border-top:1px solid #2E1A40;background:#190C26;}
+.tabbar span{flex:1;color:#8F76A8;font-family:var(--display);font-size:8px;letter-spacing:.06em;padding:8px 0 13px;text-align:center;}
+.tabbar span.on{color:#FFC64B;}
+.applogo{text-align:center;margin-top:48px;}
+.lamp{font-size:40px;line-height:1;}
+.applogo h3{font-size:19px;color:#FFC64B;margin-top:10px;}
+.applogo p{color:#B79FD0;font-size:10.5px;font-family:var(--body);font-style:italic;margin-top:4px;}
+.btn{display:block;width:100%;border-radius:9px;padding:10px 0;font-family:var(--display);
+  font-size:11px;letter-spacing:.04em;margin-top:8px;box-sizing:border-box;text-align:center;}
+.btn.p{background:#FF3DA6;color:#2A0518;}
+.btn.g{border:1px solid #4A2F63;color:#D9C6EC;}
+.apphead{display:flex;justify-content:space-between;align-items:center;margin:5px 0 3px;}
+.apphead h3{font-size:14px;color:#F6EDFB;}
+.vbadge{font-size:7.5px;letter-spacing:.08em;color:#7BE0A8;border:1px solid #2E5C43;border-radius:999px;padding:2px 6px;}
+.offer{background:#251233;border:1px solid #3A2150;border-radius:10px;padding:9px 11px;margin-top:8px;}
+.offer .t{font-size:10.5px;color:#F6EDFB;}
+.offer .x{font-size:8.5px;color:#B79FD0;margin-top:3px;font-family:var(--body);}
+.offer .x b{color:#FFC64B;font-weight:500;}
+.offer.tok{border-color:#6B4A12;background:#2B1E0E;}
+.offer.tok .t{color:#FFC64B;}
+.offer.tok .x{color:#CBA76A;}
+.back{color:#FF3DA6;font-family:var(--display);font-size:9.5px;padding:4px 0;}
+.art{height:78px;border-radius:10px;background:#251233;border:1px solid #3A2150;display:flex;align-items:center;justify-content:center;font-size:32px;margin-top:4px;}
+.terms{font-family:var(--body);font-size:9px;color:#B79FD0;line-height:1.45;margin-top:7px;}
+.terms b{color:#F6EDFB;font-weight:500;}
+.qrbox{background:#F6EDFB;border-radius:12px;padding:10px;margin:12px auto 0;width:138px;}
+.qrbox canvas{display:block;width:126px;height:126px;image-rendering:pixelated;}
+.qtimer{text-align:center;color:#FFC64B;font-size:9.5px;margin-top:10px;letter-spacing:.05em;}
+.qhint{text-align:center;color:#B79FD0;font-size:9px;font-family:var(--body);margin-top:4px;padding:0 6px;}
+.acct{border-bottom:1px solid #2E1A40;padding:8px 2px;display:flex;justify-content:space-between;align-items:center;font-size:9.5px;color:#D9C6EC;gap:8px;}
+.acct span:last-child{color:#8F76A8;font-size:8.5px;text-align:right;font-family:var(--mono);}
+.modepill{background:#251233;border:1px solid #3A2150;border-radius:999px;padding:2px;display:flex;margin-top:7px;}
+.modepill span{flex:1;color:#8F76A8;border-radius:999px;padding:5px 0;font-family:var(--display);font-size:8.5px;text-align:center;}
+.modepill span.on{background:#FF3DA6;color:#2A0518;}
+.locknote{font-family:var(--body);font-style:italic;font-size:8.5px;color:#CBA76A;border:1px solid #6B4A12;border-radius:9px;padding:8px 10px;margin-top:9px;line-height:1.5;}
+.locknote b{color:#FFC64B;}
+
+.reader{width:236px;background:var(--panel);border:1pt solid var(--line);border-radius:13pt;padding:14pt;}
+.readscreen{background:#08140C;border-radius:10pt;padding:20pt 14pt;text-align:center;color:#DFF7E8;}
+.bigcheck{width:52px;height:52px;border-radius:50%;background:#1D7A4A;color:#fff;font-size:28px;line-height:52px;margin:0 auto;font-family:var(--display);}
+.readscreen h3{font-size:17px;color:#7BE0A8;letter-spacing:.1em;margin-top:11px;font-family:var(--display);}
+.readscreen p{font-family:var(--body);font-size:10.5px;color:#9CC9AD;margin:6px auto 0;}
+.readscreen .sync{font-family:var(--mono);font-size:8px;color:#5E8A6E;margin-top:11px;}
+.next li{margin-bottom:6pt;}
+.next{max-width:64ch;padding-left:18pt;}
+.legalfoot{position:fixed;bottom:0;left:0;right:0;text-align:center;font-family:var(--display);font-size:7.5pt;letter-spacing:.09em;color:#6B5F7A;text-transform:uppercase;}
+.foot{margin-top:30pt;padding-top:10pt;border-top:1pt solid var(--line);font-size:9.5pt;color:var(--ink2);font-family:var(--display);letter-spacing:.05em;}
+</style>
+<script src="mermaid.min.js"></script>
+</head>
+<body>
+<div class="legalfoot">Instar Brands LLC &middot; Confidential &middot; July 17, 2026</div>
+
+<header class="masthead">
+  <p class="eyebrow">Aladdin's Castle · iOS app · Instar</p>
+  <h1>The app design pack</h1>
+  <div class="meta">
+    <span class="chip">version <b>1</b></span>
+    <span class="chip">July 17, 2026</span>
+    <span class="chip">status <b>doctrine locked</b></span>
+    <span class="chip">confidential · for partners</span>
+  </div>
+</header>
+
+<section>
+  <p class="eyebrow">Locked doctrine</p>
+  <h2>Four rules the whole design hangs on</h2>
+  <div class="cards">
+    <div class="card"><h3>MTC lives in our ledger</h3><p>A row in our own database wearing a token's costume. Not crypto, no transfer verb, expires by clock.</p></div>
+    <div class="card"><h3>The chain is read-only</h3><p>One bridge: "does this wallet hold at least 1 $ACM?" Nothing is ever written on-chain by the app.</p></div>
+    <div class="card"><h3>QR now, NFC later</h3><p>Rotating one-time codes, generated on the phone with zero signal. Tap-to-redeem is Phase 2.</p></div>
+    <div class="card"><h3>Network is optional</h3><p>Connectivity is an optimization, never a dependency. Readers store and forward; coupons work offline.</p></div>
+  </div>
+  <blockquote>A <span class="term">Meme Token Credit (MTC)</span> is a non-transferable, time-limited promotional credit issued by the company and recorded on its private ledger. An MTC is not a cryptocurrency, not a blockchain token, and has no cash value. It exists only within the app and expires if unused.</blockquote>
+</section>
+
+<section class="brk">
+  <p class="eyebrow">Deliverable 1</p>
+  <h2>Screen map</h2>
+  <p>Every screen in version 1 and the paths between them. Two doors in, one hub, three spokes. The reader station is a separate device running a separate app.</p>
+  <div class="diagram"><pre class="mermaid">
+flowchart TD
+  W["Welcome"] --> N["Simple start · Apple sign-in"]
+  W --> P["Connect wallet · one-tap signature"]
+  N --> B["Founder's badge · optional 99&cent;"]
+  P --> G{"Holds at least 1 $ACM?"}
+  B --> H["Home · my offers"]
+  G -- yes --> H
+  G -- no --> X["How to get $ACM"]
+  H --> D["Offer detail"]
+  D --> R["Redeem · rotating code"]
+  H --> F["Arcade finder"]
+  H --> A["Account · mode toggle"]
+  A --> L["Donation lock certificate"]
+  R -. scanned by .-> RS["Reader station · SE kiosk"]
+  </pre></div>
+</section>
+
+<section class="brk">
+  <p class="eyebrow">Deliverable 2</p>
+  <h2>System architecture</h2>
+  <p>Four boxes and one treasury. The only arrow touching Solana from the app side is a question; the only arrow writing to the lock vault is our own treasury making the 1&nbsp;$ACM gift after a 99&cent; badge purchase.</p>
+  <div class="diagram"><pre class="mermaid">
+flowchart LR
+  subgraph APP["iOS app"]
+    UI["Simple + Crypto modes"]
+    WP["Apple Wallet pass"]
+  end
+  subgraph BE["App backend"]
+    ML["MTC ledger · issue, view, burn"]
+    PSH["Offer engine + expiry push"]
+  end
+  subgraph SOL["Solana · read-only"]
+    ACM["$ACM balances"]
+    LOCK["30-year lock vault"]
+  end
+  subgraph ARC["Arcade site · Starlink + LTE + UPS"]
+    RD["Reader kiosks · store and forward"]
+  end
+  IAP["Apple IAP · 99&cent; badge"] --> BE
+  TRS["Company treasury"] -- "1 $ACM gift" --> LOCK
+  UI --> ML
+  WP --- ML
+  BE -- "holds at least 1 $ACM? yes or no" --> ACM
+  RD -- "burn requests" --> ML
+  </pre></div>
+
+</section>
+
+<section class="brk">
+  <p class="eyebrow">Deliverable 3</p>
+  <h2>The redemption handshake</h2>
+  <p>The moment at the counter, including the dead-zone case. The burn is one atomic write, so a code can never be spent twice.</p>
+  <div class="diagram"><pre class="mermaid">
+sequenceDiagram
+  participant P as Phone (works offline)
+  participant K as Reader kiosk
+  participant L as MTC ledger
+  P->>K: rotating code, generated on the phone
+  K->>L: burn request
+  L-->>K: burned exactly once
+  K-->>K: big green REDEEMED
+  Note over K,L: offline? queue and sync later
+  </pre></div>
+</section>
+
+<section class="brk">
+  <p class="eyebrow">Deliverable 4</p>
+  <h2>Wireframes · every screen</h2>
+  <p>Simple mode never says the word "crypto." Crypto User mode adds the wallet, the $ACM check, and the lock contract to the account screen. A live clickable version of these screens exists alongside this document.</p>
+  <div class="stage">
+
+    <div class="unit"><div class="phone"><div class="screen">
+      <div class="notch"><i></i></div>
+      <div class="sc">
+        <div class="applogo"><div class="lamp">🪔</div><h3>Aladdin's Castle</h3><p>The arcade is coming back.</p></div>
+        <div style="margin-top:auto;padding-bottom:18px;">
+          <div class="btn p">Get started</div>
+          <div class="btn g">I have a wallet</div>
+        </div>
+      </div>
+      <div class="tabbar"><span class="on">OFFERS</span><span>ARCADES</span><span>ACCOUNT</span></div>
+    </div></div><div class="caption">Welcome</div></div>
+
+    <div class="unit"><div class="phone"><div class="screen">
+      <div class="notch"><i></i></div>
+      <div class="sc">
+        <div class="apphead"><h3>My offers</h3><span class="vbadge">✓ verified</span></div>
+        <div class="offer tok"><div class="t">Your monthly arcade tokens</div><div class="x">$10 in tokens waiting · claim at any arcade</div></div>
+        <div class="offer"><div class="t">Free Icee sample</div><div class="x">expires in <b>3 days</b> · use it or lose it</div></div>
+        <div class="offer"><div class="t">$1 off at the counter</div><div class="x">expires in <b>12 days</b></div></div>
+        <div class="offer"><div class="t">Early access · new cabinet night</div><div class="x">expires in <b>19 days</b></div></div>
+      </div>
+      <div class="tabbar"><span class="on">OFFERS</span><span>ARCADES</span><span>ACCOUNT</span></div>
+    </div></div><div class="caption">Home · Simple mode</div></div>
+
+    <div class="unit"><div class="phone"><div class="screen">
+      <div class="notch"><i></i></div>
+      <div class="sc">
+        <div class="back">‹ my offers</div>
+        <div class="art">🧊</div>
+        <div class="apphead"><h3>Free Icee sample</h3></div>
+        <p class="terms"><b>One per visit.</b> No cash value. Not transferable. Expires <b>July 30</b>. A Meme Token Credit (MTC) — a promotional credit, not a cryptocurrency.</p>
+        <div style="margin-top:auto;padding-bottom:10px;">
+          <div class="btn p">Redeem at the counter</div>
+          <div class="btn g">Add to Apple Wallet</div>
+        </div>
+      </div>
+      <div class="tabbar"><span class="on">OFFERS</span><span>ARCADES</span><span>ACCOUNT</span></div>
+    </div></div><div class="caption">Offer detail</div></div>
+
+    <div class="unit"><div class="phone"><div class="screen">
+      <div class="notch"><i></i></div>
+      <div class="sc">
+        <div class="back">‹ back</div>
+        <div class="apphead"><h3>Show this at the counter</h3></div>
+        <div class="qrbox"><svg viewBox="0 0 42 42" width="126" height="126" style="display:block" role="img" aria-label="sample rotating code"><rect width="42" height="42" fill="#F6EDFB"/><g fill="#14091F"><rect x="0" y="0" width="2" height="2"/><rect x="8" y="0" width="2" height="2"/><rect x="10" y="0" width="2" height="2"/><rect x="12" y="0" width="2" height="2"/><rect x="16" y="0" width="2" height="2"/><rect x="26" y="0" width="2" height="2"/><rect x="30" y="0" width="2" height="2"/><rect x="32" y="0" width="2" height="2"/><rect x="38" y="0" width="2" height="2"/><rect x="6" y="2" width="2" height="2"/><rect x="10" y="2" width="2" height="2"/><rect x="24" y="2" width="2" height="2"/><rect x="26" y="2" width="2" height="2"/><rect x="30" y="2" width="2" height="2"/><rect x="34" y="2" width="2" height="2"/><rect x="40" y="2" width="2" height="2"/><rect x="2" y="4" width="2" height="2"/><rect x="12" y="4" width="2" height="2"/><rect x="14" y="4" width="2" height="2"/><rect x="16" y="4" width="2" height="2"/><rect x="20" y="4" width="2" height="2"/><rect x="28" y="4" width="2" height="2"/><rect x="30" y="4" width="2" height="2"/><rect x="34" y="4" width="2" height="2"/><rect x="36" y="4" width="2" height="2"/><rect x="10" y="6" width="2" height="2"/><rect x="18" y="6" width="2" height="2"/><rect x="20" y="6" width="2" height="2"/><rect x="24" y="6" width="2" height="2"/><rect x="26" y="6" width="2" height="2"/><rect x="28" y="6" width="2" height="2"/><rect x="30" y="6" width="2" height="2"/><rect x="32" y="6" width="2" height="2"/><rect x="36" y="6" width="2" height="2"/><rect x="2" y="8" width="2" height="2"/><rect x="4" y="8" width="2" height="2"/><rect x="6" y="8" width="2" height="2"/><rect x="8" y="8" width="2" height="2"/><rect x="12" y="8" width="2" height="2"/><rect x="18" y="8" width="2" height="2"/><rect x="32" y="8" width="2" height="2"/><rect x="34" y="8" width="2" height="2"/><rect x="40" y="8" width="2" height="2"/><rect x="0" y="10" width="2" height="2"/><rect x="4" y="10" width="2" height="2"/><rect x="6" y="10" width="2" height="2"/><rect x="12" y="10" width="2" height="2"/><rect x="18" y="10" width="2" height="2"/><rect x="20" y="10" width="2" height="2"/><rect x="24" y="10" width="2" height="2"/><rect x="26" y="10" width="2" height="2"/><rect x="28" y="10" width="2" height="2"/><rect x="30" y="10" width="2" height="2"/><rect x="4" y="12" width="2" height="2"/><rect x="8" y="12" width="2" height="2"/><rect x="14" y="12" width="2" height="2"/><rect x="18" y="12" width="2" height="2"/><rect x="20" y="12" width="2" height="2"/><rect x="22" y="12" width="2" height="2"/><rect x="24" y="12" width="2" height="2"/><rect x="28" y="12" width="2" height="2"/><rect x="30" y="12" width="2" height="2"/><rect x="32" y="12" width="2" height="2"/><rect x="34" y="12" width="2" height="2"/><rect x="36" y="12" width="2" height="2"/><rect x="0" y="14" width="2" height="2"/><rect x="4" y="14" width="2" height="2"/><rect x="8" y="14" width="2" height="2"/><rect x="12" y="14" width="2" height="2"/><rect x="16" y="14" width="2" height="2"/><rect x="26" y="14" width="2" height="2"/><rect x="28" y="14" width="2" height="2"/><rect x="32" y="14" width="2" height="2"/><rect x="4" y="16" width="2" height="2"/><rect x="8" y="16" width="2" height="2"/><rect x="12" y="16" width="2" height="2"/><rect x="16" y="16" width="2" height="2"/><rect x="18" y="16" width="2" height="2"/><rect x="22" y="16" width="2" height="2"/><rect x="28" y="16" width="2" height="2"/><rect x="32" y="16" width="2" height="2"/><rect x="34" y="16" width="2" height="2"/><rect x="40" y="16" width="2" height="2"/><rect x="0" y="18" width="2" height="2"/><rect x="2" y="18" width="2" height="2"/><rect x="6" y="18" width="2" height="2"/><rect x="8" y="18" width="2" height="2"/><rect x="14" y="18" width="2" height="2"/><rect x="18" y="18" width="2" height="2"/><rect x="20" y="18" width="2" height="2"/><rect x="26" y="18" width="2" height="2"/><rect x="30" y="18" width="2" height="2"/><rect x="34" y="18" width="2" height="2"/><rect x="36" y="18" width="2" height="2"/><rect x="2" y="20" width="2" height="2"/><rect x="6" y="20" width="2" height="2"/><rect x="12" y="20" width="2" height="2"/><rect x="20" y="20" width="2" height="2"/><rect x="22" y="20" width="2" height="2"/><rect x="26" y="20" width="2" height="2"/><rect x="34" y="20" width="2" height="2"/><rect x="36" y="20" width="2" height="2"/><rect x="2" y="22" width="2" height="2"/><rect x="16" y="22" width="2" height="2"/><rect x="20" y="22" width="2" height="2"/><rect x="22" y="22" width="2" height="2"/><rect x="26" y="22" width="2" height="2"/><rect x="32" y="22" width="2" height="2"/><rect x="38" y="22" width="2" height="2"/><rect x="40" y="22" width="2" height="2"/><rect x="0" y="24" width="2" height="2"/><rect x="6" y="24" width="2" height="2"/><rect x="8" y="24" width="2" height="2"/><rect x="10" y="24" width="2" height="2"/><rect x="12" y="24" width="2" height="2"/><rect x="16" y="24" width="2" height="2"/><rect x="24" y="24" width="2" height="2"/><rect x="28" y="24" width="2" height="2"/><rect x="30" y="24" width="2" height="2"/><rect x="36" y="24" width="2" height="2"/><rect x="40" y="24" width="2" height="2"/><rect x="2" y="26" width="2" height="2"/><rect x="8" y="26" width="2" height="2"/><rect x="12" y="26" width="2" height="2"/><rect x="16" y="26" width="2" height="2"/><rect x="26" y="26" width="2" height="2"/><rect x="30" y="26" width="2" height="2"/><rect x="32" y="26" width="2" height="2"/><rect x="36" y="26" width="2" height="2"/><rect x="38" y="26" width="2" height="2"/><rect x="0" y="28" width="2" height="2"/><rect x="6" y="28" width="2" height="2"/><rect x="8" y="28" width="2" height="2"/><rect x="12" y="28" width="2" height="2"/><rect x="20" y="28" width="2" height="2"/><rect x="24" y="28" width="2" height="2"/><rect x="28" y="28" width="2" height="2"/><rect x="30" y="28" width="2" height="2"/><rect x="38" y="28" width="2" height="2"/><rect x="40" y="28" width="2" height="2"/><rect x="0" y="30" width="2" height="2"/><rect x="4" y="30" width="2" height="2"/><rect x="16" y="30" width="2" height="2"/><rect x="20" y="30" width="2" height="2"/><rect x="22" y="30" width="2" height="2"/><rect x="24" y="30" width="2" height="2"/><rect x="26" y="30" width="2" height="2"/><rect x="40" y="30" width="2" height="2"/><rect x="6" y="32" width="2" height="2"/><rect x="12" y="32" width="2" height="2"/><rect x="14" y="32" width="2" height="2"/><rect x="20" y="32" width="2" height="2"/><rect x="22" y="32" width="2" height="2"/><rect x="24" y="32" width="2" height="2"/><rect x="28" y="32" width="2" height="2"/><rect x="32" y="32" width="2" height="2"/><rect x="36" y="32" width="2" height="2"/><rect x="40" y="32" width="2" height="2"/><rect x="4" y="34" width="2" height="2"/><rect x="10" y="34" width="2" height="2"/><rect x="12" y="34" width="2" height="2"/><rect x="22" y="34" width="2" height="2"/><rect x="26" y="34" width="2" height="2"/><rect x="30" y="34" width="2" height="2"/><rect x="36" y="34" width="2" height="2"/><rect x="40" y="34" width="2" height="2"/><rect x="0" y="36" width="2" height="2"/><rect x="2" y="36" width="2" height="2"/><rect x="6" y="36" width="2" height="2"/><rect x="10" y="36" width="2" height="2"/><rect x="12" y="36" width="2" height="2"/><rect x="14" y="36" width="2" height="2"/><rect x="18" y="36" width="2" height="2"/><rect x="22" y="36" width="2" height="2"/><rect x="24" y="36" width="2" height="2"/><rect x="26" y="36" width="2" height="2"/><rect x="28" y="36" width="2" height="2"/><rect x="30" y="36" width="2" height="2"/><rect x="32" y="36" width="2" height="2"/><rect x="34" y="36" width="2" height="2"/><rect x="36" y="36" width="2" height="2"/><rect x="40" y="36" width="2" height="2"/><rect x="6" y="38" width="2" height="2"/><rect x="8" y="38" width="2" height="2"/><rect x="12" y="38" width="2" height="2"/><rect x="16" y="38" width="2" height="2"/><rect x="32" y="38" width="2" height="2"/><rect x="34" y="38" width="2" height="2"/><rect x="38" y="38" width="2" height="2"/><rect x="20" y="40" width="2" height="2"/><rect x="22" y="40" width="2" height="2"/><rect x="30" y="40" width="2" height="2"/><rect x="32" y="40" width="2" height="2"/><rect x="38" y="40" width="2" height="2"/><rect x="40" y="40" width="2" height="2"/><rect x="2" y="2" width="10" height="10"/><rect x="4" y="4" width="6" height="6" fill="#F6EDFB"/><rect x="6" y="6" width="2" height="2"/><rect x="30" y="2" width="10" height="10"/><rect x="32" y="4" width="6" height="6" fill="#F6EDFB"/><rect x="34" y="6" width="2" height="2"/><rect x="2" y="30" width="10" height="10"/><rect x="4" y="32" width="6" height="6" fill="#F6EDFB"/><rect x="6" y="34" width="2" height="2"/></g></svg></div>
+        <div class="qtimer">code refreshes in 0:30</div>
+        <p class="qhint">Works with no signal — the code is made right here on your phone.</p>
+      </div>
+      <div class="tabbar"><span class="on">OFFERS</span><span>ARCADES</span><span>ACCOUNT</span></div>
+    </div></div><div class="caption">Redeem · rotating code</div></div>
+
+    <div class="unit"><div class="phone"><div class="screen">
+      <div class="notch"><i></i></div>
+      <div class="sc">
+        <div class="apphead"><h3>Arcades</h3></div>
+        <div class="offer"><div class="t">Eastgate Mall</div><div class="x">Cincinnati · 0.8 mi · open til 9</div></div>
+        <div class="offer"><div class="t">Florence Mall</div><div class="x">Florence · 11 mi · open til 9</div></div>
+        <div class="offer"><div class="t">Kenwood Towne Centre</div><div class="x">coming this fall</div></div>
+      </div>
+      <div class="tabbar"><span>OFFERS</span><span class="on">ARCADES</span><span>ACCOUNT</span></div>
+    </div></div><div class="caption">Arcade finder</div></div>
+
+    <div class="unit"><div class="phone"><div class="screen">
+      <div class="notch"><i></i></div>
+      <div class="sc">
+        <div class="apphead"><h3>Account</h3></div>
+        <div class="modepill"><span>Simple</span><span class="on">Crypto User</span></div>
+        <div class="acct"><span>Founder's badge</span><span>✓ 2026</span></div>
+        <div class="acct"><span>Membership</span><span>verified</span></div>
+        <div class="acct"><span>Wallet</span><span>7fUA…9kQe</span></div>
+        <div class="acct"><span>$ACM check</span><span>holds ≥ 1 ✓</span></div>
+        <div class="acct"><span>Lock contract</span><span>view on chain ›</span></div>
+        <div class="locknote">Your $1 founder's donation is locked until <b>2056</b>. It can never be sold, sent, or cashed out — by design. It has no cash value. It simply says: I helped bring the Castle back.</div>
+      </div>
+      <div class="tabbar"><span>OFFERS</span><span>ARCADES</span><span class="on">ACCOUNT</span></div>
+    </div></div><div class="caption">Account · Crypto User mode</div></div>
+
+    <div class="unit"><div class="reader">
+      <p class="eyebrow">Reader station · iPhone SE kiosk</p>
+      <div class="readscreen">
+        <div class="bigcheck">✓</div>
+        <h3>REDEEMED</h3>
+        <p>Free Icee sample<br>Hand them the sample.</p>
+        <div class="sync">burned 4:12 PM · synced ✓</div>
+      </div>
+    </div><div class="caption">What the cashier sees</div></div>
+
+  </div>
+  <p class="note" style="margin-top:10pt;">Green means go, one glance from three feet away. If the link is down the kiosk reads "queued · will sync" and the counter keeps moving.</p>
+</section>
+
+<section>
+  <p class="eyebrow">Next</p>
+  <h2>What this pack feeds</h2>
+  <ol class="next">
+    <li><b>Style-guide spec</b> — type, color, and component sheet for the app.</li>
+    <li><b>Copy deck</b> — every screen's words, Simple and Crypto variants side by side.</li>
+    <li><b>Reader kiosk spec</b> — SE hardware list, Guided Access setup, offline queue behavior.</li>
+    <li><b>Counsel packet</b> — the MTC definition, lock language, and 99&cent; badge flow for securities review.</li>
+  </ol>
+  <div class="foot">Aladdin's Castle app design pack · v1 · July 17, 2026 · prepared for partner review</div>
+</section>
+
+<script>
+mermaid.initialize({startOnLoad:true, theme:'neutral', flowchart:{rankSpacing:28, nodeSpacing:34, padding:8}, themeVariables:{fontFamily:'Futura, Century Gothic, sans-serif', primaryColor:'#F1E9F5', primaryBorderColor:'#AB1E77', lineColor:'#6B5F7A'}});
+
+</script>
+</body>
+</html>
