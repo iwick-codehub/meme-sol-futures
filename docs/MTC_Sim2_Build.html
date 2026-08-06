@@ -1,0 +1,315 @@
+<style>
+@page { size: letter; margin: 0.7in 0.75in 0.9in; background: #0a0a0a; }
+* { box-sizing: border-box; }
+html, body { background: #0a0a0a; }
+body { font: 9.5pt/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+       color: #d2d2d2; margin: 0; -webkit-print-color-adjust: exact;
+       print-color-adjust: exact; }
+.eyebrow { font: 700 8pt "Helvetica Neue", Arial, sans-serif; color: #c9a84c;
+           letter-spacing: 1pt; margin-bottom: 16pt; }
+h1 { font: 700 30pt/1.04 "Helvetica Neue", Arial, sans-serif; color: #fff;
+     margin: 0 0 8pt; letter-spacing: -0.8pt; }
+.dek { font: italic 13pt/1.3 Georgia, serif; color: #c9a84c; margin: 0 0 14pt; }
+.hr { border-top: 0.8px solid #4a4a4a; margin: 0 0 12pt; }
+.meta { font: 8.6pt "Helvetica Neue", Arial, sans-serif; color: #9a9a9a;
+        margin-bottom: 6pt; }
+.warn { background: #2a1410; border-left: 3px solid #c0603a; padding: 8pt 12pt;
+        margin: 12pt 0 18pt; color: #e0a58a; font-size: 9pt; font-weight: 700; }
+.secnum { font: 700 7.4pt "Helvetica Neue", Arial, sans-serif; color: #c9a84c;
+          margin: 16pt 0 1pt; letter-spacing: 0.5pt; }
+h2 { font: 700 12.5pt "Helvetica Neue", Arial, sans-serif; color: #fff;
+     margin: 0 0 6pt; page-break-after: avoid; }
+h3 { font: 700 9.6pt "Helvetica Neue", Arial, sans-serif; color: #c9a84c;
+     margin: 11pt 0 3pt; page-break-after: avoid; }
+p { margin: 0 0 6pt; }
+b, strong { color: #fff; }
+i, em { color: #dcdcdc; }
+pre { background: #121216; border-left: 2.5px solid #c9a84c; padding: 8pt 11pt;
+      margin: 7pt 0; font: 7.8pt/1.42 "SF Mono", Menlo, monospace; color: #c8d4c8;
+      white-space: pre-wrap; break-inside: avoid; }
+pre .c { color: #7a8a7a; }
+.pull { background: #16150f; border-left: 3px solid #c9a84c; padding: 8pt 12pt;
+        margin: 9pt 0; color: #c9a84c; font-weight: 700; font-size: 9.2pt;
+        line-height: 1.45; break-inside: avoid; }
+table { width: 100%; border-collapse: collapse; font-size: 8.3pt; margin: 7pt 0 9pt;
+        break-inside: avoid; }
+th { text-align: left; font: 700 8pt "Helvetica Neue", Arial, sans-serif;
+     color: #c9a84c; border-bottom: 1px solid #c9a84c; padding: 4pt 6pt; }
+td { padding: 4pt 6pt; border-bottom: 0.5px solid #2a2a2a; vertical-align: top;
+     color: #cccccc; }
+td.m { font-family: Menlo, monospace; font-size: 7.8pt; color: #c9a84c; white-space: nowrap; }
+.foot { margin-top: 16pt; border-top: 0.8px solid #4a4a4a; padding-top: 7pt;
+        display: flex; justify-content: space-between; align-items: center;
+        font: 7.4pt "Helvetica Neue", Arial, sans-serif; color: #8a8a8a; }
+.hcp { background: #c9a84c; color: #0a0a0a; font: 700 7.4pt "Helvetica Neue", Arial;
+       letter-spacing: 1pt; padding: 2.5pt 11pt; }
+</style>
+
+<div class="eyebrow">INSTAR BRANDS LLC · ALADDIN'S CASTLE PROGRAM · BUILD DOCUMENT</div>
+<h1>MTC Sim-2.0</h1>
+<div class="dek">$ACM membership, Meme Token Credit settlement,<br>and the Walmart-week calendar everything hangs from</div>
+<div class="hr"></div>
+<div class="meta">Version 2.0 simulation · August 2026 · <span style="font-family:Menlo,monospace">~/Air/aladdins-castle/mtc</span></div>
+<div class="meta">Prepared for T. Wichmann · CONFIDENTIAL</div>
+
+<div class="warn">NOTHING IN THIS BUILD IS REAL. No blockchain writes. No funded wallets. No
+physical scanners. Wallet addresses are marked <span style="font-family:Menlo,monospace">sim:true</span>
+and cannot be funded. Brand names are TEST FIXTURES chosen to make the flow legible —
+no relationship, agreement or endorsement is implied or exists.</div>
+
+<div class="secnum">01</div>
+<h2>What was built, in one paragraph</h2>
+<p>A consumer enrols and we mint them a Solana wallet whose key we hold; one $ACM lands in
+it and that token is their membership credential, nothing more. A brand funds an offer
+denominated in Walmart weeks. We push that consumer a <b>Meme Token Credit</b> — which is
+not a coin but an Apple Wallet pass carrying an HMAC-signed QR code. They walk into an
+arcade, the reader scans it, and that scan is the settlement event: the credit is
+extinguished exactly once, the product is handed over, and a row lands in an append-only
+hash-chained ledger. At the close of each Walmart week a Merkle root of that ledger is
+published to a public chain, so a brand can verify its own redemptions against a
+commitment nobody — including us — can revise.</p>
+<div class="pull">The blockchain does exactly one job in this system: prove the holder has
+at least one $ACM. That is a read. Everything else is our ledger.</div>
+
+<div class="secnum">02</div>
+<h2>The Walmart-week spine</h2>
+<p>Every offer window, expiry and ledger period is denominated in Walmart weeks. This is not
+cosmetic. Walmart's trade team plans, funds and reports promotional dollars in these weeks,
+so a redemption ledger kept in the same weeks reconciles to a brand's own trade report with
+no translation step — no partial weeks, no allocation assumptions, no argument about which
+week a Tuesday redemption belongs to.</p>
+
+<table>
+<tr><th style="width:26%">Rule</th><th>Implementation</th></tr>
+<tr><td>Week boundary</td><td>Saturday 00:00:00 → Friday 23:59:59</td></tr>
+<tr><td>Timezone</td><td class="m">America/New_York</td></tr>
+<tr><td>Fiscal year</td><td>Feb 1 → Jan 31, opening on the Saturday of the week containing Feb 1</td></tr>
+<tr><td>Week numbering</td><td>Week 1 <b>is</b> Walmart week 1 — no parallel numbering</td></tr>
+<tr><td>53-week years</td><td>Derived from the calendar, never assumed or tabled</td></tr>
+<tr><td>Offer duration</td><td>1 week minimum, 52 weeks maximum; rolls into the next FY if it must</td></tr>
+</table>
+
+<h3>Why America/New_York and not EST</h3>
+<p>Strict "EST" is UTC−5 year-round. From March to November an offer set to expire Friday
+midnight would actually die at 1:00 a.m. local — an hour the customer believes they still
+have. The named zone observes the DST shift, so Friday midnight is midnight on the wall
+clock every week of the year.</p>
+
+<h3>The 53-week year, handled without a special case</h3>
+<pre><span class="c"># A fiscal year runs until the next one starts. The week count falls out
+# of the two anchors, so a 53-week year needs no special case anywhere else.</span>
+def fy_start(fiscal_year):
+    anchor = date(fiscal_year - 1, 2, 1)          <span class="c"># FY2027 -> Feb 2026</span>
+    return anchor - timedelta(days=(anchor.weekday() - SATURDAY) % 7)
+
+def fy_weeks(fiscal_year):
+    return (fy_start(fiscal_year + 1) - fy_start(fiscal_year)).days // 7</pre>
+<pre>FY2027: starts 2026-01-31 (Sat), 52 weeks
+FY2028: starts 2027-01-30 (Sat), 52 weeks
+FY2031: starts 2030-01-26 (Sat), <b>53 weeks</b>   <span class="c">&lt;- derived, not hardcoded</span></pre>
+
+<div class="secnum">03</div>
+<h2>HMAC on every channel</h2>
+<p>QR payloads, reader-to-server reports, brand submissions, webhooks, internal calls. One
+standard, no per-case decision.</p>
+<div class="pull">A random token requires the verifier to ask a server whether it is real.
+An HMAC-signed token verifies OFFLINE, with no network at all.</div>
+<p>That is load-bearing: Starlink is the arcade site minimum, but a scanner that stops
+working during an outage stops the entire promotion. Signed codes mean the worst case is
+delayed reconciliation, not a dead lane.</p>
+
+<h3>Three things that are not optional</h3>
+<table>
+<tr><th style="width:24%">Element</th><th>Why it must be there</th></tr>
+<tr><td><b>Key ID</b> in the payload</td><td>Readers are deployed in the field. Without it you cannot rotate a secret without bricking every one of them.</td></tr>
+<tr><td><b>Timestamp + nonce</b> inside the signed envelope</td><td>Without them a captured valid signature stays valid forever and can simply be replayed.</td></tr>
+<tr><td><b>Constant-time compare</b></td><td>Comparing signatures with <span style="font-family:Menlo,monospace">==</span> leaks how many leading bytes matched, through timing. That is a documented path to forging a signature one byte at a time.</td></tr>
+</table>
+
+<pre><span class="c"># A nonce and issued-at are injected HERE, not trusted from the caller, so no
+# call site can forget them and quietly create a replayable token.</span>
+def sign(payload, key, key_id):
+    body = dict(payload)
+    body.setdefault("iat", int(time.time()))
+    body.setdefault("jti", secrets.token_hex(8))
+    raw = _b64(json.dumps(body, separators=(",",":"), sort_keys=True).encode())
+    sig = _b64(hmac.new(_unb64(key), f"{key_id}.{raw}".encode(),
+                        hashlib.sha256).digest())
+    return f"{key_id}.{raw}.{sig}"
+
+def verify(token, keyring, max_age_s=None):
+    kid, raw, sig = token.split(".")
+    ...
+    if not hmac.compare_digest(sig, expect):      <span class="c"># constant time — never ==</span>
+        return False, "bad signature"</pre>
+
+<pre><span class="c"># measured on a live token</span>
+token length     : 168–395 chars (fits a QR comfortably)
+clean verify     : True
+tampered payload : (False, 'bad signature')
+wrong key        : (False, 'bad signature')
+unknown key id   : (False, 'unknown key id rdr-999')</pre>
+
+<div class="secnum">04</div>
+<h2>The MTC is not a coin</h2>
+<p>Two different things were both called "wallet," and that is what makes this confusing on
+first reading:</p>
+<table>
+<tr><th style="width:26%">Thing</th><th>Holds</th><th>Touches the chain?</th></tr>
+<tr><td><b>SOL wallet</b></td><td>1 $ACM — eligibility</td><td>Read only. Never spent.</td></tr>
+<tr><td><b>Apple Wallet</b></td><td>The MTC pass — the offer</td><td><b>Never.</b></td></tr>
+</table>
+
+<h3>What that choice buys</h3>
+<table>
+<tr><th style="width:34%">Operation</th><th style="width:33%">Off-chain pass (built)</th><th>On-chain token (rejected)</th></tr>
+<tr><td>Issue a credit</td><td>a database write</td><td>a transaction + fee</td></tr>
+<tr><td>Expire 10,000 credits</td><td>one timestamp query, free</td><td>10,000 burn transactions</td></tr>
+<tr><td>Non-transferable</td><td>true by construction</td><td>needs a token extension</td></tr>
+<tr><td>User needs SOL for gas</td><td>no</td><td>yes</td></tr>
+<tr><td>"Extinguished exactly once"</td><td>first valid scan wins a race</td><td>a burn transaction</td></tr>
+</table>
+
+<div class="secnum">05</div>
+<h2>Wallet minting — the noob path</h2>
+<p>Solana does not mine keys. Bitcoin's proof-of-work orders <i>transactions</i>; it has
+nothing to do with creating a key. A Solana private key is literally 32 random bytes, and
+the public address is derived from it mathematically, offline, in microseconds. There is
+nothing to search for and no network call involved in creating one.</p>
+
+<pre>1. 32 bytes from the OS CSPRNG        <span class="c">(SecRandomCopyBytes on macOS)</span>
+2. derive the ed25519 public key      <span class="c">-> that IS the address, offline</span>
+3. confirm the address has never been used
+4. push 1 $ACM                        <span class="c">-> the eligibility credential</span></pre>
+
+<div class="pull">Step 3 is not about collisions. Colliding with an existing wallet is 1 in
+2²⁵⁶. It is about catching a broken RNG on our side — and a bug in our own randomness is
+nowhere near 1 in 2²⁵⁶. One cheap call turns a silent catastrophic failure into a loud one.</div>
+
+<h3>Two things flagged, not solved</h3>
+<p><b>Custody.</b> Holding the key on the user's behalf is custody, with the regulatory
+posture that implies. The architecture is positioned for it — MTC carries no cash value and
+$ACM is never spendable inside the system — but <i>"we can revoke it"</i> and <i>"the user
+owns it"</i> are different claims and only one can be true. This is a specific question for
+Wood Herron, not a footnote.</p>
+<p><b>Key storage at scale.</b> The simulation writes keys to a local file. That is fine for
+a simulation and wrong for production: N independent keys means N secrets to protect and one
+breach exposes everyone. Production wants hierarchical deterministic derivation — one master
+seed in an HSM, each user's key derived by index — so there is one secret to guard and no
+database of private keys exists to steal.</p>
+
+<div class="secnum">06</div>
+<h2>The ledger is the product</h2>
+<p>KRW-C-2026-002: <i>"The measurement is not a product built alongside the system. It is
+what the system leaves behind."</i> Every state change goes through the ledger. There is no
+other write path, and the ledger has no update and no delete.</p>
+
+<pre><span class="c"># Hash over every field INCLUDING the previous hash. Order is part of the
+# contract — change it and every historical hash becomes unverifiable.</span>
+def _hash_row(seq, utc, fy, week, event, subject, detail, prev_hash):
+    blob = json.dumps([seq, utc, fy, week, event, subject, detail, prev_hash],
+                      separators=(",",":"), sort_keys=True)
+    return hashlib.sha256(blob.encode()).hexdigest()</pre>
+
+<p>Altering any historical row changes every hash after it, and the break is detectable by
+anyone holding a later hash. Verified on a tampered file:</p>
+<pre>clean chain     : (True, None, 5)
+after tampering : (False, 3, 5)      <span class="c">&lt;- detected at that sequence number</span></pre>
+
+<h3>Why git alone is not enough</h3>
+<p>Git is hash-chained and therefore genuinely tamper-<i>evident</i>. But history can be
+force-pushed and rewritten by anyone with write access, and nothing inside the repository
+would prove it happened. So a Merkle root is published per Walmart week:</p>
+<div class="pull">The repository holds the data. The chain holds the proof that the data has
+not moved. A brand verifies its own redemptions against an anchor nobody controls —
+including us.</div>
+<p>Scoping the anchor to a week is deliberate: the root published at week close commits
+exactly that week's settlement facts, which is the period the brand's trade report is
+denominated in.</p>
+
+<div class="secnum">07</div>
+<h2>Redemption — the exactly-once guarantee</h2>
+<pre><span class="c"># THE PATENT CLAIM, in five lines. First valid scan wins; every later scan
+# of the same instrument fails here, forever.</span>
+if p["state"] == "REDEEMED":
+    self.ledger.append("REDEEM_REJECTED", mid,
+                       {"reason": "already redeemed", "reader": reader_id})
+    return {"ok": False, "reason": "already redeemed"}
+p["state"] = "REDEEMED"</pre>
+
+<h3>The offline tradeoff, stated rather than discovered</h3>
+<p>Offline validation proves a code is authentic and unexpired with no network. It
+<i>cannot</i> check whether the code was already spent — that needs the ledger. So an
+offline scan is queued and reconciled when the link returns, accepting a small
+double-redemption window rather than letting an outage stop the lane. That is a business
+decision and it should be made deliberately, not found later.</p>
+
+<div class="secnum">08</div>
+<h2>First run</h2>
+<pre>SIM-2.0 · FY2027 WK27 · Sat 01 Aug – Fri 07 Aug 2026
+
+140 members enrolled          140 $ACM out of float
+332 MTC passes issued         139 redeemed
+623 ledger events             chain intact: True
+
+PG-TIDE  WK27 + 1wk  -> FY2027 WK27    100 issued   45 redeemed   $67.50
+PG-DAWN  WK27 + 2wk  -> FY2027 WK28     83 issued   34 redeemed   $34.00
+PG-CHRM  WK27 + 4wk  -> FY2027 WK30     66 issued   26 redeemed   $52.00
+PG-GILL  WK27 + 13wk -> FY2027 WK39     50 issued   23 redeemed   $69.00
+PG-OLAY  WK27 + 52wk -> FY2028 WK26     33 issued   11 redeemed   $27.50
+
+ADVERSARIAL SCANS
+  duplicate scan      -> already redeemed
+  tampered QR         -> bad signature
+  unknown reader key  -> unknown key id ARC-FAKE-99
+OFFLINE VALIDATION    -> authentic + unexpired, NO network</pre>
+
+<h3>The simulation caught a bug on its first run — an invented rule</h3>
+<p>An earlier draft refused any offer running past fiscal year end. That silently made a
+52-week offer <i>impossible</i> unless it began in week 1, and PG-OLAY failed immediately.
+The stated rule is <b>duration</b>: 1 to 52 weeks from wherever it starts. The window now
+rolls into the next fiscal year and reports the closing week in the year it actually lands
+in — which is why PG-OLAY reads <span style="font-family:Menlo,monospace">WK27 + 52 → FY2028 WK26</span>.</p>
+
+<div class="secnum">09</div>
+<h2>Enrollment economics, measured</h2>
+<table>
+<tr><th style="width:34%">Item</th><th>Cost per user</th></tr>
+<tr><td>Associated Token Account rent</td><td class="m">0.00204 SOL ≈ $0.408 (recoverable on close)</td></tr>
+<tr><td>Transfer fee</td><td class="m">≈ $0.001</td></tr>
+<tr><td>The 1 $ACM itself</td><td class="m">$0.000265</td></tr>
+<tr><td><b>Total</b></td><td class="m"><b>≈ $0.41</b>, almost all of it recoverable rent</td></tr>
+</table>
+<p>At 100,000 enrolments that is <b>$40,927</b>, of which <b>$40,800 is rent</b> locked while
+accounts are open — a working-capital lockup rather than a cost, and worth knowing before it
+surprises anyone at scale.</p>
+
+<div class="pull">At 1 $ACM per user the cooling mechanism of KRW-C-2026-002 does not move.
+One million enrolled customers removes 0.1% of circulating supply.</div>
+<p>Circulating supply is 999,957,146. The paper hedges this correctly — <i>"the vaulting rate
+per enrollment is illustrative and not a committed program parameter"</i> — but the parameter
+has to be set, and 1 is the wrong number. At current price, 10,000 ACM costs <b>$2.65</b>;
+vault that per user and 10,000 enrolments removes <b>10% of circulating supply</b>. Eligibility
+threshold and vaulting quantity are separate parameters, and only the second one cools anything.</p>
+
+<div class="secnum">10</div>
+<h2>What exists, and what does not</h2>
+<table>
+<tr><th style="width:34%">Component</th><th style="width:14%">State</th><th>Note</th></tr>
+<tr><td>Walmart-week engine</td><td style="color:#5fd08a">BUILT</td><td>53-week years derived; verified against Walmart supplier documentation</td></tr>
+<tr><td>HMAC auth, all channels</td><td style="color:#5fd08a">BUILT</td><td>key id, nonce, constant-time compare</td></tr>
+<tr><td>Hash-chained ledger</td><td style="color:#5fd08a">BUILT</td><td>tamper detection verified on a modified file</td></tr>
+<tr><td>MTC pass + offline validation</td><td style="color:#5fd08a">BUILT</td><td>QR fits, validates with no network</td></tr>
+<tr><td>Exactly-once redemption</td><td style="color:#5fd08a">BUILT</td><td>duplicate, forged and unknown-key scans all rejected</td></tr>
+<tr><td>Monitor</td><td style="color:#5fd08a">BUILT</td><td class="m">http://127.0.0.1:8901</td></tr>
+<tr><td>Merkle anchoring</td><td style="color:#c9a84c">SIMULATED</td><td>root computed correctly; chain write is a stub</td></tr>
+<tr><td>Real ed25519 derivation</td><td style="color:#c9a84c">SIMULATED</td><td>addresses marked <span class="m">sim:true</span>; one-line change to go real</td></tr>
+<tr><td>Key storage</td><td style="color:#c0603a">NOT PRODUCTION</td><td>local file. Needs HD derivation from an HSM seed</td></tr>
+<tr><td>Apple Wallet pass generation</td><td style="color:#c0603a">NOT BUILT</td><td>needs an Apple Pass Type ID certificate</td></tr>
+<tr><td>Physical reader</td><td style="color:#c0603a">NOT BUILT</td><td>iPhone SE scanner app</td></tr>
+</table>
+
+<div class="foot">
+<span>INSTAR BRANDS LLC · CONFIDENTIAL · MTC Sim-2.0 build document · August 2026 · not for distribution</span>
+<span class="hcp">HCP</span>
+</div>
