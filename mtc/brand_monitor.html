@@ -1,0 +1,689 @@
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>MTC BRAND MONITOR</title>
+<style>
+*{box-sizing:border-box}
+body{background:#0a0a0c;color:#d2d2d6;font:13px ui-monospace,Menlo,monospace;margin:0;padding:18px}
+h1{font-size:15px;letter-spacing:2px;color:#c9a84c;margin:0 0 2px;display:inline-block}
+.sim{display:inline-block;background:#3a2f16;color:#c9a84c;font-size:10px;
+     letter-spacing:1.5px;padding:2px 9px;margin-left:10px;vertical-align:2px}
+.sub{color:#6b6b7a;font-size:11px;margin:4px 0 14px}
+
+/* ---- the panel: nav, tools and tree are ONE object ----
+   The drill path is not a floating breadcrumb. It is the top edge of the tree
+   it controls, sharing its border, so the level you are on and the rows you
+   are looking at read as a single surface. */
+.panel{border:1px solid #23232e;border-radius:7px;background:#0d0d13;overflow:hidden}
+.nav{display:flex;align-items:stretch;background:#101018;
+     border-bottom:1px solid #23232e;flex-wrap:wrap}
+.nav a{display:flex;flex-direction:column;justify-content:center;gap:2px;
+       padding:8px 16px;color:#8a8a9a;cursor:pointer;text-decoration:none;
+       border-right:1px solid #23232e;min-width:120px}
+.nav a .lv{font-size:8px;letter-spacing:1.6px;color:#4a4a58}
+.nav a .nm{font-size:12px;letter-spacing:0.5px}
+.nav a:hover{background:#14141c;color:#c9a84c}
+.nav a:hover .lv{color:#8a7a3a}
+.nav a.here{background:#1a1509;color:#c9a84c;box-shadow:inset 0 -2px 0 #c9a84c}
+.nav a.here .lv{color:#8a7a3a}
+.nav .tip{margin-left:auto;align-self:center;padding:0 14px;color:#4a4a58;font-size:10px;
+          letter-spacing:1px}
+
+.viewas{float:right;font-size:10px;letter-spacing:1px;color:#6b6b7a}
+.viewas select{background:#101018;border:1px solid #23232e;border-radius:5px;color:#c9a84c;
+   padding:5px 8px;font:11px ui-monospace,Menlo,monospace;margin-left:6px}
+.viewas select:focus{outline:none;border-color:#c9a84c}
+
+.cards{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.c{border:1px solid #23232e;border-radius:6px;padding:9px 14px;background:#101018;min-width:122px}
+.c .l{color:#6b6b7a;font-size:10px;letter-spacing:1px}
+.c .v{font-size:19px;margin-top:3px;color:#e8e8ee}
+.c.gold .v{color:#c9a84c}
+
+.bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+     padding:9px 12px;border-bottom:1px solid #23232e;background:#0b0b11}
+.bar .lbl{color:#4a4a58;font-size:10px;letter-spacing:1.5px;margin-left:auto}
+input[type=search]{background:#101018;border:1px solid #23232e;border-radius:5px;color:#d2d2d6;
+       padding:6px 10px;font:12px ui-monospace,Menlo,monospace;width:230px}
+input[type=search]:focus{outline:none;border-color:#c9a84c}
+.chip{border:1px solid #23232e;border-radius:5px;padding:5px 10px;background:#101018;
+      color:#8a8a9a;font-size:10px;letter-spacing:1px;cursor:pointer}
+.chip:hover{border-color:#c9a84c;color:#c9a84c}
+.chip.on{border-color:#c9a84c;background:#1a1509;color:#c9a84c}
+
+/* The table scrolls inside its own box so the page body never scrolls
+   sideways and no column is silently clipped off the right edge. */
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:12px;min-width:940px}
+td{white-space:nowrap}
+th{text-align:left;color:#6b6b7a;font-weight:400;font-size:10px;letter-spacing:1px;
+   padding:6px 8px;border-bottom:1px solid #23232e;cursor:pointer;user-select:none;white-space:nowrap}
+th:hover{color:#c9a84c}
+th .ar{color:#c9a84c;font-size:9px}
+td{padding:7px 8px;border-bottom:1px solid #16161d;vertical-align:middle}
+tr.row{cursor:pointer}
+tr.row:hover td{background:#12121a}
+.g{color:#5fd08a}.r{color:#d08a8a}.d{color:#6b6b7a}.gold{color:#c9a84c}
+.name{color:#e8e8ee}
+.tag{font-size:9px;letter-spacing:1px;padding:2px 7px;border-radius:3px;border:1px solid}
+.t-live{color:#5fd08a;border-color:#26543a;background:#0e1f16}
+.t-closed{color:#8a8a9a;border-color:#2a2a36;background:#131319}
+.t-sched{color:#c9a84c;border-color:#4a3d1a;background:#1a1509}
+
+/* ---- redemption-rate meter: the number every brand manager reads first ---- */
+.meter{display:flex;align-items:center;gap:7px;justify-content:flex-end}
+.meter .track{width:64px;height:6px;background:#1e1e28;border-radius:3px;overflow:hidden}
+.meter .fill{height:100%;background:#c9a84c}
+.meter .fill.hi{background:#5fd08a}
+.meter .fill.lo{background:#d08a8a}
+.meter .n{font-size:11px;min-width:38px;text-align:right}
+
+/* ---- week strip at the brand level ---- */
+/* ---- week strip: sits UNDER the offers it summarises, and answers to the
+   same filter. Weeks holding a matching promo light up; the rest grey out,
+   so the chips read as a calendar query, not just a row filter. ---- */
+.striphead:empty,.strip:empty{display:none}
+.striphead{display:flex;align-items:center;gap:10px;padding:9px 12px 0;
+           border-top:1px solid #23232e;
+           color:#4a4a58;font-size:10px;letter-spacing:1.5px;background:#0b0b11}
+.striphead b{color:#8a8a9a;font-weight:400}
+.strip{display:flex;gap:5px;flex-wrap:wrap;padding:8px 12px 12px;background:#0b0b11}
+.striphead .key{margin-left:auto;display:flex;gap:12px}
+.striphead .ky{font-size:9px;letter-spacing:1px}
+.striphead .ky.off{opacity:.28}
+.wk .fy{font-size:8px;color:#c9a84c;letter-spacing:1px}
+.wk{border:1px solid #1e1e28;border-radius:5px;padding:6px 8px;min-width:74px;
+    background:#0e0e14;transition:opacity .12s,border-color .12s}
+.wk .n{font-size:13px;color:#54545f}
+.wk .dt{font-size:9px;color:#3a3a46;margin-top:2px}
+.wk .cl{font-size:9px;margin-top:2px}
+.wk.lit{background:#101018;border-color:currentColor}
+.wk.lit .n{color:#e8e8ee}
+.wk.lit .dt{color:#6b6b7a}
+.wk.lit .cl{color:currentColor}
+.wk.now{box-shadow:inset 0 -2px 0 #c9a84c}
+.wk.now .n{color:#c9a84c}
+.empty{color:#6b6b7a;padding:18px 8px;font-size:12px}
+.right{text-align:right}
+
+/* ---- the anchor chain ----
+   One block per Walmart week. The block IS the week: it seals Friday at
+   23:59:59 ET, and only its 32-byte root is ever published. */
+.chainwrap{margin-top:20px;border:1px solid #23232e;border-radius:7px;background:#0d0d13}
+.chainhead{display:flex;align-items:center;gap:10px;padding:10px 12px;
+   border-bottom:1px solid #23232e;background:#101018;flex-wrap:wrap}
+.chainhead .t{color:#c9a84c;font-size:10px;letter-spacing:2px}
+.chainhead .d{font-size:10px;letter-spacing:1px}
+.chainhead .ok{margin-left:auto;color:#5fd08a;font-size:10px;letter-spacing:1px}
+.chain{display:flex;align-items:stretch;overflow-x:auto;padding:14px 12px;gap:0}
+.blk{flex:0 0 auto;width:150px;border:1px solid #23232e;border-radius:6px;
+     background:#101018;padding:8px 10px}
+.blk.open{border-color:#c9a84c;background:#1a1509}
+.blk .w{font-size:12px;color:#e8e8ee;display:flex;justify-content:space-between;
+        align-items:center;gap:6px}
+.blk .w .st{font-size:8px;letter-spacing:1px;color:#5fd08a}
+.blk.open .w .st{color:#c9a84c}
+.blk .rt{font-size:9px;color:#c9a84c;word-break:break-all;line-height:1.35;margin-top:5px}
+.blk .mt{font-size:9px;color:#6b6b7a;margin-top:4px}
+.blk .pv{font-size:8px;color:#3f3f4c;word-break:break-all;margin-top:3px}
+/* the link between blocks — the chain is the point, so it is drawn */
+.lnk{flex:0 0 auto;width:26px;display:flex;align-items:center;justify-content:center;
+     color:#3a3a48;font-size:11px}
+.chainfoot{padding:9px 12px;border-top:1px solid #23232e;background:#0b0b11;
+   color:#6b6b7a;font-size:10px;line-height:1.55}
+.chainfoot b{color:#8a8a9a;font-weight:400}
+</style>
+
+<span class=viewas>VIEW AS<select id=as></select></span>
+<h1>MTC BRAND MONITOR<span class=sim>INTERNAL · SIMULATION · MADE-UP DATA</span></h1>
+<div class=sub id=sub></div>
+
+<div class=cards id=cards></div>
+
+<div class=panel>
+  <div class=nav id=crumb></div>
+  <div class=bar>
+    <input type=search id=q placeholder="filter…">
+    <span class="chip on" data-f=all>ALL</span>
+    <span class=chip data-f=live>LIVE</span>
+    <span class=chip data-f=sched>SCHEDULED</span>
+    <span class=chip data-f=closed>CLOSED</span>
+    <span class=lbl id=sectlabel></span>
+  </div>
+  <div class=tw><table><thead id=head></thead><tbody id=body></tbody></table></div>
+  <div class=striphead id=striphead></div>
+  <div class=strip id=strip></div>
+</div>
+
+<div class=chainwrap>
+  <div class=chainhead>
+    <span class=t>WEEK ANCHOR CHAIN</span>
+    <span class=d id=chainsub></span>
+    <span class=ok id=chainok></span>
+  </div>
+  <div class=chain id=chain></div>
+  <div class=chainfoot id=chainfoot></div>
+</div>
+
+<script>
+/* ------------------------------------------------------------------ data
+   Seeded so the numbers are stable across reloads — a dashboard whose
+   figures jump every refresh is impossible to reason about. */
+let _s = 20260806;
+function rnd(){ _s = (_s * 1103515245 + 12345) & 0x7fffffff; return _s / 0x7fffffff; }
+function ri(a,b){ return a + Math.floor(rnd() * (b - a + 1)); }
+function pick(a){ return a[Math.floor(rnd() * a.length)]; }
+
+/* Walmart fiscal calendar. A fiscal year opens on the Saturday on or before
+   1 Feb of the prior calendar year, and weeks run Sat→Fri. Week COUNT is
+   derived from the gap between two anchors, never tabled — that is what makes
+   a 53-week year fall out on its own instead of needing a special case. */
+const FY = 2027;
+function fyStart(fy) {
+  const a = new Date(fy - 1, 1, 1);              // 1 Feb of the prior year
+  return new Date(fy - 1, 1, 1 - ((a.getDay() - 6 + 7) % 7));   // back to Sat
+}
+function fyWeeks(fy) { return Math.round((fyStart(fy + 1) - fyStart(fy)) / 6048e5); }
+
+const FY_START = fyStart(FY), FY_WEEKS = fyWeeks(FY);
+const TODAY = new Date(2026, 7, 6);
+const NOW_WK = Math.floor((TODAY - FY_START) / 6048e5) + 1;
+
+/* A rolling window runs off the ends of the fiscal year, so an index outside
+   1..FY_WEEKS has to resolve into the neighbouring year rather than clamp. */
+function resolve(i) {
+  let fy = FY, w = i;
+  while (w < 1) { fy--; w += fyWeeks(fy); }
+  while (w > fyWeeks(fy)) { w -= fyWeeks(fy); fy++; }
+  return { fy, w };
+}
+const wkStart = (fy, w) => new Date(fyStart(fy).getTime() + (w - 1) * 6048e5);
+const wkEnd   = (fy, w) => new Date(fyStart(fy).getTime() + (w * 7 - 1) * 864e5);
+const weekStart = w => wkStart(FY, w);
+const weekEnd   = w => wkEnd(FY, w);
+const fmt = d => d.toLocaleDateString('en-US', {day:'2-digit', month:'short'});
+
+const CATALOG = {
+  'Procter & Gamble': {
+    Tide:['Tide Pods 42ct','Tide Original 92oz','Tide Hygienic Clean'],
+    Charmin:['Charmin Ultra Soft 12mega','Charmin Ultra Strong 18dbl'],
+    Pampers:['Pampers Swaddlers Sz1','Pampers Baby-Dry Sz4','Pampers Pure'],
+    Gillette:['Gillette Fusion5 4ct','Gillette ProGlide Gel'],
+    Crest:['Crest 3D White 3pk','Crest Pro-Health 4.8oz'],
+    Dawn:['Dawn Ultra 56oz','Dawn Powerwash Spray'],
+    Bounty:['Bounty Select-A-Size 8dbl'],
+    Olay:['Olay Regenerist Cream','Olay Body Wash 22oz'],
+    Downy:['Downy April Fresh 111oz','Downy Unstopables'],
+    Febreze:['Febreze Air 2pk','Febreze Fabric 27oz'],
+  },
+  'Unilever': {
+    Dove:['Dove Beauty Bar 6pk','Dove Deep Moisture 22oz'],
+    Axe:['Axe Phoenix Body Spray'],
+    "Hellmann's":["Hellmann's Real Mayo 30oz"],
+    Vaseline:['Vaseline Intensive Care 20oz'],
+    Degree:['Degree Advanced 72hr 2pk'],
+  },
+  'Colgate-Palmolive': {
+    Colgate:['Colgate Total 2pk','Colgate Optic White'],
+    Palmolive:['Palmolive Ultra 32oz'],
+    'Speed Stick':['Speed Stick Ocean Surf 3pk'],
+    Fabuloso:['Fabuloso Lavender 128oz'],
+  },
+  'Kimberly-Clark': {
+    Huggies:['Huggies Snug & Dry Sz3','Huggies Little Movers Sz5'],
+    Kleenex:['Kleenex Ultra Soft 8pk'],
+    Cottonelle:['Cottonelle Ultra Clean 12mega'],
+    Scott:['Scott 1000 12pk'],
+  },
+  'General Mills': {
+    Cheerios:['Honey Nut Cheerios 18.8oz','Cheerios Original 12oz'],
+    'Betty Crocker':['Betty Crocker Super Moist 3pk'],
+    'Nature Valley':['Nature Valley Crunchy 12ct'],
+    Pillsbury:['Pillsbury Grands 8ct'],
+    Yoplait:['Yoplait Original 12pk'],
+  },
+};
+
+const COMPANIES = Object.entries(CATALOG).map(([cname, brands], ci) => ({
+  id: 'C' + ci, name: cname,
+  brands: Object.entries(brands).map(([bname, items], bi) => {
+    const n = ri(3, 7);
+    const offers = [];
+    for (let k = 0; k < n; k++) {
+      // Weighted toward weeks already run, so most brands have real history
+      // on screen rather than a wall of not-yet-started zeroes. Durations are
+      // short — a 26-week window is a program, not a promo, and it would leave
+      // almost every offer spanning today.
+      const wk = pick([ri(4,24), ri(4,24), ri(6,26), ri(30,46), ri(34,48)]);
+      const end = Math.min(wk + pick([1,1,2,2,4,4,8,13]) - 1, FY_WEEKS);
+      const dur = end - wk + 1;          // the span actually shown, post-clamp
+      const issued = ri(400, 90000);
+      // Only weeks that have actually opened can have redemptions against them.
+      const elapsed = Math.max(0, Math.min(NOW_WK, end) - wk + 1);
+      const maturity = Math.min(1, elapsed / dur);
+      const ceiling = ri(12, 74) / 100;
+      const redeemed = Math.round(issued * ceiling * maturity);
+      offers.push({
+        id: `${bname.slice(0,3).toUpperCase()}-${String(wk).padStart(2,'0')}${k}`,
+        item: pick(items), wk, dur, end,
+        value: ri(50, 400) / 100,
+        issued, redeemed,
+        state: end < NOW_WK ? 'closed' : (wk > NOW_WK ? 'sched' : 'live'),
+      });
+    }
+    /* A brand does not run seven promos at once. Cap concurrency and push the
+       overflow into the past, so LIVE reads like a real trade calendar. */
+    const cap = pick([0, 1, 1, 2]);
+    let live = offers.filter(o => o.state === 'live');
+    while (live.length > cap) {
+      const o = live.shift();
+      const span = o.end - o.wk;
+      o.end = NOW_WK - ri(1, 9);
+      o.wk = Math.max(1, o.end - span);
+      o.dur = o.end - o.wk + 1;
+      o.state = 'closed';
+      o.redeemed = Math.min(o.issued, Math.round(o.issued * ri(18, 70) / 100));
+    }
+
+    /* Every brand carries settled history. A brand whose CLOSED view is empty
+       has nothing to reconcile against, which is not a state a real trade
+       calendar reaches — so top up to a floor of three finished promos. */
+    let guard = 0;
+    while (offers.filter(o => o.state === 'closed').length < 3 && guard++ < 8) {
+      const dur = pick([1, 1, 2, 4, 4, 8]);
+      const end = Math.max(2, NOW_WK - ri(2, 22));
+      const wk = Math.max(1, end - dur + 1);
+      const issued = ri(2_000, 70_000);
+      offers.push({
+        id: `${bname.slice(0,3).toUpperCase()}-${String(wk).padStart(2,'0')}H${guard}`,
+        item: pick(items), wk, end, dur: end - wk + 1,
+        value: ri(50, 400) / 100, issued,
+        redeemed: Math.round(issued * ri(15, 72) / 100),
+        state: 'closed',
+      });
+    }
+    return { id: 'B' + ci + bi, name: bname, company: cname, offers };
+  }),
+}));
+
+/* Roll offer-level facts up the hierarchy once, rather than re-summing on
+   every render — the same numbers must appear at every level or the drill
+   down stops being trustworthy. */
+function rollup(offers) {
+  const t = { offers: offers.length, issued: 0, redeemed: 0, settled: 0, live: 0 };
+  for (const o of offers) {
+    t.issued += o.issued; t.redeemed += o.redeemed;
+    t.settled += o.redeemed * o.value;
+    if (o.state === 'live') t.live++;
+  }
+  t.rate = t.issued ? 100 * t.redeemed / t.issued : 0;
+  return t;
+}
+for (const c of COMPANIES) {
+  for (const b of c.brands) b.t = rollup(b.offers);
+  c.allOffers = c.brands.flatMap(b => b.offers);
+  c.t = rollup(c.allOffers);
+}
+
+/* ------------------------------------------------------------------ view */
+/* ACCESS SCOPE. Internal sees every company. A company sees only itself —
+   its root is its own record, and the all-companies level does not exist for
+   it, so there is no path by which one manufacturer reaches another's numbers. */
+let scope = null;
+let view = { level: 'company', company: null, brand: null };
+let filter = 'all', query = '', sort = { key: null, dir: -1 };
+
+const visible = () => scope ? [scope] : COMPANIES;
+
+const money = n => '$' + n.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+const num = n => n.toLocaleString('en-US');
+const TAG = { live:['t-live','LIVE'], closed:['t-closed','CLOSED'], sched:['t-sched','SCHEDULED'] };
+
+/* A company or a brand has ONE status, exactly as a week does, and it is
+   answered by the current week alone: is anything running in WK{NOW}? If not,
+   is anything still ahead? Otherwise it is done. Without this a brand could
+   match LIVE and SCHEDULED and CLOSED at the same time, because it merely
+   "had one of each" somewhere in the year — which is not a status. */
+function entityStatus(offers) {
+  if (offers.some(o => o.state === 'live'))  return 'live';
+  if (offers.some(o => o.state === 'sched')) return 'sched';
+  return 'closed';
+}
+const offersOf = r => r.allOffers || r.offers;
+
+function statusCell(r) {
+  const set = offersOf(r), st = entityStatus(set);
+  const n = set.filter(o => o.state === 'live').length;
+  const next = Math.min(...set.filter(o => o.state === 'sched').map(o => o.wk), Infinity);
+  const detail = st === 'live'  ? `${n} this week`
+               : st === 'sched' ? `opens WK${next}`
+               : `nothing ahead`;
+  return `<span class="tag ${TAG[st][0]}">${TAG[st][1]}</span>
+          <span class=d style="margin-left:7px">${detail}</span>`;
+}
+
+function meter(rate) {
+  const cls = rate >= 45 ? 'hi' : (rate < 20 ? 'lo' : '');
+  return `<div class=meter><div class=track><div class="fill ${cls}"
+          style="width:${Math.min(100, rate).toFixed(0)}%"></div></div>
+          <span class="n ${cls==='hi'?'g':cls==='lo'?'r':''}">${rate.toFixed(1)}%</span></div>`;
+}
+
+function tab(go, lv, nm, here) {
+  return `<a data-go="${go}" class="${here?'here':''}">
+    <span class=lv>${lv}</span><span class=nm>${nm}</span></a>`;
+}
+
+function crumb() {
+  const parts = [];
+  // Internal only: the all-companies root. A scoped company never sees it.
+  if (!scope) parts.push(tab('company', 'PORTFOLIO', 'ALL COMPANIES', view.level === 'company'));
+  if (view.company) parts.push(tab('brand', 'COMPANY',
+    view.company.name.toUpperCase(), view.level === 'brand'));
+  if (view.brand) parts.push(tab('week', 'BRAND',
+    view.brand.name.toUpperCase(), true));
+
+  const next = view.level === 'company' ? 'select a company'
+             : view.level === 'brand'   ? 'select a brand'
+             : 'promo weeks below';
+  parts.push(`<span class=tip>▾ ${next}</span>`);
+  document.getElementById('crumb').innerHTML = parts.join('');
+}
+
+function cards() {
+  // Same lens as the rows — a header that stays full-year while the table shows
+  // closed-only is a dashboard contradicting itself.
+  const all = view.brand ? view.brand.offers
+            : view.company ? view.company.allOffers
+            : visible().flatMap(c => c.allOffers);
+  const t = rollup(filter === 'all' ? all : all.filter(o => o.state === filter));
+  const n = view.brand ? '1' : view.company ? num(view.company.brands.length) : num(visible().length);
+  const label = view.brand ? 'BRAND' : view.company ? 'BRANDS' : 'COMPANIES';
+  const set = [
+    [label, n], ['PROMOS', num(t.offers)], ['LIVE NOW', num(t.live)],
+    ['MTC ISSUED', num(t.issued)], ['REDEEMED', num(t.redeemed)],
+    ['RATE', t.rate.toFixed(1) + '%'], ['SETTLED', money(t.settled)],
+  ];
+  document.getElementById('cards').innerHTML = set.map(([l, v], i) =>
+    `<div class="c${i>=5?' gold':''}"><div class=l>${l}</div><div class=v>${v}</div></div>`).join('');
+}
+
+/* Column definitions per level. `get` pulls the sort value so sorting works
+   on the number, not the formatted string. */
+const COLS = {
+  company: [
+    {k:'name',  h:'COMPANY',  get:r=>r.name,        cell:r=>`<span class=name>${r.name}</span>`},
+    {k:'stat',  h:`STATUS · WK${NOW_WK}`, get:r=>entityStatus(offersOf(r)), cell:statusCell},
+    {k:'brands',h:'BRANDS',   get:r=>r.brands.length, right:1, cell:r=>num(r.brands.length)},
+    {k:'offers',h:'PROMOS',   get:r=>r._t.offers,   right:1, cell:r=>num(r._t.offers)},
+    {k:'live',  h:'LIVE NOW', get:r=>r._t.live,     right:1,
+      cell:r=>r._t.live ? `<span class=g>${r._t.live}</span>` : '<span class=d>0</span>'},
+    {k:'issued',h:'ISSUED',   get:r=>r._t.issued,   right:1, cell:r=>num(r._t.issued)},
+    {k:'red',   h:'REDEEMED', get:r=>r._t.redeemed, right:1, cell:r=>num(r._t.redeemed)},
+    {k:'rate',  h:'RATE',     get:r=>r._t.rate,     right:1, cell:r=>meter(r._t.rate)},
+    {k:'set',   h:'SETTLED',  get:r=>r._t.settled,  right:1, cell:r=>`<span class=gold>${money(r._t.settled)}</span>`},
+  ],
+  brand: [
+    {k:'name',  h:'BRAND',    get:r=>r.name,        cell:r=>`<span class=name>${r.name}</span>`},
+    {k:'stat',  h:`STATUS · WK${NOW_WK}`, get:r=>entityStatus(offersOf(r)), cell:statusCell},
+    {k:'offers',h:'PROMOS',   get:r=>r._t.offers,   right:1, cell:r=>num(r._t.offers)},
+    {k:'live',  h:'LIVE NOW', get:r=>r._t.live,     right:1,
+      cell:r=>r._t.live ? `<span class=g>${r._t.live}</span>` : '<span class=d>0</span>'},
+    {k:'issued',h:'ISSUED',   get:r=>r._t.issued,   right:1, cell:r=>num(r._t.issued)},
+    {k:'red',   h:'REDEEMED', get:r=>r._t.redeemed, right:1, cell:r=>num(r._t.redeemed)},
+    {k:'rate',  h:'RATE',     get:r=>r._t.rate,     right:1, cell:r=>meter(r._t.rate)},
+    {k:'set',   h:'SETTLED',  get:r=>r._t.settled,  right:1, cell:r=>`<span class=gold>${money(r._t.settled)}</span>`},
+  ],
+  week: [
+    {k:'wk',    h:'WEEK',     get:r=>r.wk, cell:r=>
+      `<span class=gold>WK${r.wk}</span> <span class=d>→ WK${r.end}</span>`},
+    {k:'dates', h:'WINDOW',   get:r=>r.wk, cell:r=>
+      `<span class=d>${fmt(weekStart(r.wk))} – ${fmt(weekEnd(r.end))} · ${r.dur}wk</span>`},
+    {k:'id',    h:'OFFER',    get:r=>r.id, cell:r=>`<span class=d>${r.id}</span>`},
+    {k:'item',  h:'ITEM',     get:r=>r.item, cell:r=>`<span class=name>${r.item}</span>`},
+    {k:'value', h:'VALUE',    get:r=>r.value, right:1, cell:r=>`$${r.value.toFixed(2)} off`},
+    {k:'issued',h:'ISSUED',   get:r=>r.issued, right:1, cell:r=>num(r.issued)},
+    {k:'red',   h:'REDEEMED', get:r=>r.redeemed, right:1, cell:r=>num(r.redeemed)},
+    {k:'rate',  h:'RATE',     get:r=>r.issued?100*r.redeemed/r.issued:0, right:1,
+      cell:r=>meter(r.issued ? 100*r.redeemed/r.issued : 0)},
+    {k:'set',   h:'SETTLED',  get:r=>r.redeemed*r.value, right:1,
+      cell:r=>`<span class=gold>${money(r.redeemed*r.value)}</span>`},
+    {k:'state', h:'STATUS',   get:r=>r.state, cell:r=>
+      `<span class="tag ${TAG[r.state][0]}">${TAG[r.state][1]}</span>`},
+  ],
+};
+
+function rows() {
+  if (view.level === 'company') return visible();
+  if (view.level === 'brand')   return view.company.brands;
+  return view.brand.offers;
+}
+
+function matches(r) {
+  const q = query.toLowerCase();
+  if (q) {
+    const hay = view.level === 'week'
+      ? `${r.id} ${r.item} wk${r.wk}`
+      : view.level === 'brand' ? r.name : `${r.name} ${r.brands.map(b=>b.name).join(' ')}`;
+    if (!hay.toLowerCase().includes(q)) return false;
+  }
+  if (filter === 'all') return true;
+  if (view.level === 'week') return r.state === filter;
+  // Above the offer level a chip is a LENS, not a row status: it asks "show me
+  // this brand's closed history", so any row holding such a promo stays and its
+  // metrics recompute over that slice. The row's single current-week status is
+  // answered separately, by the STATUS column.
+  return offersOf(r).some(o => o.state === filter);
+}
+
+/* Metrics for a row under the active lens. With ALL this is the full-year
+   rollup; with CLOSED it is settled history only, so RATE and SETTLED mean
+   what the chip says they mean rather than silently staying full-year. */
+function lensT(r) {
+  const set = offersOf(r);
+  return rollup(filter === 'all' ? set : set.filter(o => o.state === filter));
+}
+
+function table() {
+  const cols = COLS[view.level];
+  document.getElementById('head').innerHTML = '<tr>' + cols.map(c =>
+    `<th data-k="${c.k}" class="${c.right?'right':''}">${c.h}${
+      sort.key===c.k ? ` <span class=ar>${sort.dir>0?'▲':'▼'}</span>` : ''}</th>`).join('') + '</tr>';
+
+  let rs = rows().filter(matches);
+  if (view.level !== 'week') rs.forEach(r => { r._t = lensT(r); });
+  if (sort.key) {
+    const col = cols.find(c => c.k === sort.key);
+    rs = rs.slice().sort((a, b) => {
+      const x = col.get(a), y = col.get(b);
+      return (typeof x === 'string' ? x.localeCompare(y) : x - y) * sort.dir;
+    });
+  }
+
+  document.getElementById('body').innerHTML = rs.length ? rs.map((r, i) =>
+    `<tr class="${view.level==='week'?'':'row'}" data-i="${rows().indexOf(r)}">` +
+    cols.map(c => `<td class="${c.right?'right':''}">${c.cell(r)}</td>`).join('') + '</tr>').join('')
+    : `<tr><td colspan="${cols.length}" class=empty>nothing matches that filter</td></tr>`;
+
+  const L = {company:`${rs.length} COMPANIES`, brand:`${rs.length} BRANDS`,
+             week:`${rs.length} PROMO WEEKS · WALMART FY${FY}`};
+  document.getElementById('sectlabel').textContent = L[view.level];
+}
+
+/* The week strip only appears at brand level, where weeks are the unit of
+   work. Above that it would just be noise. It reads from the SAME filtered
+   set the table shows, so pressing LIVE lights only the weeks carrying a live
+   promo and greys the rest. */
+/* A week has exactly ONE status, and it comes from the calendar, not from the
+   promos inside it: a week is behind us, it is this week, or it is ahead. That
+   is why nothing can read as live and scheduled at the same time. */
+const WSTAT = {
+  closed: {c:'#8a8a9a', l:'CLOSED'},
+  live:   {c:'#5fd08a', l:'LIVE'},
+  sched:  {c:'#c9a84c', l:'SCHEDULED'},
+};
+const weekStatus = i => i < NOW_WK ? 'closed' : i > NOW_WK ? 'sched' : 'live';
+const HALF = 26;   // 26 back + this week + 26 forward = a rolling 53
+
+function strip() {
+  const el = document.getElementById('strip');
+  const hd = document.getElementById('striphead');
+  if (view.level !== 'week') { el.innerHTML = ''; hd.innerHTML = ''; return; }
+
+  // Text search still narrows the strip; the chips control week STATUS, so
+  // they must not also be applied to the promo count or the two would fight.
+  const q = query.toLowerCase();
+  const pool = view.brand.offers.filter(o =>
+    !q || `${o.id} ${o.item} wk${o.wk}`.toLowerCase().includes(q));
+
+  let lit = 0, out = '';
+  for (let d = -HALF; d <= HALF; d++) {
+    const i = NOW_WK + d, st = weekStatus(i), {fy, w} = resolve(i);
+    // Promos are booked against this fiscal year, so weeks that roll into a
+    // neighbouring year carry none — shown empty rather than faked.
+    const n = fy === FY ? pool.filter(o => o.wk <= w && w <= o.end).length : 0;
+    const on = n > 0 && (filter === 'all' || filter === st);
+    if (on) lit++;
+    out += `<div class="wk${on?' lit':''}${st==='live'?' now':''}"
+      ${on ? `style="color:${WSTAT[st].c}"` : ''}>
+      <div class=n>WK${w}${fy !== FY ? `<span class=fy> FY${String(fy).slice(2)}</span>` : ''}</div>
+      <div class=dt>${fmt(wkStart(fy, w))} – ${fmt(wkEnd(fy, w))}</div>
+      <div class=cl>${n ? `${n} promo${n>1?'s':''}` : '—'}</div></div>`;
+  }
+
+  const key = Object.entries(WSTAT).map(([k, v]) =>
+    `<span class="ky${filter===k||filter==='all'?'':' off'}" style="color:${v.c}">■ ${v.l}</span>`).join('');
+  hd.innerHTML = `<span>ROLLING 53 WEEKS · ${HALF} BACK · THIS WEEK · ${HALF} AHEAD` +
+    ` · <b>${lit} LIT</b></span><span class=key>${key}</span>`;
+  el.innerHTML = out;
+}
+
+/* ------------------------------------------------------- the anchor chain
+   Each Walmart week closes into one block. The block's root is computed OVER
+   THE PREVIOUS ROOT, so the blocks are genuinely chained here rather than
+   drawn to look chained — change any earlier week and every later root moves.
+   In production this is SHA-256 over a Merkle tree of that week's ledger
+   events; the arithmetic below stands in for it so the demo has real linkage. */
+function hx(s) {
+  let a = 0x811c9dc5, b = 0x01000193, c = 0xdeadbeef, d = 0x41c6ce57;
+  for (let i = 0; i < s.length; i++) {
+    const k = s.charCodeAt(i);
+    a = Math.imul(a ^ k, 2654435761); b = Math.imul(b ^ k, 1597334677);
+    c = Math.imul(c ^ a, 2246822519); d = Math.imul(d ^ b, 3266489917);
+  }
+  const w = n => (n >>> 0).toString(16).padStart(8, '0');
+  return w(a)+w(b)+w(c)+w(d)+w(a^c)+w(b^d)+w(a+b)+w(c+d);
+}
+const B58 = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
+/* Walk the hash with a per-position mix, or the window wraps every 20 chars
+   and the signature visibly repeats itself. */
+const sig = h => Array.from({length:44}, (_, i) => {
+  const v = parseInt(h.substr((i * 5) % 57, 4), 16) ^ Math.imul(i + 1, 2654435761);
+  return B58[Math.abs(v) % 58];
+}).join('');
+
+const CHAIN_BACK = 12;   // sealed weeks shown behind the open one
+
+function chain() {
+  // Event volume is a property of the whole ledger, not of who is looking —
+  // the root must be identical for every viewer or it cannot be a public
+  // anchor. Only the "yours" figure below is scoped.
+  const every = COMPANIES.flatMap(c => c.allOffers);
+  const mine  = visible().flatMap(c => c.allOffers);
+  const evts = (set, w) => set.filter(o => o.wk <= w && w <= o.end)
+                              .reduce((n, o) => n + Math.round(o.issued / Math.max(1, o.dur)), 0);
+
+  let prev = hx('MTC:GENESIS');
+  const blocks = [];
+  for (let d = -CHAIN_BACK; d <= 0; d++) {
+    const i = NOW_WK + d, { fy, w } = resolve(i);
+    const n = evts(every, w), yours = evts(mine, w);
+    const root = hx(`${prev}|FY${fy}|W${w}|${n}`);
+    blocks.push({ fy, w, n, yours, root, prev, open: d === 0 });
+    prev = root;
+  }
+
+  document.getElementById('chain').innerHTML = blocks.map((b, i) =>
+    (i ? '<div class=lnk>⛓</div>' : '') +
+    `<div class="blk${b.open?' open':''}">
+       <div class=w><span>FY${String(b.fy).slice(2)} WK${b.w}</span>
+         <span class=st>${b.open ? '● OPEN' : '● ANCHORED'}</span></div>
+       <div class=rt>${b.open ? '—— sealing ——' : b.root.slice(0, 32)}</div>
+       <div class=mt>${num(b.n)} events${scope ? ` · ${num(b.yours)} yours` : ''}</div>
+       <div class=mt>${fmt(wkStart(b.fy, b.w))} – ${fmt(wkEnd(b.fy, b.w))}</div>
+       <div class=pv>← ${b.prev.slice(0, 16)}</div>
+     </div>`).join('');
+
+  const last = blocks[blocks.length - 2];
+  document.getElementById('chainsub').textContent =
+    `· ${CHAIN_BACK} SEALED · 1 OPEN · SEALS ${wkEnd(FY, NOW_WK)
+      .toLocaleDateString('en-US',{weekday:'short',day:'2-digit',month:'short'})} 23:59:59 ET`;
+  document.getElementById('chainok').textContent =
+    `✓ CHAIN INTACT · ${CHAIN_BACK} ROOTS VERIFIED`;
+  document.getElementById('chainfoot').innerHTML =
+    `Only the <b>32-byte root</b> is published on-chain — never the ledger. ` +
+    `Last anchor <b>FY${String(last.fy).slice(2)} WK${last.w}</b> ` +
+    `tx <b>${sig(last.root)}</b>. Any single redemption is proved against that root ` +
+    `with a Merkle branch, so a brand verifies its own settlement without seeing ` +
+    `anyone else's, and we cannot alter a closed week without breaking every root after it.`;
+}
+
+function render() {
+  document.getElementById('sub').textContent =
+    `FY${FY} WEEK ${NOW_WK} · ${TODAY.toDateString()} · America/New_York · ` +
+    `fiscal year opened ${weekStart(1).toDateString()}`;
+  crumb(); cards(); table(); strip(); chain();
+}
+
+/* ------------------------------------------------------------- interaction */
+function reset() {
+  sort = {key:null, dir:-1}; query = ''; document.getElementById('q').value = '';
+}
+
+document.getElementById('crumb').onclick = e => {
+  const go = e.target.closest('a')?.dataset.go; if (!go) return;
+  if (go === 'company') view = {level:'company', company:null, brand:null};
+  if (go === 'brand')   view = {level:'brand', company:view.company, brand:null};
+  reset(); render();
+};
+
+/* VIEW AS — the same tree under a different access scope. Selecting a company
+   drops the portfolio level entirely; it is not hidden, it is not reachable. */
+const sel = document.getElementById('as');
+sel.innerHTML = '<option value="">INTERNAL · ALL COMPANIES</option>' +
+  COMPANIES.map(c => `<option value="${c.id}">${c.name.toUpperCase()}</option>`).join('');
+sel.onchange = () => {
+  scope = COMPANIES.find(c => c.id === sel.value) || null;
+  view = scope ? {level:'brand', company:scope, brand:null}
+               : {level:'company', company:null, brand:null};
+  document.querySelector('.sim').textContent = scope
+    ? `${scope.name.toUpperCase()} · SCOPED VIEW · SIMULATION`
+    : 'INTERNAL · SIMULATION · MADE-UP DATA';
+  reset(); render();
+};
+
+document.getElementById('body').onclick = e => {
+  const tr = e.target.closest('tr.row'); if (!tr) return;
+  const r = rows()[+tr.dataset.i];
+  if (view.level === 'company') view = {level:'brand', company:r, brand:null};
+  else if (view.level === 'brand') view = {level:'week', company:view.company, brand:r};
+  reset(); render();
+};
+
+document.getElementById('head').onclick = e => {
+  const k = e.target.closest('th')?.dataset.k; if (!k) return;
+  sort = sort.key === k ? {key:k, dir:-sort.dir} : {key:k, dir:-1};
+  table();
+};
+
+/* Filter and search drive the table AND the week strip — they are two views of
+   one query, and letting them drift apart is how a dashboard starts lying. */
+const refresh = () => { table(); strip(); };
+
+document.getElementById('q').oninput = e => { query = e.target.value; refresh(); };
+
+document.querySelectorAll('.chip').forEach(c => c.onclick = () => {
+  document.querySelectorAll('.chip').forEach(x => x.classList.remove('on'));
+  c.classList.add('on'); filter = c.dataset.f; cards(); refresh();
+});
+
+render();
+</script>

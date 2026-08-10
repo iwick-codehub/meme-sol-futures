@@ -1,0 +1,213 @@
+<style>
+@page { size: letter; margin: 0.62in 0.68in 0.55in; background: #0a0a0a; }
+* { box-sizing: border-box; }
+html, body { background: #0a0a0a; }
+body { font: 9pt/1.45 "Helvetica Neue", Helvetica, Arial, sans-serif;
+       color: #d2d2d2; margin: 0; -webkit-print-color-adjust: exact;
+       print-color-adjust: exact; }
+.eyebrow { font: 700 7.6pt "Helvetica Neue", Arial; color: #c9a84c;
+           letter-spacing: 1pt; margin-bottom: 10pt; }
+h1 { font: 700 24pt/1.05 "Helvetica Neue", Arial; color: #fff; margin: 0 0 5pt;
+     letter-spacing: -0.6pt; }
+.dek { font: italic 11.5pt/1.28 Georgia, serif; color: #c9a84c; margin: 0 0 10pt; }
+.hr { border-top: 0.8px solid #4a4a4a; margin: 0 0 10pt; }
+.meta { font: 8pt "Helvetica Neue", Arial; color: #9a9a9a; margin-bottom: 4pt; }
+.warn { background: #2a1410; border-left: 3px solid #c0603a; padding: 6pt 10pt;
+        margin: 9pt 0 12pt; color: #e0a58a; font-size: 8.2pt; font-weight: 700; }
+.secnum { font: 700 7pt "Helvetica Neue", Arial; color: #c9a84c; margin: 12pt 0 1pt; }
+h2 { font: 700 11.5pt "Helvetica Neue", Arial; color: #fff; margin: 0 0 5pt; }
+p { margin: 0 0 5pt; }
+b { color: #fff; }
+.pull { background: #16150f; border-left: 3px solid #c9a84c; padding: 7pt 11pt;
+        margin: 8pt 0; color: #c9a84c; font-weight: 700; font-size: 9pt; line-height: 1.4; }
+.big { background: #1a1005; border: 1.5px solid #c9a84c; padding: 10pt 13pt;
+       margin: 10pt 0; }
+.big .k { font: 700 22pt "Helvetica Neue", Arial; color: #c9a84c; }
+.big .s { font-size: 8.4pt; color: #d2d2d2; margin-top: 3pt; }
+table { width: 100%; border-collapse: collapse; font-size: 8pt; margin: 6pt 0 8pt; }
+th { text-align: left; font: 700 7.6pt "Helvetica Neue", Arial; color: #c9a84c;
+     border-bottom: 1px solid #c9a84c; padding: 3.5pt 5pt; }
+td { padding: 3.5pt 5pt; border-bottom: 0.5px solid #2a2a2a; color: #cccccc; }
+td.m { font-family: Menlo, monospace; font-size: 7.6pt; color: #c9a84c; text-align: right; }
+td.r { text-align: right; font-family: Menlo, monospace; font-size: 7.6pt; }
+.bad { color: #d08a8a; } .good { color: #5fd08a; }
+.eq { background: #121216; border-left: 2.5px solid #c9a84c; padding: 7pt 10pt;
+      margin: 7pt 0; font: 8.4pt/1.5 Menlo, monospace; color: #c8d4c8; }
+.foot { margin-top: 12pt; border-top: 0.8px solid #4a4a4a; padding-top: 5pt;
+        display: flex; justify-content: space-between; align-items: center;
+        font: 7pt "Helvetica Neue", Arial; color: #8a8a8a; }
+.hcp { background: #c9a84c; color: #0a0a0a; font: 700 7pt "Helvetica Neue", Arial;
+       letter-spacing: 1pt; padding: 2pt 10pt; }
+.pb { page-break-before: always; }
+.cap { font-size: 7.6pt; color: #8a8a8a; margin-top: 4pt; }
+</style>
+
+<div class="eyebrow">INSTAR BRANDS LLC · ALADDIN'S CASTLE · MODEL · CONFIDENTIAL</div>
+<h1>The 99-Cent Question</h1>
+<div class="dek">At what point does "Bring Back the Castle" stop paying for itself?</div>
+<div class="hr"></div>
+<div class="meta">August 2026 · model at <span style="font-family:Menlo,monospace">mtc/model_99c.py</span> · every figure below is computed, not assumed</div>
+
+<div class="warn">THE 99 CENTS IS A DONATION TO BRING BACK ALADDIN'S CASTLE. It is not an investment
+in $ACM, is not solicited as one, and confers no expectation of profit. The token grant is a
+membership credential with no cash value inside the system. All wallet custody, token placement
+and revocation terms are disclosed in the ULA.</div>
+
+<div class="secnum">01</div>
+<h2>The loop that closes on itself</h2>
+<p>A user pays 99¢. Apple takes its cut. From what is left we pay Solana account rent, a transfer
+fee, and grant the user some quantity of $ACM as their membership credential. Everything remaining
+is profit, and <b>100% of profit buys more $ACM</b> — which raises the price, which makes the next
+user's grant more expensive. The system funds its own cost inflation.</p>
+
+<div class="secnum">02</div>
+<h2>Unit economics, per download</h2>
+<table>
+<tr><th style="width:46%">Line</th><th style="width:27%;text-align:right">15% tier (&lt;$1M)</th><th style="text-align:right">30% tier (&gt;$1M)</th></tr>
+<tr><td>Price</td><td class="r">$0.9900</td><td class="r">$0.9900</td></tr>
+<tr><td>Apple commission</td><td class="r bad">−$0.1485</td><td class="r bad">−$0.2970</td></tr>
+<tr><td>Solana account rent <b>(sunk)</b></td><td class="r bad">−$0.4080</td><td class="r bad">−$0.4080</td></tr>
+<tr><td>Transfer fee</td><td class="r bad">−$0.0010</td><td class="r bad">−$0.0010</td></tr>
+<tr><td><b>HEADROOM available for $ACM</b></td><td class="m">$0.4325</td><td class="m">$0.2840</td></tr>
+</table>
+<p>Rent is modelled as <b>non-recoverable</b>. It is refundable only by closing the account, which
+means shutting the system down — and a user who changes phones leaves a wallet we cannot reclaim.
+For a going concern it is a cash outlay, and <b>every download is a new wallet</b> even when it is
+the same human on a second device.</p>
+
+<div class="secnum">03</div>
+<h2>The master equation</h2>
+<div class="eq">break-even $ACM price  =  headroom ÷ grant per user
+
+     $0.4325 ÷ 1 token      =  $0.4325     works until price rises 1,632×
+     $0.4325 ÷ 1,000        =  $0.00043    works until price rises 1.6×
+     $0.4325 ÷ 10,000       =  $0.00004    <span style="color:#d08a8a">ALREADY UNDERWATER TODAY</span></div>
+<p>At today's price of $0.000265 the largest grant that breaks even is <b>1,632 $ACM</b> at the 15%
+tier, or <b>1,071</b> at 30%.</p>
+<div class="pull">KRW-C-2026-002's cooling machine needs roughly 10,000 $ACM per user to move float
+meaningfully. The 99¢ app can fund 1,632. It pays for 16% of what cooling requires.</div>
+
+
+<div class="secnum">04</div>
+<h2>The answer</h2>
+<div class="big">
+<div class="k">10,000,000 downloads</div>
+<div class="s">Every one of them profitable, at <b>$0.4325</b> per download below the $1M Apple
+threshold and <b>$0.2840</b> above it. Total banked over the pool's life:
+<b>$2.84M – $4.33M</b>. The wall arrives not from weak demand but from the pool running dry.</div>
+</div>
+<p>Your wallet holds <b>11,767,037 ACM</b>. Releasing <b>10,000,000</b> as the funding pool and
+holding <b>1,767,037</b> as R&amp;D reserve gives ten million downloads of free inventory at one
+token per user — every grant costs nothing, and the margin is the full headroom.</p>
+
+<p style="font-size:8.2pt;color:#9a9a9a">Sensitivity only — the design grants <b>one</b> token.
+The rows below show why that is the right call, not an open question:</p>
+<table>
+<tr><th style="width:22%">Grant per user</th><th style="text-align:right;width:26%">Downloads covered free</th><th>Then</th></tr>
+<tr style="background:#1a1005"><td class="m" style="text-align:left"><b>1 ACM &nbsp;← THE DESIGN</b></td><td class="r"><b>10,000,000</b></td><td>must buy at market</td></tr>
+<tr><td class="m" style="text-align:left">10 ACM</td><td class="r">1,000,000</td><td>must buy at market</td></tr>
+<tr><td class="m" style="text-align:left">100 ACM</td><td class="r">100,000</td><td>must buy at market</td></tr>
+<tr><td class="m" style="text-align:left">1,000 ACM</td><td class="r">10,000</td><td>must buy at market</td></tr>
+</table>
+
+<div class="secnum">05</div>
+<h2>What stops it — and it is us</h2>
+<p>Because 100% of profit buys $ACM, by the time the pool empties at ten million downloads that
+buying has lifted the price from $0.000265 to <b>$18.62</b> — a factor of <b>70,266</b>. The next
+token then costs $18.62 against $0.2840 of headroom.</p>
+<div class="pull">Buying $ACM with the profits is what prices the program out of its own token. The
+app makes the asset valuable and is then unable to afford the thing it made valuable.</div>
+<table>
+<tr><th style="width:34%">Redeployment policy</th><th style="text-align:right;width:22%">Price at pool-out</th><th>Can the program continue?</th></tr>
+<tr><td>Redeploy 100% (planned)</td><td class="r">$18.62</td><td class="bad">No — one token costs $18.62</td></tr>
+<tr><td>Redeploy 0% (hold cash)</td><td class="r">$0.000265</td><td class="good">Yes — one token costs $0.0003</td></tr>
+</table>
+<p>The R&amp;D reserve is the other side of that coin: <b>1,767,037 ACM at $18.62 is $32.9M</b> on
+paper. That is a real number and an unsellable one — a $22.7K pool cannot be exited at anything
+near that price, because the same (1 + C/R)² curve runs in reverse on the way out.</p>
+
+<div class="secnum">06</div>
+<h2>The two levers still open</h2>
+<p style="font-size:8.4pt;color:#9a9a9a">The grant size is settled at one token — that decision is
+already what buys the ten million downloads. These two are not yet settled:</p>
+<table>
+<tr><th style="width:30%">Lever</th><th>Effect</th></tr>
+<tr><td><b>Redeploy less than 100% of profit</b></td><td>The single decision that determines whether the program survives past ten million downloads. At 100% the token reaches $18.62 and the program cannot afford it. At 0% it stays at $0.000265 and simply continues.</td></tr>
+<tr><td><b>Deepen the pool before launch</b></td><td>~$100,000 of quote-side depth absorbs the redeployed buying rather than repricing on it, which softens the wall without giving up the redeployment.</td></tr>
+</table>
+<p>And one that is not a lever: <b>rent consumes 41% of gross at every scale.</b> It is fixed in
+dollars, it is the largest cost after Apple, and it does not come back. Not minting a wallet until
+a user actually engages would recover more than any other change on this page.</p>
+
+<div class="foot"><span>INSTAR BRANDS LLC · CONFIDENTIAL · not for distribution · figures computed from a stated model, not a forecast</span><span class="hcp">HCP</span></div>
+
+<div class="pb"></div>
+<div class="eyebrow">THE 99-CENT QUESTION · EXHIBIT A</div>
+<h2 style="margin-bottom:2pt">Why the system chokes on its own success</h2>
+<p style="font-size:8.4pt;color:#9a9a9a;margin-bottom:10pt">Blue: the free pool draining, one token
+per download. Gold: the $ACM price, driven up by our own redeployed profit. The program is
+comfortably profitable for the whole blue line — then hits a wall the gold line built.</p>
+
+<svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg">
+<style>.gr{stroke:#1e1e1e;stroke-width:.6}.t{font:8px Helvetica;fill:#8a8a8a}.tg{font:8px Helvetica;fill:#c9a84c}.lb{font:700 9px Helvetica;fill:#c9a84c}.lw{font:700 9px Helvetica;fill:#7fb3ff}</style>
+<line x1="64" y1="20" x2="696" y2="20" class="gr"/>
+<line x1="64" y1="81" x2="696" y2="81" class="gr"/>
+<line x1="64" y1="142" x2="696" y2="142" class="gr"/>
+<line x1="64" y1="203" x2="696" y2="203" class="gr"/>
+<line x1="64" y1="264" x2="696" y2="264" class="gr"/>
+<line x1="64" y1="20" x2="64" y2="264" class="gr"/>
+<text x="64" y="277" class="t" text-anchor="middle">0M</text>
+<line x1="169" y1="20" x2="169" y2="264" class="gr"/>
+<text x="169" y="277" class="t" text-anchor="middle">2M</text>
+<line x1="275" y1="20" x2="275" y2="264" class="gr"/>
+<text x="275" y="277" class="t" text-anchor="middle">4M</text>
+<line x1="380" y1="20" x2="380" y2="264" class="gr"/>
+<text x="380" y="277" class="t" text-anchor="middle">6M</text>
+<line x1="485" y1="20" x2="485" y2="264" class="gr"/>
+<text x="485" y="277" class="t" text-anchor="middle">8M</text>
+<line x1="591" y1="20" x2="591" y2="264" class="gr"/>
+<text x="591" y="277" class="t" text-anchor="middle">10M</text>
+<line x1="696" y1="20" x2="696" y2="264" class="gr"/>
+<text x="696" y="277" class="t" text-anchor="middle">12M</text>
+<text x="380" y="294" class="t" text-anchor="middle">DOWNLOADS</text>
+<text x="58" y="267" class="tg" text-anchor="end">$0.0001</text>
+<text x="58" y="186" class="tg" text-anchor="end">$0.01</text>
+<text x="58" y="104" class="tg" text-anchor="end">$1</text>
+<text x="58" y="23" class="tg" text-anchor="end">$100</text>
+<text x="702" y="23" class="lw">10M</text>
+<text x="702" y="145" class="lw">5M</text>
+<text x="702" y="267" class="lw">0</text>
+<path d="M69.3,22.4 L74.5,24.9 L79.8,27.3 L85.1,29.8 L90.3,32.2 L95.6,34.6 L100.9,37.1 L106.1,39.5 L111.4,42.0 L116.7,44.4 L121.9,46.8 L127.2,49.3 L132.5,51.7 L137.7,54.2 L143.0,56.6 L148.3,59.0 L153.5,61.5 L158.8,63.9 L164.1,66.4 L169.3,68.8 L174.6,71.2 L179.9,73.7 L185.1,76.1 L190.4,78.6 L195.7,81.0 L200.9,83.4 L206.2,85.9 L211.5,88.3 L216.7,90.8 L222.0,93.2 L227.3,95.6 L232.5,98.1 L237.8,100.5 L243.1,103.0 L248.3,105.4 L253.6,107.8 L258.9,110.3 L264.1,112.7 L269.4,115.2 L274.7,117.6 L279.9,120.0 L285.2,122.5 L290.5,124.9 L295.7,127.4 L301.0,129.8 L306.3,132.2 L311.5,134.7 L316.8,137.1 L322.1,139.6 L327.3,142.0 L332.6,144.4 L337.9,146.9 L343.1,149.3 L348.4,151.8 L353.7,154.2 L358.9,156.6 L364.2,159.1 L369.5,161.5 L374.7,164.0 L380.0,166.4 L385.3,168.8 L390.5,171.3 L395.8,173.7 L401.1,176.2 L406.3,178.6 L411.6,181.0 L416.9,183.5 L422.1,185.9 L427.4,188.4 L432.7,190.8 L437.9,193.2 L443.2,195.7 L448.5,198.1 L453.7,200.6 L459.0,203.0 L464.3,205.4 L469.5,207.9 L474.8,210.3 L480.1,212.8 L485.3,215.2 L490.6,217.6 L495.9,220.1 L501.1,222.5 L506.4,225.0 L511.7,227.4 L516.9,229.8 L522.2,232.3 L527.5,234.7 L532.7,237.2 L538.0,239.6 L543.3,242.0 L548.5,244.5 L553.8,246.9 L559.1,249.4 L564.3,251.8 L569.6,254.2 L574.9,256.7 L580.1,259.1 L585.4,261.6 L590.7,264.0 L595.9,264.0 L601.2,264.0 L606.5,264.0 L611.7,264.0 L617.0,264.0 L622.3,264.0 L627.5,264.0 L632.8,264.0 L638.1,264.0 L643.3,264.0 L648.6,264.0 L653.9,264.0 L659.1,264.0 L664.4,264.0 L669.7,264.0 L674.9,264.0 L680.2,264.0 L685.5,264.0 L690.7,264.0 L696.0,264.0" fill="none" stroke="#7fb3ff" stroke-width="2"/>
+<path d="M69.3,191.4 L74.5,170.8 L79.8,157.8 L85.1,148.4 L90.3,140.9 L95.6,134.8 L100.9,129.6 L106.1,125.0 L111.4,121.0 L116.7,117.4 L121.9,114.1 L127.2,112.1 L132.5,110.2 L137.7,108.4 L143.0,106.7 L148.3,105.0 L153.5,103.5 L158.8,102.0 L164.1,100.5 L169.3,99.2 L174.6,97.8 L179.9,96.6 L185.1,95.3 L190.4,94.1 L195.7,93.0 L200.9,91.9 L206.2,90.8 L211.5,89.7 L216.7,88.7 L222.0,87.7 L227.3,86.8 L232.5,85.8 L237.8,84.9 L243.1,84.0 L248.3,83.2 L253.6,82.3 L258.9,81.5 L264.1,80.7 L269.4,79.9 L274.7,79.1 L279.9,78.3 L285.2,77.6 L290.5,76.9 L295.7,76.2 L301.0,75.5 L306.3,74.8 L311.5,74.1 L316.8,73.5 L322.1,72.8 L327.3,72.2 L332.6,71.6 L337.9,70.9 L343.1,70.3 L348.4,69.7 L353.7,69.2 L358.9,68.6 L364.2,68.0 L369.5,67.5 L374.7,66.9 L380.0,66.4 L385.3,65.9 L390.5,65.3 L395.8,64.8 L401.1,64.3 L406.3,63.8 L411.6,63.3 L416.9,62.8 L422.1,62.4 L427.4,61.9 L432.7,61.4 L437.9,61.0 L443.2,60.5 L448.5,60.1 L453.7,59.6 L459.0,59.2 L464.3,58.7 L469.5,58.3 L474.8,57.9 L480.1,57.5 L485.3,57.1 L490.6,56.6 L495.9,56.2 L501.1,55.8 L506.4,55.5 L511.7,55.1 L516.9,54.7 L522.2,54.3 L527.5,53.9 L532.7,53.5 L538.0,53.2 L543.3,52.8 L548.5,52.5 L553.8,52.1 L559.1,51.7 L564.3,51.4 L569.6,51.0 L574.9,50.7 L580.1,50.4 L585.4,50.0 L590.7,49.7 L595.9,49.7 L601.2,49.7 L606.5,49.7 L611.7,49.7 L617.0,49.7 L622.3,49.7 L627.5,49.7 L632.8,49.7 L638.1,49.7 L643.3,49.7 L648.6,49.7 L653.9,49.7 L659.1,49.7 L664.4,49.7 L669.7,49.7 L674.9,49.7 L680.2,49.7 L685.5,49.7 L690.7,49.7 L696.0,49.7" fill="none" stroke="#c9a84c" stroke-width="2"/>
+<line x1="591" y1="20" x2="591" y2="264" stroke="#d08a8a" stroke-width="1.4" stroke-dasharray="4 3"/>
+<text x="585" y="36" style="font:700 9px Helvetica;fill:#d08a8a" text-anchor="end">POOL EXHAUSTED — 10M downloads</text>
+<text x="597" y="50" style="font:700 8px Helvetica;fill:#d08a8a">next token costs $18.62</text>
+<text x="597" y="62" style="font:700 8px Helvetica;fill:#d08a8a">headroom is $0.28</text>
+<text x="64" y="13" class="lb">$ACM PRICE (left, log) — driven up by our own buying</text>
+<text x="696" y="13" class="lw" text-anchor="end">FREE POOL REMAINING (right)</text>
+</svg>
+
+
+<div class="cap">Both axes logarithmic. Model: 1 $ACM granted per user, 100% of profit redeployed,
+constant-product price impact P′/P = (1 + C/R)² per KRW-C-2026-001, quote reserve seeded at $11,373.</div>
+
+<div class="secnum" style="margin-top:16pt">READING IT</div>
+<table>
+<tr><th style="width:22%">Downloads</th><th style="text-align:right;width:20%">Free pool left</th><th style="text-align:right;width:20%">$ACM price</th><th>State</th></tr>
+<tr><td>1,000,000</td><td class="r">9,000,000</td><td class="r">$0.40</td><td class="good">profitable · grant free</td></tr>
+<tr><td>3,000,000</td><td class="r">7,000,000</td><td class="r">$2.05</td><td class="good">profitable · grant free</td></tr>
+<tr><td>6,000,000</td><td class="r">4,000,000</td><td class="r">$7.16</td><td class="good">profitable · grant free</td></tr>
+<tr><td>9,000,000</td><td class="r">1,000,000</td><td class="r">$15.32</td><td class="good">profitable · grant free</td></tr>
+<tr><td><b>10,000,000</b></td><td class="r bad">0</td><td class="r">$18.62</td><td class="bad">POOL GONE — next token $18.62 vs $0.28</td></tr>
+</table>
+
+<div class="pull">Ten million paid downloads is an extraordinary outcome for a nostalgia app. The
+model says you would reach it profitably — and that the thing which finally stops you is a policy
+choice you control, not the market.</div>
+
+<p style="font-size:8.4pt">Read the other direction, this is a <b>constructive</b> result. Instagram
+drew 762 million downloads globally in 2025; ten million is a little over one percent of that, and
+every one of those ten million pays for itself. The binding constraint is not demand and not Apple —
+it is how much $ACM leaves the pool per user, and what the profit does next. Both are yours to set.</p>
+
+<div class="foot"><span>INSTAR BRANDS LLC · CONFIDENTIAL · Exhibit A · model at mtc/model_99c.py</span><span class="hcp">HCP</span></div>

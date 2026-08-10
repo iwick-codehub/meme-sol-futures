@@ -1,0 +1,264 @@
+<style>
+@page { size: letter; margin: 0.62in 0.7in 0.55in; background: #0a0a0a; }
+* { box-sizing: border-box; }
+html, body { background: #0a0a0a; }
+body { font: 8.9pt/1.44 "Helvetica Neue", Helvetica, Arial, sans-serif;
+       color: #d2d2d2; margin: 0; -webkit-print-color-adjust: exact;
+       print-color-adjust: exact; }
+
+.eyebrow { font: 700 7.2pt "Helvetica Neue", Arial; color: #c9a84c;
+           letter-spacing: 1pt; margin: 0 0 8pt; }
+h1 { font: 700 25pt/1.03 "Helvetica Neue", Arial; color: #fff; margin: 0 0 5pt;
+     letter-spacing: -0.7pt; }
+.dek { font: italic 11pt/1.28 Georgia, serif; color: #c9a84c; margin: 0 0 9pt; }
+.hr { border-top: 0.8px solid #4a4a4a; margin: 0 0 9pt; }
+.meta { font: 7.6pt "Helvetica Neue", Arial; color: #9a9a9a; margin: 0 0 3pt; }
+
+.warn { background: #2a1410; border-left: 3px solid #c0603a; padding: 6pt 10pt;
+        margin: 9pt 0 12pt; color: #e0a58a; font-size: 7.9pt; font-weight: 700;
+        break-inside: avoid; }
+
+section { break-inside: avoid; margin-bottom: 11pt; }
+.secnum { font: 700 6.8pt "Helvetica Neue", Arial; color: #c9a84c; margin: 0 0 1pt;
+          letter-spacing: 0.6pt; }
+h2 { font: 700 11.5pt "Helvetica Neue", Arial; color: #fff; margin: 0 0 5pt;
+     break-after: avoid; }
+p { margin: 0 0 5pt; }
+b { color: #fff; }
+
+.pull { background: #16150f; border-left: 3px solid #c9a84c; padding: 7pt 11pt;
+        margin: 8pt 0; color: #c9a84c; font-weight: 700; font-size: 8.8pt;
+        line-height: 1.4; break-inside: avoid; }
+.big { background: #1a1005; border: 1.5px solid #c9a84c; padding: 10pt 13pt;
+       margin: 9pt 0; break-inside: avoid; }
+.big .k { font: 700 20pt/1.1 "Helvetica Neue", Arial; color: #c9a84c; }
+.big .s { font-size: 8.2pt; color: #d2d2d2; margin-top: 4pt; }
+
+table { width: 100%; border-collapse: collapse; font-size: 7.9pt; margin: 5pt 0 6pt;
+        break-inside: avoid; }
+th { text-align: left; font: 700 7.1pt "Helvetica Neue", Arial; color: #c9a84c;
+     border-bottom: 1px solid #c9a84c; padding: 2.9pt 6pt; }
+td { padding: 2.6pt 6pt; border-bottom: 0.5px solid #2a2a2a; color: #cccccc; }
+td.r { text-align: right; font-family: Menlo, monospace; font-size: 7.5pt; }
+td.m { text-align: right; font-family: Menlo, monospace; font-size: 7.5pt; color: #c9a84c; }
+.bad { color: #d08a8a; } .good { color: #5fd08a; }
+tr.tot td { border-top: 1px solid #c9a84c; border-bottom: none; font-weight: 700; color: #fff; }
+tr.hi { background: #1a1005; }
+.note { font-size: 7.3pt; color: #9a9a9a; margin: 3pt 0 0; }
+
+.foot { border-top: 0.8px solid #4a4a4a; padding-top: 5pt; margin-top: auto;
+        display: flex; justify-content: space-between; align-items: center;
+        font: 6.8pt "Helvetica Neue", Arial; color: #8a8a8a; break-inside: avoid; }
+.hcp { background: #c9a84c; color: #0a0a0a; font: 700 6.8pt "Helvetica Neue", Arial;
+       letter-spacing: 1pt; padding: 2pt 10pt; }
+.two { display: flex; gap: 15pt; break-inside: avoid; }
+.two > div { flex: 1; }
+
+/* Each page is a fixed-height flex column: letter 11in less the 0.62in top and
+   0.55in bottom @page margins = 9.83in. The footer takes margin-top:auto, so it
+   is pinned to the bottom of its own page and can never spill onto the next. */
+.page { height: 9.55in; display: flex; flex-direction: column;
+        overflow: hidden; break-after: page; }
+.page:last-of-type { break-after: auto; }
+.page > section:last-of-type { margin-bottom: 0; }
+</style>
+
+<!-- ============================ PAGE 1 ============================ -->
+<div class="page">
+<div class="eyebrow">INSTAR BRANDS LLC · ALADDIN'S CASTLE · $ACM CAPITAL DEPLOYMENT · CONFIDENTIAL</div>
+<h1>The Road to a Penny</h1>
+<div class="dek">Sources &amp; Uses — $ACM deployment for the 99¢ program</div>
+<div class="hr"></div>
+<div class="meta">August 2026 · scope: this program only · every input read live and stated below</div>
+
+<div class="warn">THE 99¢ IS A DONATION TO BRING BACK ALADDIN'S CASTLE — not an investment in $ACM,
+not solicited as one, no expectation of profit. The token grant is a membership credential with no
+cash value inside the system, and the ULA discloses custody, placement and revocation.</div>
+
+<section>
+<div class="secnum">01</div>
+<h2>The target</h2>
+<div class="big">
+<div class="k">$117,292 takes $ACM from $0.000227 to $0.01</div>
+<div class="s">And the same buy hands back <b>77,766,399 tokens</b> — enough to grant one whole $ACM
+to seventy-seven million more members. The capital does not choose between lifting the price and
+buying inventory. It does both, in one transaction.</div>
+</div>
+<p>A penny is a credible, legible price. At $0.01 the fully-diluted value is $9,999,571, but
+<b>500,000,000 $ACM — a full 50.00% of supply — is Streamflow-locked</b> and assumed to stay locked
+for twenty-five years or more, so on the float that actually trades the penny price is a
+<b>$5.0 million circulating market capitalisation</b>. Every member holds <b>one solid $ACM</b>,
+worth a penny, which is a thing a person can understand.</p>
+</section>
+
+<section>
+<div class="secnum">02</div>
+<h2>Live inputs</h2>
+<div class="two">
+<div><table>
+<tr><th style="width:54%">Market</th><th style="text-align:right">Value</th></tr>
+<tr><td>SOL</td><td class="r">$73.00</td></tr>
+<tr><td>$ACM</td><td class="r">$0.00022748</td></tr>
+<tr><td>Pool base (pumpswap)</td><td class="r">91,578,851 ACM</td></tr>
+<tr><td>Pool quote</td><td class="r">285.38 SOL = $20,833</td></tr>
+<tr><td>Total liquidity</td><td class="r">$41,639</td></tr>
+<tr><td>Supply</td><td class="r">999,957,146</td></tr>
+</table></div>
+<div><table>
+<tr><th style="width:54%">Program</th><th style="text-align:right">Value</th></tr>
+<tr><td>App price</td><td class="r">$0.99</td></tr>
+<tr><td>Apple commission</td><td class="r">15%</td></tr>
+<tr><td>Grant per member</td><td class="r">1 whole ACM</td></tr>
+<tr><td>Wallet held</td><td class="r">11,767,037 ACM</td></tr>
+<tr><td>&nbsp;&nbsp;released as pool</td><td class="r">10,000,000</td></tr>
+<tr><td>&nbsp;&nbsp;R&amp;D reserve</td><td class="r">1,767,037</td></tr>
+<tr><td>Locked supply</td><td class="r">500,000,000</td></tr>
+<tr><td>Free float</td><td class="r">499,957,146</td></tr>
+</table></div>
+</div>
+</section>
+
+<section>
+<div class="secnum">03</div>
+<h2>Unit economics — every download</h2>
+<table>
+<tr><th style="width:54%">Line</th><th style="text-align:right;width:22%">Amount</th><th style="text-align:right">Share of 99¢</th></tr>
+<tr><td>Price</td><td class="r">$0.9900</td><td class="r">100%</td></tr>
+<tr><td>Apple commission, 15% Small Business</td><td class="r bad">−$0.1485</td><td class="r">15%</td></tr>
+<tr><td>Solana account rent — 0.00204 SOL, non-recoverable</td><td class="r bad">−$0.1489</td><td class="r">15%</td></tr>
+<tr><td>Transfer fee</td><td class="r bad">−$0.0010</td><td class="r">0%</td></tr>
+<tr><td>$ACM grant — from inventory already owned</td><td class="r">$0.0000</td><td class="r">0%</td></tr>
+<tr class="tot"><td>CONTRIBUTION PER DOWNLOAD</td><td class="m">$0.6916</td><td class="m">70%</td></tr>
+</table>
+<p class="note">Rent is the only cost that scales and never comes back. Minting the wallet on first
+engagement rather than on download is the single largest saving available.</p>
+</section>
+
+<div class="foot"><span>INSTAR BRANDS LLC · CONFIDENTIAL · Sources &amp; Uses · computed from a stated model, not a forecast</span><span class="hcp">HCP</span></div>
+</div>
+
+<!-- ============================ PAGE 2 ============================ -->
+<div class="page">
+<div class="eyebrow">THE ROAD TO A PENNY · PAGE 2 · THE BUY</div>
+
+<section>
+<div class="secnum">04</div>
+<h2>What each price target costs</h2>
+<table>
+<tr><th style="width:16%">Target price</th><th style="text-align:right;width:18%">Capital required</th><th style="text-align:right;width:22%">Tokens received</th><th style="text-align:right;width:16%">Avg paid</th><th style="text-align:right">Circ. mkt cap</th></tr>
+<tr><td>$0.0010</td><td class="r">$22,846</td><td class="r">47,900,042</td><td class="r">$0.000477</td><td class="r">$0.5M</td></tr>
+<tr><td>$0.0025</td><td class="r">$48,230</td><td class="r">63,953,946</td><td class="r">$0.000754</td><td class="r">$1.25M</td></tr>
+<tr><td>$0.0050</td><td class="r">$76,836</td><td class="r">72,045,094</td><td class="r">$0.001066</td><td class="r">$2.5M</td></tr>
+<tr class="hi"><td><b>$0.0100</b></td><td class="m"><b>$117,292</b></td><td class="m"><b>77,766,399</b></td><td class="r">$0.001508</td><td class="m"><b>$5.0M</b></td></tr>
+<tr><td>$0.0200</td><td class="r">$174,505</td><td class="r">81,811,972</td><td class="r">$0.002133</td><td class="r">$10.0M</td></tr>
+<tr><td>$0.0500</td><td class="r">$288,023</td><td class="r">85,401,735</td><td class="r">$0.003373</td><td class="r">$25.0M</td></tr>
+</table>
+<p class="note">Priced on the constant-product integral, so slippage is fully included — the average
+paid at the penny target is $0.001508, which is 6.6× today's spot. You do not buy 77.8 million
+tokens at $0.000227; the price rises as you take them, and that is the point. Market cap is stated
+on the <b>499,957,146 free float</b>, excluding the 500,000,000 locked; fully-diluted values are
+twice these figures.</p>
+</section>
+
+<section>
+<div class="secnum">05</div>
+<h2>What the penny buy actually delivers</h2>
+<table>
+<tr><th style="width:44%">Outcome</th><th style="text-align:right;width:24%">Value</th><th>Why it matters</th></tr>
+<tr><td>$ACM price</td><td class="m">$0.01</td><td>legible, credible, one penny per member token</td></tr>
+<tr><td>Tokens acquired</td><td class="m">77,766,399</td><td>77.8M more members at one whole $ACM each</td></tr>
+<tr><td>Circulating market cap</td><td class="m">$4,999,571</td><td>on the 499,957,146 float; $10.0M fully diluted</td></tr>
+<tr><td>Pool depth after</td><td class="m">$276,250</td><td><b>6.6× deeper</b> — far less fragile to any single trade</td></tr>
+<tr><td>Total holding after</td><td class="m">89,533,436 ACM</td><td>worth <b>$895,334</b> at $0.01</td></tr>
+<tr class="tot"><td>Total inventory runway</td><td class="m">87,766,399</td><td>downloads, at one solid $ACM each</td></tr>
+</table>
+<div class="pull">The pool goes from $41,639 to $276,250 of depth. KRW-C-2026-001 called thin pools
+"cheap to move, impossible to hold" — this buy is also the fix for that fragility.</div>
+</section>
+
+<section>
+<div class="secnum">06</div>
+<h2>The app pays for it</h2>
+<p>At <b>$0.6916</b> of contribution per download, the penny buy is funded by <b>169,600
+downloads</b>. That is a modest outcome for a nostalgia app, not a moonshot.</p>
+<table>
+<tr><th style="width:20%">Downloads</th><th style="text-align:right;width:24%">Cash generated</th><th>Against the $117,292 buy</th></tr>
+<tr><td>50,000</td><td class="r">$34,579</td><td class="bad">$82,713 short</td></tr>
+<tr><td>100,000</td><td class="r">$69,158</td><td class="bad">$48,134 short</td></tr>
+<tr class="hi"><td><b>170,000</b></td><td class="m"><b>$117,569</b></td><td class="good"><b>FUNDS IT — $277 to spare</b></td></tr>
+<tr><td>250,000</td><td class="r">$172,895</td><td class="good">funds it, $55,603 over</td></tr>
+<tr><td>500,000</td><td class="r">$345,790</td><td class="good">funds it, $228,498 over</td></tr>
+<tr><td>1,000,000</td><td class="r">$691,580</td><td class="good">funds it, $574,288 over</td></tr>
+</table>
+</section>
+
+<div class="foot"><span>INSTAR BRANDS LLC · CONFIDENTIAL · page 2 · SOL $73.00 · $ACM $0.00022748 · pool 91,578,851 ACM / 285.38 SOL</span><span class="hcp">HCP</span></div>
+</div>
+
+<!-- ============================ PAGE 3 ============================ -->
+<div class="page">
+<div class="eyebrow">THE ROAD TO A PENNY · PAGE 3 · DEPLOYMENT</div>
+
+<section>
+<div class="secnum">07</div>
+<h2>Sequence</h2>
+<table>
+<tr><th style="width:12%">Phase</th><th style="width:30%">Action</th><th style="text-align:right;width:15%">Capital</th><th>Result</th></tr>
+<tr><td class="m">1</td><td>Launch on the released 10,000,000 pool</td><td class="m">$0</td><td>first 10M members funded from tokens already owned</td></tr>
+<tr class="hi"><td class="m">2</td><td><b>At ~170,000 downloads, execute the penny buy</b></td><td class="m"><b>$117,292</b></td><td>$ACM reaches $0.01; 77.8M tokens acquired; pool 6.6× deeper</td></tr>
+<tr><td class="m">3</td><td>Run on 87.8M tokens of inventory</td><td class="m">$0</td><td>no further purchase required for 87.8M members</td></tr>
+<tr><td class="m">4</td><td>Hold surplus contribution</td><td class="m">—</td><td>arcade buildout; <b>not</b> further pool buying</td></tr>
+</table>
+<p class="note">Phase 2 timing is a judgement call, not a formula: earlier is cheaper per token but
+commits capital before the curve is proven, later risks others moving the price first. The $117,292
+assumes the pool as it stands today.</p>
+</section>
+
+<section>
+<div class="secnum">08</div>
+<h2>The float the penny sits on</h2>
+<table>
+<tr><th style="width:34%">Supply</th><th style="text-align:right;width:19%">Tokens</th><th style="text-align:right;width:12%">Share</th><th style="text-align:right;width:15%">At $0.01</th><th>Note</th></tr>
+<tr><td>Streamflow-locked</td><td class="r">500,000,000</td><td class="r">50.00%</td><td class="r">$5,000,000</td><td>assumed locked 25+ years</td></tr>
+<tr class="hi"><td><b>Free float</b></td><td class="m"><b>499,957,146</b></td><td class="m">50.00%</td><td class="m"><b>$4,999,571</b></td><td>the market cap that is real</td></tr>
+<tr><td>&nbsp;&nbsp;our holding after the buy</td><td class="r">89,533,436</td><td class="r">17.9%</td><td class="r">$895,334</td><td>program inventory</td></tr>
+<tr><td>&nbsp;&nbsp;pool after the buy</td><td class="r">13,812,452</td><td class="r">2.8%</td><td class="r">$138,125</td><td>tradeable depth</td></tr>
+<tr><td>&nbsp;&nbsp;all other holders</td><td class="r">396,611,258</td><td class="r">79.3%</td><td class="r">$3,966,113</td><td>the open market</td></tr>
+<tr class="tot"><td>TOTAL SUPPLY</td><td class="m">999,957,146</td><td class="m">100%</td><td class="m">$9,999,571</td><td>fully diluted</td></tr>
+</table>
+<p class="note">The lock does not make the buy cheaper — cost is set by the pool's reserves, not total
+supply. What it decides is whether the penny <b>holds</b>: five hundred million tokens that cannot
+be sold cannot be sold into our own buying. The model assumes the lock is never released.</p>
+</section>
+
+<section>
+<div class="secnum">09</div>
+<h2>The ceiling, and it is a real one</h2>
+<p>Ten million released plus 77.8 million bought is <b>87.8 million members</b> at one whole $ACM
+each. Beyond that, tokens must come from holders choosing to sell.</p>
+<table>
+<tr><th style="width:34%">Milestone</th><th style="text-align:right;width:24%">Members supported</th><th>Status</th></tr>
+<tr><td>Released pool only</td><td class="r">10,000,000</td><td class="good">owned outright, no capital</td></tr>
+<tr><td>After the penny buy</td><td class="r">87,766,399</td><td class="good">$117,292 of capital</td></tr>
+<tr><td>Entire pool drained</td><td class="r">101,578,851</td><td class="bad">cost approaches infinity</td></tr>
+</table>
+<div class="pull">The 99¢ never fails on economics — at 100 million downloads the token still costs
+about a cent against 69 cents of contribution. What ends the program is running out of tokens to
+give, not running out of money to buy them.</div>
+<p class="note">Instagram drew 762,300,000 downloads globally in 2025; this program supports 87.8
+million of that, and the ceiling would be visible years in advance.</p>
+</section>
+
+<section>
+<div class="secnum">10</div>
+<h2>What this program needs</h2>
+<div class="big">
+<div class="k">$117,292 · once · funded by the app itself</div>
+<div class="s">No capital is required to launch. The first ten million members are funded by $ACM
+already owned. The single deployment is the penny buy at roughly 170,000 downloads, and the app
+generates it. Everything after that is inventory already in hand.</div>
+</div>
+</section>
+
+<div class="foot"><span>INSTAR BRANDS LLC · CONFIDENTIAL · page 3 · not investment advice · $ACM is a highly speculative digital asset that may lose all of its value</span><span class="hcp">HCP</span></div>
+</div>
