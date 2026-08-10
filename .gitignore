@@ -1,0 +1,23 @@
+# Swift build products — 162 MB and fully regenerable from source.
+.build/
+*.o
+*.dSYM/
+DerivedData/
+
+# Python venvs used by the render tooling
+venv/
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
+
+# Scratch page renders from PDF proofing
+_p[0-9]*.png
+
+# ── mtc/ is its own git repository, nested here ──────────────────────────
+# Adding it from this repo would create a gitlink with no submodule config:
+# it would LOOK committed while none of its content actually reached GitHub.
+# It is excluded deliberately until we decide to either give it its own
+# remote or absorb it into this repo. Do not remove this line casually.
+mtc/
