@@ -15,9 +15,4 @@ __pycache__/
 # Scratch page renders from PDF proofing
 _p[0-9]*.png
 
-# ── mtc/ is its own git repository, nested here ──────────────────────────
-# Adding it from this repo would create a gitlink with no submodule config:
-# it would LOOK committed while none of its content actually reached GitHub.
-# It is excluded deliberately until we decide to either give it its own
-# remote or absorb it into this repo. Do not remove this line casually.
-mtc/
+# mtc/ was a nested repo; its history was grafted in via git subtree Aug 2026.
