@@ -95,6 +95,19 @@ notional ≥ 50 SOL. Notional = lot × price = what the buyer pays. The
 notional floor keeps fixed costs (~1 SOL rent/gas + 1.5 SOL fee) under ~3%
 of the deal and keeps dust off the receipts page.
 
+**Balance-gated menu — RATIFIED 2026-08-11:** the seller's wallet (pasted to
+browse; connected + signed to post) is read on-chain, and the level menu is
+COMPUTED, never chosen: show every level L where
+(1) L ≤ remaining verified balance (a running sum — each posted rung
+subtracts; the same level may repeat while balance covers it, e.g. a 2M
+wallet can take the 1M option twice),
+(2) L ≤ the 500M / 50%-of-float cap, and
+(3) L × price ≥ 50 SOL notional.
+Gate (3) means micro-FDV coins start at bigger rungs (at ACM's current
+~2,800 SOL FDV the first clearing level is ~50M; a 1M lot ≈ 2.8 SOL = dust).
+This is by design — every print is a real trade. Ownership is ultimately
+proven by the escrow signature at posting, not the pasted address.
+
 **Firm book, both sides — LOCKED (zero-risk law):**
 - Seller: posting a rung REQUIRES the coins in listing escrow at posting.
   Quotes carry an expiry (7 days, dial) — auto-returned if unlifted.

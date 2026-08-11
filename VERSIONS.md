@@ -1,5 +1,8 @@
 # Versions — meme-sol-futures
 
+## 0.9.1 — 2026-08-11
+- Balance-gated menu RATIFIED: level menu is COMPUTED from the seller's verified on-chain balance (running sum as ladder builds; same level repeatable), capped by 500M/50% float, floored by 50 SOL notional; paste to browse, signature at escrow = the ownership proof. Notional-floor math flagged: at ACM's current FDV the first clearing level is ~50M coins (1M lot = dust); Contract One predates the spec
+
 ## 0.9.0 — 2026-08-11
 - InstarLock BUILT (source complete, build pending toolchain): Anchor program at instarlock/ — post (firm quotes, coins vault at posting, freeze/mint-authority vetoes enforced ON-CHAIN) / lift (atomic match: strike SOL locks + contract goes irrevocable in one tx) / cancel (refund only after 7d quote life) / settle (permissionless crank: 98/2 coins, strike -10% -1.5 SOL to seller); economics baked as constants, no admin instructions, classic SPL only (transfer-tax coins excluded by construction)
 - Name locked: InstarLock (Instar Brands) — clear with Lori; "SolStream" rejected (Streamflow conflict)
