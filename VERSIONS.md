@@ -1,5 +1,10 @@
 # Versions — meme-sol-futures
 
+## 0.3.0 — 2026-08-11
+- Shopify crypto section drafted (canon-deposit pattern): futures/shopify/ = source of truth for /pages/crypto + /pages/meme-futures on the Instar Brands store
+- Publication gates recorded: counsel review, Aug 31 settlement (name + escrow address non-public until then), Todd's final approval on live preview
+- .gitignore: .shopify.env / *.env — API credentials never ride the auto-push
+
 ## 0.2.0 — 2026-08-11
 - CONTRACT-001 escrow recorded + verified on-chain: wallet DsP3…2BNH holds exactly 1,000,000 ACM (Solscan + independent RPC read)
 - futures/records/contract_001.json — canonical terms record, SHA-256 sealed (anchor f7de3b38…)

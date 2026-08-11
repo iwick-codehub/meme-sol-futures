@@ -16,3 +16,5 @@ __pycache__/
 _p[0-9]*.png
 
 # mtc/ was a nested repo; its history was grafted in via git subtree Aug 2026.
+.shopify.env
+*.env
