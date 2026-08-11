@@ -21,8 +21,8 @@ This is the third door: **sell it forward.**
    payment locks at the same moment. From that second, neither side can
    default.
 3. **Fourteen days, to the hour.** Every contract runs exactly two weeks.
-   Choose your settlement: SOL (you exit the coin, keep your SOL exposure) or
-   USD escrowed in USDC (the full dollar exit — nothing floats for two weeks).
+   Your strike is fixed in SOL and escrowed in SOL from day one — the only
+   two assets that ever touch a contract are SOL and your coin.
 4. **Settlement is automatic.** The escrow releases on the chain's clock, not
    ours: your full strike to you, 98% of the coins to the buyer, 2% to the
    house.

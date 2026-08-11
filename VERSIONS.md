@@ -1,5 +1,10 @@
 # Versions — meme-sol-futures
 
+## 0.6.0 — 2026-08-11
+- TWO-ASSET LAW ratified and locked: every contract touches exactly SOL + the underlying coin, nothing else ever; USD-settled-via-USDC flavor KILLED (decision context recorded — do not re-litigate)
+- Treasury policy locked: all fee revenue stays in SOL, never swept to dollars; directional views live only in treasury + float, never the instrument menu
+- Canon page copy + preview render updated to SOL-only
+
 ## 0.5.0 — 2026-08-11
 - All three dials RATIFIED ("yes to all"): 1.5 SOL flat writing fee, 50 SOL minimum notional, 90-95% FDV strike band — MARKET-SPEC + canon page copy updated
 - Draft page renders built for testing: futures/shopify/preview/{crypto_landing,meme_futures}.html (what the hidden Shopify pages will be, pending the API token)

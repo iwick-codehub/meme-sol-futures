@@ -14,17 +14,26 @@ the buyer, which is what the buyer is paid for. No margin, no leverage.
 Every contract runs **exactly 2 weeks** (rotating 24-hour clock) from writing.
 Variable terms later. Term is written into the sealed contract record.
 
-## Settlement flavors — LOCKED
+## The Two-Asset Law — LOCKED (ratified by Todd, 2026-08-11)
 
-The strike denomination is a product choice made at writing:
+**Every contract touches exactly two assets: SOL and the underlying meme
+coin.** Nothing else, ever. Strike fixed in SOL, escrowed in SOL. All fees in
+SOL. No stablecoins anywhere in the system.
 
-| Flavor | Strike fixed in | Escrowed as | Seller exits |
-|--------|----------------|-------------|--------------|
-| SOL-settled | SOL | SOL | the meme's own risk (keeps SOL exposure) |
-| USD-settled | USD | **USDC** (never floating SOL) | meme risk AND SOL-complex beta — the full dollar exit |
+The USD-settled-via-USDC flavor was considered and KILLED (2026-08-11): a
+seller who wants dollars swaps their SOL after settlement — their trade,
+outside the venue. What the law buys: one escrow procedure, one watcher path,
+no stablecoin custody, and the public house rule ("everything is denominated
+and paid in SOL") is literally true. Decision context, should it resurface:
+the dollar-exit flavor was the SOL-hedge feature; Todd chose venue simplicity
+and SOL denomination over offering it. Do not re-litigate — remind.
 
-USDC escrow is what kills FX drift on the USD flavor. All fees stay in SOL
-regardless of flavor, because the house's costs are in SOL.
+## Treasury policy — LOCKED
+
+All fee revenue stays in SOL. Never swept to dollars. The float (2% in-kind)
+is carried at zero until sold; if sold, proceeds are SOL. The house's
+directional views live ONLY in the treasury and the float — never in the
+instrument menu.
 
 ## Fee schedule — LOCKED doctrine (dials proposed)
 
