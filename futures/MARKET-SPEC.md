@@ -108,6 +108,16 @@ Gate (3) means micro-FDV coins start at bigger rungs (at ACM's current
 This is by design — every print is a real trade. Ownership is ultimately
 proven by the escrow signature at posting, not the pasted address.
 
+**House-coin exemption — RATIFIED 2026-08-11:** **$ACM contracts are exempt
+from the 50 SOL notional floor** — 1M-lot ACM contracts post at ANY SOL
+value. The house coin seeds the book: small ACM prints populate the receipts
+page, and the house absorbs the writing costs as market-seeding expense (the
+1.5 SOL flat fee is WAIVED on ACM contracts — on a ~3 SOL notional it would
+be absurd). The 10% commission still applies (Contract One: $500 strike −
+$50 = $450 net to seller). Non-ACM coins keep the full floor. If/as ACM's
+FDV rises, lot notionals grow back toward the standard floor mechanically —
+no prediction required, it's arithmetic either way.
+
 **Firm book, both sides — LOCKED (zero-risk law):**
 - Seller: posting a rung REQUIRES the coins in listing escrow at posting.
   Quotes carry an expiry (7 days, dial) — auto-returned if unlifted.

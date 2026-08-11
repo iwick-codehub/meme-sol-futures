@@ -1,5 +1,11 @@
 # Versions — meme-sol-futures
 
+## 0.10.0 — 2026-08-11
+- SHOPIFY LIVE (hidden): claude-site-manager app installed on instar-brands.myshopify.com; token mint via client-credentials proven; publish.py upsert tool built; THREE pages created hidden — /pages/crypto, /pages/meme-futures, /pages/acm-bid-board
+- $ACM Bid Board built: Standard tier (1M lots @ $500k valuation, net $450/lot) + Whale tier (10M+ lots @ $200k valuation, $200/million) — standing funded bids, 4-step hit-a-bid flow, dollars-for-readability/SOL-at-signing disclosure
+- House-coin exemption RATIFIED: ACM exempt from 50 SOL floor, flat fee waived, 10% commission applies
+- CONTRACT-001 AMENDMENT 1 sealed (prior anchor in history): settles under venue economics, seller nets $450; $100 pre-payment = sweetener (agreed by both parties)
+
 ## 0.9.1 — 2026-08-11
 - Balance-gated menu RATIFIED: level menu is COMPUTED from the seller's verified on-chain balance (running sum as ladder builds; same level repeatable), capped by 500M/50% float, floored by 50 SOL notional; paste to browse, signature at escrow = the ownership proof. Notional-floor math flagged: at ACM's current FDV the first clearing level is ~50M coins (1M lot = dust); Contract One predates the spec
 

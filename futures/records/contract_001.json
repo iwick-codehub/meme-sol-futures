@@ -10,9 +10,11 @@
   "strike_valuation_usd": 500000,
   "strike_total_usd": 500,
   "premium_usd": 100,
-  "premium_paid": "2026-08-11 (sent as SOL; USDT was the plan — reconciliation open)",
+  "premium_paid": "2026-08-11 (sent as SOL; USDT was the plan \u2014 reconciliation open)",
   "settlement": "2026-08-31 12:00 EST (escrow release 11:59 EST)",
   "escrow_wallet": "DsP3zSSrHeEwSHUvjiZo3brqeXDMS6CZB3DeRxBk2BNH",
   "escrow_token_account": "C8KGbEuVCvor5CjqcAaBwq2xsZLe5Gb5SsdCcMUUfhXc",
-  "escrow_verified": "2026-08-11 balance=1000000 via getTokenAccountsByOwner + Solscan"
+  "escrow_verified": "2026-08-11 balance=1000000 via getTokenAccountsByOwner + Solscan",
+  "amendment_1": "2026-08-11: settles under venue economics \u2014 10% commission applies, seller nets $450 of $500 strike (agreed by both parties in X DM); $100 pre-payment stands as sweetener; house-coin exemption waives notional floor + flat fee",
+  "seller_net_usd": 450
 }

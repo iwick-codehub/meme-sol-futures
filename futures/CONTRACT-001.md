@@ -3,6 +3,17 @@
 **Status:** EXECUTED (agreed in X DM, 2026-08-11) · settles 2026-08-31
 **Billed as:** the first-ever SOL meme coin futures contract.
 
+## AMENDMENT 1 — 2026-08-11 (agreed by both parties)
+
+Contract One now settles under venue economics: the 10% seller commission
+applies at settlement — **seller nets $450** of the $500 strike. Todd
+explained the math to Derek directly; Derek agreed. The $100 sent ahead of
+signing stands as the sweetener that more than covers the commission (Derek's
+all-in: $450 + $100 = $550 on a $500 position). ACM is the house coin: the
+50 SOL notional floor and the 1.5 SOL flat fee are waived per the
+house-coin exemption in MARKET-SPEC. Record re-sealed; prior anchor
+preserved in history.
+
 ## Parties
 
 | Role | Party |
