@@ -44,7 +44,7 @@ valuation that the pool could never absorb. So: no premiums to sellers after
 Contract One (its $100 was deliberate first-mover overpayment); the seller
 compensates the market through the strike discount and the flat writing fee.
 
-Proposed dials (Todd to ratify):
+Dials — RATIFIED by Todd, 2026-08-11 ("yes to all"):
 - Flat writing fee: **1.5 SOL** (observed ~0.33 SOL per Streamflow lock ×
   up to 3 locks per contract, plus margin)
 - Minimum notional: **50 SOL** (keeps the flat fee ≤3% of the strike)

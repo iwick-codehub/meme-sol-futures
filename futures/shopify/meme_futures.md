@@ -20,13 +20,22 @@ This is the third door: **sell it forward.**
    wallet — one contract, one wallet, one Solscan link anyone can watch. Our
    payment locks at the same moment. From that second, neither side can
    default.
-3. **You're paid in SOL, immediately and at settlement.** A writing payment in
-   SOL lands when the contract opens. On settlement day — every contract runs
-   exactly two weeks — the full strike price releases to you in SOL. Never in
-   the coin. You already know why.
-4. **The buyer takes delivery, the house takes 2%.** At settlement the buyer
-   receives 98% of the escrowed coins; 2% is the market-making fee, plus a
-   flat SOL writing fee that covers the on-chain costs.
+3. **Fourteen days, to the hour.** Every contract runs exactly two weeks.
+   Choose your settlement: SOL (you exit the coin, keep your SOL exposure) or
+   USD escrowed in USDC (the full dollar exit — nothing floats for two weeks).
+4. **Settlement is automatic.** The escrow releases on the chain's clock, not
+   ours: your full strike to you, 98% of the coins to the buyer, 2% to the
+   house.
+
+### Pricing (ratified 2026-08-11)
+
+| Term | 14 days, fixed |
+|------|----------------|
+| Strike | 90–95% of current fully-diluted valuation |
+| Writing fee | 1.5 SOL flat, deducted at settlement — seller never pays upfront |
+| House fee | 2% of the escrowed coins |
+| Minimum size | 50 SOL notional |
+| All sales | Final. Escrow is irrevocable by design. |
 
 ### Contract One is already on the books.
 

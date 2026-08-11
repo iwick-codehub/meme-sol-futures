@@ -1,5 +1,9 @@
 # Versions — meme-sol-futures
 
+## 0.5.0 — 2026-08-11
+- All three dials RATIFIED ("yes to all"): 1.5 SOL flat writing fee, 50 SOL minimum notional, 90-95% FDV strike band — MARKET-SPEC + canon page copy updated
+- Draft page renders built for testing: futures/shopify/preview/{crypto_landing,meme_futures}.html (what the hidden Shopify pages will be, pending the API token)
+
 ## 0.4.1 — 2026-08-11
 - Seller-pays doctrine RATIFIED and locked in MARKET-SPEC: no premiums to sellers after Contract One; seller compensates the market via strike discount + flat SOL writing fee
 
