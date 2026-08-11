@@ -1,5 +1,9 @@
 # Versions — meme-sol-futures
 
+## 0.10.1 — 2026-08-11
+- ALL THREE PAGES PUBLISHED LIVE by Todd's explicit order (quiet launch, unlinked from nav): instarbrands.com/pages/crypto, /pages/meme-futures, /pages/acm-bid-board — all verified 200 with content rendering
+- Publication gates: lifted by the author; counsel conversation REMAINS OPEN (upstairs-market/delayed-print framing); Derek's name + escrow address still absent from all pages (that gate holds)
+
 ## 0.10.0 — 2026-08-11
 - SHOPIFY LIVE (hidden): claude-site-manager app installed on instar-brands.myshopify.com; token mint via client-credentials proven; publish.py upsert tool built; THREE pages created hidden — /pages/crypto, /pages/meme-futures, /pages/acm-bid-board
 - $ACM Bid Board built: Standard tier (1M lots @ $500k valuation, net $450/lot) + Whale tier (10M+ lots @ $200k valuation, $200/million) — standing funded bids, 4-step hit-a-bid flow, dollars-for-readability/SOL-at-signing disclosure
