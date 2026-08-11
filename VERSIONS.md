@@ -1,5 +1,11 @@
 # Versions — meme-sol-futures
 
+## 0.8.0 — 2026-08-11
+- ORDER BOOK ratified: users make the market (house never takes a side); 5 standard rungs (10/50/100/250/500M, max 50% float); FDV basis incl. locks excl. true burns; ladders priced in SOL; dual minimums (1M lot AND 50 SOL notional, both binding); FIRM BOOK both sides (seller coins escrow at posting w/ 7-day expiry; buyer SOL locks at lift; counters escrow-backed); locked-token indicative rule + lock-recipient-as-escrow playbook
+- Seller commission LOCKED: 10% of cleared strike, deducted at settlement (venue language, never dealer)
+- Escrow engine Phase 2 committed: own Anchor program, atomic match, bulletproof discipline (upgrade authority burned, dual audits, TVL cap, zero hot keys); name candidates Deadbolt/Strongbox/SOLock (NOT SolStream)
+- Open to ratify: max-ask rule (<=95% of live FDV), quote-expiry dial (7d), engine name
+
 ## 0.7.0 — 2026-08-11
 - futures/THESIS.md filed — the founding argument: two prices (shelf vs pallet), the venue sells certainty, seller/buyer taxonomies, the dev-as-buyer signal trade ("insider buying without the pump"), the term-structure data asset, named risks (incl. selective-disclosure theater + wash-trade tell for screening)
 

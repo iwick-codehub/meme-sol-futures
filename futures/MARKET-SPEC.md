@@ -47,6 +47,14 @@ instrument menu.
    **zero value** on the cash basis until actually sold. Never counted on to
    pay bills.
 
+**Seller commission — LOCKED (ratified 2026-08-11): 10% of the cleared
+strike, deducted at settlement.** Venue language, never dealer language: the
+house does not "pay 90%" — the buyer pays the full strike, the seller nets
+90% after commission. First-in-kind pricing (auction-house tier), justified
+against the seller's true alternative (30–80% pool slippage on size). Full
+take stack = 10% commission + 1.5 SOL flat + 2% in-kind float ≈ 13% on a
+minimum contract; monitor clear-rates, dial when competition arrives.
+
 **Who pays — LOCKED (ratified by Todd, 2026-08-11): the SELLER pays.** The
 seller is the one getting the miracle — a guaranteed full-size exit at locked
 valuation that the pool could never absorb. So: no premiums to sellers after
@@ -59,6 +67,69 @@ Dials — RATIFIED by Todd, 2026-08-11 ("yes to all"):
 - Minimum notional: **50 SOL** (keeps the flat fee ≤3% of the strike)
 - Strike band: **90–95% of spot FDV** (the discount is the buyer's
   compensation for two weeks of meme risk)
+
+## The Order Book — RATIFIED 2026-08-11
+
+Users make the market; the house never takes a side.
+
+**Flow:** type the coin symbol → select from the screened list (criteria
+checked live, on-chain) → declare side → build a ladder.
+
+**Valuation basis — LOCKED:** fully-diluted market cap **including locked
+tokens** (locks are still supply — they come home), excluding only **true
+burns** (provably destroyed: burn address / supply reduced on the mint).
+Computed on-chain, never claimed.
+
+**The five rungs — LOCKED:** 10M · 50M · 100M · 250M · 500M coins.
+500M / 50% of float is the absolute max per contract (beyond that it's a
+change of control, not a trade). Standard rungs = standardized contracts =
+comparable prints = the term-structure data asset.
+
+**Ladders:** a seller posts prices per rung ("X at this price, X more at
+this price"); the math derives break points. **All prices entered in SOL**
+(Two-Asset Law; a dollar shadow may be displayed, the contract number is
+SOL).
+
+**Dual minimums — LOCKED, both binding:** lot ≥ 1,000,000 coins AND
+notional ≥ 50 SOL. Notional = lot × price = what the buyer pays. The
+notional floor keeps fixed costs (~1 SOL rent/gas + 1.5 SOL fee) under ~3%
+of the deal and keeps dust off the receipts page.
+
+**Firm book, both sides — LOCKED (zero-risk law):**
+- Seller: posting a rung REQUIRES the coins in listing escrow at posting.
+  Quotes carry an expiry (7 days, dial) — auto-returned if unlifted.
+- Buyer: browsing locks nothing; a LIFT locks the full strike SOL at the
+  instant of execution; a COUNTER-OFFER locks the buyer's SOL when posted,
+  auto-refunded on expiry/decline.
+- Contract goes irrevocable at match; runs exactly 14 days from execution
+  timestamp.
+
+**Locked-token rule:** tokens inside a third-party time-lock may be quoted
+INDICATIVE ONLY; the quote goes firm the moment coins land in escrow.
+Playbook upgrade (the beautiful version): at coin creation, set the supply
+lock's recipient to a venue-issued escrow address, so lock → listing escrow
+with no human in the gap. ("Create, lock 50%, forward-sell the unlock" is
+the flagship lifecycle.)
+
+**Max-ask rule (PROPOSED, ratify):** no rung may be posted above 95% of
+live FDV — keeps delusional asks from cluttering the book.
+
+## Escrow engine — Phase 2 commitment (ratified direction, 2026-08-11)
+
+Own Anchor program replacing Streamflow for the book. Name TBD (candidates:
+**Deadbolt** [recommended], Strongbox, SOLock — clear with counsel; NOT
+"SolStream," one letter from Streamflow's brand). The killer feature is the
+**atomic match**: one transaction locks buyer SOL + flips listing escrow to
+contract escrow + writes terms — no gap, no default window, on either side.
+
+Bulletproof discipline (the honest version of "100% hack proof" — absolutes
+don't exist; this is the standard): minimal program (escrow in, timed
+release out, nothing else) · **upgrade authority burned** · two independent
+audits before real funds · invariant tests in CI · launch TVL cap that
+grows with track record · bug bounty · zero hot admin keys — the house
+physically cannot touch escrow, so neither can anyone who hacks the house.
+Until Deadbolt is audited and live, Streamflow (proven twice) carries
+manual contracts.
 
 ## Listing criteria — LOCKED structure
 
