@@ -103,6 +103,10 @@ public enum Claim {
         public let engaged: Int
         public let rentPerWallet: Double
 
+        public init(claims: Int, engaged: Int, rentPerWallet: Double) {
+            self.claims = claims; self.engaged = engaged; self.rentPerWallet = rentPerWallet
+        }
+
         public var mintCost: Double { Double(engaged) * rentPerWallet }
         /// What minting at claim time would have cost instead.
         public var naiveCost: Double { Double(claims) * rentPerWallet }

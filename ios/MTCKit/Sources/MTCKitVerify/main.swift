@@ -397,6 +397,57 @@ if case .offline = rateLimited {
     check("a rate-limited RPC also reports OFFLINE, not 'holds zero'", true)
 } else { check("a rate-limited RPC also reports OFFLINE, not 'holds zero'", false) }
 
+// --------------------------------------------------------- deferred claim
+section("DEFERRED CLAIM  (a bot cannot walk into a mall)")
+let addr = Base58.encode(Curve25519.Signing.PrivateKey().publicKey.rawRepresentation)
+
+do { _ = try Claim.claim(address: "not-an-address", source: "web", existing: nil)
+     check("a malformed address cannot claim", false) }
+catch { check("a malformed address cannot claim", (error as? Claim.Failure) == .badAddress) }
+
+let rec = try! Claim.claim(address: addr, source: "web", existing: nil, at: t0)
+equal("claiming is free and open to anyone", rec.state, Claim.State.claimed)
+check("nothing has been minted yet", rec.mintedAt == nil)
+
+do { _ = try Claim.claim(address: addr, source: "app", existing: rec, at: t0)
+     check("the same address cannot claim twice", false) }
+catch { check("the same address cannot claim twice",
+              (error as? Claim.Failure) == .alreadyClaimed(address: addr)) }
+
+// THE POINT OF THE WHOLE DESIGN: a claim alone must never spend a cent.
+do { _ = try Claim.mint(rec, at: t0)
+     check("a CLAIM alone can never trigger a mint", false) }
+catch { check("a CLAIM alone can never trigger a mint",
+              (error as? Claim.Failure) == .notEngaged(address: addr)) }
+
+let engaged = try! Claim.engage(rec, at: t0.addingTimeInterval(86_400))
+equal("showing up at a reader engages the claim", engaged.state, Claim.State.engaged)
+let minted = try! Claim.mint(engaged, at: t0.addingTimeInterval(86_401))
+equal("only an engaged claim mints", minted.state, Claim.State.minted)
+check("the mint is stamped", minted.mintedAt != nil)
+
+do { _ = try Claim.mint(minted, at: t0)
+     check("a minted claim never mints again", false) }
+catch { check("a minted claim never mints again",
+              (error as? Claim.Failure) == .alreadyMinted(address: addr)) }
+
+// Unengaged claims age out. Nothing was spent, so nothing is lost.
+let ancient = Claim.Record(address: addr, claimedAt: t0, source: "web")
+do { _ = try Claim.engage(ancient, at: t0.addingTimeInterval(Claim.unengagedTTL + 60))
+     check("an unengaged claim expires after its TTL", false) }
+catch { check("an unengaged claim expires after its TTL", true) }
+
+let swept = Claim.sweep([ancient], at: t0.addingTimeInterval(Claim.unengagedTTL + 60))
+equal("sweep voids stale claims", swept[0].state, Claim.State.void)
+let keep = Claim.sweep([rec], at: t0.addingTimeInterval(3600))
+equal("sweep leaves fresh claims alone", keep[0].state, Claim.State.claimed)
+
+// The saving, stated in money: a million bot claims cost nothing.
+let econ = Claim.Economics(claims: 1_000_000, engaged: 50_000, rentPerWallet: 0.1489)
+equal("minting at claim time would cost", Int(econ.naiveCost.rounded()), 148_900)
+equal("minting at engagement costs", Int(econ.mintCost.rounded()), 7_445)
+equal("deferring saves", Int(econ.saved.rounded()), 141_455)
+
 // -------------------------------------------------------------------- report
 print("\n\(checks - failures)/\(checks) checks passed")
 if failures > 0 { print("FAILED"); exit(1) }

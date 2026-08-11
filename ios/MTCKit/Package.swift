@@ -9,6 +9,7 @@ let package = Package(
     platforms: [.iOS(.v16), .macOS(.v13)],
     products: [
         .library(name: "MTCKit", targets: ["MTCKit"]),
+        .library(name: "AladdinUI", targets: ["AladdinUI"]),
         .executable(name: "mtckit-verify", targets: ["MTCKitVerify"]),
     ],
     targets: [
@@ -18,5 +19,9 @@ let package = Package(
         // the command line tools. `swift run mtckit-verify` exits non-zero on
         // failure, so it drops straight into CI later.
         .executableTarget(name: "MTCKitVerify", dependencies: ["MTCKit"]),
+        // SwiftUI type-checks against the macOS SDK with command line tools
+        // alone, so the screens are verified here long before Xcode exists.
+        // Nothing in this target may import UIKit or use iOS-only modifiers.
+        .target(name: "AladdinUI", dependencies: ["MTCKit"]),
     ]
 )
