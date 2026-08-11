@@ -1,5 +1,8 @@
 # Versions — meme-sol-futures
 
+## 0.7.0 — 2026-08-11
+- futures/THESIS.md filed — the founding argument: two prices (shelf vs pallet), the venue sells certainty, seller/buyer taxonomies, the dev-as-buyer signal trade ("insider buying without the pump"), the term-structure data asset, named risks (incl. selective-disclosure theater + wash-trade tell for screening)
+
 ## 0.6.0 — 2026-08-11
 - TWO-ASSET LAW ratified and locked: every contract touches exactly SOL + the underlying coin, nothing else ever; USD-settled-via-USDC flavor KILLED (decision context recorded — do not re-litigate)
 - Treasury policy locked: all fee revenue stays in SOL, never swept to dollars; directional views live only in treasury + float, never the instrument menu
