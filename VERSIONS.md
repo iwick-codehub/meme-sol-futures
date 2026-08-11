@@ -1,5 +1,8 @@
 # Versions — meme-sol-futures
 
+## 0.4.1 — 2026-08-11
+- Seller-pays doctrine RATIFIED and locked in MARKET-SPEC: no premiums to sellers after Contract One; seller compensates the market via strike discount + flat SOL writing fee
+
 ## 0.4.0 — 2026-08-11
 - futures/MARKET-SPEC.md — the market spec: fee doctrine LOCKED (one flat SOL writing fee covers ALL expenses + 2% of the coin in-kind as the house float, carried at zero); two settlement flavors (SOL-settled / USD-settled via USDC escrow); 2-week rotating term; listing criteria (freeze/mint authority = hard vetoes); per-contract Streamflow escrow architecture
 - Proposed dials awaiting ratification: 1.5 SOL flat fee, 50 SOL minimum notional, 90-95% FDV strike band

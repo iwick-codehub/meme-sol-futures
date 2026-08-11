@@ -38,13 +38,18 @@ regardless of flavor, because the house's costs are in SOL.
    **zero value** on the cash basis until actually sold. Never counted on to
    pay bills.
 
+**Who pays — LOCKED (ratified by Todd, 2026-08-11): the SELLER pays.** The
+seller is the one getting the miracle — a guaranteed full-size exit at locked
+valuation that the pool could never absorb. So: no premiums to sellers after
+Contract One (its $100 was deliberate first-mover overpayment); the seller
+compensates the market through the strike discount and the flat writing fee.
+
 Proposed dials (Todd to ratify):
 - Flat writing fee: **1.5 SOL** (observed ~0.33 SOL per Streamflow lock ×
   up to 3 locks per contract, plus margin)
 - Minimum notional: **50 SOL** (keeps the flat fee ≤3% of the strike)
 - Strike band: **90–95% of spot FDV** (the discount is the buyer's
-  compensation; premiums to sellers trend to zero — Contract One's $100 was
-  deliberate first-mover overpayment)
+  compensation for two weeks of meme risk)
 
 ## Listing criteria — LOCKED structure
 
