@@ -1,5 +1,8 @@
 # Versions — meme-sol-futures
 
+## 0.11.1 — 2026-08-11
+- Main menu restructured (Todd's order): Catalog · Crypto Market (-> /pages/crypto, NEW 2nd slot) · Aladdin's Castle (3rd) · Partner with Us · About Us; Locations item deleted, /pages/btc unpublished (content preserved). NOTE: crypto section is now NAV-LINKED — quiet launch over, counsel item now urgent
+
 ## 0.11.0 — 2026-08-11
 - /pages/acm rebuilt as an owned-content mirror of aladdinscastle.xyz (hero, four tiles, contract address, mission, doxxed-dev/press/X/Telegram links, tokenomics) — LIVE; tokenomics corrected from the .xyz site's stale "40% dev allocation locked permanently" to the verified claim: 50.00% of total supply locked until July 4, 2027 (lock-record precision doctrine); added Bid Board cross-link
 - Main menu: "Chipso" item renamed "Aladdin's Castle" -> /pages/acm (verified on live homepage, desktop+mobile); Chipso page unpublished (404s, content preserved)
