@@ -1,0 +1,18 @@
+{
+  "record": "MEME-SOL-FUTURES/CONTRACT-001",
+  "instrument": "meme coin futures (physically settled forward, escrowed)",
+  "executed": "2026-08-11 (X DM)",
+  "buyer": "Todd Wichmann (vehicle TBD)",
+  "seller": "Derek de la Cruz (@derekdlc)",
+  "underlying_mint": "4PRz3EwhbjrrX6YksMDuUzrXT51pr7CQtXNCravhpump",
+  "underlying_symbol": "ACM",
+  "quantity": 1000000,
+  "strike_valuation_usd": 500000,
+  "strike_total_usd": 500,
+  "premium_usd": 100,
+  "premium_paid": "2026-08-11 (sent as SOL; USDT was the plan — reconciliation open)",
+  "settlement": "2026-08-31 12:00 EST (escrow release 11:59 EST)",
+  "escrow_wallet": "DsP3zSSrHeEwSHUvjiZo3brqeXDMS6CZB3DeRxBk2BNH",
+  "escrow_token_account": "C8KGbEuVCvor5CjqcAaBwq2xsZLe5Gb5SsdCcMUUfhXc",
+  "escrow_verified": "2026-08-11 balance=1000000 via getTokenAccountsByOwner + Solscan"
+}

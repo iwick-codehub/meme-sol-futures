@@ -19,7 +19,9 @@
 | Settlement date | August 31, 2026 — escrow release 11:59 AM EST, settlement noon EST |
 | Strike valuation | $500,000 FDV → **$500 flat** for the 1M ACM (1B supply) |
 | Premium | $100, paid to seller up front at signing (fully liquid immediately) |
-| Escrow | Dedicated Phantom wallet named "Futures Contract" (seller creates; address shared by DM, kept non-public) |
+| Escrow | Dedicated Phantom wallet named "Futures Contract" (seller-created, non-public): `DsP3zSSrHeEwSHUvjiZo3brqeXDMS6CZB3DeRxBk2BNH` |
+| Underlying mint | `4PRz3EwhbjrrX6YksMDuUzrXT51pr7CQtXNCravhpump` (per records/ACM_Lock_Record) |
+| Escrow token account | `C8KGbEuVCvor5CjqcAaBwq2xsZLe5Gb5SsdCcMUUfhXc` |
 | Sale character | Irrevocable — the ACM leaves the seller's wallet at signing and sits in escrow until release |
 
 ## Execution timeline (from the DMs, 2026-08-11)
@@ -38,8 +40,9 @@
 
 ## Open items
 
-- [ ] Escrow wallet address (awaiting Derek's DM — record here, keep repo private)
-- [ ] Confirm the 1M ACM has landed in the escrow wallet (verify on-chain)
+- [x] Escrow wallet address received (2026-08-11) and recorded above
+- [x] 1,000,000 ACM verified in escrow, 2026-08-11 — Solscan (Todd) + independent RPC
+      `getTokenAccountsByOwner` read (exactly 1000000 ACM in token account `C8KG…fhXc`)
 - [ ] Settlement currency for the $500 strike (USDT? SOL at spot? — pin it before Aug 31)
 - [ ] Premium accounting: plan said $100 USDT, execution was $100 SOL — confirm the
       SOL send IS the premium (not an extra), so the contract economics are clean
