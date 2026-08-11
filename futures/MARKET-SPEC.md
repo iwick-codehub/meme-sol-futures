@@ -116,7 +116,7 @@ live FDV — keeps delusional asks from cluttering the book.
 
 ## Escrow engine — Phase 2 commitment (ratified direction, 2026-08-11)
 
-Own Anchor program replacing Streamflow for the book. Name TBD (candidates:
+Own Anchor program replacing Streamflow for the book — BUILD ORDERED 2026-08-11, source at instarlock/. Name: **InstarLock** (Instar Brands; clear mark with Lori). Rejected candidates:
 **Deadbolt** [recommended], Strongbox, SOLock — clear with counsel; NOT
 "SolStream," one letter from Streamflow's brand). The killer feature is the
 **atomic match**: one transaction locks buyer SOL + flips listing escrow to

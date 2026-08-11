@@ -1,5 +1,10 @@
 # Versions — meme-sol-futures
 
+## 0.9.0 — 2026-08-11
+- InstarLock BUILT (source complete, build pending toolchain): Anchor program at instarlock/ — post (firm quotes, coins vault at posting, freeze/mint-authority vetoes enforced ON-CHAIN) / lift (atomic match: strike SOL locks + contract goes irrevocable in one tx) / cancel (refund only after 7d quote life) / settle (permissionless crank: 98/2 coins, strike -10% -1.5 SOL to seller); economics baked as constants, no admin instructions, classic SPL only (transfer-tax coins excluded by construction)
+- Name locked: InstarLock (Instar Brands) — clear with Lori; "SolStream" rejected (Streamflow conflict)
+- Road-to-mainnet gates in instarlock/README.md: localnet tests -> devnet lifecycle -> 2 audits -> deploy + BURN upgrade authority -> TVL cap
+
 ## 0.8.0 — 2026-08-11
 - ORDER BOOK ratified: users make the market (house never takes a side); 5 standard rungs (10/50/100/250/500M, max 50% float); FDV basis incl. locks excl. true burns; ladders priced in SOL; dual minimums (1M lot AND 50 SOL notional, both binding); FIRM BOOK both sides (seller coins escrow at posting w/ 7-day expiry; buyer SOL locks at lift; counters escrow-backed); locked-token indicative rule + lock-recipient-as-escrow playbook
 - Seller commission LOCKED: 10% of cleared strike, deducted at settlement (venue language, never dealer)
