@@ -154,6 +154,41 @@ physically cannot touch escrow, so neither can anyone who hacks the house.
 Until Deadbolt is audited and live, Streamflow (proven twice) carries
 manual contracts.
 
+## The Pricing Engine — the house edge (drafted 2026-08-11, Todd to ratify)
+
+Two pricing regimes coexist:
+1. **Marketplace (order book):** users set asks, buyers lift — no model
+   needed; the house earns the commission either way.
+2. **House bid board (disclosed principal):** WE set the strike. This is
+   where the secret sauce lives.
+
+**Corridor pricing — never one flat number.** A flat 90% would be picked
+off by adverse selection: the only sellers eager to hit a flat bid are the
+ones whose lots are worth far less than 90% (the trash finds you). Each bid
+is computed inside a corridor:
+
+- **Floor = PoolExit%(L):** the simulated proceeds of actually market-selling
+  lot L into the live AMM reserves right now (computable exactly on-chain —
+  walk the curve). This is the seller's true alternative; bidding below it
+  is pointless, bidding at it is the whole pitch ("we beat your only exit").
+- **Ceiling = 95% of FDV** (symmetric with the max-ask rule).
+- **Strike% = PoolExit% + k × (95% − PoolExit%)** — k is the seller's share
+  of the illiquidity surplus. Baseline k ≈ 0.25, adjusted per coin by
+  measured, on-chain, KRW-style spectroscope metrics:
+  · **Depth ratio** (lot notional ÷ pool depth) — the dominant term. Todd's
+    two ACM tiers already sample this curve: 1M lots near-market, 10M+ deep.
+  · **Realized 14-day volatility** (rolling average) — hotter coin, deeper cut.
+  · **Turnover** — how fast size recycles into organic demand.
+  · **Overhang** — holder concentration behind THIS seller (who exits next?).
+  · **Temperature gate** (KRW law) — cold markets: widen or stand down.
+    Never chase.
+- **Inputs are public; the weights are ours.** Credit-score economics: the
+  data is on-chain for anyone, the model is the moat. Bids shown are funded
+  and honored; sellers can always decline. That is legitimate dealer pricing,
+  not information asymmetry about the asset.
+- **Optimization target: flow × edge, never edge alone.** A too-greedy book
+  starves the clear-rate, and the commission side of the house eats flow.
+
 ## Listing criteria — LOCKED structure
 
 Binary tells, all checkable on-chain, screened in listing order. Hard vetoes

@@ -23,6 +23,7 @@ PAGES = [
     {"handle": "crypto", "title": "Crypto", "body_file": "body_crypto.html"},
     {"handle": "meme-futures", "title": "Meme Coin Futures", "body_file": "body_meme_futures.html"},
     {"handle": "acm-bid-board", "title": "The $ACM Bid Board", "body_file": "body_acm_bid_board.html"},
+    {"handle": "acm", "title": "Aladdin's Castle | $ACM", "body_file": "body_acm.html"},
 ]
 
 

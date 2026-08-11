@@ -1,5 +1,10 @@
 # Versions — meme-sol-futures
 
+## 0.11.0 — 2026-08-11
+- /pages/acm rebuilt as an owned-content mirror of aladdinscastle.xyz (hero, four tiles, contract address, mission, doxxed-dev/press/X/Telegram links, tokenomics) — LIVE; tokenomics corrected from the .xyz site's stale "40% dev allocation locked permanently" to the verified claim: 50.00% of total supply locked until July 4, 2027 (lock-record precision doctrine); added Bid Board cross-link
+- Main menu: "Chipso" item renamed "Aladdin's Castle" -> /pages/acm (verified on live homepage, desktop+mobile); Chipso page unpublished (404s, content preserved)
+- PRICING ENGINE drafted in MARKET-SPEC (Todd to ratify): corridor pricing — floor = on-chain simulated PoolExit%(lot), ceiling 95% FDV, strike = floor + k*(ceiling-floor), k~0.25 baseline adjusted by depth ratio / 14d vol / turnover / overhang / KRW temperature gate; flat 90% rejected (adverse selection); inputs public, weights proprietary; optimize flow*edge
+
 ## 0.10.1 — 2026-08-11
 - ALL THREE PAGES PUBLISHED LIVE by Todd's explicit order (quiet launch, unlinked from nav): instarbrands.com/pages/crypto, /pages/meme-futures, /pages/acm-bid-board — all verified 200 with content rendering
 - Publication gates: lifted by the author; counsel conversation REMAINS OPEN (upstairs-market/delayed-print framing); Derek's name + escrow address still absent from all pages (that gate holds)
