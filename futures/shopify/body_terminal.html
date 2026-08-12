@@ -11,7 +11,7 @@
     border-bottom: 1px solid #14532d; padding-bottom: 10px; margin-bottom: 4px; flex-wrap: wrap; gap: 6px; }
   .term-head h2 { margin: 0; font-size: 1.15em; letter-spacing: .25em; color: #4ade80; font-weight: 700; }
   .term-head .term-sub { font-size: .72em; opacity: .65; letter-spacing: .1em; }
-  .term table { width: 100%; border-collapse: collapse; font-size: .8em; }
+  .term table { width: max-content; min-width: 100%; border-collapse: collapse; font-size: .8em; }
   .term th { text-align: right; padding: 9px 13px; font-size: .85em; letter-spacing: .12em;
     color: #22c55e; border-bottom: 1px solid #14532d; position: sticky; top: 0; background: #060a08;
     cursor: pointer; user-select: none; white-space: nowrap; }
@@ -21,9 +21,8 @@
   .term th.sorted.desc::after { content: "▼"; }
   .term th.sorted.asc::after { content: "▲"; }
   .term th:nth-child(1), .term th:nth-child(2), .term td:nth-child(1), .term td:nth-child(2) { text-align: left; }
-  .term th:nth-child(2), .term td:nth-child(2) { min-width: 12.5em; }
-  .term th:nth-child(3), .term td:nth-child(3) { min-width: 10em; }
-  .term th:nth-child(4), .term td:nth-child(4) { min-width: 10em; }
+  .term th:nth-child(2), .term td:nth-child(2) { padding-right: 2.2em; }
+  .term th:nth-child(3), .term td:nth-child(3) { padding-right: 1.6em; }
   .term td { padding: 8px 13px; text-align: right; border-bottom: 1px solid #0d2818; white-space: nowrap; }
   .term td.sym { font-weight: 700; color: #e7ffee; }
   .term td.sym a { color: inherit; text-decoration: none; }
@@ -173,9 +172,9 @@
     return n.toFixed(2);
   }
   function px(p) {
-    if (p >= 1) return "$" + p.toFixed(3);
-    if (p >= 0.0001) return "$" + p.toFixed(6);
-    return "$" + p.toExponential(3);
+    var s = p.toFixed(6); // uniform 6 decimals on every per-coin price
+    if (p > 0 && s === "0.000000") return "$" + p.toExponential(2);
+    return "$" + s;
   }
   var prevPx = {};
   function pctCell(p) {
