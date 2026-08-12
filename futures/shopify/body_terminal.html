@@ -3,14 +3,16 @@
   main, #MainContent { background: #060a08; }
   .term-wrap { background: #060a08; color: #c8ffd9; font-family: "SF Mono", "Menlo", "Consolas", monospace;
     margin: 0 -50vw; padding: 0 50vw 40px; min-height: 80vh; }
-  .term { max-width: 1080px; margin: 0 auto; padding-top: 26px; }
+  .term { max-width: 1220px; margin: 0 auto; padding-top: 26px; }
+  .term-scroll { overflow-x: auto; }
+  .term .dim { opacity: .35; }
   .term a { color: #4ade80; }
   .term-head { display: flex; justify-content: space-between; align-items: baseline;
     border-bottom: 1px solid #14532d; padding-bottom: 10px; margin-bottom: 4px; flex-wrap: wrap; gap: 6px; }
   .term-head h2 { margin: 0; font-size: 1.15em; letter-spacing: .25em; color: #4ade80; font-weight: 700; }
   .term-head .term-sub { font-size: .72em; opacity: .65; letter-spacing: .1em; }
   .term table { width: 100%; border-collapse: collapse; font-size: .8em; }
-  .term th { text-align: right; padding: 8px 10px; font-size: .85em; letter-spacing: .12em;
+  .term th { text-align: right; padding: 9px 13px; font-size: .85em; letter-spacing: .12em;
     color: #22c55e; border-bottom: 1px solid #14532d; position: sticky; top: 0; background: #060a08;
     cursor: pointer; user-select: none; white-space: nowrap; }
   .term th:hover { color: #86efac; }
@@ -19,7 +21,7 @@
   .term th.sorted.desc::after { content: "▼"; }
   .term th.sorted.asc::after { content: "▲"; }
   .term th:nth-child(1), .term th:nth-child(2), .term td:nth-child(1), .term td:nth-child(2) { text-align: left; }
-  .term td { padding: 7px 10px; text-align: right; border-bottom: 1px solid #0d2818; white-space: nowrap; }
+  .term td { padding: 8px 13px; text-align: right; border-bottom: 1px solid #0d2818; white-space: nowrap; }
   .term td.sym { font-weight: 700; color: #e7ffee; }
   .term td.sym a { color: inherit; text-decoration: none; }
   .term td.sym a:hover { color: #4ade80; text-decoration: underline; }
@@ -61,9 +63,10 @@
       <span class="tx-k">SIZE</span> = extra strike discount only when your lot
       is big vs the coin's pool ("&mdash;" = none; every strike already sits 5%
       under spot &mdash; the buyer's edge) &middot;
-      <span class="tx-k">24H / 7D / 2W</span> = price change over 24 hours /
-      7 days / the 14-day contract term (7D and 2W build from our own daily
-      tape history, started Aug 11 &mdash; "&mdash;" until deep enough) &middot;
+      <span class="tx-k">24H % / 7D % / 2W %</span> = spot price change over 24
+      hours / 7 days / 14 days (one full contract term). 24H is live; 7D and
+      2W build from our own daily tape history, recording since Aug 11 &mdash;
+      "&hellip;" until then, <b>7D live Aug 18, 2W live Aug 25</b> &middot;
       <span class="tx-k">MCAP</span> = market cap &middot;
       <span class="tx-k">LIQ</span> = pool liquidity &middot;
       memes only, tradeable only &mdash; launchpad-born or meme-tagged coins;
@@ -74,20 +77,20 @@
     </div>
   </div>
   <div class="term-status" id="term-status">CONNECTING&hellip;</div>
-  <table>
+  <div class="term-scroll"><table>
     <thead><tr id="term-headrow">
       <th data-k="">#</th><th data-k="symbol">COIN</th>
       <th data-k="price" title="Spot price per single coin, live">PRICE</th>
       <th data-k="spc" title="Our contract price per coin — 14-day forward; we set it, it moves with the market; buyer pays it in full, seller nets it minus the 10% commission">STRIKE</th>
       <th data-k="net" title="Contract value of the standard 1,000,000-coin lot at the strike">1M LOT</th>
       <th data-k="disc" title="Extra size discount in the strike beyond the standard 5% — appears when your lot is large relative to the coin's pool">SIZE</th>
-      <th data-k="ch">24H</th>
-      <th data-k="d7" title="Rolling 7-day change — live price vs our daily tape history">7D</th>
-      <th data-k="d14" title="Rolling 2-week change — the contract term — live price vs our daily tape history">2W</th>
-      <th data-k="mcap">MCAP</th><th data-k="liq">LIQ</th>
+      <th data-k="ch" title="Spot price change over the last 24 hours, live via Jupiter">24H %</th>
+      <th data-k="d7" title="Spot price change over the last 7 days — live price vs our daily tape history; goes live Aug 18, 2026">7D %</th>
+      <th data-k="d14" title="Spot price change over the last 14 days — one full contract term; goes live Aug 25, 2026">2W %</th>
+      <th data-k="mcap" title="Market cap">MCAP</th><th data-k="liq" title="Pool liquidity">LIQ</th>
     </tr></thead>
     <tbody id="term-rows"></tbody>
-  </table>
+  </table></div>
   <p class="term-note">
     Sorted by MCAP by default — click any column header to sort, click again to
     flip. Bars show each value relative to the column's high. STRIKE is the
@@ -140,7 +143,7 @@
   }
   var prevPx = {};
   function pctCell(p) {
-    if (p === null || p === undefined || isNaN(p)) return "<td>—</td>";
+    if (p === null || p === undefined || isNaN(p)) return "<td class='dim' title='Our daily tape history is still building for this window'>…</td>";
     return "<td class='" + (p >= 0 ? "up" : "dn") + "'>" +
       (p >= 0 ? "+" : "") + p.toFixed(1) + "%</td>";
   }
