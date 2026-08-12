@@ -3,7 +3,8 @@
   main, #MainContent { background: #060a08; }
   .term-wrap { background: #060a08; color: #c8ffd9; font-family: "SF Mono", "Menlo", "Consolas", monospace;
     margin: 0 -50vw; padding: 0 50vw 40px; min-height: 80vh; }
-  .term { max-width: 1220px; margin: 0 auto; padding-top: 26px; }
+  .term { width: min(1220px, 94vw); position: relative; left: 50%;
+    transform: translateX(-50%); padding-top: 26px; }
   .term-scroll { overflow-x: auto; scrollbar-color: #22c55e #0d2818; }
   .term-scroll::-webkit-scrollbar { height: 10px; }
   .term-scroll::-webkit-scrollbar-track { background: #0d2818; }
@@ -14,8 +15,9 @@
     border-bottom: 1px solid #14532d; padding-bottom: 10px; margin-bottom: 4px; flex-wrap: wrap; gap: 6px; }
   .term-head h2 { margin: 0; font-size: 1.15em; letter-spacing: .25em; color: #4ade80; font-weight: 700; }
   .term-head .term-sub { font-size: .72em; opacity: .65; letter-spacing: .1em; }
-  .term table { width: max-content; min-width: 100%; border-collapse: collapse; font-size: .8em; }
-  .term th { text-align: right; padding: 9px 13px; font-size: .85em; letter-spacing: .12em;
+  .term table { width: max-content; min-width: 100%; border-collapse: collapse;
+    font-size: clamp(8px, 0.92vw, 13.5px); }
+  .term th { text-align: right; padding: .7em .9em; font-size: .85em; letter-spacing: .05em;
     color: #22c55e; border-bottom: 1px solid #14532d; position: sticky; top: 0; background: #060a08;
     cursor: pointer; user-select: none; white-space: nowrap; }
   .term th:hover { color: #86efac; }
@@ -24,9 +26,8 @@
   .term th.sorted.desc::after { content: "▼"; }
   .term th.sorted.asc::after { content: "▲"; }
   .term th:nth-child(1), .term th:nth-child(2), .term td:nth-child(1), .term td:nth-child(2) { text-align: left; }
-  .term th:nth-child(2), .term td:nth-child(2) { padding-right: 2.2em; }
-  .term th:nth-child(3), .term td:nth-child(3) { padding-right: 1.6em; }
-  .term td { padding: 8px 13px; text-align: right; border-bottom: 1px solid #0d2818; white-space: nowrap; }
+  .term th:nth-child(2), .term td:nth-child(2) { padding-right: .5em; }
+  .term td { padding: .6em .9em; text-align: right; border-bottom: 1px solid #0d2818; white-space: nowrap; }
   .term td.sym { font-weight: 700; color: #e7ffee; }
   .term td.sym a { color: inherit; text-decoration: none; }
   .term td.sym a:hover { color: #4ade80; text-decoration: underline; }
@@ -50,7 +51,6 @@
   @keyframes tickdn { 0% { background: #7f1d1d; } 100% { background: transparent; } }
   .term td.tickup { animation: tickup 1.4s ease-out; }
   .term td.tickdn { animation: tickdn 1.4s ease-out; }
-  @media (max-width: 760px) { .term table { font-size: .68em; } .term td, .term th { padding: 6px 6px; } }
 </style>
 <div class="term-wrap"><div class="term">
   <div class="term-head">
@@ -58,17 +58,20 @@
     <span class="term-sub">TOP TRADED SOLANA MEMES &middot; 24H &middot; LIVE VIA JUPITER &middot; <a href="/pages/meme-futures">SELL FORWARD &rarr;</a></span>
   </div>
   <div class="term-explain">
-    <div class="tx-big">EVERY QUOTE IS A 2-WEEK FUTURES PRICE: sell your coins
-    today at a locked price &mdash; escrowed both sides at signing, paid in SOL
-    exactly 14 days later. The pool never sees the trade.</div>
+    <div class="tx-big">EVERY QUOTE IS A 2-WEEK FUTURES PRICE ON A
+    1,000,000-COIN LOT: sell your coins today at a locked price &mdash;
+    escrowed both sides at signing, paid in SOL exactly 14 days later. The
+    pool never sees the trade.</div>
     <div class="tx-legend">
       <span class="tx-k">CONTRACT</span> = coin (first 5 letters) + expiry
       day-of-year + year &mdash; <span id="tx-ex">TRUMP2372026 expires day 237 (Aug 25)</span> &middot;
       <span class="tx-k">PRICE</span> = live spot per coin &middot;
       <span class="tx-k">STRIKE</span> = our contract price per coin &middot;
-      <span class="tx-k">BID</span> = what INSTAR pays you &middot;
-      <span class="tx-k">ASK</span> = what a buyer pays &middot;
-      the spread is the 10% commission &middot;
+      <span class="tx-k">BID (1M)</span> = what INSTAR pays you for one
+      1,000,000-coin lot &middot;
+      <span class="tx-k">ASK (1M)</span> = what a buyer pays for that same
+      lot &middot; the spread is the 10% commission &middot;
+      every contract = lots of exactly 1,000,000 coins &middot;
       <span class="tx-k">7D % / 2W %</span> = building from our daily tape
       history, live Aug 18 / Aug 25 &middot;
       memes only, tradeable only &middot; quotes firm at escrow &middot;
@@ -81,25 +84,13 @@
     <button type="button" class="term-tab" id="tab-exec">EXECUTED (1)</button>
   </div>
   <div id="view-exec" style="display:none">
-    <div class="term-scroll"><table>
-      <thead><tr><th style="text-align:left">CONTRACT</th><th style="text-align:left">COIN</th>
-        <th>LOT</th><th>STRIKE</th>
-        <th title="What the seller nets — the strike minus the 10% commission">BID</th>
-        <th title="What the buyer paid — the full strike">ASK</th>
-        <th style="text-align:left">STATUS</th><th style="text-align:left">RECEIPT</th></tr></thead>
-      <tbody>
-        <tr>
-          <td class="sym">ACM2432026</td><td>ACM</td><td>1,000,000</td><td>$500.00</td>
-          <td class="net">$450.00</td><td class="net">$500.00</td>
-          <td style="text-align:left">ESCROWED &middot; SETTLES AUG 31, 2026 &middot; 12:00 EST</td>
-          <td style="text-align:left" class="dim">full receipt trail publishes at settlement</td>
-        </tr>
-      </tbody>
-    </table></div>
-    <p class="term-note">Contract One &mdash; the first SOL meme coin futures
-    contract ever written (executed Aug 11, 2026, under founding test terms).
-    Coins verified in escrow on-chain and watched daily. Every future cleared
-    contract joins this tab with its escrow link and sealed record hash.</p>
+    <div class="term-tabs" id="exec-filter"></div>
+    <div id="exec-table"></div>
+    <p class="term-note">Every executed contract lives here, grouped by coin
+    &mdash; click a coin for its contracts. Contract One (executed Aug 11,
+    2026, under founding test terms) opened the book. Coins verified in
+    escrow on-chain and watched daily; every cleared contract joins with its
+    escrow link and sealed record hash at settlement.</p>
   </div>
   <div id="view-live">
   <div class="term-scroll"><table>
@@ -108,8 +99,8 @@
       <th data-k="" title="Contract ticker: first 5 letters of the coin + expiry day-of-year + year. Every contract written today runs exactly 14 days.">CONTRACT</th>
       <th data-k="price" title="Spot price per single coin, live">PRICE</th>
       <th data-k="spc" title="STRIKE — our 14-day contract price per coin, side by side with spot">STRIKE</th>
-      <th data-k="bid" title="BID — what INSTAR pays you right now for the 1,000,000-coin contract: the strike minus the 10% commission">BID</th>
-      <th data-k="net" title="ASK — what a buyer pays to own the 1,000,000-coin contract: the full strike. The bid/ask spread is the 10% commission.">ASK</th>
+      <th data-k="bid" title="BID — what INSTAR pays you right now for one 1,000,000-coin contract: the strike minus the 10% commission">BID (1M)</th>
+      <th data-k="net" title="ASK — what a buyer pays to own one 1,000,000-coin contract: the full strike. The bid/ask spread is the 10% commission.">ASK (1M)</th>
       <th data-k="ch" title="Spot price change over the last 24 hours, live via Jupiter">24H %</th>
       <th data-k="d7" title="Spot price change over the last 7 days — live price vs our daily tape history; goes live Aug 18, 2026">7D %</th>
       <th data-k="d14" title="Spot price change over the last 14 days — one full contract term; goes live Aug 25, 2026">2W %</th>
@@ -160,6 +151,49 @@
   }
   document.getElementById("tab-live").addEventListener("click", function () { showTab("live"); });
   document.getElementById("tab-exec").addEventListener("click", function () { showTab("exec"); });
+
+  // ---- Executed book: coin -> contracts hierarchy (data-driven; append here as trades clear)
+  var EXEC = {
+    "ACM": [
+      { ticker: "ACM2432026", lot: "1,000,000", strike: "$500.00", bid: "$450.00", ask: "$500.00",
+        status: "ESCROWED · SETTLES AUG 31, 2026 · 12:00 EST",
+        receipt: "full receipt trail publishes at settlement" }
+    ]
+  };
+  var execTotal = Object.keys(EXEC).reduce(function (n, c) { return n + EXEC[c].length; }, 0);
+  document.getElementById("tab-exec").textContent = "EXECUTED (" + execTotal + ")";
+  var execFilter = "ALL";
+  function renderExec() {
+    var coins = Object.keys(EXEC);
+    var chips = ["ALL"].concat(coins).map(function (c) {
+      return "<button type='button' class='term-tab" + (execFilter === c ? " active" : "") +
+        "' data-f='" + c + "'>" + c + "</button>";
+    }).join(" ");
+    document.getElementById("exec-filter").innerHTML = chips;
+    var html = "<div class='term-scroll'><table><thead><tr>" +
+      "<th style='text-align:left'>COIN</th><th style='text-align:left'>CONTRACT</th>" +
+      "<th>LOT</th><th>STRIKE</th>" +
+      "<th title='What the seller nets — the strike minus the 10% commission'>BID</th>" +
+      "<th title='What the buyer paid — the full strike'>ASK</th>" +
+      "<th style='text-align:left'>STATUS</th><th style='text-align:left'>RECEIPT</th></tr></thead><tbody>";
+    coins.forEach(function (c) {
+      if (execFilter !== "ALL" && execFilter !== c) return;
+      EXEC[c].forEach(function (k) {
+        html += "<tr><td class='sym'>" + c + "</td><td class='sym'>" + k.ticker + "</td><td>" +
+          k.lot + "</td><td>" + k.strike +
+          "</td><td class='net'>" + k.bid + "</td><td class='net'>" + k.ask +
+          "</td><td style='text-align:left'>" + k.status +
+          "</td><td style='text-align:left' class='dim'>" + k.receipt + "</td></tr>";
+      });
+    });
+    html += "</tbody></table></div>";
+    document.getElementById("exec-table").innerHTML = html;
+    document.getElementById("exec-filter").onclick = function (e) {
+      var f = e.target.getAttribute && e.target.getAttribute("data-f");
+      if (f) { execFilter = f; renderExec(); }
+    };
+  }
+  renderExec();
   function memeish(t) {
     if (EXCLUDE.has(t.symbol)) return false;
     if (t.freezeAuthority || t.mintAuthority) return false; // hard veto — not shown at all
@@ -285,7 +319,7 @@
         document.getElementById("term-status").innerHTML =
           rows.length + " MEMES · UPDATED " + new Date().toLocaleTimeString() +
           " · LIVE, REFRESHES EVERY 30S · CLICK A COLUMN TO SORT" +
-          "<br>BID = WHAT YOU SELL AT · ASK = WHAT YOU BUY AT · 14-DAY CONTRACTS";
+          "<br>BID = WHAT YOU SELL AT · ASK = WHAT YOU BUY AT · EVERY QUOTE = ONE 1,000,000-COIN LOT · 14 DAYS";
       })
       .catch(function () {
         document.getElementById("term-status").textContent = "FEED UNAVAILABLE — RETRYING";

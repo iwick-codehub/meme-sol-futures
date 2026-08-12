@@ -1,5 +1,11 @@
 # Versions — meme-sol-futures
 
+## 0.17.0 — 2026-08-11
+- LAYOUT ROOT CAUSE FIXED (measured, not guessed): the Shopify theme confines page content to a ~726px article column — the terminal content now breaks out and centers on the viewport (width min(1220px, 94vw)); table font viewport-clamped, em-based paddings; verified fits:true at 1150px with MCAP on-screen; visible green scrollbar as fallback
+- 1,000,000-COIN LOT made unmissable: banner headline, BID (1M)/ASK (1M) headers, legend line, status line
+- EXECUTED tab rebuilt per Todd: flat contract list (ALL/ACM filter chips on top), no drill-down hiding details; count computed from data
+- MCAP last column (live board); visual-inspection-before-commit law adopted
+
 ## 0.16.0 — 2026-08-11
 - Terminal: EXECUTED tab added (LIVE BOARD / EXECUTED toggle) — seeded with Contract One as ACM2432026 (Aug 31 = day 243): lot, strike, ESCROWED status, receipt-publishes-at-settlement; cleared trades join with escrow link + sealed record hash
 - Ticker example in the legend now computed by the page daily (TRUMP + rolling DOY + date) — never goes stale
