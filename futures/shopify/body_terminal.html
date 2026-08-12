@@ -55,6 +55,8 @@
       <span class="tx-k">24H</span> = price change, 24 hours &middot;
       <span class="tx-k">MCAP</span> = market cap &middot;
       <span class="tx-k">LIQ</span> = pool liquidity &middot;
+      only tradeable coins are shown &mdash; anything with a live freeze or mint
+      authority fails our screen and never appears &middot;
       quotes indicative &mdash; firm at escrow &middot;
       <a href="/pages/meme-futures">how contracts work &rarr;</a>
     </div>
@@ -89,13 +91,15 @@
 (function () {
   var EXCLUDE = new Set(["SOL","WSOL","USDC","USDT","USDS","USD1","USDe","sUSDe","EURC","PYUSD","FDUSD",
     "cbBTC","WBTC","zBTC","xBTC","tBTC","ETH","WETH","whETH","JLP","JitoSOL","mSOL","bSOL","jupSOL","INF",
-    "JUP","RAY","ORCA","PYTH","JTO","W","TNSR","DRIFT","KMNO","RENDER","HNT","MNDE","CLOUD","ZEUS","IO","TRX","CRCLx"]);
+    "JUP","RAY","ORCA","PYTH","JTO","W","TNSR","DRIFT","KMNO","RENDER","HNT","MNDE","CLOUD","ZEUS","IO","TRX","CRCLx",
+    "XAUt0","XAUT0","ZEC","HYPE","ORE","MET"]);
   var BADTAGS = ["lst","stablecoin","token-2022"];
   var ACM_MINT = "4PRz3EwhbjrrX6YksMDuUzrXT51pr7CQtXNCravhpump";
   var rows = [], sortKey = "mcap", sortDir = -1, userSorted = false;
 
   function memeish(t) {
     if (EXCLUDE.has(t.symbol)) return false;
+    if (t.freezeAuthority || t.mintAuthority) return false; // hard veto — not shown at all
     var tags = t.tags || [];
     for (var i = 0; i < BADTAGS.length; i++) if (tags.indexOf(BADTAGS[i]) >= 0) return false;
     return !!(t.usdPrice && t.liquidity);
@@ -193,6 +197,9 @@
                    mcap: t.mcap || 0, liq: t.liquidity || 0, net: net, disc: disc,
                    acm: t.id === ACM_MINT, mint: t.id };
         });
+        var acmRows = rows.filter(function (r) { return r.acm; });
+        rows = acmRows.concat(
+          rows.filter(function (r) { return !r.acm; }).slice(0, 30 - acmRows.length));
         render();
         rows.forEach(function (r) { prevPx[r.mint] = r.price; });
         document.getElementById("term-status").textContent =
