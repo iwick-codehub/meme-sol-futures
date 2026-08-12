@@ -63,10 +63,11 @@ is the moat.
 
 ## What the house earns
 
-Flow, not direction: 1.5 SOL flat per contract (covers all costs) + 2% of
-the coins as the float — a zero-carried, house-aligned lottery book across
-every coin we list. The venue's directional views live in the treasury (all
-fees held in SOL) and the float, never in the instrument menu.
+Flow, not direction: the flat all-in 10% spread on every cleared strike,
+paid in SOL (rev. 2026-08-12: the former 2% in-kind float and flat writing
+fee are retired/folded — one number is the whole price). The venue's
+directional views live only in the disclosed principal book, never in the
+instrument menu.
 
 ## Honest risks — named, not hidden
 

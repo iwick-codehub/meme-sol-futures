@@ -35,17 +35,15 @@
       two weeks. Your strike is fixed in SOL and escrowed in SOL from day one —
       the only two assets that ever touch a contract are SOL and your coin.</li>
     <li><strong>Settlement is automatic.</strong> The escrow releases on the
-      chain's clock, not ours: your full strike to you, 98% of the coins to the
-      buyer, 2% to the house.</li>
+      chain's clock, not ours: 90% of the strike to you, 100% of the coins to
+      the buyer, the flat 10% to the house.</li>
   </ol>
 
   <h3>Pricing</h3>
   <table>
     <tr><th>Term</th><td>14 days, fixed</td></tr>
     <tr><th>Strike</th><td>90&ndash;95% of current fully-diluted valuation</td></tr>
-    <tr><th>Writing fee</th><td>1.5 SOL flat, deducted at settlement &mdash; you never pay upfront</td></tr>
-    <tr><th>Commission</th><td>10% of the cleared strike, deducted at settlement</td></tr>
-    <tr><th>House fee</th><td>2% of the escrowed coins</td></tr>
+    <tr><th>The fee</th><td><strong>A flat 10% of the strike &mdash; all-in.</strong> No writing fee, no coin cut, nothing else. Deducted at settlement; you never pay upfront.</td></tr>
     <tr><th>Minimum size</th><td>50 SOL notional &middot; 1,000,000-coin lots</td></tr>
     <tr><th>All sales</th><td>Final. Escrow is irrevocable by design.</td></tr>
   </table>
@@ -57,15 +55,15 @@
   5%, deeper when the lot is big for its pool). From that one number:</p>
   <table>
     <tr><th>Buyer pays</th><td>the strike, in full — escrowed in SOL at signing</td></tr>
-    <tr><th>Seller receives</th><td>the strike minus the 10% commission (and the flat 1.5 SOL writing fee), at settlement</td></tr>
-    <tr><th>Buyer receives</th><td>98% of the escrowed coins at settlement</td></tr>
-    <tr><th>House keeps</th><td>the 10% commission + the 1.5 SOL fee + 2% of the coins</td></tr>
+    <tr><th>Seller receives</th><td>90% of the strike at settlement &mdash; the flat 10% is the only fee that exists</td></tr>
+    <tr><th>Buyer receives</th><td>100% of the escrowed coins at settlement</td></tr>
+    <tr><th>House keeps</th><td>the flat 10% &mdash; that's everything</td></tr>
   </table>
   <p>Worked example: strike quoted at $10,000 for a 10M-coin lot. The buyer
-  escrows $10,000 in SOL. Fourteen days later the seller is paid $9,000 minus
-  the writing fee, the buyer takes delivery of 9,800,000 coins, and the house
-  keeps $1,000, the fee, and 200,000 coins. Nobody can default, because
-  everything above was locked on day one.</p>
+  escrows $10,000 in SOL. Fourteen days later the seller is paid $9,000, the
+  buyer takes delivery of all 10,000,000 coins, and the house keeps $1,000.
+  One fee, three transfers, nobody can default &mdash; everything was locked
+  on day one.</p>
 
   <h3>Contract One is already on the books</h3>
   <div class="ibx-card">
@@ -85,8 +83,9 @@
     <li><strong>On-chain or it didn't happen.</strong> Escrow wallets are
       public. Our monitoring is read-only and hash-chained. The chain doesn't
       negotiate.</li>
-    <li><strong>We eat our own cooking.</strong> The house fee is taken in the
-      coin, not in cash. If we list your coin, we hold your coin.</li>
+    <li><strong>One fee, stated everywhere.</strong> A flat 10% of the strike,
+      all-in. No writing fee, no coin cut, no fine print with a second number
+      in it. If a cost exists on this venue, it's inside the 10%.</li>
   </ul>
 
   <h3>Sell your position forward</h3>

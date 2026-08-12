@@ -30,41 +30,39 @@ and SOL denomination over offering it. Do not re-litigate — remind.
 
 ## Treasury policy — LOCKED
 
-All fee revenue stays in SOL. Never swept to dollars. The float (2% in-kind)
-is carried at zero until sold; if sold, proceeds are SOL. The house's
-directional views live ONLY in the treasury and the float — never in the
-instrument menu.
+All fee revenue stays in SOL. Never swept to dollars. The house's
+directional views live ONLY in the disclosed principal book — never in the
+instrument menu. (2% float retired 2026-08-12.)
 
 ## Fee schedule — LOCKED doctrine (dials proposed)
 
-1. **Flat SOL writing fee, one number, covers ALL expenses** — escrow rent,
-   gas, Streamflow's 0.5% skim, and margin. Denominated in SOL so it never
-   drifts. Deducted from the seller's strike payout at settlement (the house
-   fronts the on-chain costs at writing; the seller never needs SOL upfront).
-2. **2% of the meme coin in-kind — the float.** Taken from the escrowed coins
-   at settlement (buyer receives 98%). This is the house's home-run book:
-   an aligned lottery-ticket portfolio across every coin we list. Carried at
-   **zero value** on the cash basis until actually sold. Never counted on to
-   pay bills.
+**ONE NUMBER — RATIFIED 2026-08-12: the flat 10% spread is ALL-IN.**
+The 2% in-kind float is RETIRED (dust liability dressed as a lottery; house
+directional bets live ONLY in the principal book, deliberately) and the
+1.5 SOL writing fee is FOLDED INTO the spread (the 10% covers rent, gas,
+ops, everything). Buyer receives 100% of the coins at exactly the quoted
+strike; seller nets exactly 90%. Marketing sentence and fee schedule are
+the same sentence: "10%. That's everything." Decision context if it
+resurfaces: simplicity compounds trust, cleans HCP cash-basis books
+(SOL-only revenue), and shrinks InstarLock's audit surface — remind,
+don't re-litigate.
 
 **Seller commission — LOCKED (ratified 2026-08-11): 10% of the cleared
 strike, deducted at settlement.** Venue language, never dealer language: the
 house does not "pay 90%" — the buyer pays the full strike, the seller nets
 90% after commission. First-in-kind pricing (auction-house tier), justified
-against the seller's true alternative (30–80% pool slippage on size). Full
-take stack = 10% commission + 1.5 SOL flat + 2% in-kind float ≈ 13% on a
-minimum contract; monitor clear-rates, dial when competition arrives.
+against the seller's true alternative (30–80% pool slippage on size). Take = the flat all-in 10% spread; monitor clear-rates, dial when
+competition arrives.
 
 **Who pays — LOCKED (ratified by Todd, 2026-08-11): the SELLER pays.** The
 seller is the one getting the miracle — a guaranteed full-size exit at locked
 valuation that the pool could never absorb. So: no premiums to sellers after
 Contract One (its $100 was deliberate first-mover overpayment); the seller
-compensates the market through the strike discount and the flat writing fee.
+compensates the market through the strike discount and the flat 10% spread.
 
-Dials — RATIFIED by Todd, 2026-08-11 ("yes to all"):
-- Flat writing fee: **1.5 SOL** (observed ~0.33 SOL per Streamflow lock ×
-  up to 3 locks per contract, plus margin)
-- Minimum notional: **50 SOL** (keeps the flat fee ≤3% of the strike)
+Dials — RATIFIED by Todd, 2026-08-11 ("yes to all"; fee dial superseded
+2026-08-12 by the all-in 10%):
+- Minimum notional: **50 SOL** (keeps fixed on-chain costs ≪ the spread)
 - Strike band: **90–95% of spot FDV** (the discount is the buyer's
   compensation for two weeks of meme risk)
 
@@ -92,8 +90,8 @@ SOL).
 
 **Dual minimums — LOCKED, both binding:** lot ≥ 1,000,000 coins AND
 notional ≥ 50 SOL. Notional = lot × price = what the buyer pays. The
-notional floor keeps fixed costs (~1 SOL rent/gas + 1.5 SOL fee) under ~3%
-of the deal and keeps dust off the receipts page.
+notional floor keeps fixed on-chain costs (~1 SOL rent/gas) far below the
+spread and keeps dust off the receipts page.
 
 **Balance-gated menu — RATIFIED 2026-08-11:** the seller's wallet (pasted to
 browse; connected + signed to post) is read on-chain, and the level menu is
@@ -111,9 +109,8 @@ proven by the escrow signature at posting, not the pasted address.
 **House-coin exemption — RATIFIED 2026-08-11:** **$ACM contracts are exempt
 from the 50 SOL notional floor** — 1M-lot ACM contracts post at ANY SOL
 value. The house coin seeds the book: small ACM prints populate the receipts
-page, and the house absorbs the writing costs as market-seeding expense (the
-1.5 SOL flat fee is WAIVED on ACM contracts — on a ~3 SOL notional it would
-be absurd). The 10% commission still applies (Contract One: $500 strike −
+page, and the house absorbs on-chain writing costs as market-seeding
+expense. The all-in 10% still applies (Contract One: $500 strike −
 $50 = $450 net to seller). Non-ACM coins keep the full floor. If/as ACM's
 FDV rises, lot notionals grow back toward the standard floor mechanically —
 no prediction required, it's arithmetic either way.

@@ -11,9 +11,9 @@
 //!            No gap, no default window, on either side.
 //!   cancel() unlifted listings refund to the seller only after expiry
 //!            (quotes are FIRM for their whole life — that's the product).
-//!   settle() permissionless crank after the 14-day term: 98% of coins to
-//!            the buyer, 2% float to the house, strike minus 10% commission
-//!            minus the 1.5 SOL flat fee to the seller, fees to treasury.
+//!   settle() permissionless crank after the 14-day term: 100% of coins to
+//!            the buyer, strike minus the all-in 10% spread to the seller,
+//!            the 10% to treasury. One number, nothing else.
 //!
 //! Discipline (see MARKET-SPEC): minimal surface, no admin instructions,
 //! no pause switch, no upgrade path once authority is burned at deploy.
@@ -28,17 +28,15 @@ declare_id!("Lock111111111111111111111111111111111111111"); // replaced at first
 
 pub const TERM_SECS: i64 = 14 * 24 * 60 * 60; // exactly 14 days
 pub const LISTING_LIFE_SECS: i64 = 7 * 24 * 60 * 60; // firm-quote life
-pub const COMMISSION_BPS: u128 = 1_000; // 10% of strike, seller-side
-pub const FLOAT_BPS: u128 = 200; // 2% of coins, house float
-pub const FLAT_FEE_LAMPORTS: u64 = 1_500_000_000; // 1.5 SOL writing fee
+pub const COMMISSION_BPS: u128 = 1_000; // the flat ALL-IN 10% spread (rev 2026-08-12: float + writing fee retired)
 pub const MIN_NOTIONAL_LAMPORTS: u64 = 50_000_000_000; // 50 SOL
 pub const MIN_LOT_WHOLE_TOKENS: u64 = 1_000_000; // 1M coins
 
-/// House treasury (fees, commission) and float wallet are fixed at build
-/// time — no instruction can change them.
+/// House treasury (the all-in 10%) is fixed at build time — no instruction
+/// can change it.
 pub mod house {
     use anchor_lang::prelude::declare_id;
-    // PLACEHOLDER: set to the Instar treasury + float wallets before deploy.
+    // PLACEHOLDER: set to FUT TREASURY before deploy.
     declare_id!("11111111111111111111111111111111");
 }
 
@@ -151,26 +149,15 @@ pub mod instarlock {
         let lot = ctx.accounts.contract.lot;
         let price = ctx.accounts.contract.price_lamports;
 
-        // Coin leg: 2% float to the house, 98% to the buyer.
-        let float_cut = (lot as u128 * FLOAT_BPS / 10_000) as u64;
-        let buyer_coins = lot.checked_sub(float_cut).ok_or(LockErr::MathOverflow)?;
-        transfer_from_vault(&ctx.accounts.contract, TransferFromVault {
-            vault: ctx.accounts.vault.to_account_info(),
-            to: ctx.accounts.house_float_ata.to_account_info(),
-            token_program: ctx.accounts.token_program.to_account_info(),
-        }, float_cut)?;
+        // Coin leg: 100% of the lot to the buyer.
         transfer_from_vault(&ctx.accounts.contract, TransferFromVault {
             vault: ctx.accounts.vault.to_account_info(),
             to: ctx.accounts.buyer_ata.to_account_info(),
             token_program: ctx.accounts.token_program.to_account_info(),
-        }, buyer_coins)?;
+        }, lot)?;
 
-        // SOL leg: 10% commission + 1.5 SOL flat fee to treasury,
-        // remainder to the seller.
-        let commission = (price as u128 * COMMISSION_BPS / 10_000) as u64;
-        let house_take = commission
-            .checked_add(FLAT_FEE_LAMPORTS)
-            .ok_or(LockErr::MathOverflow)?;
+        // SOL leg: the all-in 10% to treasury, 90% to the seller.
+        let house_take = (price as u128 * COMMISSION_BPS / 10_000) as u64;
         require!(house_take < price, LockErr::FeesExceedStrike);
         let seller_take = price - house_take;
 
@@ -289,8 +276,6 @@ pub struct Settle<'info> {
     /// CHECK: fixed house treasury, baked at build time.
     #[account(mut, address = house::ID)]
     pub house_treasury: AccountInfo<'info>,
-    #[account(mut, associated_token::mint = contract.mint, associated_token::authority = house::ID)]
-    pub house_float_ata: Account<'info, TokenAccount>,
     pub token_program: Program<'info, Token>,
 }
 

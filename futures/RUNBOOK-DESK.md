@@ -28,9 +28,9 @@ wallet. Todd is the disclosed principal buyer on all ACM bids.*
    Point a watcher at the escrow (copy `watcher.py` pattern; INTACT =
    coins + SOL both present).
 8. **Settlement day** (expiry timestamp, to the hour): from escrow —
-   strike × 90% in SOL → seller · 98% of coins → buyer · strike × 10% →
-   treasury · 2% of coins → float wallet. (ACM exemption: no 1.5 SOL flat
-   fee.) Each transfer is a human-signed Phantom transaction, checked off
+   strike × 90% in SOL → seller · 100% of coins → buyer · strike × 10% →
+   treasury. The 10% is all-in (no separate writing fee, no coin cut).
+   Each transfer is a human-signed Phantom transaction, checked off
    against the sealed record.
 9. **Publish the receipt**: escrow Solscan link + sealed record hash go on
    the public receipts trail. The ticker retires.
@@ -42,8 +42,8 @@ wallet. Todd is the disclosed principal buyer on all ACM bids.*
       several simultaneous hits and state a max exposure)
 - [ ] Escrow-wallet creation discipline per the ACM lock record (fund gas,
       label by ticker, record address before use)
-- [ ] Treasury + float wallet addresses designated (also needed for
-      InstarLock's build-time constants later)
+- [ ] Treasury wallet address designated (also an InstarLock build-time
+      constant later)
 - [ ] Counsel sign-off — the board is now a public solicitation to trade
       with a disclosed principal; this is the conversation, have it first
 

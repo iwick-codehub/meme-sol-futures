@@ -1,5 +1,9 @@
 # Versions — meme-sol-futures
 
+## 0.20.0 — 2026-08-12
+- ONE NUMBER ratified: the flat 10% spread is ALL-IN — 2% in-kind float RETIRED (dust liability; directional bets live only in the disclosed principal book) and 1.5 SOL writing fee FOLDED IN; buyer receives 100% of coins at the quoted strike, seller nets exactly 90%
+- Swept through everything: MARKET-SPEC (+ remind-don't-relitigate note), THESIS, RUNBOOK (settlement = 3 transfers), WALLETS register (FUT FLOAT wallet retired pre-birth — only BUYER + TREASURY needed), InstarLock program (float leg + fee constant deleted; smaller audit surface), meme-futures page (pricing table, waterfall, worked example, trust bullets), terminal fine print — all published live
+
 ## 0.19.2 — 2026-08-12
 - Two-sided OPEN ORDERS ratified: posted bids escrow SOL up to a declared cap (mirror of the firm-ask law), partial fills by lot, every fill = a tickered physical contract; no coinless all-SOL variant (= cash settlement, retired); venue vs principal accounting law — house-principal orders are SPEND, never commission revenue
 
