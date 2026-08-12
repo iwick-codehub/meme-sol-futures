@@ -22,7 +22,8 @@
   .term th.sorted.asc::after { content: "▲"; }
   .term th:nth-child(1), .term th:nth-child(2), .term td:nth-child(1), .term td:nth-child(2) { text-align: left; }
   .term th:nth-child(2), .term td:nth-child(2) { min-width: 12.5em; }
-  .term th:nth-child(3), .term td:nth-child(3) { min-width: 11em; }
+  .term th:nth-child(3), .term td:nth-child(3) { min-width: 10em; }
+  .term th:nth-child(4), .term td:nth-child(4) { min-width: 10em; }
   .term td { padding: 8px 13px; text-align: right; border-bottom: 1px solid #0d2818; white-space: nowrap; }
   .term td.sym { font-weight: 700; color: #e7ffee; }
   .term td.sym a { color: inherit; text-decoration: none; }
@@ -58,6 +59,7 @@
       <span class="tx-k">CONTRACT</span> = coin (first 5 letters) + expiry
       day-of-year + year &mdash; TRUMP2372026 expires day 237 (Aug 25) &middot;
       <span class="tx-k">PRICE</span> = live spot per coin &middot;
+      <span class="tx-k">STRIKE</span> = our contract price per coin &middot;
       <span class="tx-k">BID</span> = what INSTAR pays you &middot;
       <span class="tx-k">ASK</span> = what a buyer pays &middot;
       the spread is the 10% commission &middot;
@@ -73,6 +75,7 @@
       <th data-k="symbol" title="The coin — click for its DEX page">COIN</th>
       <th data-k="" title="Contract ticker: first 5 letters of the coin + expiry day-of-year + year. Every contract written today runs exactly 14 days.">CONTRACT</th>
       <th data-k="price" title="Spot price per single coin, live">PRICE</th>
+      <th data-k="spc" title="STRIKE — our 14-day contract price per coin, side by side with spot">STRIKE</th>
       <th data-k="bid" title="BID — what INSTAR pays you right now for the 1,000,000-coin contract: the strike minus the 10% commission">BID</th>
       <th data-k="net" title="ASK — what a buyer pays to own the 1,000,000-coin contract: the full strike. The bid/ask spread is the 10% commission.">ASK</th>
       <th data-k="ch" title="Spot price change over the last 24 hours, live via Jupiter">24H %</th>
@@ -171,6 +174,7 @@
         "<td class='" + (prevPx[r.mint] !== undefined && r.price > prevPx[r.mint] ? "tickup"
           : prevPx[r.mint] !== undefined && r.price < prevPx[r.mint] ? "tickdn" : "") +
           "' style='" + bar(r.price, mx.price, "rgba(74,222,128,.10)") + "'>" + px(r.price) + "</td>" +
+        "<td class='net'>" + (r.spc !== null ? px(r.spc) : "—") + "</td>" +
         "<td class='net'>" + (r.bid !== null ? "$" + fmt(r.bid) : "—") + "</td>" +
         "<td class='net' style='" + bar(r.net, mx.net, "rgba(251,191,36,.14)") + "'>" +
           (r.net !== null ? "$" + fmt(r.net) : "—") + "</td>" +
