@@ -32,6 +32,10 @@
   .term td.net { color: #fbbf24; font-weight: 700; }
   .term .term-note { font-size: .68em; opacity: .6; margin-top: 14px; line-height: 1.7; }
   .term .term-status { font-size: .72em; opacity: .8; margin: 8px 0; letter-spacing: .1em; }
+  .term .term-tabs { margin: 14px 0 4px; }
+  .term .term-tab { background: transparent; border: 1px solid #14532d; color: #4ade80;
+    font: inherit; font-size: .78em; letter-spacing: .18em; padding: 9px 20px; cursor: pointer; }
+  .term .term-tab.active { background: #14532d; color: #e7ffee; }
   .term .term-explain { border: 1px solid #14532d; background: #08120c; padding: 12px 16px; margin: 12px 0 4px; }
   .term .term-explain .tx-big { color: #fbbf24; font-weight: 700; font-size: .85em; letter-spacing: .08em; }
   .term .term-explain .tx-legend { font-size: .7em; opacity: .8; margin-top: 8px; line-height: 1.8; }
@@ -57,7 +61,7 @@
     exactly 14 days later. The pool never sees the trade.</div>
     <div class="tx-legend">
       <span class="tx-k">CONTRACT</span> = coin (first 5 letters) + expiry
-      day-of-year + year &mdash; TRUMP2372026 expires day 237 (Aug 25) &middot;
+      day-of-year + year &mdash; <span id="tx-ex">TRUMP2372026 expires day 237 (Aug 25)</span> &middot;
       <span class="tx-k">PRICE</span> = live spot per coin &middot;
       <span class="tx-k">STRIKE</span> = our contract price per coin &middot;
       <span class="tx-k">BID</span> = what INSTAR pays you &middot;
@@ -70,6 +74,28 @@
     </div>
   </div>
   <div class="term-status" id="term-status">CONNECTING&hellip;</div>
+  <div class="term-tabs">
+    <button type="button" class="term-tab active" id="tab-live">LIVE BOARD</button>
+    <button type="button" class="term-tab" id="tab-exec">EXECUTED (1)</button>
+  </div>
+  <div id="view-exec" style="display:none">
+    <div class="term-scroll"><table>
+      <thead><tr><th style="text-align:left">CONTRACT</th><th style="text-align:left">COIN</th>
+        <th>LOT</th><th>STRIKE</th><th style="text-align:left">STATUS</th><th style="text-align:left">RECEIPT</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="sym">ACM2432026</td><td>ACM</td><td>1,000,000</td><td>$500.00</td>
+          <td style="text-align:left">ESCROWED &middot; SETTLES AUG 31, 2026 &middot; 12:00 EST</td>
+          <td style="text-align:left" class="dim">full receipt trail publishes at settlement</td>
+        </tr>
+      </tbody>
+    </table></div>
+    <p class="term-note">Contract One &mdash; the first SOL meme coin futures
+    contract ever written (executed Aug 11, 2026, under founding test terms).
+    Coins verified in escrow on-chain and watched daily. Every future cleared
+    contract joins this tab with its escrow link and sealed record hash.</p>
+  </div>
+  <div id="view-live">
   <div class="term-scroll"><table>
     <thead><tr id="term-headrow">
       <th data-k="symbol" title="The coin — click for its DEX page">COIN</th>
@@ -85,6 +111,7 @@
     </tr></thead>
     <tbody id="term-rows"></tbody>
   </table></div>
+  </div>
   <p class="term-note">
     Sorted by MCAP by default — click any column header to sort, click again to
     flip. Bars show each value relative to the column's high. STRIKE is the
@@ -117,6 +144,16 @@
   function ticker(sym) {
     return sym.replace(/[^A-Za-z0-9]/g, "").slice(0, 5).toUpperCase() + DOY + EXPIRY.getFullYear();
   }
+  document.getElementById("tx-ex").textContent = ticker("TRUMP") + " expires day " +
+    DOY + " (" + EXPIRY.toLocaleDateString("en-US", { month: "short", day: "numeric" }) + ")";
+  function showTab(which) {
+    document.getElementById("view-live").style.display = which === "live" ? "" : "none";
+    document.getElementById("view-exec").style.display = which === "exec" ? "" : "none";
+    document.getElementById("tab-live").className = "term-tab" + (which === "live" ? " active" : "");
+    document.getElementById("tab-exec").className = "term-tab" + (which === "exec" ? " active" : "");
+  }
+  document.getElementById("tab-live").addEventListener("click", function () { showTab("live"); });
+  document.getElementById("tab-exec").addEventListener("click", function () { showTab("exec"); });
   function memeish(t) {
     if (EXCLUDE.has(t.symbol)) return false;
     if (t.freezeAuthority || t.mintAuthority) return false; // hard veto — not shown at all

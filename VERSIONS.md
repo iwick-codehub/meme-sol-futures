@@ -1,5 +1,10 @@
 # Versions — meme-sol-futures
 
+## 0.16.0 — 2026-08-11
+- Terminal: EXECUTED tab added (LIVE BOARD / EXECUTED toggle) — seeded with Contract One as ACM2432026 (Aug 31 = day 243): lot, strike, ESCROWED status, receipt-publishes-at-settlement; cleared trades join with escrow link + sealed record hash
+- Ticker example in the legend now computed by the page daily (TRUMP + rolling DOY + date) — never goes stale
+- Earlier tape polish this session: STRIKE per coin beside PRICE, wider CONTRACT/PRICE columns, tightened legend, INSTAR wording, plain-English BID/ASK status lines
+
 ## 0.15.0 — 2026-08-11
 - GO-LIVE PREP for the ACM bid: Todd declared as funded buyer behind the live ~$230 corridor bid; Bid Board REPRICED to the live Terminal quote (fixed $500k/$200k tiers retired — closes the 2x-overpay/adverse-selection flag); Whale tier = quoted at hit time
 - futures/RUNBOOK-DESK.md — the manual execution rails: 9-step zero-risk order of operations (verify -> quote+ticker -> fresh escrow per contract -> coins firm the quote -> buyer SOL -> seal+anchor+watcher -> settle to the hour -> publish receipt), pre-first-hit checklist (fund buyer wallet, designate treasury+float wallets, counsel sign-off), the step-5/6 gap documented as what InstarLock's atomic match eliminates
