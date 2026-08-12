@@ -52,7 +52,9 @@
     exactly 14 days later. The pool never sees the trade.</div>
     <div class="tx-legend">
       <span class="tx-k">SELL 1M</span> = your net for selling 1,000,000 coins forward (after the 10% commission) &middot;
-      <span class="tx-k">DISC</span> = what you give up vs today's spot value of that lot &middot;
+      <span class="tx-k">SIZE</span> = extra discount only when your lot is big
+      vs the coin's pool ("&mdash;" = none; every quote already includes the
+      standard &minus;14.5% all-in: 5% to the buyer + 10% commission) &middot;
       <span class="tx-k">PRICE/COIN</span> = spot price per single coin &middot;
       <span class="tx-k">24H</span> = price change, 24 hours &middot;
       <span class="tx-k">MCAP</span> = market cap &middot;
@@ -69,7 +71,7 @@
     <thead><tr id="term-headrow">
       <th data-k="">#</th><th data-k="symbol">COIN</th>
       <th data-k="net" title="What you'd net today selling 1,000,000 coins forward (14-day escrowed contract, after 10% commission)">SELL 1M</th>
-      <th data-k="disc" title="Discount of the net vs today's spot value of the lot">DISC</th>
+      <th data-k="disc" title="Extra size penalty beyond the standard -14.5% all-in cost — appears when your lot is large relative to the coin's pool">SIZE</th>
       <th data-k="price" title="Spot price per single coin">PRICE/COIN</th>
       <th data-k="ch">24H</th><th data-k="mcap">MCAP</th><th data-k="liq">LIQ</th>
     </tr></thead>
@@ -82,8 +84,10 @@
     fully-escrowed forward at the Instar desk: corridor-priced strike (floor =
     simulated pool exit from live liquidity, ceiling 95% of spot, k=0.25) minus
     the 10% commission. Flat 1.5 SOL writing fee not shown. Quotes are
-    INDICATIVE — firm quotes exist only at escrow. DISC = what the seller gives
-    up vs spot value of the lot; the pool would usually take more. All
+    INDICATIVE — firm quotes exist only at escrow. SIZE = additional size
+    penalty beyond the standard −14.5% all-in cost, appearing in proportion to
+    how much of the coin's pool your lot would consume; the pool itself would
+    usually take far more. All
     contracts write and settle in SOL. Prices via Jupiter, refreshed every 30s
     while you're on the page — a price cell flashes green/red when it moves.
     Not investment advice. <a href="/pages/meme-futures">How contracts work</a>
@@ -151,7 +155,7 @@
         "<td class='net' style='" + bar(r.net, mx.net, "rgba(251,191,36,.14)") + "'>" +
           (r.net !== null ? "$" + fmt(r.net) : "—") + "</td>" +
         "<td style='" + bar(r.disc, mx.disc, "rgba(248,113,113,.12)") + "'>" +
-          (r.disc !== null ? "−" + r.disc.toFixed(1) + "%" : "—") + "</td>" +
+          (r.disc !== null && r.disc > 0.05 ? "−" + r.disc.toFixed(1) + "%" : "—") + "</td>" +
         "<td class='" + (prevPx[r.mint] !== undefined && r.price > prevPx[r.mint] ? "tickup"
           : prevPx[r.mint] !== undefined && r.price < prevPx[r.mint] ? "tickdn" : "") +
           "' style='" + bar(r.price, mx.price, "rgba(74,222,128,.10)") + "'>" + px(r.price) + "</td>" +
@@ -198,7 +202,7 @@
             var poolExit = v / (1 + v / x);
             var strike = Math.min(0.95, poolExit / v + 0.25 * (0.95 - poolExit / v));
             net = strike * v * 0.90;
-            disc = (1 - strike * 0.90) * 100;
+            disc = (1 - strike * 0.90) * 100 - 14.5; // SIZE = penalty beyond the standard toll
           }
           var ch = (t.stats24h && t.stats24h.priceChange) || 0;
           return { symbol: t.symbol, price: t.usdPrice, ch: ch, cha: Math.abs(ch),
