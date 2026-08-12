@@ -1,5 +1,8 @@
 # Versions — meme-sol-futures
 
+## 0.19.2 — 2026-08-12
+- Two-sided OPEN ORDERS ratified: posted bids escrow SOL up to a declared cap (mirror of the firm-ask law), partial fills by lot, every fill = a tickered physical contract; no coinless all-SOL variant (= cash settlement, retired); venue vs principal accounting law — house-principal orders are SPEND, never commission revenue
+
 ## 0.19.1 — 2026-08-12
 - Phase 2 REDESIGNED on Todd's forced-cover insight: fully-covered OPTIONS market — covered calls with ATOMIC FORCED PURCHASE of the underlying inside the write tx (the corn-can't-do-this move) + cash-secured puts (the true short = buying a put, premium-only); physical settlement only, no oracle/no cash settlement (capped-cash design obsolete); write-time buy-pressure dynamic flagged as feature + gaming surface; hero book reframed as the empirical premium study for 2x launch-day calls
 

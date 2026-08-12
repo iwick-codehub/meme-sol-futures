@@ -118,6 +118,19 @@ $50 = $450 net to seller). Non-ACM coins keep the full floor. If/as ACM's
 FDV rises, lot notionals grow back toward the standard floor mechanically —
 no prediction required, it's arithmetic either way.
 
+**Open orders, both sides — RATIFIED 2026-08-12:** anyone may DECLARE a
+standing order on either side and let the market fill it: a posted ASK
+escrows the coins (already law); a posted BID escrows its SOL up to the
+declared cap ("I will buy up to $10K of ACM at a $500k-valuation strike").
+Partial fills lot by lot; every fill mints a real tickered contract.
+Physical delivery on every fill — no all-SOL coinless variant exists (that
+is cash settlement, retired; the coins moving is the fortress). Venue
+economics: on matched third-party flow the house earns 10% of strike in
+SOL + the 2% float, zero inventory, zero directional risk. HOUSE-PRINCIPAL
+orders are NOT revenue events — a house bid above market is deliberate,
+capped, disclosed SPEND (support/signal), booked to the principal wallet,
+never confused with commission income.
+
 **Firm book, both sides — LOCKED (zero-risk law):**
 - Seller: posting a rung REQUIRES the coins in listing escrow at posting.
   Quotes carry an expiry (7 days, dial) — auto-returned if unlifted.
