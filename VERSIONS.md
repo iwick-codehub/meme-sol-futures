@@ -1,5 +1,10 @@
 # Versions — meme-sol-futures
 
+## 0.12.0 — 2026-08-11
+- PRICING ENGINE RATIFIED; futures/pricer.py built — exact corridor via Jupiter quote (pool-exit floor, 95% ceiling, k=0.25), with liquidity-approx x*y=k fallback when the free-tier quota is exhausted (hcp-arb scanner shares this Mac's quota); live-tested on ACM
+- INSTAR TERMINAL live at /pages/terminal (unlisted, reached via new 4th box on /pages/crypto): dark DEX-style tape, top-traded Solana memes via Jupiter lite-api (client-side fetch = each visitor's own quota, CORS verified), NET 1M FWD column = indicative corridor-priced seller net + DISC column, 60s refresh, infra/stables filtered
+- LIVE PRICER FLAG: ACM FDV now ~$272k -> corridor net for 1M ACM = ~$232; the Bid Board's $500k Standard bid pays ~2x market (see chat flag)
+
 ## 0.11.1 — 2026-08-11
 - Main menu restructured (Todd's order): Catalog · Crypto Market (-> /pages/crypto, NEW 2nd slot) · Aladdin's Castle (3rd) · Partner with Us · About Us; Locations item deleted, /pages/btc unpublished (content preserved). NOTE: crypto section is now NAV-LINKED — quiet launch over, counsel item now urgent
 

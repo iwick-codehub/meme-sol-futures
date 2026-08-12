@@ -154,7 +154,7 @@ physically cannot touch escrow, so neither can anyone who hacks the house.
 Until Deadbolt is audited and live, Streamflow (proven twice) carries
 manual contracts.
 
-## The Pricing Engine — the house edge (drafted 2026-08-11, Todd to ratify)
+## The Pricing Engine — the house edge (RATIFIED 2026-08-11)
 
 Two pricing regimes coexist:
 1. **Marketplace (order book):** users set asks, buyers lift — no model
