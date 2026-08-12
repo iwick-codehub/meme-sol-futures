@@ -245,7 +245,8 @@
         document.getElementById("term-status").innerHTML =
           rows.length + " MEMES · UPDATED " + new Date().toLocaleTimeString() +
           " · LIVE, REFRESHES EVERY 30S · CLICK A COLUMN TO SORT" +
-          "<br>STRIKE = OUR 14-DAY CONTRACT PRICE, INDICATIVE";
+          "<br>BID = WHAT YOU SELL AT · ASK = WHAT YOU BUY AT · 14-DAY CONTRACTS" +
+          "<br>QUOTES ARE INDICATIVE: LIVE ESTIMATES THAT MOVE WITH THE MARKET — A QUOTE GOES FIRM ONLY WHEN YOUR COINS HIT ESCROW";
       })
       .catch(function () {
         document.getElementById("term-status").textContent = "FEED UNAVAILABLE — RETRYING";
