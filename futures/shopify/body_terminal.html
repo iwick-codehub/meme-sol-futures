@@ -53,13 +53,16 @@
     today at a locked price &mdash; escrowed both sides at signing, paid in SOL
     exactly 14 days later. The pool never sees the trade.</div>
     <div class="tx-legend">
+      <span class="tx-k">CONTRACT</span> = the ticker: first 5 letters of the
+      coin + expiry day-of-year + year (day-of-year, so no US/EU date
+      confusion; e.g. TRUMP2372026 expires day 237 = Aug 25). Every contract
+      written today runs exactly 14 days &middot;
       <span class="tx-k">PRICE</span> = live spot per coin &middot;
-      <span class="tx-k">STRIKE</span> = our contract price per coin, quoted
-      next to it &mdash; we set the strike and it moves with the market; the
-      buyer pays the strike in full, the seller nets the strike minus the 10%
-      commission &middot;
-      <span class="tx-k">1M LOT</span> = contract value of the standard
-      1,000,000-coin lot at that strike &middot;
+      <span class="tx-k">BID / ASK</span> = the two-sided quote on the
+      standard 1,000,000-coin contract: BID is what the desk pays you right
+      now to sell it forward; ASK is what a buyer pays to own it (the full
+      strike, always at least 5% under spot, deeper for size). The spread IS
+      the 10% commission &middot;
       <span class="tx-k">24H % / 7D % / 2W %</span> = spot price change over 24
       hours / 7 days / 14 days (one full contract term). 24H is live; 7D and
       2W build from our own daily tape history, recording since Aug 11 &mdash;
@@ -76,10 +79,11 @@
   <div class="term-status" id="term-status">CONNECTING&hellip;</div>
   <div class="term-scroll"><table>
     <thead><tr id="term-headrow">
-      <th data-k="">#</th><th data-k="symbol">COIN</th>
+      <th data-k="">#</th>
+      <th data-k="symbol" title="Contract ticker: first 5 letters of the coin + expiry day-of-year + year. Every contract written today runs exactly 14 days.">CONTRACT</th>
       <th data-k="price" title="Spot price per single coin, live">PRICE</th>
-      <th data-k="spc" title="Our contract price per coin — 14-day forward; we set it, it moves with the market; buyer pays it in full, seller nets it minus the 10% commission">STRIKE</th>
-      <th data-k="net" title="Contract value of the standard 1,000,000-coin lot at the strike">1M LOT</th>
+      <th data-k="bid" title="BID — what the desk pays you right now for the 1,000,000-coin contract: the strike minus the 10% commission">BID</th>
+      <th data-k="net" title="ASK — what a buyer pays to own the 1,000,000-coin contract: the full strike. The bid/ask spread is the 10% commission.">ASK</th>
       <th data-k="ch" title="Spot price change over the last 24 hours, live via Jupiter">24H %</th>
       <th data-k="d7" title="Spot price change over the last 7 days — live price vs our daily tape history; goes live Aug 18, 2026">7D %</th>
       <th data-k="d14" title="Spot price change over the last 14 days — one full contract term; goes live Aug 25, 2026">2W %</th>
@@ -114,6 +118,11 @@
   var rows = [], sortKey = "mcap", sortDir = -1, userSorted = false;
 
   var MEME_WHITELIST = new Set(["WIF","BONK","PENGU","TRUMP","Fartcoin","BOME","POPCAT","MEW","GIGA","PNUT","MOODENG","TROLL","SPX"]);
+  var EXPIRY = new Date(Date.now() + 14 * 864e5);
+  var DOY = ("00" + Math.floor((EXPIRY - new Date(EXPIRY.getFullYear(), 0, 0)) / 864e5)).slice(-3);
+  function ticker(sym) {
+    return sym.replace(/[^A-Za-z0-9]/g, "").slice(0, 5).toUpperCase() + DOY + EXPIRY.getFullYear();
+  }
   function memeish(t) {
     if (EXCLUDE.has(t.symbol)) return false;
     if (t.freezeAuthority || t.mintAuthority) return false; // hard veto — not shown at all
@@ -165,11 +174,12 @@
     var html = sorted.map(function (r, i) {
       return "<tr" + (r.acm ? " class='acmrow'" : "") + "><td>" + (i + 1) + "</td>" +
         "<td class='sym'><a href='https://dexscreener.com/solana/" + r.mint +
-          "' target='_blank' rel='noopener'>" + r.symbol + "</a></td>" +
+          "' target='_blank' rel='noopener' title='" + r.symbol + " · expires " +
+          EXPIRY.toISOString().slice(0, 10) + "'>" + ticker(r.symbol) + "</a></td>" +
         "<td class='" + (prevPx[r.mint] !== undefined && r.price > prevPx[r.mint] ? "tickup"
           : prevPx[r.mint] !== undefined && r.price < prevPx[r.mint] ? "tickdn" : "") +
           "' style='" + bar(r.price, mx.price, "rgba(74,222,128,.10)") + "'>" + px(r.price) + "</td>" +
-        "<td class='net'>" + (r.spc !== null ? px(r.spc) : "—") + "</td>" +
+        "<td class='net'>" + (r.bid !== null ? "$" + fmt(r.bid) : "—") + "</td>" +
         "<td class='net' style='" + bar(r.net, mx.net, "rgba(251,191,36,.14)") + "'>" +
           (r.net !== null ? "$" + fmt(r.net) : "—") + "</td>" +
         "<td class='" + (r.ch >= 0 ? "up" : "dn") + "' style='" +
@@ -222,6 +232,7 @@
           var ch = (t.stats24h && t.stats24h.priceChange) || 0;
           var h = (typeof HIST !== "undefined" && HIST[t.id]) || {};
           return { symbol: t.symbol, price: t.usdPrice, spc: spc, ch: ch, cha: Math.abs(ch),
+                   bid: net !== null ? net * 0.90 : null,
                    d7: h.d7 ? (t.usdPrice / h.d7 - 1) * 100 : null,
                    d14: h.d14 ? (t.usdPrice / h.d14 - 1) * 100 : null,
                    mcap: t.mcap || 0, liq: t.liquidity || 0, net: net, disc: disc,

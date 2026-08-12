@@ -1,5 +1,10 @@
 # Versions — meme-sol-futures
 
+## 0.14.0 — 2026-08-11
+- CONTRACT TICKERS ratified + live: SYMBOL5+DOY+YYYY (TRUMP2372026 = expires day 237 = Aug 25 2026; day-of-year kills US/EU ambiguity); tape's COIN column is now CONTRACT, ticker computed daily from the rolling 14-day expiry, hover shows coin + ISO expiry date
+- BID/ASK two-sided quote on every standard 1M-coin contract: ASK = full strike (buyer pays), BID = strike x 90% (desk pays seller now) — THE SPREAD IS THE 10% COMMISSION; size discounts live in the ask's distance below spot; convention encoded in MARKET-SPEC
+- SIZE column removed (the strike states the clearing price); Mac power settings confirmed for the 9:10 cron (sleep 0 on AC, display-only sleep)
+
 ## 0.13.0 — 2026-08-11
 - Terminal quotes the STRIKE (the convention): PRICE and STRIKE per coin side by side + 1M LOT value; SIZE = strike discount beyond the standard 5% buyer edge ("—" when none); seller-net framing retired from the tape
 - 24H / 7D / 2W change columns: 24H live from Jupiter; 7D/2W from OUR OWN rolling daily tape history (futures/tape_history.py — snapshots top-traded+ACM daily, bakes 7/14-day reference prices into the page, page computes live-vs-reference so the columns stay live between snapshots; "—" until history deep enough; started 2026-08-11, first snapshot 101 mints)

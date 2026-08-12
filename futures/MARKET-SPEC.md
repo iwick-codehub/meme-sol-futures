@@ -189,6 +189,23 @@ is computed inside a corridor:
 - **Optimization target: flow × edge, never edge alone.** A too-greedy book
   starves the clear-rate, and the commission side of the house eats flow.
 
+## Contract tickers + two-sided quotes — RATIFIED 2026-08-11
+
+**Ticker convention:** `SYMBOL5 + DOY + YYYY` — first 5 letters of the coin
+symbol (non-alphanumerics stripped, uppercased) + expiry as 3-digit
+day-of-year + 4-digit year. Example: `TRUMP2372026` = TRUMP, expiring day
+237 of 2026 (Aug 25). Day-of-year kills US/EU date ambiguity. Every contract
+written today expires exactly 14 days out, so all of a day's tickers share
+one expiry code.
+
+**Two-sided quote on every standard 1M-coin contract:**
+- **ASK** = the full strike (what a buyer pays to own the contract).
+- **BID** = strike × 90% (what the desk pays a seller right now).
+- **The bid/ask spread IS the 10% commission.** The size/illiquidity
+  discount lives in the ask's distance below spot (≥5%, deeper per the
+  corridor); the spread is the house take. One number system, two-sided
+  market, no hidden components.
+
 ## Listing criteria — LOCKED structure
 
 Binary tells, all checkable on-chain, screened in listing order. Hard vetoes
