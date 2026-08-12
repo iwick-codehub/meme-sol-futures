@@ -4,7 +4,10 @@
   .term-wrap { background: #060a08; color: #c8ffd9; font-family: "SF Mono", "Menlo", "Consolas", monospace;
     margin: 0 -50vw; padding: 0 50vw 40px; min-height: 80vh; }
   .term { max-width: 1220px; margin: 0 auto; padding-top: 26px; }
-  .term-scroll { overflow-x: auto; }
+  .term-scroll { overflow-x: auto; scrollbar-color: #22c55e #0d2818; }
+  .term-scroll::-webkit-scrollbar { height: 10px; }
+  .term-scroll::-webkit-scrollbar-track { background: #0d2818; }
+  .term-scroll::-webkit-scrollbar-thumb { background: #22c55e; border-radius: 5px; }
   .term .dim { opacity: .35; }
   .term a { color: #4ade80; }
   .term-head { display: flex; justify-content: space-between; align-items: baseline;
