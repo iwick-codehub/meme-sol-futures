@@ -1,4 +1,6 @@
 <style>
+  h1.main-page-title { display: none; }
+  main, #MainContent { background: #060a08; }
   .term-wrap { background: #060a08; color: #c8ffd9; font-family: "SF Mono", "Menlo", "Consolas", monospace;
     margin: 0 -50vw; padding: 0 50vw 40px; min-height: 80vh; }
   .term { max-width: 1080px; margin: 0 auto; padding-top: 26px; }
@@ -55,8 +57,9 @@
       <span class="tx-k">24H</span> = price change, 24 hours &middot;
       <span class="tx-k">MCAP</span> = market cap &middot;
       <span class="tx-k">LIQ</span> = pool liquidity &middot;
-      only tradeable coins are shown &mdash; anything with a live freeze or mint
-      authority fails our screen and never appears &middot;
+      memes only, tradeable only &mdash; launchpad-born or meme-tagged coins;
+      anything with a live freeze or mint authority fails our screen and never
+      appears &middot;
       quotes indicative &mdash; firm at escrow &middot;
       <a href="/pages/meme-futures">how contracts work &rarr;</a>
     </div>
@@ -97,12 +100,17 @@
   var ACM_MINT = "4PRz3EwhbjrrX6YksMDuUzrXT51pr7CQtXNCravhpump";
   var rows = [], sortKey = "mcap", sortDir = -1, userSorted = false;
 
+  var MEME_WHITELIST = new Set(["WIF","BONK","PENGU","TRUMP","Fartcoin","BOME","POPCAT","MEW","GIGA","PNUT","MOODENG","TROLL","SPX"]);
   function memeish(t) {
     if (EXCLUDE.has(t.symbol)) return false;
     if (t.freezeAuthority || t.mintAuthority) return false; // hard veto — not shown at all
     var tags = t.tags || [];
     for (var i = 0; i < BADTAGS.length; i++) if (tags.indexOf(BADTAGS[i]) >= 0) return false;
-    return !!(t.usdPrice && t.liquidity);
+    if (!t.usdPrice || !t.liquidity) return false;
+    // MEMES ONLY — positive identification, not a blocklist:
+    var suf = t.id.slice(-4).toLowerCase();
+    return suf === "pump" || suf === "bonk" || suf === "moon" ||
+           tags.indexOf("meme") >= 0 || MEME_WHITELIST.has(t.symbol);
   }
   function fmt(n) {
     if (n === null || n === undefined || isNaN(n)) return "—";
