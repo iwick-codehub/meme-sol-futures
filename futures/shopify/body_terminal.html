@@ -60,9 +60,6 @@
       commission &middot;
       <span class="tx-k">1M LOT</span> = contract value of the standard
       1,000,000-coin lot at that strike &middot;
-      <span class="tx-k">SIZE</span> = extra strike discount only when your lot
-      is big vs the coin's pool ("&mdash;" = none; every strike already sits 5%
-      under spot &mdash; the buyer's edge) &middot;
       <span class="tx-k">24H % / 7D % / 2W %</span> = spot price change over 24
       hours / 7 days / 14 days (one full contract term). 24H is live; 7D and
       2W build from our own daily tape history, recording since Aug 11 &mdash;
@@ -83,7 +80,6 @@
       <th data-k="price" title="Spot price per single coin, live">PRICE</th>
       <th data-k="spc" title="Our contract price per coin — 14-day forward; we set it, it moves with the market; buyer pays it in full, seller nets it minus the 10% commission">STRIKE</th>
       <th data-k="net" title="Contract value of the standard 1,000,000-coin lot at the strike">1M LOT</th>
-      <th data-k="disc" title="Extra size discount in the strike beyond the standard 5% — appears when your lot is large relative to the coin's pool">SIZE</th>
       <th data-k="ch" title="Spot price change over the last 24 hours, live via Jupiter">24H %</th>
       <th data-k="d7" title="Spot price change over the last 7 days — live price vs our daily tape history; goes live Aug 18, 2026">7D %</th>
       <th data-k="d14" title="Spot price change over the last 14 days — one full contract term; goes live Aug 25, 2026">2W %</th>
@@ -96,8 +92,8 @@
     flip. Bars show each value relative to the column's high. STRIKE is the
     contract price we quote, computed live from each coin's real pool depth:
     never above 95% of spot (the buyer's edge), discounted further only in
-    proportion to how much of the pool a lot would consume (the SIZE column;
-    the pool itself would take far more). The buyer pays the strike in full;
+    proportion to how much of the pool a lot would consume — the pool itself
+    would take far more. The buyer pays the strike in full;
     the seller nets the strike minus the 10% commission and the flat 1.5 SOL
     writing fee. Quotes are INDICATIVE — firm quotes exist only at escrow. All
     contracts write and settle in SOL. Prices via Jupiter, refreshed every 30s
@@ -176,8 +172,6 @@
         "<td class='net'>" + (r.spc !== null ? px(r.spc) : "—") + "</td>" +
         "<td class='net' style='" + bar(r.net, mx.net, "rgba(251,191,36,.14)") + "'>" +
           (r.net !== null ? "$" + fmt(r.net) : "—") + "</td>" +
-        "<td style='" + bar(r.disc, mx.disc, "rgba(248,113,113,.12)") + "'>" +
-          (r.disc !== null && r.disc > 0.05 ? "−" + r.disc.toFixed(1) + "%" : "—") + "</td>" +
         "<td class='" + (r.ch >= 0 ? "up" : "dn") + "' style='" +
           bar(r.cha, mx.cha, r.ch >= 0 ? "rgba(74,222,128,.14)" : "rgba(248,113,113,.14)") + "'>" +
           (r.ch >= 0 ? "+" : "") + r.ch.toFixed(1) + "%</td>" +
