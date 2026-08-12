@@ -50,6 +50,23 @@
     <tr><th>All sales</th><td>Final. Escrow is irrevocable by design.</td></tr>
   </table>
 
+  <h3>Who pays what — everything hangs off the STRIKE</h3>
+  <p>The <strong>strike</strong> is the contract price. We set it — it is not
+  the market price — and it moves with the market: our engine quotes every coin
+  live from its real pool depth, always at a discount to spot (never less than
+  5%, deeper when the lot is big for its pool). From that one number:</p>
+  <table>
+    <tr><th>Buyer pays</th><td>the strike, in full — escrowed in SOL at signing</td></tr>
+    <tr><th>Seller receives</th><td>the strike minus the 10% commission (and the flat 1.5 SOL writing fee), at settlement</td></tr>
+    <tr><th>Buyer receives</th><td>98% of the escrowed coins at settlement</td></tr>
+    <tr><th>House keeps</th><td>the 10% commission + the 1.5 SOL fee + 2% of the coins</td></tr>
+  </table>
+  <p>Worked example: strike quoted at $10,000 for a 10M-coin lot. The buyer
+  escrows $10,000 in SOL. Fourteen days later the seller is paid $9,000 minus
+  the writing fee, the buyer takes delivery of 9,800,000 coins, and the house
+  keeps $1,000, the fee, and 200,000 coins. Nobody can default, because
+  everything above was locked on day one.</p>
+
   <h3>Contract One is already on the books</h3>
   <div class="ibx-card">
     <span class="ibx-num">1,000,000 $ACM</span><br>

@@ -51,12 +51,19 @@
     today at a locked price &mdash; escrowed both sides at signing, paid in SOL
     exactly 14 days later. The pool never sees the trade.</div>
     <div class="tx-legend">
-      <span class="tx-k">SELL 1M</span> = your net for selling 1,000,000 coins forward (after the 10% commission) &middot;
-      <span class="tx-k">SIZE</span> = extra discount only when your lot is big
-      vs the coin's pool ("&mdash;" = none; every quote already includes the
-      standard &minus;14.5% all-in: 5% to the buyer + 10% commission) &middot;
-      <span class="tx-k">PRICE/COIN</span> = spot price per single coin &middot;
-      <span class="tx-k">24H</span> = price change, 24 hours &middot;
+      <span class="tx-k">PRICE</span> = live spot per coin &middot;
+      <span class="tx-k">STRIKE</span> = our contract price per coin, quoted
+      next to it &mdash; we set the strike and it moves with the market; the
+      buyer pays the strike in full, the seller nets the strike minus the 10%
+      commission &middot;
+      <span class="tx-k">1M LOT</span> = contract value of the standard
+      1,000,000-coin lot at that strike &middot;
+      <span class="tx-k">SIZE</span> = extra strike discount only when your lot
+      is big vs the coin's pool ("&mdash;" = none; every strike already sits 5%
+      under spot &mdash; the buyer's edge) &middot;
+      <span class="tx-k">24H / 7D / 2W</span> = price change over 24 hours /
+      7 days / the 14-day contract term (7D and 2W build from our own daily
+      tape history, started Aug 11 &mdash; "&mdash;" until deep enough) &middot;
       <span class="tx-k">MCAP</span> = market cap &middot;
       <span class="tx-k">LIQ</span> = pool liquidity &middot;
       memes only, tradeable only &mdash; launchpad-born or meme-tagged coins;
@@ -70,30 +77,33 @@
   <table>
     <thead><tr id="term-headrow">
       <th data-k="">#</th><th data-k="symbol">COIN</th>
-      <th data-k="net" title="What you'd net today selling 1,000,000 coins forward (14-day escrowed contract, after 10% commission)">SELL 1M</th>
-      <th data-k="disc" title="Extra size penalty beyond the standard -14.5% all-in cost — appears when your lot is large relative to the coin's pool">SIZE</th>
-      <th data-k="price" title="Spot price per single coin">PRICE/COIN</th>
-      <th data-k="ch">24H</th><th data-k="mcap">MCAP</th><th data-k="liq">LIQ</th>
+      <th data-k="price" title="Spot price per single coin, live">PRICE</th>
+      <th data-k="spc" title="Our contract price per coin — 14-day forward; we set it, it moves with the market; buyer pays it in full, seller nets it minus the 10% commission">STRIKE</th>
+      <th data-k="net" title="Contract value of the standard 1,000,000-coin lot at the strike">1M LOT</th>
+      <th data-k="disc" title="Extra size discount in the strike beyond the standard 5% — appears when your lot is large relative to the coin's pool">SIZE</th>
+      <th data-k="ch">24H</th>
+      <th data-k="d7" title="Rolling 7-day change — live price vs our daily tape history">7D</th>
+      <th data-k="d14" title="Rolling 2-week change — the contract term — live price vs our daily tape history">2W</th>
+      <th data-k="mcap">MCAP</th><th data-k="liq">LIQ</th>
     </tr></thead>
     <tbody id="term-rows"></tbody>
   </table>
   <p class="term-note">
     Sorted by MCAP by default — click any column header to sort, click again to
-    flip. Bars show each value relative to the column's high. SELL 1M =
-    indicative net proceeds to a seller writing a 1,000,000-coin, 14-day
-    fully-escrowed forward at the Instar desk: corridor-priced strike (floor =
-    simulated pool exit from live liquidity, ceiling 95% of spot, k=0.25) minus
-    the 10% commission. Flat 1.5 SOL writing fee not shown. Quotes are
-    INDICATIVE — firm quotes exist only at escrow. SIZE = additional size
-    penalty beyond the standard −14.5% all-in cost, appearing in proportion to
-    how much of the coin's pool your lot would consume; the pool itself would
-    usually take far more. All
+    flip. Bars show each value relative to the column's high. STRIKE is the
+    contract price we quote, computed live from each coin's real pool depth:
+    never above 95% of spot (the buyer's edge), discounted further only in
+    proportion to how much of the pool a lot would consume (the SIZE column;
+    the pool itself would take far more). The buyer pays the strike in full;
+    the seller nets the strike minus the 10% commission and the flat 1.5 SOL
+    writing fee. Quotes are INDICATIVE — firm quotes exist only at escrow. All
     contracts write and settle in SOL. Prices via Jupiter, refreshed every 30s
     while you're on the page — a price cell flashes green/red when it moves.
     Not investment advice. <a href="/pages/meme-futures">How contracts work</a>
     &middot; <a href="/pages/acm-bid-board">The $ACM Bid Board</a>
   </p>
 </div></div>
+<script>/*HIST_START*/var HIST={};/*HIST_END*/</script>
 <script>
 (function () {
   var EXCLUDE = new Set(["SOL","WSOL","USDC","USDT","USDS","USD1","USDe","sUSDe","EURC","PYUSD","FDUSD",
@@ -129,6 +139,11 @@
     return "$" + p.toExponential(3);
   }
   var prevPx = {};
+  function pctCell(p) {
+    if (p === null || p === undefined || isNaN(p)) return "<td>—</td>";
+    return "<td class='" + (p >= 0 ? "up" : "dn") + "'>" +
+      (p >= 0 ? "+" : "") + p.toFixed(1) + "%</td>";
+  }
   function bar(v, max, rgba) {
     if (!max || v === null || v === undefined || isNaN(v)) return "";
     var w = Math.max(2, Math.min(100, 100 * v / max));
@@ -152,16 +167,18 @@
       return "<tr" + (r.acm ? " class='acmrow'" : "") + "><td>" + (i + 1) + "</td>" +
         "<td class='sym'><a href='https://dexscreener.com/solana/" + r.mint +
           "' target='_blank' rel='noopener'>" + r.symbol + "</a></td>" +
+        "<td class='" + (prevPx[r.mint] !== undefined && r.price > prevPx[r.mint] ? "tickup"
+          : prevPx[r.mint] !== undefined && r.price < prevPx[r.mint] ? "tickdn" : "") +
+          "' style='" + bar(r.price, mx.price, "rgba(74,222,128,.10)") + "'>" + px(r.price) + "</td>" +
+        "<td class='net'>" + (r.spc !== null ? px(r.spc) : "—") + "</td>" +
         "<td class='net' style='" + bar(r.net, mx.net, "rgba(251,191,36,.14)") + "'>" +
           (r.net !== null ? "$" + fmt(r.net) : "—") + "</td>" +
         "<td style='" + bar(r.disc, mx.disc, "rgba(248,113,113,.12)") + "'>" +
           (r.disc !== null && r.disc > 0.05 ? "−" + r.disc.toFixed(1) + "%" : "—") + "</td>" +
-        "<td class='" + (prevPx[r.mint] !== undefined && r.price > prevPx[r.mint] ? "tickup"
-          : prevPx[r.mint] !== undefined && r.price < prevPx[r.mint] ? "tickdn" : "") +
-          "' style='" + bar(r.price, mx.price, "rgba(74,222,128,.10)") + "'>" + px(r.price) + "</td>" +
         "<td class='" + (r.ch >= 0 ? "up" : "dn") + "' style='" +
           bar(r.cha, mx.cha, r.ch >= 0 ? "rgba(74,222,128,.14)" : "rgba(248,113,113,.14)") + "'>" +
           (r.ch >= 0 ? "+" : "") + r.ch.toFixed(1) + "%</td>" +
+        pctCell(r.d7) + pctCell(r.d14) +
         "<td style='" + bar(r.mcap, mx.mcap, "rgba(34,197,94,.16)") + "'>$" + fmt(r.mcap) + "</td>" +
         "<td style='" + bar(r.liq, mx.liq, "rgba(34,197,94,.12)") + "'>$" + fmt(r.liq) + "</td></tr>";
     }).join("");
@@ -197,15 +214,19 @@
       })
       .then(function (list) {
         rows = list.filter(function (t) { return t.id === ACM_MINT || memeish(t); }).map(function (t) {
-          var v = 1e6 * t.usdPrice, x = t.liquidity / 2, net = null, disc = null;
+          var v = 1e6 * t.usdPrice, x = t.liquidity / 2, net = null, disc = null, spc = null;
           if (x) {
             var poolExit = v / (1 + v / x);
             var strike = Math.min(0.95, poolExit / v + 0.25 * (0.95 - poolExit / v));
-            net = strike * v * 0.90;
-            disc = (1 - strike * 0.90) * 100 - 14.5; // SIZE = penalty beyond the standard toll
+            net = strike * v;               // contract value of the 1M lot
+            spc = strike * t.usdPrice;      // STRIKE per coin
+            disc = (1 - strike) * 100 - 5;  // SIZE = discount beyond the standard 5%
           }
           var ch = (t.stats24h && t.stats24h.priceChange) || 0;
-          return { symbol: t.symbol, price: t.usdPrice, ch: ch, cha: Math.abs(ch),
+          var h = (typeof HIST !== "undefined" && HIST[t.id]) || {};
+          return { symbol: t.symbol, price: t.usdPrice, spc: spc, ch: ch, cha: Math.abs(ch),
+                   d7: h.d7 ? (t.usdPrice / h.d7 - 1) * 100 : null,
+                   d14: h.d14 ? (t.usdPrice / h.d14 - 1) * 100 : null,
                    mcap: t.mcap || 0, liq: t.liquidity || 0, net: net, disc: disc,
                    acm: t.id === ACM_MINT, mint: t.id };
         });
@@ -216,7 +237,7 @@
         rows.forEach(function (r) { prevPx[r.mint] = r.price; });
         document.getElementById("term-status").textContent =
           rows.length + " MEMES · UPDATED " + new Date().toLocaleTimeString() +
-          " · LIVE, REFRESHES EVERY 30S · CLICK A COLUMN TO SORT · SELL 1M = YOUR NET, 1M-COIN 14-DAY FORWARD, INDICATIVE";
+          " · LIVE, REFRESHES EVERY 30S · CLICK A COLUMN TO SORT · STRIKE = OUR 14-DAY CONTRACT PRICE, INDICATIVE";
       })
       .catch(function () {
         document.getElementById("term-status").textContent = "FEED UNAVAILABLE — RETRYING";

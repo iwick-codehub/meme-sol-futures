@@ -1,5 +1,12 @@
 # Versions — meme-sol-futures
 
+## 0.13.0 — 2026-08-11
+- Terminal quotes the STRIKE (the convention): PRICE and STRIKE per coin side by side + 1M LOT value; SIZE = strike discount beyond the standard 5% buyer edge ("—" when none); seller-net framing retired from the tape
+- 24H / 7D / 2W change columns: 24H live from Jupiter; 7D/2W from OUR OWN rolling daily tape history (futures/tape_history.py — snapshots top-traded+ACM daily, bakes 7/14-day reference prices into the page, page computes live-vs-reference so the columns stay live between snapshots; "—" until history deep enough; started 2026-08-11, first snapshot 101 mints)
+- Daily cron installed on this Mac: 9:10 AM tape_history.py -> snapshot + republish
+- /pages/meme-futures: "Who pays what — everything hangs off the STRIKE" waterfall section + worked example
+- All verified on the live rendered page (30 memes, ACM pinned, SIZE showing TRUMP -2.5% / ANSEM -6.0%)
+
 ## 0.12.1 — 2026-08-11
 - Terminal upgrades (all live-verified in rendered browser): MCAP default sort + click-to-sort all columns (asc/desc toggle) + proportional high/low bars in every numeric column; ACM always listed — pinned top + gold-highlighted until user sorts, then sorts with the rest; coin names clickable (ACM -> /pages/acm, others -> DexScreener); NET 1M FWD renamed SELL 1M and moved (with DISC) to first data columns; PRICE -> PRICE/COIN; top explainer box ("EVERY QUOTE IS A 2-WEEK FUTURES PRICE") + acronym legend
 
