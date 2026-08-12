@@ -110,7 +110,7 @@
       <th data-k="ch" title="Spot price change over the last 24 hours, live via Jupiter">24H %</th>
       <th data-k="d7" title="Spot price change over the last 7 days — live price vs our daily tape history; goes live Aug 18, 2026">7D %</th>
       <th data-k="d14" title="Spot price change over the last 14 days — one full contract term; goes live Aug 25, 2026">2W %</th>
-      <th data-k="mcap" title="Market cap">MCAP</th><th data-k="liq" title="Pool liquidity">LIQ</th>
+      <th data-k="liq" title="Pool liquidity">LIQ</th><th data-k="mcap" title="Market cap">MCAP</th>
     </tr></thead>
     <tbody id="term-rows"></tbody>
   </table></div>
@@ -222,8 +222,8 @@
           bar(r.cha, mx.cha, r.ch >= 0 ? "rgba(74,222,128,.14)" : "rgba(248,113,113,.14)") + "'>" +
           (r.ch >= 0 ? "+" : "") + r.ch.toFixed(1) + "%</td>" +
         pctCell(r.d7) + pctCell(r.d14) +
-        "<td style='" + bar(r.mcap, mx.mcap, "rgba(34,197,94,.16)") + "'>$" + fmt(r.mcap) + "</td>" +
-        "<td style='" + bar(r.liq, mx.liq, "rgba(34,197,94,.12)") + "'>$" + fmt(r.liq) + "</td></tr>";
+        "<td style='" + bar(r.liq, mx.liq, "rgba(34,197,94,.12)") + "'>$" + fmt(r.liq) + "</td>" +
+        "<td style='" + bar(r.mcap, mx.mcap, "rgba(34,197,94,.16)") + "'>$" + fmt(r.mcap) + "</td></tr>";
     }).join("");
     document.getElementById("term-rows").innerHTML = html;
     var ths = document.getElementById("term-headrow").children;
