@@ -21,7 +21,8 @@
   .term th.sorted.desc::after { content: "▼"; }
   .term th.sorted.asc::after { content: "▲"; }
   .term th:nth-child(1), .term th:nth-child(2), .term td:nth-child(1), .term td:nth-child(2) { text-align: left; }
-  .term th:nth-child(2), .term td:nth-child(2) { min-width: 10em; }
+  .term th:nth-child(2), .term td:nth-child(2) { min-width: 12.5em; }
+  .term th:nth-child(3), .term td:nth-child(3) { min-width: 8.5em; }
   .term td { padding: 8px 13px; text-align: right; border-bottom: 1px solid #0d2818; white-space: nowrap; }
   .term td.sym { font-weight: 700; color: #e7ffee; }
   .term td.sym a { color: inherit; text-decoration: none; }
@@ -54,26 +55,15 @@
     today at a locked price &mdash; escrowed both sides at signing, paid in SOL
     exactly 14 days later. The pool never sees the trade.</div>
     <div class="tx-legend">
-      <span class="tx-k">CONTRACT</span> = the ticker: first 5 letters of the
-      coin + expiry day-of-year + year (day-of-year, so no US/EU date
-      confusion; e.g. TRUMP2372026 expires day 237 = Aug 25). Every contract
-      written today runs exactly 14 days &middot;
+      <span class="tx-k">CONTRACT</span> = coin (first 5 letters) + expiry
+      day-of-year + year &mdash; TRUMP2372026 expires day 237 (Aug 25) &middot;
       <span class="tx-k">PRICE</span> = live spot per coin &middot;
-      <span class="tx-k">BID / ASK</span> = the two-sided quote on the
-      standard 1,000,000-coin contract: BID is what INSTAR pays you right
-      now to sell it forward; ASK is what a buyer pays to own it (the full
-      strike, always at least 5% under spot, deeper for size). The spread IS
-      the 10% commission &middot;
-      <span class="tx-k">24H % / 7D % / 2W %</span> = spot price change over 24
-      hours / 7 days / 14 days (one full contract term). 24H is live; 7D and
-      2W build from our own daily tape history, recording since Aug 11 &mdash;
-      "&hellip;" until then, <b>7D live Aug 18, 2W live Aug 25</b> &middot;
-      <span class="tx-k">MCAP</span> = market cap &middot;
-      <span class="tx-k">LIQ</span> = pool liquidity &middot;
-      memes only, tradeable only &mdash; launchpad-born or meme-tagged coins;
-      anything with a live freeze or mint authority fails our screen and never
-      appears &middot;
-      quotes indicative &mdash; firm at escrow &middot;
+      <span class="tx-k">BID</span> = what INSTAR pays you &middot;
+      <span class="tx-k">ASK</span> = what a buyer pays &middot;
+      the spread is the 10% commission &middot;
+      <span class="tx-k">7D % / 2W %</span> = building from our daily tape
+      history, live Aug 18 / Aug 25 &middot;
+      memes only, tradeable only &middot; quotes firm at escrow &middot;
       <a href="/pages/meme-futures">how contracts work &rarr;</a>
     </div>
   </div>
