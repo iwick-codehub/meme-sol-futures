@@ -25,6 +25,7 @@ PAGES = [
     {"handle": "acm-bid-board", "title": "The $ACM Bid Board", "body_file": "body_acm_bid_board.html"},
     {"handle": "acm", "title": "Aladdin's Castle | $ACM", "body_file": "body_acm.html"},
     {"handle": "terminal", "title": "Instar Terminal", "body_file": "body_terminal.html"},
+    {"handle": "orders", "title": "Open Orders", "body_file": "body_orders.html"},
 ]
 
 

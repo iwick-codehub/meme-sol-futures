@@ -1,5 +1,8 @@
 # Versions — meme-sol-futures
 
+## 0.21.0 — 2026-08-12
+- OPEN ORDERS / EXECUTION BOARD live at /pages/orders (unlisted): renders futures/orders.json via orders_build.py (order entry = Todd declares -> Claude posts -> board republishes); seeded with ORDER-001 (house ACM bid, corridor-priced, $10K cap, disclosed principal); fill flow = runbook via contact
+
 ## 0.20.0 — 2026-08-12
 - ONE NUMBER ratified: the flat 10% spread is ALL-IN — 2% in-kind float RETIRED (dust liability; directional bets live only in the disclosed principal book) and 1.5 SOL writing fee FOLDED IN; buyer receives 100% of coins at the quoted strike, seller nets exactly 90%
 - Swept through everything: MARKET-SPEC (+ remind-don't-relitigate note), THESIS, RUNBOOK (settlement = 3 transfers), WALLETS register (FUT FLOAT wallet retired pre-birth — only BUYER + TREASURY needed), InstarLock program (float leg + fee constant deleted; smaller audit surface), meme-futures page (pricing table, waterfall, worked example, trust bullets), terminal fine print — all published live

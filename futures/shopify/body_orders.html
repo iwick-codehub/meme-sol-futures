@@ -1,0 +1,43 @@
+<style>
+  .ibx { max-width: 860px; margin: 0 auto; line-height: 1.65; }
+  .ibx .ibx-kicker { font-size: .75rem; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: #a8842c; }
+  .ibx h2 { line-height: 1.12; margin: .3em 0 .4em; }
+  .ibx .ibx-lede { font-size: 1.1em; opacity: .75; font-style: italic; }
+  .ibx table { border-collapse: collapse; width: 100%; margin: 1.4em 0; }
+  .ibx td, .ibx th { border-bottom: 1px solid rgba(128,128,128,.35); padding: 10px; text-align: left; font-size: .95em; }
+  .ibx th { font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; opacity: .7; }
+  .ibx .ibx-mono { font-family: monospace; }
+  .ibx .ibx-cta { display: inline-block; margin-top: 1em; padding: 14px 30px; background: #0f4c3a; color: #fff; font-weight: 700; letter-spacing: .08em; text-decoration: none; }
+  .ibx .ibx-fine { font-size: .85em; opacity: .7; }
+</style>
+<div class="ibx">
+  <div class="ibx-kicker"><a href="/pages/crypto">Crypto</a> &middot; <a href="/pages/terminal">Terminal</a> &middot; <a href="/pages/acm-bid-board">ACM Bid Board</a></div>
+  <h2>Open Orders &mdash; The Execution Board</h2>
+  <p class="ibx-lede">Standing, funded orders anyone can fill. Every order is
+  escrow-backed; every fill becomes a tickered, escrowed, 14-day contract.
+  The flat 10% spread is the only fee that exists.</p>
+  <table>
+    <thead><tr><th>Order</th><th>Side</th><th>Coin</th><th>Pricing</th>
+      <th>Lots</th><th>Remaining / Cap</th><th>Status</th></tr></thead>
+    <tbody>
+<tr>
+      <td class="ibx-mono">ORDER-001</td>
+      <td><strong>BID</strong></td>
+      <td><strong>ACM</strong></td>
+      <td>Live corridor strike (the Terminal's ACM quote, moves with the market)</td>
+      <td>1,000,000-coin lots, repeatable</td>
+      <td>$10,000 of $10,000</td>
+      <td>OPEN</td>
+    </tr>
+    </tbody>
+  </table>
+  <h3>Fill an order</h3>
+  <p>Contact us with the order ID, your lot size, and the wallet holding the
+  coins (to fill a BID) or your SOL (to fill an ASK). We verify on-chain,
+  issue a dedicated escrow address, and the contract goes firm the moment
+  your side lands in escrow. Settlement in exactly 14 days.</p>
+  <a class="ibx-cta" href="/pages/contact">FILL AN ORDER</a>
+  <p class="ibx-fine">Post your own standing order: same contact &mdash;
+  declare side, coin, pricing, and cap; posted orders must fund their escrow.
+  All contracts write and settle in SOL. All sales final.</p>
+</div>

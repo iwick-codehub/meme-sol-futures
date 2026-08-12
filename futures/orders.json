@@ -1,0 +1,17 @@
+{
+  "orders": [
+    {
+      "id": "ORDER-001",
+      "side": "BID",
+      "coin": "ACM",
+      "mint": "4PRz3EwhbjrrX6YksMDuUzrXT51pr7CQtXNCravhpump",
+      "pricing": "Live corridor strike (the Terminal's ACM quote, moves with the market)",
+      "lots": "1,000,000-coin lots, repeatable",
+      "cap_usd": 10000,
+      "filled_usd": 0,
+      "posted": "2026-08-11",
+      "status": "OPEN",
+      "note": "The standing house bid behind the ACM Bid Board. Disclosed principal: Instar."
+    }
+  ]
+}
