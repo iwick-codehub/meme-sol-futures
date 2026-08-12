@@ -1,5 +1,8 @@
 # Versions — meme-sol-futures
 
+## 0.18.1 — 2026-08-12
+- Phase roadmap encoded in MARKET-SPEC per Todd's market-structure call: Phase 1 covered forwards (live, covered-only by construction) -> Phase 2 capped fully-collateralized CASH-SETTLED contracts for naked longs/shorts (no margin/liquidation ever; settlement = TWAP on our own tape index; CFTC counsel gate) -> Phase 3 publish the futures/spot basis as the venue's forecast data product
+
 ## 0.18.0 — 2026-08-11
 - NEW-COIN RADAR (hidden research DB, never published): futures/research/newcoin_radar.py — every sub-24h coin hitting the top-traded tape gets a PAPER long forward at the live corridor ask (1M lot, 14-day expiry); full detection snapshot captured (price/mcap/fdv/liq/holders/organicScore/audit/dev/all stats windows); positions self-settle at expiry vs live price with buyer P/L; hourly cron installed (:25)
 - First sweep: 25 new coins on the paper book (incl. MARIO64 16.7h, Plumber 20.6h, BOT 9.4h, cc 1.1h)

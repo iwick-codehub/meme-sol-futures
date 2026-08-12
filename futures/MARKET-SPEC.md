@@ -206,6 +206,30 @@ one expiry code.
   corridor); the spread is the house take. One number system, two-sided
   market, no hidden components.
 
+## Phase roadmap — the speculative market (direction set 2026-08-12)
+
+Todd's market-structure call: like all real futures markets, scale comes
+from traders taking naked longs/shorts without owning the coin — hedgers
+seed the market, speculators ARE the market, and a healthy two-sided
+trader base also dissolves the launch-day adverse-selection problem (the
+informed seller trades against the market's judgment, not the house).
+
+- **Phase 1 (LIVE):** covered, physically-settled, fully-escrowed forwards.
+  Covered-only BY CONSTRUCTION — the zero-risk law forbids naked positions
+  in this instrument. The trust layer and the receipts tape.
+- **Phase 2:** CAPPED cash-settled contracts on the same tickers for naked
+  traders: short escrows a fixed max payout, long's win capped there, both
+  legs fully funded at signing (no margin, no liquidation engine — ever;
+  perps import the failure modes this desk exists to avoid). Settlement
+  price = TWAP from OUR OWN tape index (tape_history + radar = the oracle
+  being built now); thin-pool paint-resistance via time-weighting, listing
+  liquidity floors, and size caps vs pool. REGULATORY STEP-CHANGE: cash-
+  settled public derivatives = CFTC venue; counsel BEFORE first outside
+  position.
+- **Phase 3:** the basis between the futures curve and spot publishes as
+  the market's forecast of every coin's 2-week fate — a data product
+  unique to the venue.
+
 ## Listing criteria — LOCKED structure
 
 Binary tells, all checkable on-chain, screened in listing order. Hard vetoes
