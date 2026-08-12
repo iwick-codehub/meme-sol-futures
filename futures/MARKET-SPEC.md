@@ -198,7 +198,7 @@ first (either one breaks the escrow itself):
 |---|------|------|
 | V1 | Freeze authority | REVOKED or veto (creator could freeze our escrow) |
 | V2 | Mint authority | REVOKED or veto (infinite mint voids the valuation) |
-| S1 | Transfer tax / token extensions | none |
+| S1 | Transfer tax / fee extensions | none (NOTE 2026-08-11: pump.fun now mints on Token-2022 — the program itself is NOT a veto, only fee/hook extensions are; InstarLock must support Token-2022-without-extensions via token_interface before mainnet) |
 | S2 | Liquidity | LP locked or burned; minimum pool depth (dial TBD) |
 | S3 | Volume | minimum daily volume (dial TBD) |
 | S4 | Age | minimum token age (dial TBD) |
