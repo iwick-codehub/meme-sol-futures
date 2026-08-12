@@ -1,5 +1,10 @@
 # Versions — meme-sol-futures
 
+## 0.19.0 — 2026-08-12
+- HERO BOOK added to the radar (second paper simulation, side by side with the dragnet): Claude-codified hero bar (holders>=800, liq>=$40K, mcap>=$250K, top-holders<=40%, organic medium/high), conviction-ranked; strike = 2x detection valuation (the ACM/Contract-One shape); $2K per hero, $10K/day cap; buyer wins only if the coin >2x by day 14
+- Day one heroes (settle 2026-08-26): Plumber, MARIO64, BOT, ORANGE, TOADPUNK — $10K deployed at 2x strikes
+- Dragnet running autonomously via hourly cron: 44 open positions and growing
+
 ## 0.18.1 — 2026-08-12
 - Phase roadmap encoded in MARKET-SPEC per Todd's market-structure call: Phase 1 covered forwards (live, covered-only by construction) -> Phase 2 capped fully-collateralized CASH-SETTLED contracts for naked longs/shorts (no margin/liquidation ever; settlement = TWAP on our own tape index; CFTC counsel gate) -> Phase 3 publish the futures/spot basis as the venue's forecast data product
 

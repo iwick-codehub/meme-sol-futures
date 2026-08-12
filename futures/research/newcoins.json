@@ -3749,6 +3749,538 @@
    },
    "status": "OPEN",
    "settlement": null
+  },
+  {
+   "mint": "53DM4mikdxyaxeuQDGPBfUaUjiUQW9Nd7XEo8HcSpump",
+   "symbol": "MIM",
+   "name": "Memes Into Money",
+   "detected": "2026-08-12T15:43:20+00:00",
+   "pool_created": "2026-08-11T19:57:09Z",
+   "age_hours_at_detect": 19.77,
+   "expiry": "2026-08-26T15:43:20+00:00",
+   "lot": 1000000,
+   "entry": {
+    "usdPrice": 3.128097249818192e-06,
+    "mcap": 3066.961188090654,
+    "fdv": 3066.961188090654,
+    "liquidity": 1089.230181734625,
+    "holderCount": 632,
+    "organicScore": 68.81976448244164,
+    "organicScoreLabel": "medium",
+    "tags": [
+     "unknown",
+     "token-2022"
+    ],
+    "audit": {
+     "mintAuthorityDisabled": true,
+     "freezeAuthorityDisabled": true,
+     "topHoldersPercentage": 14.400909172289083,
+     "devMigrations": 106,
+     "devMints": 12564
+    },
+    "dev": "EBx24uAPtaS1SvHwRhKEktSgzaXdiVEyHuSVpAMVwrcD",
+    "decimals": 6,
+    "stats5m": {
+     "liquidityChange": -0.005513511949844753,
+     "sellVolume": 0.059475530708727464,
+     "numSells": 1,
+     "numTraders": 1
+    },
+    "stats1h": {
+     "priceChange": -0.1362045082046756,
+     "holderChange": -0.47244094488188976,
+     "liquidityChange": -0.049830522577538006,
+     "volumeChange": -96.67102645915583,
+     "sellVolume": 0.41874136361202835,
+     "numSells": 3,
+     "numTraders": 3
+    },
+    "stats6h": {
+     "priceChange": -9.896524601425002,
+     "holderChange": -3.067484662576687,
+     "liquidityChange": -9.647553604821141,
+     "volumeChange": -83.61708764377398,
+     "buyVolume": 7.674382762969176,
+     "sellVolume": 107.09344004712496,
+     "sellOrganicVolume": 8.375310960275444,
+     "numBuys": 1,
+     "numSells": 22,
+     "numTraders": 23,
+     "numNetBuyers": 1
+    },
+    "stats24h": {
+     "priceChange": -35.8226649471282,
+     "holderChange": 6220,
+     "liquidityChange": -67.96863268397392,
+     "buyVolume": 1097936.4860110206,
+     "sellVolume": 1095325.1869919936,
+     "buyOrganicVolume": 38589.46979429157,
+     "sellOrganicVolume": 40741.39711334039,
+     "numBuys": 17098,
+     "numSells": 18478,
+     "numTraders": 4727,
+     "numOrganicBuyers": 43,
+     "numNetBuyers": 910
+    }
+   },
+   "paper_contract": {
+    "pool_exit_pct": 99.43,
+    "strike_pct": 95.0,
+    "ask_usd": 2.97,
+    "bid_usd": 2.67
+   },
+   "status": "OPEN",
+   "settlement": null
+  },
+  {
+   "mint": "3Kt2xyY4G6Gus2eNGddCoSUZGB9VDwqJqaMrDBzXpump",
+   "symbol": "ORB",
+   "name": "ORB",
+   "detected": "2026-08-12T15:43:20+00:00",
+   "pool_created": "2026-08-11T18:06:01Z",
+   "age_hours_at_detect": 21.62,
+   "expiry": "2026-08-26T15:43:20+00:00",
+   "lot": 1000000,
+   "entry": {
+    "usdPrice": 9.890634044521906e-06,
+    "mcap": 9488.998837605708,
+    "fdv": 9488.998837605708,
+    "liquidity": 3351.9349393464718,
+    "holderCount": 374,
+    "organicScore": 68.6274986380339,
+    "organicScoreLabel": "medium",
+    "tags": [
+     "unknown",
+     "token-2022"
+    ],
+    "audit": {
+     "mintAuthorityDisabled": true,
+     "freezeAuthorityDisabled": true,
+     "topHoldersPercentage": 21.791977517550436,
+     "devMigrations": 1,
+     "devMints": 1
+    },
+    "dev": "4dySdExCjDLPWRjMHggKRcGJRGLpCxc7TTra3iNLmgbp",
+    "decimals": 6,
+    "stats5m": {
+     "liquidityChange": 0.01900145650906189,
+     "sellVolume": 2.1904100958144177,
+     "numSells": 1,
+     "numTraders": 1
+    },
+    "stats1h": {
+     "priceChange": -0.6121624463660592,
+     "holderChange": -1.5789473684210527,
+     "liquidityChange": 0.6871665959969621,
+     "volumeChange": -70.76949396696915,
+     "buyVolume": 117.07207852387131,
+     "sellVolume": 100.5021637815407,
+     "numBuys": 6,
+     "numSells": 9,
+     "numTraders": 9,
+     "numNetBuyers": 2
+    },
+    "stats6h": {
+     "priceChange": -25.192820039447998,
+     "holderChange": -13.425925925925927,
+     "liquidityChange": -20.786654224033093,
+     "volumeChange": -74.67818479049645,
+     "buyVolume": 1122.8792148753323,
+     "sellVolume": 1952.198150576905,
+     "buyOrganicVolume": 47.903238750472745,
+     "sellOrganicVolume": 195.4766236485118,
+     "numBuys": 68,
+     "numSells": 135,
+     "numTraders": 97,
+     "numNetBuyers": 17
+    },
+    "stats24h": {
+     "priceChange": 259.2773120509422,
+     "holderChange": 7380,
+     "liquidityChange": 22.925815179288374,
+     "buyVolume": 494509.94665847777,
+     "sellVolume": 492422.6573460044,
+     "buyOrganicVolume": 30709.77692963025,
+     "sellOrganicVolume": 25839.47388667676,
+     "numBuys": 12205,
+     "numSells": 10392,
+     "numTraders": 3491,
+     "numOrganicBuyers": 54,
+     "numNetBuyers": 721
+    }
+   },
+   "paper_contract": {
+    "pool_exit_pct": 99.41,
+    "strike_pct": 95.0,
+    "ask_usd": 9.4,
+    "bid_usd": 8.46
+   },
+   "status": "OPEN",
+   "settlement": null
+  },
+  {
+   "mint": "6a8Y8JcZ5iFPKzUYfZaNAuw96jpo7oWj1XSnMVzdpump",
+   "symbol": "steve",
+   "name": "steve",
+   "detected": "2026-08-12T15:43:20+00:00",
+   "pool_created": "2026-08-12T08:03:41Z",
+   "age_hours_at_detect": 7.66,
+   "expiry": "2026-08-26T15:43:20+00:00",
+   "lot": 1000000,
+   "entry": {
+    "usdPrice": 1.2324766033539777e-05,
+    "mcap": 12121.41122054342,
+    "fdv": 12121.41122054342,
+    "liquidity": 3145.07230352735,
+    "holderCount": 421,
+    "organicScore": 65.35453809910398,
+    "organicScoreLabel": "medium",
+    "tags": [
+     "unknown",
+     "token-2022"
+    ],
+    "audit": {
+     "mintAuthorityDisabled": true,
+     "freezeAuthorityDisabled": true,
+     "topHoldersPercentage": 22.735274086761546,
+     "devMigrations": 1,
+     "devMints": 44
+    },
+    "dev": "Ac8xUZu3GAgwz1kvryxXu5CrQQgTv8w9CCXUqonmXhxJ",
+    "decimals": 6,
+    "stats5m": {
+     "priceChange": 10.170115177836232,
+     "holderChange": 1.6908212560386473,
+     "liquidityChange": 10.522249870209679,
+     "volumeChange": 6723.164467211535,
+     "buyVolume": 521.4296624772838,
+     "sellVolume": 399.79450914987956,
+     "numBuys": 12,
+     "numSells": 5,
+     "numTraders": 15,
+     "numOrganicBuyers": 3,
+     "numNetBuyers": 11
+    },
+    "stats1h": {
+     "priceChange": 66.79152751015536,
+     "holderChange": 1.937046004842615,
+     "liquidityChange": 51.836678409666725,
+     "volumeChange": 395.649453008491,
+     "buyVolume": 3271.8990358203455,
+     "sellVolume": 2346.4963805455136,
+     "buyOrganicVolume": 156.25535158837158,
+     "sellOrganicVolume": 87.20947525783468,
+     "numBuys": 90,
+     "numSells": 59,
+     "numTraders": 78,
+     "numOrganicBuyers": 3,
+     "numNetBuyers": 33
+    },
+    "stats6h": {
+     "priceChange": -45.640394272765846,
+     "holderChange": -37.444279346211,
+     "liquidityChange": -23.797884272677233,
+     "volumeChange": -96.11129986559668,
+     "buyVolume": 14619.603976709379,
+     "sellVolume": 15951.43125221579,
+     "buyOrganicVolume": 691.3555899252242,
+     "sellOrganicVolume": 1087.0484067996242,
+     "numBuys": 494,
+     "numSells": 570,
+     "numTraders": 482,
+     "numOrganicBuyers": 13,
+     "numNetBuyers": 101
+    },
+    "stats24h": {
+     "priceChange": 78.48579567995469,
+     "holderChange": 795.7446808510638,
+     "liquidityChange": -28.435515427314744,
+     "buyVolume": 411354.48746194935,
+     "sellVolume": 404607.0646856319,
+     "buyOrganicVolume": 22920.60862994878,
+     "sellOrganicVolume": 21620.64986880742,
+     "numBuys": 10110,
+     "numSells": 9157,
+     "numTraders": 2881,
+     "numOrganicBuyers": 48,
+     "numNetBuyers": 693
+    }
+   },
+   "paper_contract": {
+    "pool_exit_pct": 99.22,
+    "strike_pct": 95.0,
+    "ask_usd": 11.71,
+    "bid_usd": 10.54
+   },
+   "status": "OPEN",
+   "settlement": null
+  },
+  {
+   "mint": "BVBfi9WedHJ6v659UYUSr36PVykqVoHoF4s1GFC8pump",
+   "symbol": "Plumbjak",
+   "name": "Plumber Wojak",
+   "detected": "2026-08-12T15:43:20+00:00",
+   "pool_created": "2026-08-12T15:10:01Z",
+   "age_hours_at_detect": 0.56,
+   "expiry": "2026-08-26T15:43:20+00:00",
+   "lot": 1000000,
+   "entry": {
+    "usdPrice": 8.656854537498351e-05,
+    "mcap": 84324.64305297061,
+    "fdv": 84324.64305297061,
+    "liquidity": 11009.531941498572,
+    "holderCount": 591,
+    "organicScore": 0,
+    "organicScoreLabel": "low",
+    "tags": [
+     "token-2022",
+     "unknown"
+    ],
+    "audit": {
+     "mintAuthorityDisabled": true,
+     "freezeAuthorityDisabled": true,
+     "topHoldersPercentage": 14.233851793200522,
+     "devBalancePercentage": 0.07437337190922244,
+     "devMigrations": 1,
+     "devMints": 1
+    },
+    "dev": "47JVquCw1QrCPjVK1QdjwftApJC5LMgyCsYvBjeG8Yd7",
+    "decimals": 6,
+    "stats5m": {
+     "priceChange": -30.187744019209724,
+     "holderChange": -1.0050251256281406,
+     "liquidityChange": -12.413041048117131,
+     "volumeChange": 7.165023219745483,
+     "buyVolume": 61253.47765470431,
+     "sellVolume": 62919.65062415331,
+     "buyOrganicVolume": 1149.4957145125572,
+     "sellOrganicVolume": 1562.3466859113428,
+     "numBuys": 454,
+     "numSells": 445,
+     "numTraders": 595,
+     "numNetBuyers": 258
+    },
+    "stats1h": {
+     "priceChange": 147.2233910182067,
+     "holderChange": 994.4444444444445,
+     "liquidityChange": 71.76149916559658,
+     "buyVolume": 407362.4919158312,
+     "sellVolume": 393258.3161841976,
+     "buyOrganicVolume": 4051.2631159895645,
+     "sellOrganicVolume": 3694.7989630049015,
+     "numBuys": 3366,
+     "numSells": 2989,
+     "numTraders": 1745,
+     "numNetBuyers": 511
+    },
+    "stats6h": {
+     "priceChange": 147.2233910182067,
+     "holderChange": 994.4444444444445,
+     "liquidityChange": 71.76149916559658,
+     "buyVolume": 407362.4919158312,
+     "sellVolume": 393258.3161841976,
+     "buyOrganicVolume": 4051.2631159895645,
+     "sellOrganicVolume": 3694.7989630049015,
+     "numBuys": 3366,
+     "numSells": 2989,
+     "numTraders": 1745,
+     "numNetBuyers": 511
+    },
+    "stats24h": {
+     "priceChange": 147.2233910182067,
+     "holderChange": 994.4444444444445,
+     "liquidityChange": 71.76149916559658,
+     "buyVolume": 407362.4919158312,
+     "sellVolume": 393258.3161841976,
+     "buyOrganicVolume": 4051.2631159895645,
+     "sellOrganicVolume": 3694.7989630049015,
+     "numBuys": 3366,
+     "numSells": 2989,
+     "numTraders": 1745,
+     "numNetBuyers": 511
+    }
+   },
+   "paper_contract": {
+    "pool_exit_pct": 98.45,
+    "strike_pct": 95.0,
+    "ask_usd": 82.24,
+    "bid_usd": 74.02
+   },
+   "status": "OPEN",
+   "settlement": null
+  },
+  {
+   "mint": "5z7kV2emKJiARui4L9KmfpoRgszaVej3tRczmwCfpump",
+   "symbol": "Alisa",
+   "name": "Justice For Alisa Hackett",
+   "detected": "2026-08-12T15:43:20+00:00",
+   "pool_created": "2026-08-12T10:11:16Z",
+   "age_hours_at_detect": 5.53,
+   "expiry": "2026-08-26T15:43:20+00:00",
+   "lot": 1000000,
+   "entry": {
+    "usdPrice": 8.05201300698835e-06,
+    "mcap": 7815.515213364279,
+    "fdv": 7815.515213364279,
+    "liquidity": 2151.5507963135524,
+    "holderCount": 400,
+    "organicScore": 64.9878806319291,
+    "organicScoreLabel": "medium",
+    "tags": [
+     "unknown",
+     "token-2022"
+    ],
+    "audit": {
+     "mintAuthorityDisabled": true,
+     "freezeAuthorityDisabled": true,
+     "topHoldersPercentage": 20.838314738108423,
+     "devMigrations": 17,
+     "devMints": 1737
+    },
+    "dev": "5MTjkAZMe1ur64ADTgnaYFN1ByTapu2RqcKYUdQNaE2E",
+    "decimals": 6,
+    "stats5m": {
+     "priceChange": -0.24223902525087318,
+     "liquidityChange": -1.0893597781271616,
+     "volumeChange": -66.1135657255436,
+     "buyVolume": 15.928901181771762,
+     "sellVolume": 41.07886015798433,
+     "buyOrganicVolume": 14.813324832450617,
+     "numBuys": 2,
+     "numSells": 1,
+     "numTraders": 3,
+     "numOrganicBuyers": 2,
+     "numNetBuyers": 2
+    },
+    "stats1h": {
+     "priceChange": -34.53041867022094,
+     "holderChange": -9.90990990990991,
+     "liquidityChange": -26.868787325124856,
+     "volumeChange": 25.038642478210367,
+     "buyVolume": 1190.9041258601012,
+     "sellVolume": 2000.6542027664843,
+     "buyOrganicVolume": 100.4303261065906,
+     "sellOrganicVolume": 112.03454237419854,
+     "numBuys": 80,
+     "numSells": 107,
+     "numTraders": 134,
+     "numOrganicBuyers": 1,
+     "numNetBuyers": 42
+    },
+    "stats6h": {
+     "priceChange": 66.39554586488687,
+     "holderChange": 4900,
+     "liquidityChange": -26.007412833055447,
+     "buyVolume": 332726.30458260135,
+     "sellVolume": 327103.81564590294,
+     "buyOrganicVolume": 16552.98636906649,
+     "sellOrganicVolume": 12837.508301943679,
+     "numBuys": 9163,
+     "numSells": 7754,
+     "numTraders": 2933,
+     "numOrganicBuyers": 38,
+     "numNetBuyers": 700
+    },
+    "stats24h": {
+     "priceChange": 66.39554586488687,
+     "holderChange": 4900,
+     "liquidityChange": -26.007412833055447,
+     "buyVolume": 332726.30458260135,
+     "sellVolume": 327103.81564590294,
+     "buyOrganicVolume": 16552.98636906649,
+     "sellOrganicVolume": 12837.508301943679,
+     "numBuys": 9163,
+     "numSells": 7754,
+     "numTraders": 2933,
+     "numOrganicBuyers": 38,
+     "numNetBuyers": 700
+    }
+   },
+   "paper_contract": {
+    "pool_exit_pct": 99.26,
+    "strike_pct": 95.0,
+    "ask_usd": 7.65,
+    "bid_usd": 6.88
+   },
+   "status": "OPEN",
+   "settlement": null
+  }
+ ],
+ "hero_positions": [
+  {
+   "mint": "GCa9TZMK9Q3VUSkhZgX76YAQBjqQd1dPxkBnZojFpump",
+   "symbol": "Plumber",
+   "detected": "2026-08-12T02:10:47+00:00",
+   "expiry": "2026-08-26T02:10:47+00:00",
+   "model": "2x-strike (ACM/Contract-One shape)",
+   "entry_usdPrice": 0.003696478033545824,
+   "strike_usdPrice": 0.007392956067091648,
+   "entry_mcap": 3532163.281748588,
+   "strike_mcap": 7064326.563497176,
+   "allocation_usd": 2000,
+   "coins": 270528,
+   "status": "OPEN",
+   "settlement": null
+  },
+  {
+   "mint": "CX2v7JSHJQDcNooubzzvZG8TPaDwbaPgfzcXRSWJpump",
+   "symbol": "MARIO64",
+   "detected": "2026-08-12T02:10:47+00:00",
+   "expiry": "2026-08-26T02:10:47+00:00",
+   "model": "2x-strike (ACM/Contract-One shape)",
+   "entry_usdPrice": 0.0015676870792087803,
+   "strike_usdPrice": 0.0031353741584175606,
+   "entry_mcap": 1508837.9082208017,
+   "strike_mcap": 3017675.8164416035,
+   "allocation_usd": 2000,
+   "coins": 637882,
+   "status": "OPEN",
+   "settlement": null
+  },
+  {
+   "mint": "HukaK2eHhbTyiuUwuKMntjPJP4aGdD4VwiExsNmyT8WJ",
+   "symbol": "BOT",
+   "detected": "2026-08-12T02:10:47+00:00",
+   "expiry": "2026-08-26T02:10:47+00:00",
+   "model": "2x-strike (ACM/Contract-One shape)",
+   "entry_usdPrice": 0.0008561277066581958,
+   "strike_usdPrice": 0.0017122554133163915,
+   "entry_mcap": 851769.0047141163,
+   "strike_mcap": 1703538.0094282327,
+   "allocation_usd": 2000,
+   "coins": 1168050,
+   "status": "OPEN",
+   "settlement": null
+  },
+  {
+   "mint": "C6ASDsxzqBvF5bCQFVAGMRWwfgZNhfozbb9DkgiKpump",
+   "symbol": "ORANGE",
+   "detected": "2026-08-12T02:10:47+00:00",
+   "expiry": "2026-08-26T02:10:47+00:00",
+   "model": "2x-strike (ACM/Contract-One shape)",
+   "entry_usdPrice": 0.0012873640609302338,
+   "strike_usdPrice": 0.0025747281218604675,
+   "entry_mcap": 1281022.5580985846,
+   "strike_mcap": 2562045.1161971693,
+   "allocation_usd": 2000,
+   "coins": 776781,
+   "status": "OPEN",
+   "settlement": null
+  },
+  {
+   "mint": "5rRdD6BFADz1iPcm7dzMaeTV4tpu3PHoucGUAD8Spump",
+   "symbol": "TOADPUNK",
+   "detected": "2026-08-12T15:25:00+00:00",
+   "expiry": "2026-08-26T15:25:00+00:00",
+   "model": "2x-strike (ACM/Contract-One shape)",
+   "entry_usdPrice": 0.0028213535075019202,
+   "strike_usdPrice": 0.0056427070150038405,
+   "entry_mcap": 2727882.204527657,
+   "strike_mcap": 5455764.409055314,
+   "allocation_usd": 2000,
+   "coins": 354440,
+   "status": "OPEN",
+   "settlement": null
   }
  ]
 }

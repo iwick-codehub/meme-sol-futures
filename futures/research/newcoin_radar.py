@@ -60,6 +60,85 @@ def corridor_bid(price, liq):
             "bid_usd": round(strike * v * 0.90, 2)}   # seller nets (paper)
 
 
+HERO_ALLOC = 2_000        # $ per hero position (paper)
+HERO_DAILY_CAP = 10_000   # max $ of new hero exposure per day
+HERO_STRIKE_MULT = 2.0    # the ACM model: strike = 2x detection valuation
+
+
+def hero_worthy(t):
+    """Claude's hero bar, codified: real launch-day traction only."""
+    e = t
+    audit = e.get("audit") or {}
+    return ((e.get("holderCount") or 0) >= 800 and
+            (e.get("liquidity") or 0) >= 40_000 and
+            (e.get("mcap") or 0) >= 250_000 and
+            (audit.get("topHoldersPercentage") or 100) <= 40 and
+            (e.get("organicScoreLabel") or "low") in ("medium", "high"))
+
+
+def open_heroes(db, new_positions):
+    today = now_utc().date().isoformat()
+    db.setdefault("hero_positions", [])
+    spent = sum(h["allocation_usd"] for h in db["hero_positions"]
+                if h["detected"][:10] == today)
+    have = {h["mint"] for h in db["hero_positions"]}
+    candidates = [p for p in db["positions"]
+                  if p["detected"][:10] == today and p["mint"] not in have]
+    # richest launches first — conviction ranking by traction
+    candidates.sort(key=lambda p: (p["entry"].get("holderCount") or 0) *
+                    ((p["entry"].get("liquidity") or 0) ** 0.5), reverse=True)
+    opened = []
+    for p in candidates:
+        if spent + HERO_ALLOC > HERO_DAILY_CAP:
+            break
+        if not hero_worthy(p["entry"]):
+            continue
+        entry_px = p["entry"]["usdPrice"]
+        strike_px = entry_px * HERO_STRIKE_MULT
+        h = {
+            "mint": p["mint"], "symbol": p["symbol"],
+            "detected": p["detected"], "expiry": p["expiry"],
+            "model": "2x-strike (ACM/Contract-One shape)",
+            "entry_usdPrice": entry_px, "strike_usdPrice": strike_px,
+            "entry_mcap": p["entry"]["mcap"],
+            "strike_mcap": (p["entry"]["mcap"] or 0) * HERO_STRIKE_MULT,
+            "allocation_usd": HERO_ALLOC,
+            "coins": round(HERO_ALLOC / strike_px) if strike_px else 0,
+            "status": "OPEN", "settlement": None,
+        }
+        db["hero_positions"].append(h)
+        opened.append(h)
+        spent += HERO_ALLOC
+    return opened
+
+
+def settle_heroes(db):
+    ts = now_utc()
+    settled = []
+    for h in db.get("hero_positions", []):
+        if h["status"] != "OPEN" or datetime.datetime.fromisoformat(h["expiry"]) > ts:
+            continue
+        try:
+            found = get(f"{LITE}/tokens/v2/search?query={h['mint']}")
+            t = next((x for x in found if x.get("id") == h["mint"]), None)
+        except Exception:
+            t = None
+        px = (t or {}).get("usdPrice") or 0.0
+        value = px * h["coins"]
+        h["settlement"] = {
+            "settled": ts.isoformat(timespec="seconds"), "usdPrice": px,
+            "vs_strike": round(px / h["strike_usdPrice"], 3) if h["strike_usdPrice"] else None,
+            "value_usd": round(value, 2),
+            "pnl_usd": round(value - h["allocation_usd"], 2),
+            "pnl_pct": round((value / h["allocation_usd"] - 1) * 100, 1),
+            "delisted": t is None,
+        }
+        h["status"] = "SETTLED"
+        settled.append(h)
+        time.sleep(2)
+    return settled
+
+
 def detect(db):
     ts = now_utc()
     tokens = get(f"{LITE}/tokens/v2/toptraded/24h?limit=100")
@@ -138,11 +217,21 @@ def settle(db):
 def main():
     db = json.loads(DB.read_text()) if DB.exists() else {"positions": []}
     found = detect(db)
+    heroes = open_heroes(db, found)
     settled = settle(db)
+    hero_settled = settle_heroes(db)
     DB.write_text(json.dumps(db, indent=1))
     open_n = sum(1 for p in db["positions"] if p["status"] == "OPEN")
-    print(f"{now_utc().date()}: +{len(found)} new, {len(settled)} settled, "
-          f"{open_n} open, {len(db['positions'])} total on the paper book")
+    hero_open = sum(1 for h in db.get("hero_positions", []) if h["status"] == "OPEN")
+    print(f"{now_utc().date()}: DRAGNET +{len(found)} new, {len(settled)} settled, "
+          f"{open_n} open | HEROES +{len(heroes)} new, {len(hero_settled)} settled, "
+          f"{hero_open} open")
+    for h in heroes:
+        print(f"  HERO {h['symbol']:12s} entry ${h['entry_usdPrice']:.6g} -> strike "
+              f"${h['strike_usdPrice']:.6g} (2x)  ${h['allocation_usd']:,} for "
+              f"{h['coins']:,} coins  wins if >2x by {h['expiry'][:10]}")
+    for h in hero_settled:
+        print(f"  HERO SETTLED {h['symbol']:12s} P/L {h['settlement']['pnl_pct']}%")
     for p in found:
         e = p["entry"]
         print(f"  NEW {p['symbol']:12s} age {p['age_hours_at_detect']:5.1f}h  "
