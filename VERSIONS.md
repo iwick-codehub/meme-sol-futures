@@ -1,5 +1,10 @@
 # Versions — meme-sol-futures
 
+## 0.18.0 — 2026-08-11
+- NEW-COIN RADAR (hidden research DB, never published): futures/research/newcoin_radar.py — every sub-24h coin hitting the top-traded tape gets a PAPER long forward at the live corridor ask (1M lot, 14-day expiry); full detection snapshot captured (price/mcap/fdv/liq/holders/organicScore/audit/dev/all stats windows); positions self-settle at expiry vs live price with buyer P/L; hourly cron installed (:25)
+- First sweep: 25 new coins on the paper book (incl. MARIO64 16.7h, Plumber 20.6h, BOT 9.4h, cc 1.1h)
+- Terminal: root-cause fix for white bands top/bottom-right — vw full-bleed hack REMOVED (page painted dark via main/body, no canvas overflow: measured 1135 <= 1150 viewport, zero overflowing elements)
+
 ## 0.17.0 — 2026-08-11
 - LAYOUT ROOT CAUSE FIXED (measured, not guessed): the Shopify theme confines page content to a ~726px article column — the terminal content now breaks out and centers on the viewport (width min(1220px, 94vw)); table font viewport-clamped, em-based paddings; verified fits:true at 1150px with MCAP on-screen; visible green scrollbar as fallback
 - 1,000,000-COIN LOT made unmissable: banner headline, BID (1M)/ASK (1M) headers, legend line, status line
