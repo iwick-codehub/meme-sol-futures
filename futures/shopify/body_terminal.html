@@ -243,9 +243,10 @@
           rows.filter(function (r) { return !r.acm; }).slice(0, 30 - acmRows.length));
         render();
         rows.forEach(function (r) { prevPx[r.mint] = r.price; });
-        document.getElementById("term-status").textContent =
+        document.getElementById("term-status").innerHTML =
           rows.length + " MEMES · UPDATED " + new Date().toLocaleTimeString() +
-          " · LIVE, REFRESHES EVERY 30S · CLICK A COLUMN TO SORT · STRIKE = OUR 14-DAY CONTRACT PRICE, INDICATIVE";
+          " · LIVE, REFRESHES EVERY 30S · CLICK A COLUMN TO SORT" +
+          "<br>STRIKE = OUR 14-DAY CONTRACT PRICE, INDICATIVE";
       })
       .catch(function () {
         document.getElementById("term-status").textContent = "FEED UNAVAILABLE — RETRYING";
