@@ -1,5 +1,10 @@
 # Versions — meme-sol-futures
 
+## 0.15.0 — 2026-08-11
+- GO-LIVE PREP for the ACM bid: Todd declared as funded buyer behind the live ~$230 corridor bid; Bid Board REPRICED to the live Terminal quote (fixed $500k/$200k tiers retired — closes the 2x-overpay/adverse-selection flag); Whale tier = quoted at hit time
+- futures/RUNBOOK-DESK.md — the manual execution rails: 9-step zero-risk order of operations (verify -> quote+ticker -> fresh escrow per contract -> coins firm the quote -> buyer SOL -> seal+anchor+watcher -> settle to the hour -> publish receipt), pre-first-hit checklist (fund buyer wallet, designate treasury+float wallets, counsel sign-off), the step-5/6 gap documented as what InstarLock's atomic match eliminates
+- Terminal: CONTRACT column widened
+
 ## 0.14.0 — 2026-08-11
 - CONTRACT TICKERS ratified + live: SYMBOL5+DOY+YYYY (TRUMP2372026 = expires day 237 = Aug 25 2026; day-of-year kills US/EU ambiguity); tape's COIN column is now CONTRACT, ticker computed daily from the rolling 14-day expiry, hover shows coin + ISO expiry date
 - BID/ASK two-sided quote on every standard 1M-coin contract: ASK = full strike (buyer pays), BID = strike x 90% (desk pays seller now) — THE SPREAD IS THE 10% COMMISSION; size discounts live in the ask's distance below spot; convention encoded in MARKET-SPEC
