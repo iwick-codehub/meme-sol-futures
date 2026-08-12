@@ -1,5 +1,8 @@
 # Versions — meme-sol-futures
 
+## 0.12.1 — 2026-08-11
+- Terminal upgrades (all live-verified in rendered browser): MCAP default sort + click-to-sort all columns (asc/desc toggle) + proportional high/low bars in every numeric column; ACM always listed — pinned top + gold-highlighted until user sorts, then sorts with the rest; coin names clickable (ACM -> /pages/acm, others -> DexScreener); NET 1M FWD renamed SELL 1M and moved (with DISC) to first data columns; PRICE -> PRICE/COIN; top explainer box ("EVERY QUOTE IS A 2-WEEK FUTURES PRICE") + acronym legend
+
 ## 0.12.0 — 2026-08-11
 - PRICING ENGINE RATIFIED; futures/pricer.py built — exact corridor via Jupiter quote (pool-exit floor, 95% ceiling, k=0.25), with liquidity-approx x*y=k fallback when the free-tier quota is exhausted (hcp-arb scanner shares this Mac's quota); live-tested on ACM
 - INSTAR TERMINAL live at /pages/terminal (unlisted, reached via new 4th box on /pages/crypto): dark DEX-style tape, top-traded Solana memes via Jupiter lite-api (client-side fetch = each visitor's own quota, CORS verified), NET 1M FWD column = indicative corridor-priced seller net + DISC column, 60s refresh, infra/stables filtered

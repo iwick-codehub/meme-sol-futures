@@ -9,15 +9,27 @@
   .term-head .term-sub { font-size: .72em; opacity: .65; letter-spacing: .1em; }
   .term table { width: 100%; border-collapse: collapse; font-size: .8em; }
   .term th { text-align: right; padding: 8px 10px; font-size: .85em; letter-spacing: .12em;
-    color: #22c55e; border-bottom: 1px solid #14532d; position: sticky; top: 0; background: #060a08; }
+    color: #22c55e; border-bottom: 1px solid #14532d; position: sticky; top: 0; background: #060a08;
+    cursor: pointer; user-select: none; }
+  .term th:hover { color: #86efac; }
+  .term th.sorted { color: #fbbf24; }
   .term th:nth-child(1), .term th:nth-child(2), .term td:nth-child(1), .term td:nth-child(2) { text-align: left; }
   .term td { padding: 7px 10px; text-align: right; border-bottom: 1px solid #0d2818; white-space: nowrap; }
   .term td.sym { font-weight: 700; color: #e7ffee; }
+  .term td.sym a { color: inherit; text-decoration: none; }
+  .term td.sym a:hover { color: #4ade80; text-decoration: underline; }
   .term .up { color: #4ade80; } .term .dn { color: #f87171; }
   .term td.net { color: #fbbf24; font-weight: 700; }
   .term .term-note { font-size: .68em; opacity: .6; margin-top: 14px; line-height: 1.7; }
   .term .term-status { font-size: .72em; opacity: .8; margin: 8px 0; letter-spacing: .1em; }
+  .term .term-explain { border: 1px solid #14532d; background: #08120c; padding: 12px 16px; margin: 12px 0 4px; }
+  .term .term-explain .tx-big { color: #fbbf24; font-weight: 700; font-size: .85em; letter-spacing: .08em; }
+  .term .term-explain .tx-legend { font-size: .7em; opacity: .8; margin-top: 8px; line-height: 1.8; }
+  .term .term-explain .tx-k { color: #22c55e; font-weight: 700; }
   .term tr:hover td { background: #0a1f12; }
+  .term tr.acmrow td { background: #12200a; border-bottom: 1px solid #a8842c55; }
+  .term tr.acmrow td.sym { color: #fbbf24; }
+  .term tr.acmrow:hover td { background: #1a2c10; }
   @media (max-width: 760px) { .term table { font-size: .68em; } .term td, .term th { padding: 6px 6px; } }
 </style>
 <div class="term-wrap"><div class="term">
@@ -25,24 +37,43 @@
     <h2>INSTAR TERMINAL</h2>
     <span class="term-sub">TOP TRADED SOLANA MEMES &middot; 24H &middot; LIVE VIA JUPITER &middot; <a href="/pages/meme-futures">SELL FORWARD &rarr;</a></span>
   </div>
+  <div class="term-explain">
+    <div class="tx-big">EVERY QUOTE IS A 2-WEEK FUTURES PRICE: sell your coins
+    today at a locked price &mdash; escrowed both sides at signing, paid in SOL
+    exactly 14 days later. The pool never sees the trade.</div>
+    <div class="tx-legend">
+      <span class="tx-k">SELL 1M</span> = your net for selling 1,000,000 coins forward (after the 10% commission) &middot;
+      <span class="tx-k">DISC</span> = what you give up vs today's spot value of that lot &middot;
+      <span class="tx-k">PRICE/COIN</span> = spot price per single coin &middot;
+      <span class="tx-k">24H</span> = price change, 24 hours &middot;
+      <span class="tx-k">MCAP</span> = market cap &middot;
+      <span class="tx-k">LIQ</span> = pool liquidity &middot;
+      quotes indicative &mdash; firm at escrow &middot;
+      <a href="/pages/meme-futures">how contracts work &rarr;</a>
+    </div>
+  </div>
   <div class="term-status" id="term-status">CONNECTING&hellip;</div>
   <table>
-    <thead><tr>
-      <th>#</th><th>COIN</th><th>PRICE</th><th>24H</th><th>MCAP</th><th>LIQ</th>
-      <th title="Indicative net to seller for a 1,000,000-coin forward, after 10% commission">NET 1M FWD</th>
-      <th title="Discount of the net vs today's spot value of the lot">DISC</th>
+    <thead><tr id="term-headrow">
+      <th data-k="">#</th><th data-k="symbol">COIN</th>
+      <th data-k="net" title="What you'd net today selling 1,000,000 coins forward (14-day escrowed contract, after 10% commission)">SELL 1M</th>
+      <th data-k="disc" title="Discount of the net vs today's spot value of the lot">DISC</th>
+      <th data-k="price" title="Spot price per single coin">PRICE/COIN</th>
+      <th data-k="ch">24H</th><th data-k="mcap">MCAP</th><th data-k="liq">LIQ</th>
     </tr></thead>
     <tbody id="term-rows"></tbody>
   </table>
   <p class="term-note">
-    NET 1M FWD = indicative net proceeds to a seller writing a 1,000,000-coin,
-    14-day fully-escrowed forward at the Instar desk: corridor-priced strike
-    (floor = simulated pool exit from live liquidity, ceiling 95% of spot,
-    k=0.25) minus the 10% commission. Flat 1.5 SOL writing fee not shown.
-    Quotes are INDICATIVE — firm quotes exist only at escrow. DISC = what the
-    seller gives up vs spot value of the lot; the pool would usually take more.
-    All contracts write and settle in SOL. Prices via Jupiter, refreshed every
-    60s. Not investment advice. <a href="/pages/meme-futures">How contracts work</a>
+    Sorted by MCAP by default — click any column header to sort, click again to
+    flip. Bars show each value relative to the column's high. SELL 1M =
+    indicative net proceeds to a seller writing a 1,000,000-coin, 14-day
+    fully-escrowed forward at the Instar desk: corridor-priced strike (floor =
+    simulated pool exit from live liquidity, ceiling 95% of spot, k=0.25) minus
+    the 10% commission. Flat 1.5 SOL writing fee not shown. Quotes are
+    INDICATIVE — firm quotes exist only at escrow. DISC = what the seller gives
+    up vs spot value of the lot; the pool would usually take more. All
+    contracts write and settle in SOL. Prices via Jupiter, refreshed every 60s.
+    Not investment advice. <a href="/pages/meme-futures">How contracts work</a>
     &middot; <a href="/pages/acm-bid-board">The $ACM Bid Board</a>
   </p>
 </div></div>
@@ -52,56 +83,111 @@
     "cbBTC","WBTC","zBTC","xBTC","tBTC","ETH","WETH","whETH","JLP","JitoSOL","mSOL","bSOL","jupSOL","INF",
     "JUP","RAY","ORCA","PYTH","JTO","W","TNSR","DRIFT","KMNO","RENDER","HNT","MNDE","CLOUD","ZEUS","IO","TRX","CRCLx"]);
   var BADTAGS = ["lst","stablecoin","token-2022"];
+  var ACM_MINT = "4PRz3EwhbjrrX6YksMDuUzrXT51pr7CQtXNCravhpump";
+  var rows = [], sortKey = "mcap", sortDir = -1, userSorted = false;
+
   function memeish(t) {
     if (EXCLUDE.has(t.symbol)) return false;
     var tags = t.tags || [];
     for (var i = 0; i < BADTAGS.length; i++) if (tags.indexOf(BADTAGS[i]) >= 0) return false;
     return !!(t.usdPrice && t.liquidity);
   }
-  function fmt(n, d) {
+  function fmt(n) {
     if (n === null || n === undefined || isNaN(n)) return "—";
     if (n >= 1e9) return (n / 1e9).toFixed(1) + "B";
     if (n >= 1e6) return (n / 1e6).toFixed(1) + "M";
     if (n >= 1e3) return (n / 1e3).toFixed(1) + "K";
-    return n.toFixed(d === undefined ? 2 : d);
+    return n.toFixed(2);
   }
   function px(p) {
     if (p >= 1) return "$" + p.toFixed(2);
     if (p >= 0.001) return "$" + p.toFixed(4);
     return "$" + p.toExponential(2);
   }
-  function net1m(t) {
-    var v = 1e6 * t.usdPrice;           // spot value of a 1M lot
-    var x = t.liquidity / 2;            // one-sided depth
-    if (!x) return null;
-    var poolExit = v / (1 + v / x);     // x*y=k walk
-    var floor = poolExit / v;
-    var strike = Math.min(0.95, floor + 0.25 * (0.95 - floor));
-    return { net: strike * v * 0.90, disc: (1 - strike * 0.90) * 100 };
+  function bar(v, max, rgba) {
+    if (!max || v === null || v === undefined || isNaN(v)) return "";
+    var w = Math.max(2, Math.min(100, 100 * v / max));
+    return "background:linear-gradient(to left," + rgba + " " + w + "%,transparent " + w + "%);";
   }
+  function render() {
+    var sorted = rows.slice().sort(function (a, b) {
+      var x = a[sortKey], y = b[sortKey];
+      if (typeof x === "string") return sortDir * x.localeCompare(y);
+      return sortDir * ((x || 0) - (y || 0));
+    });
+    if (!userSorted) {
+      sorted = sorted.filter(function (r) { return r.acm; })
+        .concat(sorted.filter(function (r) { return !r.acm; }));
+    }
+    var mx = {};
+    ["price","mcap","liq","net","disc","cha"].forEach(function (k) {
+      mx[k] = Math.max.apply(null, rows.map(function (r) { return r[k] || 0; }));
+    });
+    var html = sorted.map(function (r, i) {
+      return "<tr" + (r.acm ? " class='acmrow'" : "") + "><td>" + (i + 1) + "</td>" +
+        "<td class='sym'><a href='" +
+          (r.acm ? "/pages/acm" : "https://dexscreener.com/solana/" + r.mint) +
+          "'" + (r.acm ? "" : " target='_blank' rel='noopener'") + ">" + r.symbol + "</a></td>" +
+        "<td class='net' style='" + bar(r.net, mx.net, "rgba(251,191,36,.14)") + "'>" +
+          (r.net !== null ? "$" + fmt(r.net) : "—") + "</td>" +
+        "<td style='" + bar(r.disc, mx.disc, "rgba(248,113,113,.12)") + "'>" +
+          (r.disc !== null ? "−" + r.disc.toFixed(1) + "%" : "—") + "</td>" +
+        "<td style='" + bar(r.price, mx.price, "rgba(74,222,128,.10)") + "'>" + px(r.price) + "</td>" +
+        "<td class='" + (r.ch >= 0 ? "up" : "dn") + "' style='" +
+          bar(r.cha, mx.cha, r.ch >= 0 ? "rgba(74,222,128,.14)" : "rgba(248,113,113,.14)") + "'>" +
+          (r.ch >= 0 ? "+" : "") + r.ch.toFixed(1) + "%</td>" +
+        "<td style='" + bar(r.mcap, mx.mcap, "rgba(34,197,94,.16)") + "'>$" + fmt(r.mcap) + "</td>" +
+        "<td style='" + bar(r.liq, mx.liq, "rgba(34,197,94,.12)") + "'>$" + fmt(r.liq) + "</td></tr>";
+    }).join("");
+    document.getElementById("term-rows").innerHTML = html;
+    var ths = document.getElementById("term-headrow").children;
+    for (var i = 0; i < ths.length; i++) {
+      var k = ths[i].getAttribute("data-k");
+      ths[i].className = (k && k === sortKey) ? "sorted" : "";
+      ths[i].textContent = ths[i].textContent.replace(/ [▲▼]$/, "");
+      if (k && k === sortKey) ths[i].textContent += sortDir < 0 ? " ▼" : " ▲";
+    }
+  }
+  document.getElementById("term-headrow").addEventListener("click", function (e) {
+    var k = e.target.getAttribute && e.target.getAttribute("data-k");
+    if (!k) return;
+    if (sortKey === k) { sortDir = -sortDir; }
+    else { sortKey = k; sortDir = (k === "symbol") ? 1 : -1; }
+    userSorted = true;
+    render();
+  });
   function load() {
     fetch("https://lite-api.jup.ag/tokens/v2/toptraded/24h?limit=100")
       .then(function (r) { return r.json(); })
       .then(function (list) {
-        var rows = list.filter(memeish).map(function (t) {
-          var q = net1m(t);
+        var hasACM = list.some(function (t) { return t.id === ACM_MINT; });
+        if (hasACM) return list;
+        return fetch("https://lite-api.jup.ag/tokens/v2/search?query=" + ACM_MINT)
+          .then(function (r) { return r.json(); })
+          .then(function (found) {
+            var acm = (found || []).filter(function (t) { return t.id === ACM_MINT; });
+            return list.concat(acm);
+          })
+          .catch(function () { return list; });
+      })
+      .then(function (list) {
+        rows = list.filter(function (t) { return t.id === ACM_MINT || memeish(t); }).map(function (t) {
+          var v = 1e6 * t.usdPrice, x = t.liquidity / 2, net = null, disc = null;
+          if (x) {
+            var poolExit = v / (1 + v / x);
+            var strike = Math.min(0.95, poolExit / v + 0.25 * (0.95 - poolExit / v));
+            net = strike * v * 0.90;
+            disc = (1 - strike * 0.90) * 100;
+          }
           var ch = (t.stats24h && t.stats24h.priceChange) || 0;
-          return { t: t, q: q, ch: ch };
+          return { symbol: t.symbol, price: t.usdPrice, ch: ch, cha: Math.abs(ch),
+                   mcap: t.mcap || 0, liq: t.liquidity || 0, net: net, disc: disc,
+                   acm: t.id === ACM_MINT, mint: t.id };
         });
-        var html = rows.map(function (r, i) {
-          var t = r.t, q = r.q;
-          return "<tr><td>" + (i + 1) + "</td>" +
-            "<td class='sym'>" + t.symbol + "</td>" +
-            "<td>" + px(t.usdPrice) + "</td>" +
-            "<td class='" + (r.ch >= 0 ? "up" : "dn") + "'>" + (r.ch >= 0 ? "+" : "") + r.ch.toFixed(1) + "%</td>" +
-            "<td>$" + fmt(t.mcap) + "</td>" +
-            "<td>$" + fmt(t.liquidity) + "</td>" +
-            "<td class='net'>" + (q ? "$" + fmt(q.net) : "—") + "</td>" +
-            "<td>" + (q ? "−" + q.disc.toFixed(1) + "%" : "—") + "</td></tr>";
-        }).join("");
-        document.getElementById("term-rows").innerHTML = html;
+        render();
         document.getElementById("term-status").textContent =
-          rows.length + " MEMES · UPDATED " + new Date().toLocaleTimeString() + " · NET 1M FWD = INDICATIVE SELLER NET, 1M-COIN 14-DAY FORWARD";
+          rows.length + " MEMES · UPDATED " + new Date().toLocaleTimeString() +
+          " · CLICK A COLUMN TO SORT · SELL 1M = YOUR NET, 1M-COIN 14-DAY FORWARD, INDICATIVE";
       })
       .catch(function () {
         document.getElementById("term-status").textContent = "FEED UNAVAILABLE — RETRYING";
