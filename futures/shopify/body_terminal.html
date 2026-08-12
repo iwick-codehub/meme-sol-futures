@@ -20,7 +20,7 @@
   .term th::after { content: ""; display: inline-block; width: 1.05em; }
   .term th.sorted.desc::after { content: "▼"; }
   .term th.sorted.asc::after { content: "▲"; }
-  .term th:nth-child(1), .term th:nth-child(2), .term td:nth-child(1), .term td:nth-child(2) { text-align: left; }
+  .term th:nth-child(1), .term td:nth-child(1) { text-align: left; }
   .term td { padding: 8px 13px; text-align: right; border-bottom: 1px solid #0d2818; white-space: nowrap; }
   .term td.sym { font-weight: 700; color: #e7ffee; }
   .term td.sym a { color: inherit; text-decoration: none; }
@@ -79,7 +79,6 @@
   <div class="term-status" id="term-status">CONNECTING&hellip;</div>
   <div class="term-scroll"><table>
     <thead><tr id="term-headrow">
-      <th data-k="">#</th>
       <th data-k="symbol" title="Contract ticker: first 5 letters of the coin + expiry day-of-year + year. Every contract written today runs exactly 14 days.">CONTRACT</th>
       <th data-k="price" title="Spot price per single coin, live">PRICE</th>
       <th data-k="bid" title="BID — what the desk pays you right now for the 1,000,000-coin contract: the strike minus the 10% commission">BID</th>
@@ -172,7 +171,7 @@
       mx[k] = Math.max.apply(null, rows.map(function (r) { return r[k] || 0; }));
     });
     var html = sorted.map(function (r, i) {
-      return "<tr" + (r.acm ? " class='acmrow'" : "") + "><td>" + (i + 1) + "</td>" +
+      return "<tr" + (r.acm ? " class='acmrow'" : "") + ">" +
         "<td class='sym'><a href='https://dexscreener.com/solana/" + r.mint +
           "' target='_blank' rel='noopener' title='" + r.symbol + " · expires " +
           EXPIRY.toISOString().slice(0, 10) + "'>" + ticker(r.symbol) + "</a></td>" +
