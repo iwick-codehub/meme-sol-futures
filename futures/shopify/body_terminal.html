@@ -134,9 +134,8 @@
     });
     var html = sorted.map(function (r, i) {
       return "<tr" + (r.acm ? " class='acmrow'" : "") + "><td>" + (i + 1) + "</td>" +
-        "<td class='sym'><a href='" +
-          (r.acm ? "/pages/acm" : "https://dexscreener.com/solana/" + r.mint) +
-          "'" + (r.acm ? "" : " target='_blank' rel='noopener'") + ">" + r.symbol + "</a></td>" +
+        "<td class='sym'><a href='https://dexscreener.com/solana/" + r.mint +
+          "' target='_blank' rel='noopener'>" + r.symbol + "</a></td>" +
         "<td class='net' style='" + bar(r.net, mx.net, "rgba(251,191,36,.14)") + "'>" +
           (r.net !== null ? "$" + fmt(r.net) : "—") + "</td>" +
         "<td style='" + bar(r.disc, mx.disc, "rgba(248,113,113,.12)") + "'>" +
