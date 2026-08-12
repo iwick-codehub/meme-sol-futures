@@ -1,5 +1,8 @@
 # Versions — meme-sol-futures
 
+## 0.19.1 — 2026-08-12
+- Phase 2 REDESIGNED on Todd's forced-cover insight: fully-covered OPTIONS market — covered calls with ATOMIC FORCED PURCHASE of the underlying inside the write tx (the corn-can't-do-this move) + cash-secured puts (the true short = buying a put, premium-only); physical settlement only, no oracle/no cash settlement (capped-cash design obsolete); write-time buy-pressure dynamic flagged as feature + gaming surface; hero book reframed as the empirical premium study for 2x launch-day calls
+
 ## 0.19.0 — 2026-08-12
 - HERO BOOK added to the radar (second paper simulation, side by side with the dragnet): Claude-codified hero bar (holders>=800, liq>=$40K, mcap>=$250K, top-holders<=40%, organic medium/high), conviction-ranked; strike = 2x detection valuation (the ACM/Contract-One shape); $2K per hero, $10K/day cap; buyer wins only if the coin >2x by day 14
 - Day one heroes (settle 2026-08-26): Plumber, MARIO64, BOT, ORANGE, TOADPUNK — $10K deployed at 2x strikes

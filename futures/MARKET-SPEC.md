@@ -217,15 +217,25 @@ informed seller trades against the market's judgment, not the house).
 - **Phase 1 (LIVE):** covered, physically-settled, fully-escrowed forwards.
   Covered-only BY CONSTRUCTION — the zero-risk law forbids naked positions
   in this instrument. The trust layer and the receipts tape.
-- **Phase 2:** CAPPED cash-settled contracts on the same tickers for naked
-  traders: short escrows a fixed max payout, long's win capped there, both
-  legs fully funded at signing (no margin, no liquidation engine — ever;
-  perps import the failure modes this desk exists to avoid). Settlement
-  price = TWAP from OUR OWN tape index (tape_history + radar = the oracle
-  being built now); thin-pool paint-resistance via time-weighting, listing
-  liquidity floors, and size caps vs pool. REGULATORY STEP-CHANGE: cash-
-  settled public derivatives = CFTC venue; counsel BEFORE first outside
-  position.
+- **Phase 2 (REVISED 2026-08-12 — Todd's forced-cover insight):** the
+  fully-covered OPTIONS market. No cash settlement, no oracle, no margin,
+  no liquidation — ever. Two instruments, both 100% collateralized at the
+  atomic write:
+  · **Covered calls:** a writer without coins is FORCE-COVERED — the write
+    transaction buys the lot via the router and escrows it in the same
+    atomic tx that mints the contract ("uncovered" in feel, covered in
+    fact — the thing you cannot do with corn). Contract cost includes the
+    purchase, slippage honestly priced.
+  · **Cash-secured puts:** the true short = BUYING a put (premium-only,
+    capped loss, profits on decline); the put writer escrows the full
+    strike in SOL at signing.
+  Settlement is physical exercise/expiry — kills the paint-the-index
+  problem entirely (prior capped-cash-settled design OBSOLETE, do not
+  revive). Known reflexive dynamic: call-writing force-buys the underlying
+  at write time (structural buy pressure; also a gaming surface — listing
+  rules must address). The hero paper book is the empirical premium study
+  for 2x-strike launch-day calls. REGULATORY STEP-CHANGE stands: public
+  options venue = CFTC territory; counsel BEFORE first outside position.
 - **Phase 3:** the basis between the futures curve and spot publishes as
   the market's forecast of every coin's 2-week fate — a data product
   unique to the venue.
