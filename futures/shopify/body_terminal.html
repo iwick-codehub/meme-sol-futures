@@ -80,10 +80,14 @@
   <div id="view-exec" style="display:none">
     <div class="term-scroll"><table>
       <thead><tr><th style="text-align:left">CONTRACT</th><th style="text-align:left">COIN</th>
-        <th>LOT</th><th>STRIKE</th><th style="text-align:left">STATUS</th><th style="text-align:left">RECEIPT</th></tr></thead>
+        <th>LOT</th><th>STRIKE</th>
+        <th title="What the seller nets — the strike minus the 10% commission">BID</th>
+        <th title="What the buyer paid — the full strike">ASK</th>
+        <th style="text-align:left">STATUS</th><th style="text-align:left">RECEIPT</th></tr></thead>
       <tbody>
         <tr>
           <td class="sym">ACM2432026</td><td>ACM</td><td>1,000,000</td><td>$500.00</td>
+          <td class="net">$450.00</td><td class="net">$500.00</td>
           <td style="text-align:left">ESCROWED &middot; SETTLES AUG 31, 2026 &middot; 12:00 EST</td>
           <td style="text-align:left" class="dim">full receipt trail publishes at settlement</td>
         </tr>
