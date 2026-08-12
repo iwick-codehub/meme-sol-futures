@@ -33,6 +33,10 @@
   .term tr.acmrow td { background: #12200a; border-bottom: 1px solid #a8842c55; }
   .term tr.acmrow td.sym { color: #fbbf24; }
   .term tr.acmrow:hover td { background: #1a2c10; }
+  @keyframes tickup { 0% { background: #14532d; } 100% { background: transparent; } }
+  @keyframes tickdn { 0% { background: #7f1d1d; } 100% { background: transparent; } }
+  .term td.tickup { animation: tickup 1.4s ease-out; }
+  .term td.tickdn { animation: tickdn 1.4s ease-out; }
   @media (max-width: 760px) { .term table { font-size: .68em; } .term td, .term th { padding: 6px 6px; } }
 </style>
 <div class="term-wrap"><div class="term">
@@ -75,7 +79,8 @@
     the 10% commission. Flat 1.5 SOL writing fee not shown. Quotes are
     INDICATIVE — firm quotes exist only at escrow. DISC = what the seller gives
     up vs spot value of the lot; the pool would usually take more. All
-    contracts write and settle in SOL. Prices via Jupiter, refreshed every 60s.
+    contracts write and settle in SOL. Prices via Jupiter, refreshed every 30s
+    while you're on the page — a price cell flashes green/red when it moves.
     Not investment advice. <a href="/pages/meme-futures">How contracts work</a>
     &middot; <a href="/pages/acm-bid-board">The $ACM Bid Board</a>
   </p>
@@ -103,10 +108,11 @@
     return n.toFixed(2);
   }
   function px(p) {
-    if (p >= 1) return "$" + p.toFixed(2);
-    if (p >= 0.001) return "$" + p.toFixed(4);
-    return "$" + p.toExponential(2);
+    if (p >= 1) return "$" + p.toFixed(3);
+    if (p >= 0.0001) return "$" + p.toFixed(6);
+    return "$" + p.toExponential(3);
   }
+  var prevPx = {};
   function bar(v, max, rgba) {
     if (!max || v === null || v === undefined || isNaN(v)) return "";
     var w = Math.max(2, Math.min(100, 100 * v / max));
@@ -135,7 +141,9 @@
           (r.net !== null ? "$" + fmt(r.net) : "—") + "</td>" +
         "<td style='" + bar(r.disc, mx.disc, "rgba(248,113,113,.12)") + "'>" +
           (r.disc !== null ? "−" + r.disc.toFixed(1) + "%" : "—") + "</td>" +
-        "<td style='" + bar(r.price, mx.price, "rgba(74,222,128,.10)") + "'>" + px(r.price) + "</td>" +
+        "<td class='" + (prevPx[r.mint] !== undefined && r.price > prevPx[r.mint] ? "tickup"
+          : prevPx[r.mint] !== undefined && r.price < prevPx[r.mint] ? "tickdn" : "") +
+          "' style='" + bar(r.price, mx.price, "rgba(74,222,128,.10)") + "'>" + px(r.price) + "</td>" +
         "<td class='" + (r.ch >= 0 ? "up" : "dn") + "' style='" +
           bar(r.cha, mx.cha, r.ch >= 0 ? "rgba(74,222,128,.14)" : "rgba(248,113,113,.14)") + "'>" +
           (r.ch >= 0 ? "+" : "") + r.ch.toFixed(1) + "%</td>" +
@@ -187,15 +195,16 @@
                    acm: t.id === ACM_MINT, mint: t.id };
         });
         render();
+        rows.forEach(function (r) { prevPx[r.mint] = r.price; });
         document.getElementById("term-status").textContent =
           rows.length + " MEMES · UPDATED " + new Date().toLocaleTimeString() +
-          " · CLICK A COLUMN TO SORT · SELL 1M = YOUR NET, 1M-COIN 14-DAY FORWARD, INDICATIVE";
+          " · LIVE, REFRESHES EVERY 30S · CLICK A COLUMN TO SORT · SELL 1M = YOUR NET, 1M-COIN 14-DAY FORWARD, INDICATIVE";
       })
       .catch(function () {
         document.getElementById("term-status").textContent = "FEED UNAVAILABLE — RETRYING";
       });
   }
   load();
-  setInterval(load, 60000);
+  setInterval(load, 30000);
 })();
 </script>
