@@ -30208,6 +30208,201 @@
    },
    "status": "OPEN",
    "settlement": null
+  },
+  {
+   "mint": "7eHZzuub3JQgkNtpVLyDAmCtFxjRhQgeQQae82avpump",
+   "symbol": "STATIC",
+   "name": "Wild Static",
+   "detected": "2026-08-17T20:25:00+00:00",
+   "pool_created": "2026-08-17T19:47:09Z",
+   "age_hours_at_detect": 0.63,
+   "expiry": "2026-08-31T20:25:00+00:00",
+   "lot": 1000000,
+   "entry": {
+    "usdPrice": 1.0577730878390372e-05,
+    "mcap": 10307.001628073926,
+    "fdv": 10307.001628073926,
+    "liquidity": 2699.4484766433625,
+    "holderCount": 483,
+    "organicScore": 64.33141219904934,
+    "organicScoreLabel": "medium",
+    "tags": [
+     "unknown",
+     "token-2022"
+    ],
+    "audit": {
+     "mintAuthorityDisabled": true,
+     "freezeAuthorityDisabled": true,
+     "topHoldersPercentage": 18.063493754469924,
+     "devBalancePercentage": 22.499633689725034,
+     "devMigrations": 11,
+     "devMints": 44
+    },
+    "dev": "9ChWUUbP2NgvmzCS419FAhV6XiUG7ggU6U5QtS32bH9q",
+    "decimals": 6,
+    "stats5m": {
+     "priceChange": -6.8559573748197415,
+     "holderChange": -6.031128404669261,
+     "liquidityChange": -0.23345161954923557,
+     "volumeChange": -39.73059610326451,
+     "buyVolume": 773.7641291192916,
+     "sellVolume": 914.3882277102267,
+     "buyOrganicVolume": 10.23704929824175,
+     "sellOrganicVolume": 43.2736285415731,
+     "numBuys": 22,
+     "numSells": 50,
+     "numTraders": 49,
+     "numOrganicBuyers": 31,
+     "numNetBuyers": 9
+    },
+    "stats1h": {
+     "priceChange": -12.008722775363111,
+     "holderChange": 255.1470588235294,
+     "liquidityChange": -55.16625121133103,
+     "buyVolume": 348246.41447852604,
+     "sellVolume": 342168.5708643607,
+     "buyOrganicVolume": 15371.93476972471,
+     "sellOrganicVolume": 11884.044765183146,
+     "numBuys": 9048,
+     "numSells": 8111,
+     "numTraders": 2981,
+     "numOrganicBuyers": 43,
+     "numNetBuyers": 688
+    },
+    "stats6h": {
+     "priceChange": -12.008722775363111,
+     "holderChange": 255.1470588235294,
+     "liquidityChange": -55.16625121133103,
+     "buyVolume": 348246.41447852604,
+     "sellVolume": 342168.5708643607,
+     "buyOrganicVolume": 15371.93476972471,
+     "sellOrganicVolume": 11884.044765183146,
+     "numBuys": 9048,
+     "numSells": 8111,
+     "numTraders": 2981,
+     "numOrganicBuyers": 53,
+     "numNetBuyers": 688
+    },
+    "stats24h": {
+     "priceChange": -12.008722775363111,
+     "holderChange": 255.1470588235294,
+     "liquidityChange": -55.16625121133103,
+     "buyVolume": 348246.41447852604,
+     "sellVolume": 342168.5708643607,
+     "buyOrganicVolume": 15371.93476972471,
+     "sellOrganicVolume": 11884.044765183146,
+     "numBuys": 9048,
+     "numSells": 8111,
+     "numTraders": 2981,
+     "numOrganicBuyers": 53,
+     "numNetBuyers": 688
+    }
+   },
+   "paper_contract": {
+    "pool_exit_pct": 99.22,
+    "strike_pct": 95.0,
+    "ask_usd": 10.05,
+    "bid_usd": 9.04
+   },
+   "status": "OPEN",
+   "settlement": null
+  },
+  {
+   "mint": "9MMXQQhhMhA4yWeTuiv7dkGTeCMzKCGmfmWgVD3ghYn7",
+   "symbol": "BOLLOCKS",
+   "name": "BOLLOCKS",
+   "detected": "2026-08-17T20:25:00+00:00",
+   "pool_created": "2026-08-17T19:47:31Z",
+   "age_hours_at_detect": 0.62,
+   "expiry": "2026-08-31T20:25:00+00:00",
+   "lot": 1000000,
+   "entry": {
+    "usdPrice": 0.00012933369351937694,
+    "mcap": 126147.26986020243,
+    "fdv": 126147.26986020243,
+    "liquidity": 12354.287103441115,
+    "holderCount": 974,
+    "organicScore": 48.69269557485815,
+    "organicScoreLabel": "medium",
+    "tags": [
+     "unknown"
+    ],
+    "audit": {
+     "mintAuthorityDisabled": true,
+     "freezeAuthorityDisabled": true,
+     "topHoldersPercentage": 22.604535418490602,
+     "devBalancePercentage": 3.0757787639944096,
+     "devMigrations": 1,
+     "devMints": 1
+    },
+    "dev": "2gmcadxeHf5YmqBDpGEfsMZ1zv2Vjb3uF1C8s3uk83mx",
+    "decimals": 6,
+    "stats5m": {
+     "priceChange": 25.73032219343053,
+     "holderChange": 1.6701461377870561,
+     "liquidityChange": 12.396467969795474,
+     "volumeChange": -39.66025549991283,
+     "buyVolume": 19557.19948364291,
+     "sellVolume": 18336.20328250862,
+     "buyOrganicVolume": 1552.967301717025,
+     "sellOrganicVolume": 616.1585409817071,
+     "numBuys": 387,
+     "numSells": 333,
+     "numTraders": 242,
+     "numOrganicBuyers": 17,
+     "numNetBuyers": 120
+    },
+    "stats1h": {
+     "priceChange": 1778.152723107592,
+     "holderChange": 1073.4939759036145,
+     "liquidityChange": 124.95560669934238,
+     "buyVolume": 267817.9247616937,
+     "sellVolume": 253139.461667156,
+     "buyOrganicVolume": 6881.632456871789,
+     "sellOrganicVolume": 5781.518098102951,
+     "numBuys": 6052,
+     "numSells": 5343,
+     "numTraders": 1993,
+     "numOrganicBuyers": 26,
+     "numNetBuyers": 742
+    },
+    "stats6h": {
+     "priceChange": 1778.152723107592,
+     "holderChange": 1073.4939759036145,
+     "liquidityChange": 124.95560669934238,
+     "buyVolume": 267817.9247616937,
+     "sellVolume": 253139.461667156,
+     "buyOrganicVolume": 6881.632456871789,
+     "sellOrganicVolume": 5781.518098102951,
+     "numBuys": 6052,
+     "numSells": 5343,
+     "numTraders": 1993,
+     "numOrganicBuyers": 14,
+     "numNetBuyers": 742
+    },
+    "stats24h": {
+     "priceChange": 1778.152723107592,
+     "holderChange": 1073.4939759036145,
+     "liquidityChange": 124.95560669934238,
+     "buyVolume": 267817.9247616937,
+     "sellVolume": 253139.461667156,
+     "buyOrganicVolume": 6881.632456871789,
+     "sellOrganicVolume": 5781.518098102951,
+     "numBuys": 6052,
+     "numSells": 5343,
+     "numTraders": 1993,
+     "numOrganicBuyers": 14,
+     "numNetBuyers": 742
+    }
+   },
+   "paper_contract": {
+    "pool_exit_pct": 97.95,
+    "strike_pct": 95.0,
+    "ask_usd": 122.87,
+    "bid_usd": 110.58
+   },
+   "status": "OPEN",
+   "settlement": null
   }
  ],
  "hero_positions": [
