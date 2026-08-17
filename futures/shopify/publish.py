@@ -26,6 +26,7 @@ PAGES = [
     {"handle": "acm", "title": "Aladdin's Castle | $ACM", "body_file": "body_acm.html"},
     {"handle": "terminal", "title": "Instar Terminal", "body_file": "body_terminal.html"},
     {"handle": "orders", "title": "Open Orders", "body_file": "body_orders.html"},
+    {"handle": "golden-ticket", "title": "Top 100 Golden Ticket", "body_file": "body_golden_ticket.html"},
 ]
 
 

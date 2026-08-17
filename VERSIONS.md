@@ -1,5 +1,11 @@
 # Versions — meme-sol-futures
 
+## 0.22.0 — 2026-08-12
+- TOP 100 GOLDEN TICKET built and LIVE at /pages/golden-ticket (linked from the ACM page): golden_ticket/top100.py reads ALL ACM token accounts via getProgramAccounts (4,288 accounts / 806 owners), aggregates by OWNER, excludes non-humans (2 Streamflow lock escrows, PumpSwap pool, creator + lock-recipient house wallets, Contract One escrow — shown separately for transparency), ranks top 100
+- Page: aladdinscastle.xyz look (Press Start 2P, #ffd84a gold / #8a520f bronze / #07050b), live countdown to the freeze instant, top-10 gold rows, Solscan links, info section (what the Golden Ticket MTC is — info not sale; how the freeze works; after the freeze) — visually verified live
+- Freeze = 12:00 PM ET Mon Sept 7 2026 (16:00 UTC): records the Solana slot, leaf = sha256(rank|wallet|raw_balance), Merkle root + per-holder proofs -> golden_ticket/out/ certificate JSON, page flips to SEALED with root; freeze cron installed (Mac confirmed America/New_York) + auto commit/push; live cron every 5 min
+- Simple by design (Todd): no anti-gaming rule
+
 ## 0.21.0 — 2026-08-12
 - OPEN ORDERS / EXECUTION BOARD live at /pages/orders (unlisted): renders futures/orders.json via orders_build.py (order entry = Todd declares -> Claude posts -> board republishes); seeded with ORDER-001 (house ACM bid, corridor-priced, $10K cap, disclosed principal); fill flow = runbook via contact
 
