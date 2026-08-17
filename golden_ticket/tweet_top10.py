@@ -6,8 +6,9 @@
 Renders a Top-10-only PNG of the live leaderboard (headless Chrome), writes a
 caption from the current checkpoint's movement, and posts image + caption to
 @AladdinsCastleM via X API v2 (OAuth 1.0a user context). Credentials in
-.x.env (gitignored). Policy: post if the Peerage changed since the previous
-checkpoint, or if --always (used for the noon run).
+.x.env (gitignored). POLICY (Todd, 2026-08-12): post ONLY when the Top 10
+Peerage changed since the previous checkpoint — every post is news. Runs at
+:03 after each noon/midnight ET checkpoint. --always exists for manual use.
 """
 import base64, datetime, hashlib, hmac, json, os, re, secrets, subprocess, sys, time, urllib.parse, urllib.request
 from pathlib import Path
