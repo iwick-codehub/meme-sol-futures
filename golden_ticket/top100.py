@@ -35,6 +35,8 @@ REPO = HERE.parent
 PAGE = REPO / "futures" / "shopify" / "body_golden_ticket.html"
 OUT = HERE / "out"
 CHECKPOINT = HERE / "checkpoint.json"   # ranks as of the last noon/midnight ET
+HISTORY = HERE / "history.json"          # EVERY checkpoint, all 100 rows, forever
+HISTORY_CSV = HERE / "history.csv"       # same, flat, for spreadsheets
 PEERAGE = ["Grand Vizier", "Vizier", "Necromancer", "Wizard", "Prime Magi",
            "Magi", "Conjurer", "Evoker", "Apprentice", "Acolyte"]
 RPC = "https://api.mainnet-beta.solana.com"
@@ -112,12 +114,34 @@ def load_checkpoint():
     return None
 
 
-def save_checkpoint(snap):
+def save_checkpoint(snap, label=None):
+    prev = load_checkpoint() or {"ranks": {}}
+    dec = snap["decimals"]
     CHECKPOINT.write_text(json.dumps({
         "taken": snap["ts"], "slot": snap["slot"],
         "ranks": {o: i + 1 for i, (o, _) in enumerate(snap["top"])},
         "peerage": [o for o, _ in snap["top"][:10]],
     }, indent=0))
+    # permanent history: every checkpoint, all 100 rows, with movement vs the one before
+    hist = json.loads(HISTORY.read_text()) if HISTORY.exists() else {"checkpoints": []}
+    rows = []
+    for i, (o, raw) in enumerate(snap["top"]):
+        was = prev["ranks"].get(o)
+        rows.append({"rank": i + 1, "wallet": o, "balance": raw / 10 ** dec,
+                     "prev_rank": was, "move": None if was is None else was - (i + 1),
+                     "title": PEERAGE[i] if i < 10 else None})
+    entry = {"label": label or ("noon ET" if datetime.datetime.fromisoformat(snap["ts"]).astimezone(
+                 datetime.timezone(datetime.timedelta(hours=-4))).hour == 12 else "midnight ET"),
+             "taken_utc": snap["ts"], "slot": snap["slot"], "holders": snap["holders"], "rows": rows}
+    hist["checkpoints"].append(entry)
+    HISTORY.write_text(json.dumps(hist, indent=1))
+    with HISTORY_CSV.open("a") as f:
+        if f.tell() == 0:
+            f.write("checkpoint_label,taken_utc,slot,rank,title,wallet,balance,prev_rank,move\n")
+        for r in rows:
+            f.write(f"{entry['label']},{snap['ts']},{snap['slot']},{r['rank']},{r['title'] or ''},"
+                    f"{r['wallet']},{r['balance']:.6f},{'' if r['prev_rank'] is None else r['prev_rank']},"
+                    f"{'' if r['move'] is None else r['move']}\n")
 
 
 def bake(snap, frozen, cert=None):
@@ -180,8 +204,9 @@ if __name__ == "__main__":
     mode = sys.argv[1] if len(sys.argv) > 1 else "live"
     snap = snapshot()
     if mode == "checkpoint":
-        save_checkpoint(snap)
+        save_checkpoint(snap, sys.argv[2] if len(sys.argv) > 2 else None)
         bake(snap, False)
+        subprocess.run([sys.executable, str(HERE / "history_build.py")], check=True)
         print(f"checkpoint saved at slot {snap['slot']} ({snap['ts']})")
     elif mode == "freeze":
         cert = freeze(snap)

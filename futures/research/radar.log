@@ -416,3 +416,7 @@
 2026-08-17: DRAGNET +2 new, 0 settled, 316 open | HEROES +0 new, 0 settled, 11 open
   NEW STATIC       age   0.6h  px $1.05777e-05  mcap $10,307  liq $2,699  holders 483  paper ask $10.05
   NEW BOLLOCKS     age   0.6h  px $0.000129334  mcap $126,147  liq $12,354  holders 974  paper ask $122.87
+2026-08-17: DRAGNET +3 new, 0 settled, 319 open | HEROES +0 new, 0 settled, 11 open
+  NEW FIQ          age   2.4h  px $0.000207428  mcap $195,514  liq $18,230  holders 1101  paper ask $197.06
+  NEW AlxJobs      age   3.6h  px $9.2612e-06  mcap $8,933  liq $2,586  holders 623  paper ask $8.80
+  NEW NVM          age   3.6h  px $0.000104611  mcap $102,332  liq $11,505  holders 689  paper ask $99.38
