@@ -44,6 +44,7 @@ EXCLUDE = {
     "Fc8T5MKEsqkK24JpQv8VNmk7cNehTN1RuixTtr1RUyho": "House — ACM creator wallet",
     "GNkKQWa4XHdvgF1x4edV3qF54xdz3LykWyd8cgWnVsHQ": "House — lock recipient wallet",
     "DsP3zSSrHeEwSHUvjiZo3brqeXDMS6CZB3DeRxBk2BNH": "Contract One escrow (house after Aug 31)",
+    "3n2ETkQbVqNFaPAx8Sbcha5Vp6PZH1AsnqXioiGTixx9": "House — Todd's liquid account",
 }
 
 
