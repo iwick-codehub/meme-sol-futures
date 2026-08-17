@@ -36,7 +36,7 @@ PAGE = REPO / "futures" / "shopify" / "body_golden_ticket.html"
 OUT = HERE / "out"
 CHECKPOINT = HERE / "checkpoint.json"   # ranks as of the last noon/midnight ET
 PEERAGE = ["Grand Vizier", "Vizier", "Necromancer", "Wizard", "Prime Magi",
-           "Magi", "Conjurer", "Evoker", "Sr Apprentice", "Jr Apprentice"]
+           "Magi", "Conjurer", "Evoker", "Apprentice", "Acolyte"]
 RPC = "https://api.mainnet-beta.solana.com"
 MINT = "4PRz3EwhbjrrX6YksMDuUzrXT51pr7CQtXNCravhpump"
 TOKEN_PROGRAM = "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
