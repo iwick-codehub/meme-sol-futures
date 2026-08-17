@@ -3,6 +3,8 @@
 
   top100.py live    -> refresh the leaderboard JSON baked into the site page
                        (cron every few minutes until the freeze)
+  top100.py checkpoint -> save the noon/midnight ET reference ranks (MOVE column
+                       + Peerage-change banner measure against this, not the 60s refresh)
   top100.py freeze  -> THE authoritative snapshot at the appointed instant:
                        ranks holders, builds the Merkle root, writes the
                        sealed certificate + per-holder proofs, republishes
@@ -32,6 +34,9 @@ HERE = Path(__file__).parent
 REPO = HERE.parent
 PAGE = REPO / "futures" / "shopify" / "body_golden_ticket.html"
 OUT = HERE / "out"
+CHECKPOINT = HERE / "checkpoint.json"   # ranks as of the last noon/midnight ET
+PEERAGE = ["Grand Vizier", "Vizier", "Necromancer", "Wizard", "Prime Magi",
+           "Magi", "Conjurer", "Evoker", "Sr Apprentice", "Jr Apprentice"]
 RPC = "https://api.mainnet-beta.solana.com"
 MINT = "4PRz3EwhbjrrX6YksMDuUzrXT51pr7CQtXNCravhpump"
 TOKEN_PROGRAM = "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
@@ -101,13 +106,43 @@ def merkle(leaves):
     return layers[-1][0], proofs
 
 
+def load_checkpoint():
+    if CHECKPOINT.exists():
+        return json.loads(CHECKPOINT.read_text())
+    return None
+
+
+def save_checkpoint(snap):
+    CHECKPOINT.write_text(json.dumps({
+        "taken": snap["ts"], "slot": snap["slot"],
+        "ranks": {o: i + 1 for i, (o, _) in enumerate(snap["top"])},
+        "peerage": [o for o, _ in snap["top"][:10]],
+    }, indent=0))
+
+
 def bake(snap, frozen, cert=None):
     dec = snap["decimals"]
+    cp = load_checkpoint() or {"taken": None, "ranks": {}, "peerage": []}
+    prev = cp["ranks"]
+    moves = []
+    top_rows = []
+    for i, (o, raw) in enumerate(snap["top"]):
+        rank = i + 1
+        was = prev.get(o)
+        delta = None if was is None else was - rank   # + = climbed
+        top_rows.append({"rank": rank, "wallet": o, "balance": raw / 10 ** dec,
+                         "was": was, "delta": delta})
+    # Peerage changes since checkpoint
+    old_peer = cp.get("peerage", [])
+    for i, (o, _) in enumerate(snap["top"][:10]):
+        if i < len(old_peer) and old_peer[i] != o:
+            moves.append({"title": PEERAGE[i], "rank": i + 1, "wallet": o,
+                          "kind": "NEW" if o not in old_peer else "MOVED"})
     payload = {
         "frozen": frozen, "slot": snap["slot"], "ts": snap["ts"],
         "holders": snap["holders"], "freeze_utc": FREEZE_UTC,
-        "top": [{"rank": i + 1, "wallet": o, "balance": raw / 10 ** dec}
-                for i, (o, raw) in enumerate(snap["top"])],
+        "checkpoint": cp.get("taken"), "moves": moves,
+        "top": top_rows,
         "excluded": [{"wallet": o, "balance": raw / 10 ** dec, "why": why}
                      for o, raw, why in snap["excluded"]],
         "root": (cert or {}).get("merkle_root"),
@@ -144,7 +179,11 @@ def freeze(snap):
 if __name__ == "__main__":
     mode = sys.argv[1] if len(sys.argv) > 1 else "live"
     snap = snapshot()
-    if mode == "freeze":
+    if mode == "checkpoint":
+        save_checkpoint(snap)
+        bake(snap, False)
+        print(f"checkpoint saved at slot {snap['slot']} ({snap['ts']})")
+    elif mode == "freeze":
         cert = freeze(snap)
         bake(snap, True, cert)
     else:
