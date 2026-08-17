@@ -1,5 +1,10 @@
 # Versions — meme-sol-futures
 
+## 0.23.0 — 2026-08-12
+- GOLDEN TICKET AUTO-TWEET LIVE: golden_ticket/tweet_top10.py renders a Top-10 PNG (headless Chrome), writes a movement caption, posts image + text to @AladdinsCastleM via X API v2 with OAuth 2.0 user tokens (PKCE-authorized with tweet.write/media.write/offline.access; auto-refresh persists rotated tokens to gitignored .x.env). First live post: tweet 2089487215931892100
+- POLICY: post ONLY when the Top-10 Peerage changed since the previous checkpoint; crons at 12:03 AM + 12:03 PM ET (3 min after each checkpoint)
+- Golden Ticket board this session: PRV movement column vs noon/midnight checkpoints (▲/▼/NEW + former-rank tooltips), Peerage-change banner, permanent checkpoint history (JSON+CSV, seeded 5:13 PM ET Aug 12) + public Movement Log page (/pages/golden-ticket-log), fully-diluted %, Peerage #9 Apprentice / #10 Acolyte, mobile + desktop layouts verified, Todd's liquid account excluded
+
 ## 0.22.0 — 2026-08-12
 - TOP 100 GOLDEN TICKET built and LIVE at /pages/golden-ticket (linked from the ACM page): golden_ticket/top100.py reads ALL ACM token accounts via getProgramAccounts (4,288 accounts / 806 owners), aggregates by OWNER, excludes non-humans (2 Streamflow lock escrows, PumpSwap pool, creator + lock-recipient house wallets, Contract One escrow — shown separately for transparency), ranks top 100
 - Page: aladdinscastle.xyz look (Press Start 2P, #ffd84a gold / #8a520f bronze / #07050b), live countdown to the freeze instant, top-10 gold rows, Solscan links, info section (what the Golden Ticket MTC is — info not sale; how the freeze works; after the freeze) — visually verified live

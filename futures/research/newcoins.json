@@ -30691,6 +30691,195 @@
    },
    "status": "OPEN",
    "settlement": null
+  },
+  {
+   "mint": "Hz2Gfw5PrNoDW8Fb9zT2D8h6VBhuN5UsToNp6MRSbonk",
+   "symbol": "BONKCAT",
+   "name": "BONKCAT",
+   "detected": "2026-08-17T22:25:00+00:00",
+   "pool_created": "2026-08-17T21:41:33Z",
+   "age_hours_at_detect": 0.72,
+   "expiry": "2026-08-31T22:25:00+00:00",
+   "lot": 1000000,
+   "entry": {
+    "usdPrice": 1.8740840454410758e-05,
+    "mcap": 18739.48331575867,
+    "fdv": 18739.48331575867,
+    "liquidity": 7515.896422524147,
+    "holderCount": 1077,
+    "organicScore": 68.24945743579904,
+    "organicScoreLabel": "medium",
+    "tags": [
+     "unknown"
+    ],
+    "audit": {
+     "mintAuthorityDisabled": true,
+     "freezeAuthorityDisabled": true,
+     "topHoldersPercentage": 20.207489726838986,
+     "devMigrations": 1,
+     "devMints": 3
+    },
+    "dev": "2ZRRKeQZgWWhB9uGsY6wubqC1WyBRjdEgRsweCFFGRc7",
+    "decimals": 6,
+    "stats5m": {
+     "priceChange": -64.37842606848942,
+     "holderChange": -10.991735537190083,
+     "liquidityChange": -35.63784014551362,
+     "volumeChange": -10.943445443049821,
+     "buyVolume": 12760.82828116491,
+     "sellVolume": 17006.503301903587,
+     "buyOrganicVolume": 409.77332419376603,
+     "sellOrganicVolume": 606.072989067374,
+     "numBuys": 961,
+     "numSells": 406,
+     "numTraders": 383,
+     "numOrganicBuyers": 16,
+     "numNetBuyers": 118
+    },
+    "stats1h": {
+     "priceChange": 463.8509668054213,
+     "holderChange": 748.0314960629921,
+     "liquidityChange": 42.38791192802441,
+     "buyVolume": 518035.5309381653,
+     "sellVolume": 502894.53052847576,
+     "buyOrganicVolume": 24504.822986275874,
+     "sellOrganicVolume": 22959.20737576755,
+     "numBuys": 13792,
+     "numSells": 11530,
+     "numTraders": 3847,
+     "numOrganicBuyers": 37,
+     "numNetBuyers": 1153
+    },
+    "stats6h": {
+     "priceChange": 463.8509668054213,
+     "holderChange": 748.0314960629921,
+     "liquidityChange": 42.38791192802441,
+     "buyVolume": 518035.5309381653,
+     "sellVolume": 502894.53052847576,
+     "buyOrganicVolume": 24504.822986275874,
+     "sellOrganicVolume": 22959.20737576755,
+     "numBuys": 13792,
+     "numSells": 11530,
+     "numTraders": 3847,
+     "numOrganicBuyers": 55,
+     "numNetBuyers": 1153
+    },
+    "stats24h": {
+     "priceChange": 463.8509668054213,
+     "holderChange": 748.0314960629921,
+     "liquidityChange": 42.38791192802441,
+     "buyVolume": 518035.5309381653,
+     "sellVolume": 502894.53052847576,
+     "buyOrganicVolume": 24504.822986275874,
+     "sellOrganicVolume": 22959.20737576755,
+     "numBuys": 13792,
+     "numSells": 11530,
+     "numTraders": 3847,
+     "numOrganicBuyers": 55,
+     "numNetBuyers": 1153
+    }
+   },
+   "paper_contract": {
+    "pool_exit_pct": 99.5,
+    "strike_pct": 95.0,
+    "ask_usd": 17.8,
+    "bid_usd": 16.02
+   },
+   "status": "OPEN",
+   "settlement": null
+  },
+  {
+   "mint": "2APpQCQMcUh7UYjWE5aDzCjQoWcujHMou8hn9oBeQbg6",
+   "symbol": "TESTICLE",
+   "name": "testicles coin",
+   "detected": "2026-08-17T22:25:00+00:00",
+   "pool_created": "2026-08-17T20:12:26Z",
+   "age_hours_at_detect": 2.21,
+   "expiry": "2026-08-31T22:25:00+00:00",
+   "lot": 1000000,
+   "entry": {
+    "usdPrice": 4.59093486908482e-06,
+    "mcap": 4512.54893167521,
+    "fdv": 4512.54893167521,
+    "liquidity": 1280.1954620402023,
+    "holderCount": 271,
+    "organicScore": 57.23662167961204,
+    "organicScoreLabel": "medium",
+    "tags": [
+     "unknown"
+    ],
+    "audit": {
+     "mintAuthorityDisabled": true,
+     "freezeAuthorityDisabled": true,
+     "topHoldersPercentage": 23.905193394276957,
+     "devBalancePercentage": 3.0521120734280225,
+     "devMigrations": 1,
+     "devMints": 1
+    },
+    "dev": "Bth8gTcikJDBVrhLeC63BXQgEjDR51AUi1U9RGV9AQ3D",
+    "decimals": 6,
+    "stats5m": {
+     "priceChange": 3.6504289483271766,
+     "holderChange": -1.094890510948905,
+     "liquidityChange": 7.442191735931811,
+     "volumeChange": 443.70345848051943,
+     "buyVolume": 110.9327798814063,
+     "sellVolume": 28.384474282854534,
+     "numBuys": 1,
+     "numSells": 4,
+     "numTraders": 5,
+     "numNetBuyers": 1
+    },
+    "stats1h": {
+     "priceChange": -26.857864936271653,
+     "holderChange": -16.09907120743034,
+     "liquidityChange": -27.507937409421174,
+     "volumeChange": -98.93859274967886,
+     "buyVolume": 552.8210437874953,
+     "sellVolume": 979.1723673262279,
+     "numBuys": 28,
+     "numSells": 66,
+     "numTraders": 70,
+     "numOrganicBuyers": 1,
+     "numNetBuyers": 10
+    },
+    "stats6h": {
+     "priceChange": 42.53508988585097,
+     "holderChange": 2610,
+     "liquidityChange": -54.240793047653646,
+     "buyVolume": 287042.92489940324,
+     "sellVolume": 282858.97739461437,
+     "buyOrganicVolume": 11116.399002557919,
+     "sellOrganicVolume": 8859.490784925778,
+     "numBuys": 6669,
+     "numSells": 6231,
+     "numTraders": 2532,
+     "numOrganicBuyers": 17,
+     "numNetBuyers": 477
+    },
+    "stats24h": {
+     "priceChange": 42.53508988585097,
+     "holderChange": 2610,
+     "liquidityChange": -54.240793047653646,
+     "buyVolume": 287042.92489940324,
+     "sellVolume": 282858.97739461437,
+     "buyOrganicVolume": 11116.399002557919,
+     "sellOrganicVolume": 8859.490784925778,
+     "numBuys": 6669,
+     "numSells": 6231,
+     "numTraders": 2532,
+     "numOrganicBuyers": 17,
+     "numNetBuyers": 477
+    }
+   },
+   "paper_contract": {
+    "pool_exit_pct": 99.29,
+    "strike_pct": 95.0,
+    "ask_usd": 4.36,
+    "bid_usd": 3.93
+   },
+   "status": "OPEN",
+   "settlement": null
   }
  ],
  "hero_positions": [

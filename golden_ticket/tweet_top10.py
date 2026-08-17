@@ -10,7 +10,7 @@ caption from the current checkpoint's movement, and posts image + caption to
 Peerage changed since the previous checkpoint — every post is news. Runs at
 :03 after each noon/midnight ET checkpoint. --always exists for manual use.
 """
-import base64, datetime, hashlib, hmac, json, os, re, secrets, subprocess, sys, time, urllib.parse, urllib.request
+import base64, datetime, json, os, re, subprocess, sys, urllib.error, urllib.parse, urllib.request
 from pathlib import Path
 
 HERE = Path(__file__).parent
@@ -29,8 +29,9 @@ def env():
     for line in (REPO / ".x.env").read_text().splitlines():
         if "=" in line and not line.startswith("#"):
             k, v = line.split("=", 1); e[k.strip()] = v.strip()
-    if any(v.startswith("paste_here") for v in e.values()):
-        raise SystemExit("X credentials not set in .x.env")
+    for k in ("X_OAUTH2_CLIENT_ID", "X_OAUTH2_CLIENT_SECRET", "X_OAUTH2_ACCESS_TOKEN", "X_OAUTH2_REFRESH_TOKEN"):
+        if not e.get(k) or e[k].startswith("paste_here"):
+            raise SystemExit(f"{k} not set in .x.env")
     return e
 
 
@@ -78,35 +79,60 @@ def caption(gt):
     return "\n".join(lines)
 
 
-# ---- OAuth 1.0a (no third-party libs) ----
-def _pct(s): return urllib.parse.quote(str(s), safe="~")
-def oauth_header(e, method, url, params=None):
-    o = {"oauth_consumer_key": e["X_API_KEY"], "oauth_nonce": secrets.token_hex(16),
-         "oauth_signature_method": "HMAC-SHA1", "oauth_timestamp": str(int(time.time())),
-         "oauth_token": e["X_ACCESS_TOKEN"], "oauth_version": "1.0"}
-    allp = dict(o); allp.update(params or {})
-    base = "&".join([method, _pct(url), _pct("&".join(f"{_pct(k)}={_pct(v)}" for k, v in sorted(allp.items())))])
-    key = f"{_pct(e['X_API_SECRET'])}&{_pct(e['X_ACCESS_SECRET'])}"
-    o["oauth_signature"] = base64.b64encode(hmac.new(key.encode(), base.encode(), hashlib.sha1).digest()).decode()
-    return "OAuth " + ", ".join(f'{_pct(k)}="{_pct(v)}"' for k, v in sorted(o.items()))
+# ---- OAuth 2.0 user context (auto-refresh; tokens live in .x.env) ----
+ENV_PATH = REPO / ".x.env"
 
+def _write_env(k, v):
+    lines = ENV_PATH.read_text().splitlines()
+    out, seen = [], False
+    for ln in lines:
+        if ln.startswith(k + "="):
+            out.append(f"{k}={v}"); seen = True
+        else:
+            out.append(ln)
+    if not seen: out.append(f"{k}={v}")
+    ENV_PATH.write_text("\n".join(out) + "\n")
+
+def refresh(e):
+    """Exchange the refresh token for a new access token (X rotates both)."""
+    data = urllib.parse.urlencode({"grant_type": "refresh_token",
+                                   "refresh_token": e["X_OAUTH2_REFRESH_TOKEN"],
+                                   "client_id": e["X_OAUTH2_CLIENT_ID"]}).encode()
+    basic = base64.b64encode(f"{e['X_OAUTH2_CLIENT_ID']}:{e['X_OAUTH2_CLIENT_SECRET']}".encode()).decode()
+    req = urllib.request.Request("https://api.twitter.com/2/oauth2/token", data,
+                                 {"Content-Type": "application/x-www-form-urlencoded",
+                                  "Authorization": f"Basic {basic}"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        tok = json.load(r)
+    e["X_OAUTH2_ACCESS_TOKEN"] = tok["access_token"]
+    _write_env("X_OAUTH2_ACCESS_TOKEN", tok["access_token"])
+    if tok.get("refresh_token"):
+        e["X_OAUTH2_REFRESH_TOKEN"] = tok["refresh_token"]
+        _write_env("X_OAUTH2_REFRESH_TOKEN", tok["refresh_token"])
+    return e
+
+def _auth_call(e, url, data, headers, retry=True):
+    h = dict(headers); h["Authorization"] = f"Bearer {e['X_OAUTH2_ACCESS_TOKEN']}"
+    req = urllib.request.Request(url, data, h)
+    try:
+        with urllib.request.urlopen(req, timeout=60) as r:
+            return json.load(r)
+    except urllib.error.HTTPError as ex:
+        if ex.code == 401 and retry:
+            refresh(e)
+            return _auth_call(e, url, data, headers, retry=False)
+        raise SystemExit(f"X API {ex.code}: {ex.read().decode()[:400]}")
 
 def upload_media(e, png):
-    url = "https://upload.twitter.com/1.1/media/upload.json"
-    data = urllib.parse.urlencode({"media_data": base64.b64encode(png.read_bytes()).decode()}).encode()
-    req = urllib.request.Request(url, data, {"Authorization": oauth_header(e, "POST", url),
-                                             "Content-Type": "application/x-www-form-urlencoded"})
-    with urllib.request.urlopen(req, timeout=60) as r:
-        return json.load(r)["media_id_string"]
-
+    """v2 media upload (simple, base64) — chunked not needed for a ~300KB PNG."""
+    body = json.dumps({"media": base64.b64encode(png.read_bytes()).decode(),
+                       "media_category": "tweet_image"}).encode()
+    res = _auth_call(e, "https://api.x.com/2/media/upload", body, {"Content-Type": "application/json"})
+    return (res.get("data") or res).get("id") or (res.get("data") or res).get("media_id_string")
 
 def post(e, text, media_id):
-    url = "https://api.twitter.com/2/tweets"
-    body = json.dumps({"text": text, "media": {"media_ids": [media_id]}}).encode()
-    req = urllib.request.Request(url, body, {"Authorization": oauth_header(e, "POST", url),
-                                             "Content-Type": "application/json"})
-    with urllib.request.urlopen(req, timeout=60) as r:
-        return json.load(r)
+    body = json.dumps({"text": text, "media": {"media_ids": [str(media_id)]}}).encode()
+    return _auth_call(e, "https://api.x.com/2/tweets", body, {"Content-Type": "application/json"})
 
 
 def main():
