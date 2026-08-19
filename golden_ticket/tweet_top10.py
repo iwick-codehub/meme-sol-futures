@@ -164,9 +164,12 @@ def caption(gt):
             for r in newc[:6]:
                 out.append(f"{B}New to the Top 100: {sh(r['wallet'])} at #{r['rank']} ({fm(r['balance'])})")
             if len(newc) > 6: out.append(f"{B}…and {len(newc)-6} more new entries")
-            for r in sorted(gone, key=lambda r: -r["balance"])[:4]:
-                out.append(f"{B}Left the Top 100: {sh(r['wallet'])}, was #{r['rank']} ({fm(r['balance'])})")
-            if len(gone) > 4: out.append(f"{B}…and {len(gone)-4} more exits")
+            if gone:  # honest, not a dirge: one line — count + the largest departure
+                big = max(gone, key=lambda r: r["balance"])
+                if len(gone) == 1:
+                    out.append(f"{B}One wallet left the Top 100: {sh(big['wallet'])}, was #{big['rank']} ({fm(big['balance'])})")
+                else:
+                    out.append(f"{B}{len(gone)} wallets left the Top 100; largest was {sh(big['wallet'])} at #{big['rank']} ({fm(big['balance'])})")
             out.append("")
         if len(out) <= 4 and not peer_lines and not acc:
             out.append("A quiet twelve hours. No changes to the Peerage or the Top 100."); out.append("")
