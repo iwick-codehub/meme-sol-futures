@@ -53,12 +53,19 @@ def payload():
                               "kind": "NEW" if r["wallet"] not in prev_peer else "MOVED"})
         gt["moves"] = moves
         gt["checkpoint_label"] = latest["label"]
+        gt["checkpoint"] = prev["taken_utc"]
+        gt["top"] = [{"rank": r["rank"], "wallet": r["wallet"], "balance": r["balance"],
+                      "was": r["prev_rank"], "delta": r["move"]} for r in latest["rows"]]
     return gt
 
 
 def render_png(gt):
-    """Top-10-only shot: hide scene + info, keep header/countdown/banner, trim rows to 10."""
+    """Top-10-only shot: hide scene + info, keep header/countdown/banner, trim rows to 10.
+    IMPORTANT: bakes THIS payload (gt) into the HTML so arrows/banner reflect the
+    checkpoint being announced, not whatever the live page last showed."""
     s = PAGE.read_text()
+    blob = "/*GT_START*/var GT=" + json.dumps(gt, separators=(",", ":"), ensure_ascii=True) + ";/*GT_END*/"
+    s = re.sub(r"/\*GT_START\*/.*?/\*GT_END\*/", lambda _m: blob, s, flags=re.S)
     s = s.replace('<div class="gt-scene">', '<div class="gt-scene" style="display:none">')
     s = s.replace('<div class="gt-info">', '<div class="gt-info" style="display:none">')
     s = s.replace('<details class="gt-excl">', '<details class="gt-excl" style="display:none">')
@@ -71,7 +78,7 @@ def render_png(gt):
     src = OUT / "top10_shot.html"; src.write_text(html)
     png = OUT / f"top10_{datetime.datetime.utcnow():%Y%m%d_%H%M}.png"
     subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--hide-scrollbars",
-                    "--window-size=1200,1010", f"--screenshot={png}", f"file://{src}"],
+                    "--window-size=1200,1090", f"--screenshot={png}", f"file://{src}"],
                    check=True, capture_output=True, timeout=90)
     return png
 
@@ -161,7 +168,9 @@ def main():
             mv = [{"title": peer[j], "rank": j+1, "wallet": r["wallet"], "kind": "NEW" if r["wallet"] not in prev_peer else "MOVED"}
                   for j, r in enumerate(hist[i]["rows"][:10]) if j >= len(prev_peer) or prev_peer[j] != r["wallet"]]
             if mv:
-                gt["moves"] = mv; gt["top"] = [dict(r, was=hist[i-1]["rows"][k]["rank"] if k < len(hist[i-1]["rows"]) else None) for k, r in enumerate(hist[i]["rows"])]
+                gt["moves"] = mv; gt["checkpoint"] = hist[i-1]["taken_utc"]
+                gt["top"] = [{"rank": r["rank"], "wallet": r["wallet"], "balance": r["balance"],
+                              "was": r["prev_rank"], "delta": r["move"]} for r in hist[i]["rows"]]
                 break
     if not ALWAYS and not gt.get("moves"):
         print("no Peerage movement since last checkpoint — skipping (use --always to force)"); return
