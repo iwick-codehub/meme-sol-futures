@@ -93,7 +93,10 @@ def caption(gt):
     days = max(0, (FREEZE - now).days)
     et = now.astimezone(datetime.timezone(datetime.timedelta(hours=-4)))
     when = "Noon" if 11 <= et.hour <= 13 else "Midnight" if et.hour in (23, 0, 1) else et.strftime("%-I %p")
-    sh = lambda w: f"{w[:6]}…{w[-4:]}"
+    mentioned = []
+    def sh(w):
+        if w not in mentioned: mentioned.append(w)
+        return f"{w[:6]}…{w[-4:]}"
     fm = lambda n: f"{n/1e6:.2f}M" if abs(n) >= 1e6 else f"{n/1e3:.0f}K" if abs(n) >= 1e3 else f"{n:.0f}"
     B = "• "
     out = [f"$ACM Top 100 Golden Ticket — {when} ET update", ""]
@@ -142,6 +145,11 @@ def caption(gt):
     out.append("")
     out.append("The Peerage of the Castle: titles held for all time.")
     out.append(LINK)
+    if mentioned:
+        out.append("")
+        out.append("Wallets named above:")
+        for w in mentioned[:8]:
+            out.append(f"{w[:6]}…{w[-4:]}  solscan.io/account/{w}")
     return "\n".join(out)
 
 
