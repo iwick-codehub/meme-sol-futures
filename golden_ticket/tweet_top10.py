@@ -87,9 +87,25 @@ def caption(gt):
     """12-hour play-by-play, house style: no emoji, clean bullets, full sentences.
     Premium account -> long-form allowed; we still keep it tight and scannable."""
     hist = json.loads((HERE / "history.json").read_text())["checkpoints"]
-    cur, prev = hist[-1], (hist[-2] if len(hist) > 1 else None)
     peer = ["Grand Vizier","Vizier","Necromancer","Wizard","Prime Magi","Magi","Conjurer","Evoker","Apprentice","Acolyte"]
     now = datetime.datetime.now(datetime.timezone.utc)
+    # CURRENT = a fresh chain read right now (data is current when tweeted)
+    import importlib.util as _ilu
+    _spec = _ilu.spec_from_file_location("top100", str(HERE / "top100.py")); _t = _ilu.module_from_spec(_spec); _spec.loader.exec_module(_t)
+    snap = _t.snapshot(); dec = snap["decimals"]
+    cur = {"label": "now", "taken_utc": snap["ts"], "holders": snap["holders"],
+           "rows": [{"rank": i + 1, "wallet": o, "balance": raw / 10 ** dec} for i, (o, raw) in enumerate(snap["top"])]}
+    # PREVIOUS = the checkpoint we compare against. Default: the most recent checkpoint
+    # (at 12:03 the freshest checkpoint IS the one just taken, so use the one BEFORE it —
+    # i.e. compare "now" against the prior noon/midnight). Override with --vs=<index>.
+    vs = None
+    for a in sys.argv:
+        if a.startswith("--vs="): vs = int(a.split("=", 1)[1])
+    if vs is None:
+        last_age = (now - datetime.datetime.fromisoformat(hist[-1]["taken_utc"])).total_seconds()
+        prev = hist[-2] if last_age < 900 and len(hist) > 1 else hist[-1]
+    else:
+        prev = hist[vs]
     days = max(0, (FREEZE - now).days)
     et = now.astimezone(datetime.timezone(datetime.timedelta(hours=-4)))
     when = "Noon" if 11 <= et.hour <= 13 else "Midnight" if et.hour in (23, 0, 1) else et.strftime("%-I %p")
@@ -99,7 +115,13 @@ def caption(gt):
         return f"{w[:6]}…{w[-4:]}"
     fm = lambda n: f"{n/1e6:.2f}M" if abs(n) >= 1e6 else f"{n/1e3:.0f}K" if abs(n) >= 1e3 else f"{n:.0f}"
     B = "• "
-    out = [f"$ACM Top 100 Golden Ticket — {when} ET update", ""]
+    when = et.strftime("%-I %p").replace("AM", "AM").replace("PM", "PM")
+    if 11 <= et.hour <= 13: when = "Noon"
+    if et.hour in (23, 0, 1): when = "Midnight"
+    pet = datetime.datetime.fromisoformat(prev["taken_utc"]).astimezone(datetime.timezone(datetime.timedelta(hours=-4)))
+    plabel = "Midnight" if pet.hour in (23, 0, 1) else "Noon" if 11 <= pet.hour <= 13 else pet.strftime("%-I %p")
+    pday = "" if pet.date() == et.date() else (" yesterday" if (et.date() - pet.date()).days == 1 else pet.strftime(" %b %-d"))
+    out = [f"$ACM Top 100 Golden Ticket — {when} ET update (vs {plabel}{pday})", ""]
     if not prev:
         out.append(f"{B}Grand Vizier: {sh(cur['rows'][0]['wallet'])} with {fm(cur['rows'][0]['balance'])}")
     else:
@@ -145,11 +167,6 @@ def caption(gt):
     out.append("")
     out.append("The Peerage of the Castle: titles held for all time.")
     out.append(LINK)
-    if mentioned:
-        out.append("")
-        out.append("Wallets named above:")
-        for w in mentioned[:8]:
-            out.append(f"{w[:6]}…{w[-4:]}  solscan.io/account/{w}")
     return "\n".join(out)
 
 
