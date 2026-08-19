@@ -148,17 +148,25 @@ def caption(gt):
             out.append("")
         # movers outside the top 10
         climbs = sorted(((A[r["wallet"]]["rank"] - r["rank"], r) for r in cur["rows"][10:] if r["wallet"] in A and A[r["wallet"]]["rank"] - r["rank"] >= 3), key=lambda x: -x[0])
+        falls  = sorted(((r["rank"] - A[r["wallet"]]["rank"], r) for r in cur["rows"][10:] if r["wallet"] in A and r["rank"] - A[r["wallet"]]["rank"] >= 3), key=lambda x: -x[0])
+        accum  = sorted(((r["balance"] - A[r["wallet"]]["balance"], r) for r in cur["rows"][10:] if r["wallet"] in A and abs(r["balance"] - A[r["wallet"]]["balance"]) >= 100_000), key=lambda x: -abs(x[0]))
         newc = [r for r in cur["rows"] if r["wallet"] not in A]
         gone = [r for r in prev["rows"] if r["wallet"] not in Bm]
-        if climbs or newc or gone:
+        if climbs or falls or accum or newc or gone:
             out.append("THE BOARD")
-            for up, r in climbs[:3]:
+            for up, r in climbs[:5]:
                 out.append(f"{B}{sh(r['wallet'])} climbs {up} places to #{r['rank']} ({fm(r['balance'])})")
-            for r in newc[:4]:
+            for dn, r in falls[:3]:
+                out.append(f"{B}{sh(r['wallet'])} slips {dn} places to #{r['rank']} ({fm(r['balance'])})")
+            for d, r in accum[:2]:
+                verb = "added" if d > 0 else "sold"
+                out.append(f"{B}#{r['rank']} {sh(r['wallet'])} {verb} {fm(abs(d))}, now {fm(r['balance'])}")
+            for r in newc[:6]:
                 out.append(f"{B}New to the Top 100: {sh(r['wallet'])} at #{r['rank']} ({fm(r['balance'])})")
-            if len(newc) > 4: out.append(f"{B}…and {len(newc)-4} more new entries")
-            for r in sorted(gone, key=lambda r: -r["balance"])[:3]:
+            if len(newc) > 6: out.append(f"{B}…and {len(newc)-6} more new entries")
+            for r in sorted(gone, key=lambda r: -r["balance"])[:4]:
                 out.append(f"{B}Left the Top 100: {sh(r['wallet'])}, was #{r['rank']} ({fm(r['balance'])})")
+            if len(gone) > 4: out.append(f"{B}…and {len(gone)-4} more exits")
             out.append("")
         if len(out) <= 4 and not peer_lines and not acc:
             out.append("A quiet twelve hours. No changes to the Peerage or the Top 100."); out.append("")
