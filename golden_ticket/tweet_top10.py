@@ -13,7 +13,7 @@ Peerage changed since the previous checkpoint — every post is news. Runs at
 import base64, datetime, json, os, re, subprocess, sys, urllib.error, urllib.parse, urllib.request
 from pathlib import Path
 
-HERE = Path(__file__).parent
+HERE = Path(__file__).resolve().parent
 REPO = HERE.parent
 PAGE = REPO / "futures" / "shopify" / "body_golden_ticket.html"
 OUT = HERE / "out"; OUT.mkdir(exist_ok=True)
@@ -36,8 +36,24 @@ def env():
 
 
 def payload():
+    """Board payload, but with MOVEMENT taken from the latest checkpoint's own
+    record (diffed vs the checkpoint before it) — not re-diffed live, which
+    would compare the board to the baseline that was saved 3 minutes ago."""
     s = PAGE.read_text()
-    return json.loads(re.search(r"/\*GT_START\*/var GT=(.*?);/\*GT_END\*/", s, flags=re.S).group(1))
+    gt = json.loads(re.search(r"/\*GT_START\*/var GT=(.*?);/\*GT_END\*/", s, flags=re.S).group(1))
+    hist = json.loads((HERE / "history.json").read_text())["checkpoints"]
+    if len(hist) >= 2:
+        latest, prev = hist[-1], hist[-2]
+        prev_peer = [r["wallet"] for r in prev["rows"][:10]]
+        peer = ["Grand Vizier","Vizier","Necromancer","Wizard","Prime Magi","Magi","Conjurer","Evoker","Apprentice","Acolyte"]
+        moves = []
+        for i, r in enumerate(latest["rows"][:10]):
+            if i >= len(prev_peer) or prev_peer[i] != r["wallet"]:
+                moves.append({"title": peer[i], "rank": i + 1, "wallet": r["wallet"],
+                              "kind": "NEW" if r["wallet"] not in prev_peer else "MOVED"})
+        gt["moves"] = moves
+        gt["checkpoint_label"] = latest["label"]
+    return gt
 
 
 def render_png(gt):
@@ -137,6 +153,16 @@ def post(e, text, media_id):
 
 def main():
     gt = payload()
+    if "--catchup" in sys.argv:
+        hist = json.loads((HERE / "history.json").read_text())["checkpoints"]
+        peer = ["Grand Vizier","Vizier","Necromancer","Wizard","Prime Magi","Magi","Conjurer","Evoker","Apprentice","Acolyte"]
+        for i in range(len(hist) - 1, 0, -1):
+            prev_peer = [r["wallet"] for r in hist[i-1]["rows"][:10]]
+            mv = [{"title": peer[j], "rank": j+1, "wallet": r["wallet"], "kind": "NEW" if r["wallet"] not in prev_peer else "MOVED"}
+                  for j, r in enumerate(hist[i]["rows"][:10]) if j >= len(prev_peer) or prev_peer[j] != r["wallet"]]
+            if mv:
+                gt["moves"] = mv; gt["top"] = [dict(r, was=hist[i-1]["rows"][k]["rank"] if k < len(hist[i-1]["rows"]) else None) for k, r in enumerate(hist[i]["rows"])]
+                break
     if not ALWAYS and not gt.get("moves"):
         print("no Peerage movement since last checkpoint — skipping (use --always to force)"); return
     png = render_png(gt)
