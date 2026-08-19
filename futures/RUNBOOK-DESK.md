@@ -47,6 +47,33 @@ wallet. Todd is the disclosed principal buyer on all ACM bids.*
 - [ ] Counsel sign-off — the board is now a public solicitation to trade
       with a disclosed principal; this is the conversation, have it first
 
+## THE FORCED LOCK — Streamflow procedure (standard as of 2026-08-18)
+
+The trust-removal step, generalized from Contract One. The Streamflow lock IS
+the escrow — no intermediate wallet, non-cancelable, publicly verifiable
+(same rails as the ACM supply locks, run twice). Interim standard until
+InstarLock is audited.
+
+**Seller leg (forces delivery):**
+1. Desk sends the seller's wallet lock costs: 0.35 SOL gas + 0.5% of the lot
+   in the coin (Streamflow's fee rides on top of the locked amount).
+2. Seller connects THEIR wallet (wherever the coins sit) to
+   app.streamflow.finance via Phantom's in-app browser.
+3. Create a LOCK: token = the coin, amount = the exact lot (typed, never
+   "Max"), time-based, single unlock = settlement instant.
+4. Recipient: "use connected wallet" OFF -> the BUYER's wallet (FUT BUYER for
+   house bids). Verify first/last characters. This field is permanent.
+5. Review (amount / date / recipient / 0.5% fee), no red simulation error,
+   sign. Desk verifies on-chain, amends the sealed record, repoints the
+   watcher at the Streamflow escrow account.
+
+**Buyer leg (forces payment; recommended, makes the contract fully
+trustless):** buyer creates SOL locks with the same unlock instant —
+strike x 90% -> seller, strike x 10% -> FUT TREASURY.
+
+Once both legs are locked, settlement is automatic: no signatures, no
+trust, no default path. The receipt publishes itself.
+
 ## Notes
 
 - Quotes on the tape are indicative; ONLY step 5 makes a price firm.
