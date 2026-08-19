@@ -6,9 +6,9 @@
 Renders a Top-10-only PNG of the live leaderboard (headless Chrome), writes a
 caption from the current checkpoint's movement, and posts image + caption to
 @AladdinsCastleM via X API v2 (OAuth 1.0a user context). Credentials in
-.x.env (gitignored). POLICY (Todd, 2026-08-12): post ONLY when the Top 10
-Peerage changed since the previous checkpoint — every post is news. Runs at
-:03 after each noon/midnight ET checkpoint. --always exists for manual use.
+.x.env (gitignored). POLICY (Todd, 2026-08-18): a 12-hour PLAY-BY-PLAY posts at EVERY noon/midnight
+checkpoint — Peerage changes lead, then accumulation, then who cracked / left
+the Top 100. Runs at :03 after each checkpoint.
 """
 import base64, datetime, json, os, re, subprocess, sys, urllib.error, urllib.parse, urllib.request
 from pathlib import Path
@@ -84,22 +84,65 @@ def render_png(gt):
 
 
 def caption(gt):
-    peer = ["Grand Vizier", "Vizier", "Necromancer", "Wizard", "Prime Magi",
-            "Magi", "Conjurer", "Evoker", "Apprentice", "Acolyte"]
+    """12-hour play-by-play, house style: no emoji, clean bullets, full sentences.
+    Premium account -> long-form allowed; we still keep it tight and scannable."""
+    hist = json.loads((HERE / "history.json").read_text())["checkpoints"]
+    cur, prev = hist[-1], (hist[-2] if len(hist) > 1 else None)
+    peer = ["Grand Vizier","Vizier","Necromancer","Wizard","Prime Magi","Magi","Conjurer","Evoker","Apprentice","Acolyte"]
     now = datetime.datetime.now(datetime.timezone.utc)
     days = max(0, (FREEZE - now).days)
     et = now.astimezone(datetime.timezone(datetime.timedelta(hours=-4)))
-    when = "Noon" if et.hour == 12 else "Midnight" if et.hour == 0 else et.strftime("%-I %p")
-    lines = [f"⚔️ $ACM Top 100 Golden Ticket — {when} ET standings"]
-    if gt.get("moves"):
-        for m in gt["moves"][:3]:
-            lines.append(f"{'🆕 ' if m['kind']=='NEW' else '🔁 '}{m['title'].upper()}: {m['wallet'][:5]}…{m['wallet'][-4:]}")
+    when = "Noon" if 11 <= et.hour <= 13 else "Midnight" if et.hour in (23, 0, 1) else et.strftime("%-I %p")
+    sh = lambda w: f"{w[:6]}…{w[-4:]}"
+    fm = lambda n: f"{n/1e6:.2f}M" if abs(n) >= 1e6 else f"{n/1e3:.0f}K" if abs(n) >= 1e3 else f"{n:.0f}"
+    B = "• "
+    out = [f"$ACM Top 100 Golden Ticket — {when} ET update", ""]
+    if not prev:
+        out.append(f"{B}Grand Vizier: {sh(cur['rows'][0]['wallet'])} with {fm(cur['rows'][0]['balance'])}")
     else:
-        top = gt["top"][0]
-        lines.append(f"👑 Grand Vizier holds: {top['wallet'][:5]}…{top['wallet'][-4:]}")
-    lines.append(f"⏳ {days} days to the freeze — noon ET, Labor Day, Sept 7")
-    lines.append(f"Peerage of the Castle: titles for all time.\n{LINK}")
-    return "\n".join(lines)
+        A = {r["wallet"]: r for r in prev["rows"]}; Bm = {r["wallet"]: r for r in cur["rows"]}
+        pp = [r["wallet"] for r in prev["rows"][:10]]
+        peer_lines = []
+        for i, r in enumerate(cur["rows"][:10]):
+            if i >= len(pp) or pp[i] != r["wallet"]:
+                was = A.get(r["wallet"], {}).get("rank")
+                tag = "enters the Peerage as" if r["wallet"] not in pp else f"moves from #{was} to"
+                peer_lines.append(f"{B}{sh(r['wallet'])} {tag} {peer[i]} (#{i+1}) with {fm(r['balance'])}")
+        if peer_lines:
+            out.append("PEERAGE CHANGES"); out += peer_lines; out.append("")
+        else:
+            out.append("PEERAGE: all ten seats held, same order.")
+            out.append("")
+        # accumulation among the top 10 (all moves >= 50K, biggest first)
+        acc = sorted(((r["balance"] - A[r["wallet"]]["balance"], r) for r in cur["rows"][:10] if r["wallet"] in A and abs(r["balance"] - A[r["wallet"]]["balance"]) >= 50_000), key=lambda x: -abs(x[0]))
+        if acc:
+            out.append("TOP 10 ACTIVITY")
+            for d, r in acc[:4]:
+                verb = "added" if d > 0 else "trimmed"
+                out.append(f"{B}{peer[r['rank']-1]} {sh(r['wallet'])} {verb} {fm(abs(d))}, now {fm(r['balance'])}")
+            out.append("")
+        # movers outside the top 10
+        climbs = sorted(((A[r["wallet"]]["rank"] - r["rank"], r) for r in cur["rows"][10:] if r["wallet"] in A and A[r["wallet"]]["rank"] - r["rank"] >= 3), key=lambda x: -x[0])
+        newc = [r for r in cur["rows"] if r["wallet"] not in A]
+        gone = [r for r in prev["rows"] if r["wallet"] not in Bm]
+        if climbs or newc or gone:
+            out.append("THE BOARD")
+            for up, r in climbs[:3]:
+                out.append(f"{B}{sh(r['wallet'])} climbs {up} places to #{r['rank']} ({fm(r['balance'])})")
+            for r in newc[:4]:
+                out.append(f"{B}New to the Top 100: {sh(r['wallet'])} at #{r['rank']} ({fm(r['balance'])})")
+            if len(newc) > 4: out.append(f"{B}…and {len(newc)-4} more new entries")
+            for r in sorted(gone, key=lambda r: -r["balance"])[:3]:
+                out.append(f"{B}Left the Top 100: {sh(r['wallet'])}, was #{r['rank']} ({fm(r['balance'])})")
+            out.append("")
+        if len(out) <= 4 and not peer_lines and not acc:
+            out.append("A quiet twelve hours. No changes to the Peerage or the Top 100."); out.append("")
+    tot = sum(r["balance"] for r in cur["rows"])
+    out.append(f"Top 100 holds {fm(tot)} ACM across {cur['holders']} total holders. {days} days to the freeze — noon ET, Labor Day, September 7.")
+    out.append("")
+    out.append("The Peerage of the Castle: titles held for all time.")
+    out.append(LINK)
+    return "\n".join(out)
 
 
 # ---- OAuth 2.0 user context (auto-refresh; tokens live in .x.env) ----
@@ -172,8 +215,8 @@ def main():
                 gt["top"] = [{"rank": r["rank"], "wallet": r["wallet"], "balance": r["balance"],
                               "was": r["prev_rank"], "delta": r["move"]} for r in hist[i]["rows"]]
                 break
-    if not ALWAYS and not gt.get("moves"):
-        print("no Peerage movement since last checkpoint — skipping (use --always to force)"); return
+    # POLICY (Todd, 2026-08-18): 12-hour play-by-play posts at EVERY checkpoint —
+    # amounts always move; Peerage changes + Top-100 entries/exits are highlighted.
     png = render_png(gt)
     text = caption(gt)
     log = OUT / "tweets.log"
