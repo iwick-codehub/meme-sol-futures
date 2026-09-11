@@ -1,0 +1,3638 @@
+{
+ "instrument": "ACM Top 100 Golden Ticket \u2014 MTC certification",
+ "freeze_instant_utc": "2026-09-07T16:00:00Z",
+ "taken_utc": "2026-09-07T16:00:00+00:00",
+ "solana_slot": 445105320,
+ "mint": "4PRz3EwhbjrrX6YksMDuUzrXT51pr7CQtXNCravhpump",
+ "leaf_rule": "sha256(f'{rank}|{owner}|{raw_balance}')",
+ "tree_rule": "sha256(left+right) over hex strings, odd node duplicated",
+ "excluded": [
+  {
+   "wallet": "ABdGyTVQuemWxGWQTqeXCeXZ79prw7p9VtnTkhiWkQQ9",
+   "why": "Streamflow lock escrow \u2014 Lock 1 (402,717,631)"
+  },
+  {
+   "wallet": "7FdE5s2ejBX6g6socL3UrXFHaP79GUykMoRP8jhLsA4f",
+   "why": "Streamflow lock escrow \u2014 Lock 2 (97,282,369)"
+  },
+  {
+   "wallet": "HKSDMJ6KThscZXMVVuS24wvK3WGzfuepQhwdKCjHKEpZ",
+   "why": "PumpSwap liquidity pool"
+  },
+  {
+   "wallet": "Fc8T5MKEsqkK24JpQv8VNmk7cNehTN1RuixTtr1RUyho",
+   "why": "House \u2014 ACM creator wallet"
+  },
+  {
+   "wallet": "GNkKQWa4XHdvgF1x4edV3qF54xdz3LykWyd8cgWnVsHQ",
+   "why": "House \u2014 lock recipient wallet"
+  },
+  {
+   "wallet": "3n2ETkQbVqNFaPAx8Sbcha5Vp6PZH1AsnqXioiGTixx9",
+   "why": "House \u2014 Todd's liquid account"
+  }
+ ],
+ "merkle_root": "54ef369981c72c37e1e601d2b575652b3d0138c25a26bd953adda92c3e6ebe14",
+ "holders": [
+  {
+   "rank": 1,
+   "wallet": "xeEENXb3dFh18hMReKqD55PfUbZrXWPxpo6zgjbR3oy",
+   "raw_balance": 26527823463898,
+   "leaf": "9b9b7786eff6ab354328dd36f40d4ae673bdc25ebbbc7842ee7b0f6a48519bd7",
+   "proof": [
+    [
+     "339fd635245fdf7eb900be2969e0ae36c20a90b8951b040a87e5379cf71460a0",
+     "R"
+    ],
+    [
+     "3577e4acef4a612c6d5d9d540ed541ac92f48287d347a4691c0da2cd552aeb29",
+     "R"
+    ],
+    [
+     "d34cc7ca8ab01e9db784e9fc61ff445209179374b753ecb04755b1a997145cc0",
+     "R"
+    ],
+    [
+     "d609f064c7534acf3d951e227d32623a3f6323470e30517ff0043959781c9586",
+     "R"
+    ],
+    [
+     "e1993eabf8c7a6556b42092183e438baba849924450885b3dae86e78ae37894c",
+     "R"
+    ],
+    [
+     "34607e7fa9285e5d7f5bc8b4ceffd8e90b3abb042615b5260def13bd4f6ab318",
+     "R"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 2,
+   "wallet": "J1nQS7RXVSRij4S5AUdhFYYwwWxT1fdBtmJQvSfhywic",
+   "raw_balance": 26036095270392,
+   "leaf": "339fd635245fdf7eb900be2969e0ae36c20a90b8951b040a87e5379cf71460a0",
+   "proof": [
+    [
+     "9b9b7786eff6ab354328dd36f40d4ae673bdc25ebbbc7842ee7b0f6a48519bd7",
+     "L"
+    ],
+    [
+     "3577e4acef4a612c6d5d9d540ed541ac92f48287d347a4691c0da2cd552aeb29",
+     "R"
+    ],
+    [
+     "d34cc7ca8ab01e9db784e9fc61ff445209179374b753ecb04755b1a997145cc0",
+     "R"
+    ],
+    [
+     "d609f064c7534acf3d951e227d32623a3f6323470e30517ff0043959781c9586",
+     "R"
+    ],
+    [
+     "e1993eabf8c7a6556b42092183e438baba849924450885b3dae86e78ae37894c",
+     "R"
+    ],
+    [
+     "34607e7fa9285e5d7f5bc8b4ceffd8e90b3abb042615b5260def13bd4f6ab318",
+     "R"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 3,
+   "wallet": "5qx7yV4Cwg67iEDSuszwMHYrQDJRnSCDF5DS6ZPAFvnV",
+   "raw_balance": 23986255185405,
+   "leaf": "37cb9b50472a2462cb2512bb37a2a51311832ab8b5276f5db1c733d79a2aa9ad",
+   "proof": [
+    [
+     "de9758818dcc100af09142afeb76f008b6e09e78347e08d9a13f22b341396eae",
+     "R"
+    ],
+    [
+     "5895e655cef48fdf7804f5d1920e8ca03608bca78357ffbd0ee84ab1f80de286",
+     "L"
+    ],
+    [
+     "d34cc7ca8ab01e9db784e9fc61ff445209179374b753ecb04755b1a997145cc0",
+     "R"
+    ],
+    [
+     "d609f064c7534acf3d951e227d32623a3f6323470e30517ff0043959781c9586",
+     "R"
+    ],
+    [
+     "e1993eabf8c7a6556b42092183e438baba849924450885b3dae86e78ae37894c",
+     "R"
+    ],
+    [
+     "34607e7fa9285e5d7f5bc8b4ceffd8e90b3abb042615b5260def13bd4f6ab318",
+     "R"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 4,
+   "wallet": "4UwK5AE6Djdf3MfwtPGE8pFYD47MhU9fiStDVmSHJVMB",
+   "raw_balance": 22782177105502,
+   "leaf": "de9758818dcc100af09142afeb76f008b6e09e78347e08d9a13f22b341396eae",
+   "proof": [
+    [
+     "37cb9b50472a2462cb2512bb37a2a51311832ab8b5276f5db1c733d79a2aa9ad",
+     "L"
+    ],
+    [
+     "5895e655cef48fdf7804f5d1920e8ca03608bca78357ffbd0ee84ab1f80de286",
+     "L"
+    ],
+    [
+     "d34cc7ca8ab01e9db784e9fc61ff445209179374b753ecb04755b1a997145cc0",
+     "R"
+    ],
+    [
+     "d609f064c7534acf3d951e227d32623a3f6323470e30517ff0043959781c9586",
+     "R"
+    ],
+    [
+     "e1993eabf8c7a6556b42092183e438baba849924450885b3dae86e78ae37894c",
+     "R"
+    ],
+    [
+     "34607e7fa9285e5d7f5bc8b4ceffd8e90b3abb042615b5260def13bd4f6ab318",
+     "R"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 5,
+   "wallet": "8JWx2gV9WnhdrZGTsi3hwfaAiiS2K51HtAQ3jFZPC3D4",
+   "raw_balance": 22455164623359,
+   "leaf": "7bb8ff886e44aa82d9c4260098b253e91afa47b8d49b2bbb4bd05fa50ef1de47",
+   "proof": [
+    [
+     "eb8496ecb96b0a0a98414c14cfa4dd5f778c0c95286184b79e724b9725b24081",
+     "R"
+    ],
+    [
+     "5fc08334fbbb8cb2d4002c0c83d373473988eccbc675b1274cf774c6baac3bb2",
+     "R"
+    ],
+    [
+     "07952cf329bf563919603c74b182853d31753201a3975cbae85fb7969ff562f3",
+     "L"
+    ],
+    [
+     "d609f064c7534acf3d951e227d32623a3f6323470e30517ff0043959781c9586",
+     "R"
+    ],
+    [
+     "e1993eabf8c7a6556b42092183e438baba849924450885b3dae86e78ae37894c",
+     "R"
+    ],
+    [
+     "34607e7fa9285e5d7f5bc8b4ceffd8e90b3abb042615b5260def13bd4f6ab318",
+     "R"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 6,
+   "wallet": "DUUfRJbbNfudqN68SBJwmXdURH7CKrKKhLq8dfWFzr2o",
+   "raw_balance": 18763901898157,
+   "leaf": "eb8496ecb96b0a0a98414c14cfa4dd5f778c0c95286184b79e724b9725b24081",
+   "proof": [
+    [
+     "7bb8ff886e44aa82d9c4260098b253e91afa47b8d49b2bbb4bd05fa50ef1de47",
+     "L"
+    ],
+    [
+     "5fc08334fbbb8cb2d4002c0c83d373473988eccbc675b1274cf774c6baac3bb2",
+     "R"
+    ],
+    [
+     "07952cf329bf563919603c74b182853d31753201a3975cbae85fb7969ff562f3",
+     "L"
+    ],
+    [
+     "d609f064c7534acf3d951e227d32623a3f6323470e30517ff0043959781c9586",
+     "R"
+    ],
+    [
+     "e1993eabf8c7a6556b42092183e438baba849924450885b3dae86e78ae37894c",
+     "R"
+    ],
+    [
+     "34607e7fa9285e5d7f5bc8b4ceffd8e90b3abb042615b5260def13bd4f6ab318",
+     "R"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 7,
+   "wallet": "AAbnUKvGS7w4esxZ9Pyxf7SYKZsi8rNEJeYrrtHoiFxA",
+   "raw_balance": 17656708876142,
+   "leaf": "d93d7eb79b787dd5a182fdf789a85dad5ea90891b4bce4aceecabb053735e1f4",
+   "proof": [
+    [
+     "100d237c2e0b51ffce7651b06276cda6855b4929dcbff2b449ed4e7aa454ff26",
+     "R"
+    ],
+    [
+     "71c8db4fb5a2957ca65cbcff2e4acbfe38523eb260daafc4758693b5627465d9",
+     "L"
+    ],
+    [
+     "07952cf329bf563919603c74b182853d31753201a3975cbae85fb7969ff562f3",
+     "L"
+    ],
+    [
+     "d609f064c7534acf3d951e227d32623a3f6323470e30517ff0043959781c9586",
+     "R"
+    ],
+    [
+     "e1993eabf8c7a6556b42092183e438baba849924450885b3dae86e78ae37894c",
+     "R"
+    ],
+    [
+     "34607e7fa9285e5d7f5bc8b4ceffd8e90b3abb042615b5260def13bd4f6ab318",
+     "R"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 8,
+   "wallet": "7yn6tnTbBjoSURMX8L93tH8dKCN8sEBA177kDMMmQ54z",
+   "raw_balance": 13250500798118,
+   "leaf": "100d237c2e0b51ffce7651b06276cda6855b4929dcbff2b449ed4e7aa454ff26",
+   "proof": [
+    [
+     "d93d7eb79b787dd5a182fdf789a85dad5ea90891b4bce4aceecabb053735e1f4",
+     "L"
+    ],
+    [
+     "71c8db4fb5a2957ca65cbcff2e4acbfe38523eb260daafc4758693b5627465d9",
+     "L"
+    ],
+    [
+     "07952cf329bf563919603c74b182853d31753201a3975cbae85fb7969ff562f3",
+     "L"
+    ],
+    [
+     "d609f064c7534acf3d951e227d32623a3f6323470e30517ff0043959781c9586",
+     "R"
+    ],
+    [
+     "e1993eabf8c7a6556b42092183e438baba849924450885b3dae86e78ae37894c",
+     "R"
+    ],
+    [
+     "34607e7fa9285e5d7f5bc8b4ceffd8e90b3abb042615b5260def13bd4f6ab318",
+     "R"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 9,
+   "wallet": "9dJKzPJQVoSLQ3ujdzUpUw3o2Ef2kTJLTgbLWnCMMD3i",
+   "raw_balance": 12991082606640,
+   "leaf": "368036784ee2cbee883b405e301489f9b7c4103224752d1127dfd15bd4e15f9d",
+   "proof": [
+    [
+     "c712b597c4f660ea0971bf0b5397a618a2fd8ab12bf913347a358ac7b7949a67",
+     "R"
+    ],
+    [
+     "119d9b9014413ee60e632301acec5aa5bbeec7669afaff818a323c63f8373a89",
+     "R"
+    ],
+    [
+     "4beaae948925c4dfc76d2e4389a462522a338a6c6b1750d57efe69d2f0b0bd50",
+     "R"
+    ],
+    [
+     "0bc5130ccff466d549d74e52865beb6eebfd906483a3778d1cd96fd0c5848219",
+     "L"
+    ],
+    [
+     "e1993eabf8c7a6556b42092183e438baba849924450885b3dae86e78ae37894c",
+     "R"
+    ],
+    [
+     "34607e7fa9285e5d7f5bc8b4ceffd8e90b3abb042615b5260def13bd4f6ab318",
+     "R"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 10,
+   "wallet": "98QgvUf5apiXjsKcJrnuEQzYwmbeF6ifYRgQDGhoThVL",
+   "raw_balance": 12767552139402,
+   "leaf": "c712b597c4f660ea0971bf0b5397a618a2fd8ab12bf913347a358ac7b7949a67",
+   "proof": [
+    [
+     "368036784ee2cbee883b405e301489f9b7c4103224752d1127dfd15bd4e15f9d",
+     "L"
+    ],
+    [
+     "119d9b9014413ee60e632301acec5aa5bbeec7669afaff818a323c63f8373a89",
+     "R"
+    ],
+    [
+     "4beaae948925c4dfc76d2e4389a462522a338a6c6b1750d57efe69d2f0b0bd50",
+     "R"
+    ],
+    [
+     "0bc5130ccff466d549d74e52865beb6eebfd906483a3778d1cd96fd0c5848219",
+     "L"
+    ],
+    [
+     "e1993eabf8c7a6556b42092183e438baba849924450885b3dae86e78ae37894c",
+     "R"
+    ],
+    [
+     "34607e7fa9285e5d7f5bc8b4ceffd8e90b3abb042615b5260def13bd4f6ab318",
+     "R"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 11,
+   "wallet": "2omVC16AduiQQZn36yF5pwZtRJ7UQrtmuiriEpD5YTir",
+   "raw_balance": 10795796071962,
+   "leaf": "387a53e8d886dc70b0be0d8fb85d7786ce64be807bfb07bd652baf183be7f0d6",
+   "proof": [
+    [
+     "51eefc4f22695813022b30e49384a62104af6302cdf50379ea2229c4b416f7d5",
+     "R"
+    ],
+    [
+     "7e4a23c628250fbe566024ffdcd67012e760be3a96aaa932fb3b843bc57e987c",
+     "L"
+    ],
+    [
+     "4beaae948925c4dfc76d2e4389a462522a338a6c6b1750d57efe69d2f0b0bd50",
+     "R"
+    ],
+    [
+     "0bc5130ccff466d549d74e52865beb6eebfd906483a3778d1cd96fd0c5848219",
+     "L"
+    ],
+    [
+     "e1993eabf8c7a6556b42092183e438baba849924450885b3dae86e78ae37894c",
+     "R"
+    ],
+    [
+     "34607e7fa9285e5d7f5bc8b4ceffd8e90b3abb042615b5260def13bd4f6ab318",
+     "R"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 12,
+   "wallet": "ethuWdnPxqmwFskE4EpN18qdjzfCM79kALftiAGDw8Z",
+   "raw_balance": 10290297086453,
+   "leaf": "51eefc4f22695813022b30e49384a62104af6302cdf50379ea2229c4b416f7d5",
+   "proof": [
+    [
+     "387a53e8d886dc70b0be0d8fb85d7786ce64be807bfb07bd652baf183be7f0d6",
+     "L"
+    ],
+    [
+     "7e4a23c628250fbe566024ffdcd67012e760be3a96aaa932fb3b843bc57e987c",
+     "L"
+    ],
+    [
+     "4beaae948925c4dfc76d2e4389a462522a338a6c6b1750d57efe69d2f0b0bd50",
+     "R"
+    ],
+    [
+     "0bc5130ccff466d549d74e52865beb6eebfd906483a3778d1cd96fd0c5848219",
+     "L"
+    ],
+    [
+     "e1993eabf8c7a6556b42092183e438baba849924450885b3dae86e78ae37894c",
+     "R"
+    ],
+    [
+     "34607e7fa9285e5d7f5bc8b4ceffd8e90b3abb042615b5260def13bd4f6ab318",
+     "R"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 13,
+   "wallet": "BcACSLKqUtYY821ePSYS7dYrqaffuLnXRNqsLhZ3bvRj",
+   "raw_balance": 10192771425612,
+   "leaf": "85dab8ac1a4ea00b069a3c9b2011f3ac901c05366bd0850e4220c1edcb536007",
+   "proof": [
+    [
+     "07281a116a1da38f2393d28eed90103c294c17c8ae051ff030cedecf2ac90006",
+     "R"
+    ],
+    [
+     "beb4f2a6ddb5608d1029c009ed575edb7364dff2e7095b920cd230480522540c",
+     "R"
+    ],
+    [
+     "bc16be7bc7958fedaeec95adf98318fa24650701865f141563530bfec5a17116",
+     "L"
+    ],
+    [
+     "0bc5130ccff466d549d74e52865beb6eebfd906483a3778d1cd96fd0c5848219",
+     "L"
+    ],
+    [
+     "e1993eabf8c7a6556b42092183e438baba849924450885b3dae86e78ae37894c",
+     "R"
+    ],
+    [
+     "34607e7fa9285e5d7f5bc8b4ceffd8e90b3abb042615b5260def13bd4f6ab318",
+     "R"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 14,
+   "wallet": "GXMfVHE9L3L3KyW3Dx1yNyxDSky59LSvMELpVKRQ4Yxm",
+   "raw_balance": 10000136602055,
+   "leaf": "07281a116a1da38f2393d28eed90103c294c17c8ae051ff030cedecf2ac90006",
+   "proof": [
+    [
+     "85dab8ac1a4ea00b069a3c9b2011f3ac901c05366bd0850e4220c1edcb536007",
+     "L"
+    ],
+    [
+     "beb4f2a6ddb5608d1029c009ed575edb7364dff2e7095b920cd230480522540c",
+     "R"
+    ],
+    [
+     "bc16be7bc7958fedaeec95adf98318fa24650701865f141563530bfec5a17116",
+     "L"
+    ],
+    [
+     "0bc5130ccff466d549d74e52865beb6eebfd906483a3778d1cd96fd0c5848219",
+     "L"
+    ],
+    [
+     "e1993eabf8c7a6556b42092183e438baba849924450885b3dae86e78ae37894c",
+     "R"
+    ],
+    [
+     "34607e7fa9285e5d7f5bc8b4ceffd8e90b3abb042615b5260def13bd4f6ab318",
+     "R"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 15,
+   "wallet": "D2APTrLdaCzMJzTcqfXZeMY5kHu4b15a4m5uJ5eh7tdN",
+   "raw_balance": 9644877061925,
+   "leaf": "a40ba05e799fd847fd475f02545387fba980742be3e240f7660da4533227aa77",
+   "proof": [
+    [
+     "f12e3cd2f8de43aee007ead76d8790fab49d2f8d0b8f5fe1fa6b7b3eec7baf1e",
+     "R"
+    ],
+    [
+     "b475b0b9f634b1c013d34c618cfb0f416ead56863c16d93077a5d20d1eb40fd6",
+     "L"
+    ],
+    [
+     "bc16be7bc7958fedaeec95adf98318fa24650701865f141563530bfec5a17116",
+     "L"
+    ],
+    [
+     "0bc5130ccff466d549d74e52865beb6eebfd906483a3778d1cd96fd0c5848219",
+     "L"
+    ],
+    [
+     "e1993eabf8c7a6556b42092183e438baba849924450885b3dae86e78ae37894c",
+     "R"
+    ],
+    [
+     "34607e7fa9285e5d7f5bc8b4ceffd8e90b3abb042615b5260def13bd4f6ab318",
+     "R"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 16,
+   "wallet": "HA9VmLW1V4p8kS4t2FdCEszMorfbAGwdSWqnUAduczSn",
+   "raw_balance": 9319663326153,
+   "leaf": "f12e3cd2f8de43aee007ead76d8790fab49d2f8d0b8f5fe1fa6b7b3eec7baf1e",
+   "proof": [
+    [
+     "a40ba05e799fd847fd475f02545387fba980742be3e240f7660da4533227aa77",
+     "L"
+    ],
+    [
+     "b475b0b9f634b1c013d34c618cfb0f416ead56863c16d93077a5d20d1eb40fd6",
+     "L"
+    ],
+    [
+     "bc16be7bc7958fedaeec95adf98318fa24650701865f141563530bfec5a17116",
+     "L"
+    ],
+    [
+     "0bc5130ccff466d549d74e52865beb6eebfd906483a3778d1cd96fd0c5848219",
+     "L"
+    ],
+    [
+     "e1993eabf8c7a6556b42092183e438baba849924450885b3dae86e78ae37894c",
+     "R"
+    ],
+    [
+     "34607e7fa9285e5d7f5bc8b4ceffd8e90b3abb042615b5260def13bd4f6ab318",
+     "R"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 17,
+   "wallet": "7vnPUvP9gYCZKMgqRu9Xy5ikekGqgarzqHjJyxDnL5XR",
+   "raw_balance": 7500323112611,
+   "leaf": "75a2a08928167021fc1e468f1dec70ca62eb38c1848f418d5a70ad058952e52c",
+   "proof": [
+    [
+     "8406ffb492ad4a132dccddc7088538e5ef3d5e5ab363ce3d95eee53c7b0c233d",
+     "R"
+    ],
+    [
+     "284ff20e0b2fc8c7890df48310e51c0f49923251431a78c7b8203b5dc945b4de",
+     "R"
+    ],
+    [
+     "a9d5ba4950578ab268c2ff82065b29c59307c6f0106bac862f7cff4d46d9d4e3",
+     "R"
+    ],
+    [
+     "f94b97291e7a80619b9cfdd84ecbc498228d762f9b8b90ca383c63f5f137cc03",
+     "R"
+    ],
+    [
+     "d2fa34dfad6870375b0fd41ebdc50bd731b246dbc43cc8aec628dacdcfe84b1a",
+     "L"
+    ],
+    [
+     "34607e7fa9285e5d7f5bc8b4ceffd8e90b3abb042615b5260def13bd4f6ab318",
+     "R"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 18,
+   "wallet": "FLuCkgbeVFsqRVGayTzvipHZfTmAo4huLuyHmvwt973A",
+   "raw_balance": 6210440417328,
+   "leaf": "8406ffb492ad4a132dccddc7088538e5ef3d5e5ab363ce3d95eee53c7b0c233d",
+   "proof": [
+    [
+     "75a2a08928167021fc1e468f1dec70ca62eb38c1848f418d5a70ad058952e52c",
+     "L"
+    ],
+    [
+     "284ff20e0b2fc8c7890df48310e51c0f49923251431a78c7b8203b5dc945b4de",
+     "R"
+    ],
+    [
+     "a9d5ba4950578ab268c2ff82065b29c59307c6f0106bac862f7cff4d46d9d4e3",
+     "R"
+    ],
+    [
+     "f94b97291e7a80619b9cfdd84ecbc498228d762f9b8b90ca383c63f5f137cc03",
+     "R"
+    ],
+    [
+     "d2fa34dfad6870375b0fd41ebdc50bd731b246dbc43cc8aec628dacdcfe84b1a",
+     "L"
+    ],
+    [
+     "34607e7fa9285e5d7f5bc8b4ceffd8e90b3abb042615b5260def13bd4f6ab318",
+     "R"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 19,
+   "wallet": "5FubQtZr2igCPJzvu7eomiVFbZkHi3p1MstwGnjq8JDU",
+   "raw_balance": 5287906216872,
+   "leaf": "fb2369214b024fed1e82bbf59cded323c49a0599a3475a027d91ac507cdb4315",
+   "proof": [
+    [
+     "00c31cbc8c380e247f8d117cfa97d8e83b982e6c8db8975cf0dad3825fd98e1a",
+     "R"
+    ],
+    [
+     "f97cb47290db0839f34669baf8759bb462da2fd5647808a7f94e333741bed5ec",
+     "L"
+    ],
+    [
+     "a9d5ba4950578ab268c2ff82065b29c59307c6f0106bac862f7cff4d46d9d4e3",
+     "R"
+    ],
+    [
+     "f94b97291e7a80619b9cfdd84ecbc498228d762f9b8b90ca383c63f5f137cc03",
+     "R"
+    ],
+    [
+     "d2fa34dfad6870375b0fd41ebdc50bd731b246dbc43cc8aec628dacdcfe84b1a",
+     "L"
+    ],
+    [
+     "34607e7fa9285e5d7f5bc8b4ceffd8e90b3abb042615b5260def13bd4f6ab318",
+     "R"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 20,
+   "wallet": "7Cqf145UJmKPYZbBZiijoatvySXcsrhD5Txs5U6ucCAQ",
+   "raw_balance": 4834616685725,
+   "leaf": "00c31cbc8c380e247f8d117cfa97d8e83b982e6c8db8975cf0dad3825fd98e1a",
+   "proof": [
+    [
+     "fb2369214b024fed1e82bbf59cded323c49a0599a3475a027d91ac507cdb4315",
+     "L"
+    ],
+    [
+     "f97cb47290db0839f34669baf8759bb462da2fd5647808a7f94e333741bed5ec",
+     "L"
+    ],
+    [
+     "a9d5ba4950578ab268c2ff82065b29c59307c6f0106bac862f7cff4d46d9d4e3",
+     "R"
+    ],
+    [
+     "f94b97291e7a80619b9cfdd84ecbc498228d762f9b8b90ca383c63f5f137cc03",
+     "R"
+    ],
+    [
+     "d2fa34dfad6870375b0fd41ebdc50bd731b246dbc43cc8aec628dacdcfe84b1a",
+     "L"
+    ],
+    [
+     "34607e7fa9285e5d7f5bc8b4ceffd8e90b3abb042615b5260def13bd4f6ab318",
+     "R"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 21,
+   "wallet": "AKyWqDEp8koAmnvQv1N1bHzTA6CA38WeKBwFV4x9aprh",
+   "raw_balance": 4822381558638,
+   "leaf": "d81c6af5aabb209aa7d0a991125dfbc1a5a5f7db77c2cfbea39212c2cd2c5a06",
+   "proof": [
+    [
+     "752d143eb72591003a384ff86e2d0026a95dfece2cce3342e81d73a7060b2063",
+     "R"
+    ],
+    [
+     "969e2966666643af2b03ebccb6e60e22f225870ed3c5a867f17a8034bb1eb56b",
+     "R"
+    ],
+    [
+     "8498e3f1cf39dc03bfe7d43063d443947b89639952e270fdb4612b21d65ff9f9",
+     "L"
+    ],
+    [
+     "f94b97291e7a80619b9cfdd84ecbc498228d762f9b8b90ca383c63f5f137cc03",
+     "R"
+    ],
+    [
+     "d2fa34dfad6870375b0fd41ebdc50bd731b246dbc43cc8aec628dacdcfe84b1a",
+     "L"
+    ],
+    [
+     "34607e7fa9285e5d7f5bc8b4ceffd8e90b3abb042615b5260def13bd4f6ab318",
+     "R"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 22,
+   "wallet": "EjAHxa6nfmmetEvYMwbNy8tSEctiyo55yKTUF9yzgr2r",
+   "raw_balance": 4646092928490,
+   "leaf": "752d143eb72591003a384ff86e2d0026a95dfece2cce3342e81d73a7060b2063",
+   "proof": [
+    [
+     "d81c6af5aabb209aa7d0a991125dfbc1a5a5f7db77c2cfbea39212c2cd2c5a06",
+     "L"
+    ],
+    [
+     "969e2966666643af2b03ebccb6e60e22f225870ed3c5a867f17a8034bb1eb56b",
+     "R"
+    ],
+    [
+     "8498e3f1cf39dc03bfe7d43063d443947b89639952e270fdb4612b21d65ff9f9",
+     "L"
+    ],
+    [
+     "f94b97291e7a80619b9cfdd84ecbc498228d762f9b8b90ca383c63f5f137cc03",
+     "R"
+    ],
+    [
+     "d2fa34dfad6870375b0fd41ebdc50bd731b246dbc43cc8aec628dacdcfe84b1a",
+     "L"
+    ],
+    [
+     "34607e7fa9285e5d7f5bc8b4ceffd8e90b3abb042615b5260def13bd4f6ab318",
+     "R"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 23,
+   "wallet": "EDDVYJyav59uMdeZisx45vW4EpDGUgNavpHTRSwvKZrr",
+   "raw_balance": 4545772027926,
+   "leaf": "991d0f55826d1f2254a77b90228b155bfbfee41e6112ca1147543a805920c314",
+   "proof": [
+    [
+     "63cd7c4f63d1cfc49eadf0dc0715bfe37957e4d810c838092d117aa2c0ea5dbc",
+     "R"
+    ],
+    [
+     "a48eb1dec1416be0f4aea6cc3ce62739510ce67be026a4d5af5527fc27a699fa",
+     "L"
+    ],
+    [
+     "8498e3f1cf39dc03bfe7d43063d443947b89639952e270fdb4612b21d65ff9f9",
+     "L"
+    ],
+    [
+     "f94b97291e7a80619b9cfdd84ecbc498228d762f9b8b90ca383c63f5f137cc03",
+     "R"
+    ],
+    [
+     "d2fa34dfad6870375b0fd41ebdc50bd731b246dbc43cc8aec628dacdcfe84b1a",
+     "L"
+    ],
+    [
+     "34607e7fa9285e5d7f5bc8b4ceffd8e90b3abb042615b5260def13bd4f6ab318",
+     "R"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 24,
+   "wallet": "CmzeDwSUePjV8iqAuAk7BW8PQUyZCm8Y2vW9jEegBnTz",
+   "raw_balance": 4431202057531,
+   "leaf": "63cd7c4f63d1cfc49eadf0dc0715bfe37957e4d810c838092d117aa2c0ea5dbc",
+   "proof": [
+    [
+     "991d0f55826d1f2254a77b90228b155bfbfee41e6112ca1147543a805920c314",
+     "L"
+    ],
+    [
+     "a48eb1dec1416be0f4aea6cc3ce62739510ce67be026a4d5af5527fc27a699fa",
+     "L"
+    ],
+    [
+     "8498e3f1cf39dc03bfe7d43063d443947b89639952e270fdb4612b21d65ff9f9",
+     "L"
+    ],
+    [
+     "f94b97291e7a80619b9cfdd84ecbc498228d762f9b8b90ca383c63f5f137cc03",
+     "R"
+    ],
+    [
+     "d2fa34dfad6870375b0fd41ebdc50bd731b246dbc43cc8aec628dacdcfe84b1a",
+     "L"
+    ],
+    [
+     "34607e7fa9285e5d7f5bc8b4ceffd8e90b3abb042615b5260def13bd4f6ab318",
+     "R"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 25,
+   "wallet": "E4SqhAopGupHqu4RhZWXJ5Ar33rPhWuWojJjghnz6ya5",
+   "raw_balance": 4381394173818,
+   "leaf": "8ef150cb5a4c0e3b2ff2dd50246d8659bf4365f205af1b15412baa53c5e26190",
+   "proof": [
+    [
+     "b04cdfa69abde95e0d565ad5a5166c664efab9be3460c1c7c20ff9839e707a93",
+     "R"
+    ],
+    [
+     "f12d04af8a789441b01dfb28917ad8706d011674b8c945b5634cb795efe1c030",
+     "R"
+    ],
+    [
+     "47303986c908c8e2bee9c6c82f92f310e099dc90b19ea11150c605dcf44eef83",
+     "R"
+    ],
+    [
+     "82a91226abcd96aaaf9e7da79dcb28274dbb9532050c3d3f5b3186116a8272f8",
+     "L"
+    ],
+    [
+     "d2fa34dfad6870375b0fd41ebdc50bd731b246dbc43cc8aec628dacdcfe84b1a",
+     "L"
+    ],
+    [
+     "34607e7fa9285e5d7f5bc8b4ceffd8e90b3abb042615b5260def13bd4f6ab318",
+     "R"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 26,
+   "wallet": "2rQP56mHC2wgM1p8iL5EKXrKt7h49n4CGE16Q3M1763B",
+   "raw_balance": 4155843849736,
+   "leaf": "b04cdfa69abde95e0d565ad5a5166c664efab9be3460c1c7c20ff9839e707a93",
+   "proof": [
+    [
+     "8ef150cb5a4c0e3b2ff2dd50246d8659bf4365f205af1b15412baa53c5e26190",
+     "L"
+    ],
+    [
+     "f12d04af8a789441b01dfb28917ad8706d011674b8c945b5634cb795efe1c030",
+     "R"
+    ],
+    [
+     "47303986c908c8e2bee9c6c82f92f310e099dc90b19ea11150c605dcf44eef83",
+     "R"
+    ],
+    [
+     "82a91226abcd96aaaf9e7da79dcb28274dbb9532050c3d3f5b3186116a8272f8",
+     "L"
+    ],
+    [
+     "d2fa34dfad6870375b0fd41ebdc50bd731b246dbc43cc8aec628dacdcfe84b1a",
+     "L"
+    ],
+    [
+     "34607e7fa9285e5d7f5bc8b4ceffd8e90b3abb042615b5260def13bd4f6ab318",
+     "R"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 27,
+   "wallet": "NEYmGzePZCZYSCYrbHzdCXbSdEUsvbjoeEfSGLFqN6p",
+   "raw_balance": 3637671514968,
+   "leaf": "77f48371df59697cecd16d473b59571653d5388134c7f160f2a2b4600898fa9a",
+   "proof": [
+    [
+     "09c2422b0c1001cebbb4ded9d177cd3a7ce1aebf099b20d9d1ad9723e7b83860",
+     "R"
+    ],
+    [
+     "56acfc99ea57ec3a836dc5e45c679eca301be813d1acdd126986bc1e7b8d7786",
+     "L"
+    ],
+    [
+     "47303986c908c8e2bee9c6c82f92f310e099dc90b19ea11150c605dcf44eef83",
+     "R"
+    ],
+    [
+     "82a91226abcd96aaaf9e7da79dcb28274dbb9532050c3d3f5b3186116a8272f8",
+     "L"
+    ],
+    [
+     "d2fa34dfad6870375b0fd41ebdc50bd731b246dbc43cc8aec628dacdcfe84b1a",
+     "L"
+    ],
+    [
+     "34607e7fa9285e5d7f5bc8b4ceffd8e90b3abb042615b5260def13bd4f6ab318",
+     "R"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 28,
+   "wallet": "B3XEPXRhv7o2k8QWUhX8vjXoeZcE8JPXtXnU6g1S11Ur",
+   "raw_balance": 3453702348152,
+   "leaf": "09c2422b0c1001cebbb4ded9d177cd3a7ce1aebf099b20d9d1ad9723e7b83860",
+   "proof": [
+    [
+     "77f48371df59697cecd16d473b59571653d5388134c7f160f2a2b4600898fa9a",
+     "L"
+    ],
+    [
+     "56acfc99ea57ec3a836dc5e45c679eca301be813d1acdd126986bc1e7b8d7786",
+     "L"
+    ],
+    [
+     "47303986c908c8e2bee9c6c82f92f310e099dc90b19ea11150c605dcf44eef83",
+     "R"
+    ],
+    [
+     "82a91226abcd96aaaf9e7da79dcb28274dbb9532050c3d3f5b3186116a8272f8",
+     "L"
+    ],
+    [
+     "d2fa34dfad6870375b0fd41ebdc50bd731b246dbc43cc8aec628dacdcfe84b1a",
+     "L"
+    ],
+    [
+     "34607e7fa9285e5d7f5bc8b4ceffd8e90b3abb042615b5260def13bd4f6ab318",
+     "R"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 29,
+   "wallet": "29pMBxxL2k9iq2eNsANU2rbdghHTkGhmV8pEru8tV9dd",
+   "raw_balance": 2651682187810,
+   "leaf": "5ab46dd33b600f5f6d7d30966c7e48e1389108aa626032829964fede93eed422",
+   "proof": [
+    [
+     "d4c905f10a8a51d1b54413e4526565965bc7fc31a74d3b39db0043b0cd24779a",
+     "R"
+    ],
+    [
+     "9114744f1d0d1387b2ad3eb3ff310d40b30178ef0d6ea102698ae4864017bd32",
+     "R"
+    ],
+    [
+     "6541bc0d8ae2015ca38dcb5d2973035b73b8ea5ccd014deaf1610f2630efff13",
+     "L"
+    ],
+    [
+     "82a91226abcd96aaaf9e7da79dcb28274dbb9532050c3d3f5b3186116a8272f8",
+     "L"
+    ],
+    [
+     "d2fa34dfad6870375b0fd41ebdc50bd731b246dbc43cc8aec628dacdcfe84b1a",
+     "L"
+    ],
+    [
+     "34607e7fa9285e5d7f5bc8b4ceffd8e90b3abb042615b5260def13bd4f6ab318",
+     "R"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 30,
+   "wallet": "BcEzcCpALWxRi9eShRGbgsKN1nkekQqPVY1mRFea8kQc",
+   "raw_balance": 2618674468525,
+   "leaf": "d4c905f10a8a51d1b54413e4526565965bc7fc31a74d3b39db0043b0cd24779a",
+   "proof": [
+    [
+     "5ab46dd33b600f5f6d7d30966c7e48e1389108aa626032829964fede93eed422",
+     "L"
+    ],
+    [
+     "9114744f1d0d1387b2ad3eb3ff310d40b30178ef0d6ea102698ae4864017bd32",
+     "R"
+    ],
+    [
+     "6541bc0d8ae2015ca38dcb5d2973035b73b8ea5ccd014deaf1610f2630efff13",
+     "L"
+    ],
+    [
+     "82a91226abcd96aaaf9e7da79dcb28274dbb9532050c3d3f5b3186116a8272f8",
+     "L"
+    ],
+    [
+     "d2fa34dfad6870375b0fd41ebdc50bd731b246dbc43cc8aec628dacdcfe84b1a",
+     "L"
+    ],
+    [
+     "34607e7fa9285e5d7f5bc8b4ceffd8e90b3abb042615b5260def13bd4f6ab318",
+     "R"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 31,
+   "wallet": "3sAenA9xaFPAXWMNPNNVf6yje3kNT4f5rUx4mVpZsXrW",
+   "raw_balance": 2470349731127,
+   "leaf": "dfa0a883ed25f230678fe42bbfdd9cd1540c6ea1ceb3cde0f29375edf81c860b",
+   "proof": [
+    [
+     "7b9b93318e0574827e98bf61323661eec4161db2b7b7c803053a520ed24586e7",
+     "R"
+    ],
+    [
+     "7583996f0b33f0fc86f0fa2b93cf5168d69ade7638c312a6aebf7fe945229ec0",
+     "L"
+    ],
+    [
+     "6541bc0d8ae2015ca38dcb5d2973035b73b8ea5ccd014deaf1610f2630efff13",
+     "L"
+    ],
+    [
+     "82a91226abcd96aaaf9e7da79dcb28274dbb9532050c3d3f5b3186116a8272f8",
+     "L"
+    ],
+    [
+     "d2fa34dfad6870375b0fd41ebdc50bd731b246dbc43cc8aec628dacdcfe84b1a",
+     "L"
+    ],
+    [
+     "34607e7fa9285e5d7f5bc8b4ceffd8e90b3abb042615b5260def13bd4f6ab318",
+     "R"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 32,
+   "wallet": "8E3M5KqhsLM7GMA3nUe8diYEZFhxcPAYpAAXU467od3a",
+   "raw_balance": 2173973046698,
+   "leaf": "7b9b93318e0574827e98bf61323661eec4161db2b7b7c803053a520ed24586e7",
+   "proof": [
+    [
+     "dfa0a883ed25f230678fe42bbfdd9cd1540c6ea1ceb3cde0f29375edf81c860b",
+     "L"
+    ],
+    [
+     "7583996f0b33f0fc86f0fa2b93cf5168d69ade7638c312a6aebf7fe945229ec0",
+     "L"
+    ],
+    [
+     "6541bc0d8ae2015ca38dcb5d2973035b73b8ea5ccd014deaf1610f2630efff13",
+     "L"
+    ],
+    [
+     "82a91226abcd96aaaf9e7da79dcb28274dbb9532050c3d3f5b3186116a8272f8",
+     "L"
+    ],
+    [
+     "d2fa34dfad6870375b0fd41ebdc50bd731b246dbc43cc8aec628dacdcfe84b1a",
+     "L"
+    ],
+    [
+     "34607e7fa9285e5d7f5bc8b4ceffd8e90b3abb042615b5260def13bd4f6ab318",
+     "R"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 33,
+   "wallet": "EUn2GuPRG4mvoPbvCRfCEkK27EhTAQcBpT8y668ZPmvu",
+   "raw_balance": 2151723424718,
+   "leaf": "4e44a319a085609ed01258fd722191996e93436ecd72e622e653cf47bd67ee79",
+   "proof": [
+    [
+     "58769b6da164cc1f238e95e756e23c4b21d520f3974ac51e3a268d5ff7122347",
+     "R"
+    ],
+    [
+     "34f4e52c69670a34c1ac9bdd595c618d58ee554a43fa8e35c02e1f21dde06f6d",
+     "R"
+    ],
+    [
+     "3cffd09e56c2c5371b2fb86e2ecdeef890505cdcbfadf21c77cce0ead3254e54",
+     "R"
+    ],
+    [
+     "e492174186941478ef687e4cb912c0c3b5e861d60d11f7b209bdd6546a095275",
+     "R"
+    ],
+    [
+     "833c21251f1f758c0eb8ef918c012ded1377fd09c7b4b20524de4a9f691c30a0",
+     "R"
+    ],
+    [
+     "f88e258f0fe28a090324d33151c8fccc2fc3c5d3e0c622affe0d2bfe8bb031a7",
+     "L"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 34,
+   "wallet": "43ijP5TDBhU8Gn8i5Z93HSVVc6GN8MVQpx4TgM3SYhF6",
+   "raw_balance": 2046619625607,
+   "leaf": "58769b6da164cc1f238e95e756e23c4b21d520f3974ac51e3a268d5ff7122347",
+   "proof": [
+    [
+     "4e44a319a085609ed01258fd722191996e93436ecd72e622e653cf47bd67ee79",
+     "L"
+    ],
+    [
+     "34f4e52c69670a34c1ac9bdd595c618d58ee554a43fa8e35c02e1f21dde06f6d",
+     "R"
+    ],
+    [
+     "3cffd09e56c2c5371b2fb86e2ecdeef890505cdcbfadf21c77cce0ead3254e54",
+     "R"
+    ],
+    [
+     "e492174186941478ef687e4cb912c0c3b5e861d60d11f7b209bdd6546a095275",
+     "R"
+    ],
+    [
+     "833c21251f1f758c0eb8ef918c012ded1377fd09c7b4b20524de4a9f691c30a0",
+     "R"
+    ],
+    [
+     "f88e258f0fe28a090324d33151c8fccc2fc3c5d3e0c622affe0d2bfe8bb031a7",
+     "L"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 35,
+   "wallet": "73veij2mPGTdtBoULqVZ94L9tCziJ5yHhbZSb1CSeb9M",
+   "raw_balance": 2018910364996,
+   "leaf": "d79382020ee3314894f59a2ec83677e8d61b2d6bf618c7c94d6bf1836544c238",
+   "proof": [
+    [
+     "06d086e73257abd7811a2e63129879d31fe29d74d3679e52d65586c12331eaec",
+     "R"
+    ],
+    [
+     "96e353dbda05f3ad0a868145c24d94afafa206cbca8f3e57573d062b01263be6",
+     "L"
+    ],
+    [
+     "3cffd09e56c2c5371b2fb86e2ecdeef890505cdcbfadf21c77cce0ead3254e54",
+     "R"
+    ],
+    [
+     "e492174186941478ef687e4cb912c0c3b5e861d60d11f7b209bdd6546a095275",
+     "R"
+    ],
+    [
+     "833c21251f1f758c0eb8ef918c012ded1377fd09c7b4b20524de4a9f691c30a0",
+     "R"
+    ],
+    [
+     "f88e258f0fe28a090324d33151c8fccc2fc3c5d3e0c622affe0d2bfe8bb031a7",
+     "L"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 36,
+   "wallet": "EQbpRukTiUz6ue2zgkKaDMdM3GGozdc7b8JnmePfKUBT",
+   "raw_balance": 2004106807451,
+   "leaf": "06d086e73257abd7811a2e63129879d31fe29d74d3679e52d65586c12331eaec",
+   "proof": [
+    [
+     "d79382020ee3314894f59a2ec83677e8d61b2d6bf618c7c94d6bf1836544c238",
+     "L"
+    ],
+    [
+     "96e353dbda05f3ad0a868145c24d94afafa206cbca8f3e57573d062b01263be6",
+     "L"
+    ],
+    [
+     "3cffd09e56c2c5371b2fb86e2ecdeef890505cdcbfadf21c77cce0ead3254e54",
+     "R"
+    ],
+    [
+     "e492174186941478ef687e4cb912c0c3b5e861d60d11f7b209bdd6546a095275",
+     "R"
+    ],
+    [
+     "833c21251f1f758c0eb8ef918c012ded1377fd09c7b4b20524de4a9f691c30a0",
+     "R"
+    ],
+    [
+     "f88e258f0fe28a090324d33151c8fccc2fc3c5d3e0c622affe0d2bfe8bb031a7",
+     "L"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 37,
+   "wallet": "EAJPMRwp9VouiAoTtNqmomYWk2jPkJ5BGuxpJrxKpzt4",
+   "raw_balance": 1992800787108,
+   "leaf": "c8f9e9807030336d09d48319b75e55bc7903a9545feebd5b3491064e270638ae",
+   "proof": [
+    [
+     "bdad88ce7c03657b29469fe02932f54fef22d2213c79f5c8f3a72d1ceb60a287",
+     "R"
+    ],
+    [
+     "89bb7bffdc06c133df679a06a56e147149a60ebd8de7c09a85a33323db5e5f0f",
+     "R"
+    ],
+    [
+     "55bd936f26e407eadb0dd5a783057aa86e3a990b65ed9bafd835157cee0330f5",
+     "L"
+    ],
+    [
+     "e492174186941478ef687e4cb912c0c3b5e861d60d11f7b209bdd6546a095275",
+     "R"
+    ],
+    [
+     "833c21251f1f758c0eb8ef918c012ded1377fd09c7b4b20524de4a9f691c30a0",
+     "R"
+    ],
+    [
+     "f88e258f0fe28a090324d33151c8fccc2fc3c5d3e0c622affe0d2bfe8bb031a7",
+     "L"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 38,
+   "wallet": "GeDDnsyp5a9eNvft23Bp6iDNcghvry3bapjRvVAMdrW7",
+   "raw_balance": 1989869907348,
+   "leaf": "bdad88ce7c03657b29469fe02932f54fef22d2213c79f5c8f3a72d1ceb60a287",
+   "proof": [
+    [
+     "c8f9e9807030336d09d48319b75e55bc7903a9545feebd5b3491064e270638ae",
+     "L"
+    ],
+    [
+     "89bb7bffdc06c133df679a06a56e147149a60ebd8de7c09a85a33323db5e5f0f",
+     "R"
+    ],
+    [
+     "55bd936f26e407eadb0dd5a783057aa86e3a990b65ed9bafd835157cee0330f5",
+     "L"
+    ],
+    [
+     "e492174186941478ef687e4cb912c0c3b5e861d60d11f7b209bdd6546a095275",
+     "R"
+    ],
+    [
+     "833c21251f1f758c0eb8ef918c012ded1377fd09c7b4b20524de4a9f691c30a0",
+     "R"
+    ],
+    [
+     "f88e258f0fe28a090324d33151c8fccc2fc3c5d3e0c622affe0d2bfe8bb031a7",
+     "L"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 39,
+   "wallet": "2JhWVvDt7UBgbsFcBueUq5nyTtN616iXbfBcDmP9Nbdj",
+   "raw_balance": 1973072844631,
+   "leaf": "8d9f66765a44e76b68bbc7cee6fbf227d14f77bfdb87bdd8554f73c07c32f8ad",
+   "proof": [
+    [
+     "0c14c32e9056b87e11a32706168f3f3e528fa56fdc9c9988ee7ab12105100d5b",
+     "R"
+    ],
+    [
+     "dcb33a3ac8d9d0d9a247f042905f8290f437f2cbab112bde495089ff5e9e0d6c",
+     "L"
+    ],
+    [
+     "55bd936f26e407eadb0dd5a783057aa86e3a990b65ed9bafd835157cee0330f5",
+     "L"
+    ],
+    [
+     "e492174186941478ef687e4cb912c0c3b5e861d60d11f7b209bdd6546a095275",
+     "R"
+    ],
+    [
+     "833c21251f1f758c0eb8ef918c012ded1377fd09c7b4b20524de4a9f691c30a0",
+     "R"
+    ],
+    [
+     "f88e258f0fe28a090324d33151c8fccc2fc3c5d3e0c622affe0d2bfe8bb031a7",
+     "L"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 40,
+   "wallet": "Dj5ZpEApBJCC7G1Kdu59NQe1adDwWt1rfVXss6vBaaMX",
+   "raw_balance": 1954558036140,
+   "leaf": "0c14c32e9056b87e11a32706168f3f3e528fa56fdc9c9988ee7ab12105100d5b",
+   "proof": [
+    [
+     "8d9f66765a44e76b68bbc7cee6fbf227d14f77bfdb87bdd8554f73c07c32f8ad",
+     "L"
+    ],
+    [
+     "dcb33a3ac8d9d0d9a247f042905f8290f437f2cbab112bde495089ff5e9e0d6c",
+     "L"
+    ],
+    [
+     "55bd936f26e407eadb0dd5a783057aa86e3a990b65ed9bafd835157cee0330f5",
+     "L"
+    ],
+    [
+     "e492174186941478ef687e4cb912c0c3b5e861d60d11f7b209bdd6546a095275",
+     "R"
+    ],
+    [
+     "833c21251f1f758c0eb8ef918c012ded1377fd09c7b4b20524de4a9f691c30a0",
+     "R"
+    ],
+    [
+     "f88e258f0fe28a090324d33151c8fccc2fc3c5d3e0c622affe0d2bfe8bb031a7",
+     "L"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 41,
+   "wallet": "3YBNGfNaLL8uGnmtshvMw13SgsMryiKEZY3r6Qgxm2hN",
+   "raw_balance": 1889037060299,
+   "leaf": "8d3623d12a9d2e131f73747dfad5723c2f29dc96bb0a80e8f2b80d96a57f2f33",
+   "proof": [
+    [
+     "6543e37e2b63a04fb456b3e6d5185693e85e42eb17e50a00b71d17be9121613c",
+     "R"
+    ],
+    [
+     "af521bcdc26dd89f707004d7e1269e1331b873730fa55bb532d101db74e5b9ef",
+     "R"
+    ],
+    [
+     "e48776ce1080128860198931ec992fd0af787ed909702a49e18b959ba2971fec",
+     "R"
+    ],
+    [
+     "abbea287992cfdef13818d007dafe3dbb8c4a6a302daa734bbaf82c32fdc8505",
+     "L"
+    ],
+    [
+     "833c21251f1f758c0eb8ef918c012ded1377fd09c7b4b20524de4a9f691c30a0",
+     "R"
+    ],
+    [
+     "f88e258f0fe28a090324d33151c8fccc2fc3c5d3e0c622affe0d2bfe8bb031a7",
+     "L"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 42,
+   "wallet": "7cBcYpZNrhq8Sn3Ziix8Bgm6XiSj76KBiguLJfvBaTYB",
+   "raw_balance": 1653401236918,
+   "leaf": "6543e37e2b63a04fb456b3e6d5185693e85e42eb17e50a00b71d17be9121613c",
+   "proof": [
+    [
+     "8d3623d12a9d2e131f73747dfad5723c2f29dc96bb0a80e8f2b80d96a57f2f33",
+     "L"
+    ],
+    [
+     "af521bcdc26dd89f707004d7e1269e1331b873730fa55bb532d101db74e5b9ef",
+     "R"
+    ],
+    [
+     "e48776ce1080128860198931ec992fd0af787ed909702a49e18b959ba2971fec",
+     "R"
+    ],
+    [
+     "abbea287992cfdef13818d007dafe3dbb8c4a6a302daa734bbaf82c32fdc8505",
+     "L"
+    ],
+    [
+     "833c21251f1f758c0eb8ef918c012ded1377fd09c7b4b20524de4a9f691c30a0",
+     "R"
+    ],
+    [
+     "f88e258f0fe28a090324d33151c8fccc2fc3c5d3e0c622affe0d2bfe8bb031a7",
+     "L"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 43,
+   "wallet": "3PLfTSTtTTzyXRoFZmwebFaETWmM74b72iX47bCfMrac",
+   "raw_balance": 1580613340444,
+   "leaf": "8ef66ac368192079c7fbd8d446464a6a6113feb3f2718e77d55296a90461f681",
+   "proof": [
+    [
+     "e4f0b09ef8bf5998e5f83a61322fd49f8876266732c017cc652609d321c4853c",
+     "R"
+    ],
+    [
+     "a1c631c84bbdfa82f3e4742841c28e8a0ea23bf16a26ba813498b745820ce843",
+     "L"
+    ],
+    [
+     "e48776ce1080128860198931ec992fd0af787ed909702a49e18b959ba2971fec",
+     "R"
+    ],
+    [
+     "abbea287992cfdef13818d007dafe3dbb8c4a6a302daa734bbaf82c32fdc8505",
+     "L"
+    ],
+    [
+     "833c21251f1f758c0eb8ef918c012ded1377fd09c7b4b20524de4a9f691c30a0",
+     "R"
+    ],
+    [
+     "f88e258f0fe28a090324d33151c8fccc2fc3c5d3e0c622affe0d2bfe8bb031a7",
+     "L"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 44,
+   "wallet": "JE8wCiSSC6jC1ttRX5XryAdVw4HXAHQX3HaChb2GWsAa",
+   "raw_balance": 1564531089062,
+   "leaf": "e4f0b09ef8bf5998e5f83a61322fd49f8876266732c017cc652609d321c4853c",
+   "proof": [
+    [
+     "8ef66ac368192079c7fbd8d446464a6a6113feb3f2718e77d55296a90461f681",
+     "L"
+    ],
+    [
+     "a1c631c84bbdfa82f3e4742841c28e8a0ea23bf16a26ba813498b745820ce843",
+     "L"
+    ],
+    [
+     "e48776ce1080128860198931ec992fd0af787ed909702a49e18b959ba2971fec",
+     "R"
+    ],
+    [
+     "abbea287992cfdef13818d007dafe3dbb8c4a6a302daa734bbaf82c32fdc8505",
+     "L"
+    ],
+    [
+     "833c21251f1f758c0eb8ef918c012ded1377fd09c7b4b20524de4a9f691c30a0",
+     "R"
+    ],
+    [
+     "f88e258f0fe28a090324d33151c8fccc2fc3c5d3e0c622affe0d2bfe8bb031a7",
+     "L"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 45,
+   "wallet": "8ZrMvtPrs7NnRYacCa9rUc87eYKDqJrTc2kbwjoV5pj9",
+   "raw_balance": 1519543462601,
+   "leaf": "1092577600646113860ec738a9c159e2942a3ed13e9daa9247a52149535c3df9",
+   "proof": [
+    [
+     "707c3f04f82042b8c8f9cfeee51d6e18eb2959c7cc53cb7ce2f0084b0a1ddb3d",
+     "R"
+    ],
+    [
+     "51313655740d449494ddeec8b1e635327ad6f5d123eb0dc048984c8eafc8c489",
+     "R"
+    ],
+    [
+     "92bdce2a0daf2308a53c80a39323d2c0e780f7e3ffd99b582e93c205abd2e3b4",
+     "L"
+    ],
+    [
+     "abbea287992cfdef13818d007dafe3dbb8c4a6a302daa734bbaf82c32fdc8505",
+     "L"
+    ],
+    [
+     "833c21251f1f758c0eb8ef918c012ded1377fd09c7b4b20524de4a9f691c30a0",
+     "R"
+    ],
+    [
+     "f88e258f0fe28a090324d33151c8fccc2fc3c5d3e0c622affe0d2bfe8bb031a7",
+     "L"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 46,
+   "wallet": "BXjYSFmzffMnTbqqTZbwQ9HpmMzfENoRcBndz7VuDnLi",
+   "raw_balance": 1438755400317,
+   "leaf": "707c3f04f82042b8c8f9cfeee51d6e18eb2959c7cc53cb7ce2f0084b0a1ddb3d",
+   "proof": [
+    [
+     "1092577600646113860ec738a9c159e2942a3ed13e9daa9247a52149535c3df9",
+     "L"
+    ],
+    [
+     "51313655740d449494ddeec8b1e635327ad6f5d123eb0dc048984c8eafc8c489",
+     "R"
+    ],
+    [
+     "92bdce2a0daf2308a53c80a39323d2c0e780f7e3ffd99b582e93c205abd2e3b4",
+     "L"
+    ],
+    [
+     "abbea287992cfdef13818d007dafe3dbb8c4a6a302daa734bbaf82c32fdc8505",
+     "L"
+    ],
+    [
+     "833c21251f1f758c0eb8ef918c012ded1377fd09c7b4b20524de4a9f691c30a0",
+     "R"
+    ],
+    [
+     "f88e258f0fe28a090324d33151c8fccc2fc3c5d3e0c622affe0d2bfe8bb031a7",
+     "L"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 47,
+   "wallet": "JDJ7fZL8LQ3fRsj4BJvZfiD4GJDLXjKRVq5chCQoF3ob",
+   "raw_balance": 1214877111835,
+   "leaf": "945fd1b6ab2869518f57cb227fb19515c74b837ba3547ad9d45f87ba178e7afd",
+   "proof": [
+    [
+     "dee13c13a675a34a22efa79f830f1de717bfe3f91a33fe8124236e45731ee351",
+     "R"
+    ],
+    [
+     "95151d2f162b1e1d836fa97c85e534ed60dd353d0be39bddd88bd0ebc02b7f31",
+     "L"
+    ],
+    [
+     "92bdce2a0daf2308a53c80a39323d2c0e780f7e3ffd99b582e93c205abd2e3b4",
+     "L"
+    ],
+    [
+     "abbea287992cfdef13818d007dafe3dbb8c4a6a302daa734bbaf82c32fdc8505",
+     "L"
+    ],
+    [
+     "833c21251f1f758c0eb8ef918c012ded1377fd09c7b4b20524de4a9f691c30a0",
+     "R"
+    ],
+    [
+     "f88e258f0fe28a090324d33151c8fccc2fc3c5d3e0c622affe0d2bfe8bb031a7",
+     "L"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 48,
+   "wallet": "2sHG6NmQuc65SrfDhNsFiLiPaUrqTSmc8a1cSE19KapK",
+   "raw_balance": 1057608160830,
+   "leaf": "dee13c13a675a34a22efa79f830f1de717bfe3f91a33fe8124236e45731ee351",
+   "proof": [
+    [
+     "945fd1b6ab2869518f57cb227fb19515c74b837ba3547ad9d45f87ba178e7afd",
+     "L"
+    ],
+    [
+     "95151d2f162b1e1d836fa97c85e534ed60dd353d0be39bddd88bd0ebc02b7f31",
+     "L"
+    ],
+    [
+     "92bdce2a0daf2308a53c80a39323d2c0e780f7e3ffd99b582e93c205abd2e3b4",
+     "L"
+    ],
+    [
+     "abbea287992cfdef13818d007dafe3dbb8c4a6a302daa734bbaf82c32fdc8505",
+     "L"
+    ],
+    [
+     "833c21251f1f758c0eb8ef918c012ded1377fd09c7b4b20524de4a9f691c30a0",
+     "R"
+    ],
+    [
+     "f88e258f0fe28a090324d33151c8fccc2fc3c5d3e0c622affe0d2bfe8bb031a7",
+     "L"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 49,
+   "wallet": "AqkMRA9WzEgX5TkywLxCv3Uvon1ciucNicdRYnK4Dif7",
+   "raw_balance": 985000429811,
+   "leaf": "4958e7f69983d0ae724af2997209ff525f76b891118b88ce40b0f27f53006c95",
+   "proof": [
+    [
+     "a5597e90bb3650c8e6b1bb11c25537e9dbed64786faf7e315006e395af3339ef",
+     "R"
+    ],
+    [
+     "3c5a32ed132077c4a2e052bbc82527a6d8f9193dbd7b82d5c8fbda3256aa15bb",
+     "R"
+    ],
+    [
+     "ad980eb6b6c990223414c2100084e4e118e7f329e69d114752c1e2afe93d468e",
+     "R"
+    ],
+    [
+     "f27ac68545f02dd5a0a213107e85091df384133bd094b4e57471be49af8efa18",
+     "R"
+    ],
+    [
+     "54b25f7c7b62bb7ff2192b7c7077bdd4f93ebc36d91ceaaad663ac1a58bedf2e",
+     "L"
+    ],
+    [
+     "f88e258f0fe28a090324d33151c8fccc2fc3c5d3e0c622affe0d2bfe8bb031a7",
+     "L"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 50,
+   "wallet": "CL1kvg2mAfRyEbeMFeBVwJimmj7BXB5ymRpiuMYBFPvb",
+   "raw_balance": 966834935999,
+   "leaf": "a5597e90bb3650c8e6b1bb11c25537e9dbed64786faf7e315006e395af3339ef",
+   "proof": [
+    [
+     "4958e7f69983d0ae724af2997209ff525f76b891118b88ce40b0f27f53006c95",
+     "L"
+    ],
+    [
+     "3c5a32ed132077c4a2e052bbc82527a6d8f9193dbd7b82d5c8fbda3256aa15bb",
+     "R"
+    ],
+    [
+     "ad980eb6b6c990223414c2100084e4e118e7f329e69d114752c1e2afe93d468e",
+     "R"
+    ],
+    [
+     "f27ac68545f02dd5a0a213107e85091df384133bd094b4e57471be49af8efa18",
+     "R"
+    ],
+    [
+     "54b25f7c7b62bb7ff2192b7c7077bdd4f93ebc36d91ceaaad663ac1a58bedf2e",
+     "L"
+    ],
+    [
+     "f88e258f0fe28a090324d33151c8fccc2fc3c5d3e0c622affe0d2bfe8bb031a7",
+     "L"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 51,
+   "wallet": "2fQ3rzjFoXMrokfxXZ1pDJG56Q1tYQSd5J3tRefASfSA",
+   "raw_balance": 923581987447,
+   "leaf": "3fecd1a52dea261d0bca7995428ccec016509d410f8bc5d7b3e0ff51db1a6bac",
+   "proof": [
+    [
+     "d6fa16d3714607cfa76c0efa8abd2cacd2b8195703d9f53096e1b3e903337ebb",
+     "R"
+    ],
+    [
+     "4379a5165630a6c75931738e449f98bad508586e7f50284b56a5f0556867933b",
+     "L"
+    ],
+    [
+     "ad980eb6b6c990223414c2100084e4e118e7f329e69d114752c1e2afe93d468e",
+     "R"
+    ],
+    [
+     "f27ac68545f02dd5a0a213107e85091df384133bd094b4e57471be49af8efa18",
+     "R"
+    ],
+    [
+     "54b25f7c7b62bb7ff2192b7c7077bdd4f93ebc36d91ceaaad663ac1a58bedf2e",
+     "L"
+    ],
+    [
+     "f88e258f0fe28a090324d33151c8fccc2fc3c5d3e0c622affe0d2bfe8bb031a7",
+     "L"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 52,
+   "wallet": "D8QA3MFQpZg3ETKYobk4iEZtTumPp1yAyHoqwMgntHoa",
+   "raw_balance": 859164403654,
+   "leaf": "d6fa16d3714607cfa76c0efa8abd2cacd2b8195703d9f53096e1b3e903337ebb",
+   "proof": [
+    [
+     "3fecd1a52dea261d0bca7995428ccec016509d410f8bc5d7b3e0ff51db1a6bac",
+     "L"
+    ],
+    [
+     "4379a5165630a6c75931738e449f98bad508586e7f50284b56a5f0556867933b",
+     "L"
+    ],
+    [
+     "ad980eb6b6c990223414c2100084e4e118e7f329e69d114752c1e2afe93d468e",
+     "R"
+    ],
+    [
+     "f27ac68545f02dd5a0a213107e85091df384133bd094b4e57471be49af8efa18",
+     "R"
+    ],
+    [
+     "54b25f7c7b62bb7ff2192b7c7077bdd4f93ebc36d91ceaaad663ac1a58bedf2e",
+     "L"
+    ],
+    [
+     "f88e258f0fe28a090324d33151c8fccc2fc3c5d3e0c622affe0d2bfe8bb031a7",
+     "L"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 53,
+   "wallet": "kR9Jbmsc9yJ7otRFocVnpm2E595ZamLd9XjCHoJFGqk",
+   "raw_balance": 858706528080,
+   "leaf": "53df8206896edaf3368a92345654b260cf4d2503d3029fbf913108e4008c225b",
+   "proof": [
+    [
+     "271c84817b7cd82c47949154b16796b8aaaac5266bd792f247390dd61442b820",
+     "R"
+    ],
+    [
+     "326b62b779d1070a8696d8c66bab70f8141661dcd49667f08c68006a511355df",
+     "R"
+    ],
+    [
+     "f55edc888bf97520d4812fd1ad39d74220d39c2d3757fc565746d4640f655021",
+     "L"
+    ],
+    [
+     "f27ac68545f02dd5a0a213107e85091df384133bd094b4e57471be49af8efa18",
+     "R"
+    ],
+    [
+     "54b25f7c7b62bb7ff2192b7c7077bdd4f93ebc36d91ceaaad663ac1a58bedf2e",
+     "L"
+    ],
+    [
+     "f88e258f0fe28a090324d33151c8fccc2fc3c5d3e0c622affe0d2bfe8bb031a7",
+     "L"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 54,
+   "wallet": "DeJTLwStVJNfhmNwrDhq1QHqWKt95QUDpeZnifs6fdV",
+   "raw_balance": 847682574606,
+   "leaf": "271c84817b7cd82c47949154b16796b8aaaac5266bd792f247390dd61442b820",
+   "proof": [
+    [
+     "53df8206896edaf3368a92345654b260cf4d2503d3029fbf913108e4008c225b",
+     "L"
+    ],
+    [
+     "326b62b779d1070a8696d8c66bab70f8141661dcd49667f08c68006a511355df",
+     "R"
+    ],
+    [
+     "f55edc888bf97520d4812fd1ad39d74220d39c2d3757fc565746d4640f655021",
+     "L"
+    ],
+    [
+     "f27ac68545f02dd5a0a213107e85091df384133bd094b4e57471be49af8efa18",
+     "R"
+    ],
+    [
+     "54b25f7c7b62bb7ff2192b7c7077bdd4f93ebc36d91ceaaad663ac1a58bedf2e",
+     "L"
+    ],
+    [
+     "f88e258f0fe28a090324d33151c8fccc2fc3c5d3e0c622affe0d2bfe8bb031a7",
+     "L"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 55,
+   "wallet": "3QDvfXT6qxbhkhEkk67pCuuS8GN6VYiMB2RdGLN5H8mf",
+   "raw_balance": 798458971753,
+   "leaf": "0acf8a408c2ce4fdaea73fe370ef6787f7b47999289c1a80d58140c5f3b09e8c",
+   "proof": [
+    [
+     "2305fab328c598ab291a04891f4e7552f488a166423e229a5ce4740bedbe2347",
+     "R"
+    ],
+    [
+     "7312216702755557ad7501761cb8e7b8a93df5e48033bfeb154104d905e88da0",
+     "L"
+    ],
+    [
+     "f55edc888bf97520d4812fd1ad39d74220d39c2d3757fc565746d4640f655021",
+     "L"
+    ],
+    [
+     "f27ac68545f02dd5a0a213107e85091df384133bd094b4e57471be49af8efa18",
+     "R"
+    ],
+    [
+     "54b25f7c7b62bb7ff2192b7c7077bdd4f93ebc36d91ceaaad663ac1a58bedf2e",
+     "L"
+    ],
+    [
+     "f88e258f0fe28a090324d33151c8fccc2fc3c5d3e0c622affe0d2bfe8bb031a7",
+     "L"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 56,
+   "wallet": "C1cH8ZdoFANRtQtkg3YpgpUzsn6UymWTbguD9c2aXjoY",
+   "raw_balance": 703245307419,
+   "leaf": "2305fab328c598ab291a04891f4e7552f488a166423e229a5ce4740bedbe2347",
+   "proof": [
+    [
+     "0acf8a408c2ce4fdaea73fe370ef6787f7b47999289c1a80d58140c5f3b09e8c",
+     "L"
+    ],
+    [
+     "7312216702755557ad7501761cb8e7b8a93df5e48033bfeb154104d905e88da0",
+     "L"
+    ],
+    [
+     "f55edc888bf97520d4812fd1ad39d74220d39c2d3757fc565746d4640f655021",
+     "L"
+    ],
+    [
+     "f27ac68545f02dd5a0a213107e85091df384133bd094b4e57471be49af8efa18",
+     "R"
+    ],
+    [
+     "54b25f7c7b62bb7ff2192b7c7077bdd4f93ebc36d91ceaaad663ac1a58bedf2e",
+     "L"
+    ],
+    [
+     "f88e258f0fe28a090324d33151c8fccc2fc3c5d3e0c622affe0d2bfe8bb031a7",
+     "L"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 57,
+   "wallet": "FS5MkLp1914ErDqifbznHgF5r91Bf8ekBVDgdzVpQquJ",
+   "raw_balance": 661335790912,
+   "leaf": "9ae209d5b8ec07b36dc1db2c9d93afd1b31fd40234b90c6488e3c9d3facafd59",
+   "proof": [
+    [
+     "311ae9b6c2a8b384ee02c332166a584ba47832682de34598036d8a225b4093d5",
+     "R"
+    ],
+    [
+     "c814044b09d195aac76506a0f0154e5c3d5d702b400ba556b662f4712bb67108",
+     "R"
+    ],
+    [
+     "635a1ac3921342cf802440fbfb474c5216ee27a3f16032c7fd72d3e21b3e908f",
+     "R"
+    ],
+    [
+     "3b695957a0687e3f5d30b331871a80455c75a7b2274aa72e8d44c5a69f12a59d",
+     "L"
+    ],
+    [
+     "54b25f7c7b62bb7ff2192b7c7077bdd4f93ebc36d91ceaaad663ac1a58bedf2e",
+     "L"
+    ],
+    [
+     "f88e258f0fe28a090324d33151c8fccc2fc3c5d3e0c622affe0d2bfe8bb031a7",
+     "L"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 58,
+   "wallet": "CewxFJbUMcveTvJJtSNhHV3gQixwM6QjjEU1tVvNzwCq",
+   "raw_balance": 658250228479,
+   "leaf": "311ae9b6c2a8b384ee02c332166a584ba47832682de34598036d8a225b4093d5",
+   "proof": [
+    [
+     "9ae209d5b8ec07b36dc1db2c9d93afd1b31fd40234b90c6488e3c9d3facafd59",
+     "L"
+    ],
+    [
+     "c814044b09d195aac76506a0f0154e5c3d5d702b400ba556b662f4712bb67108",
+     "R"
+    ],
+    [
+     "635a1ac3921342cf802440fbfb474c5216ee27a3f16032c7fd72d3e21b3e908f",
+     "R"
+    ],
+    [
+     "3b695957a0687e3f5d30b331871a80455c75a7b2274aa72e8d44c5a69f12a59d",
+     "L"
+    ],
+    [
+     "54b25f7c7b62bb7ff2192b7c7077bdd4f93ebc36d91ceaaad663ac1a58bedf2e",
+     "L"
+    ],
+    [
+     "f88e258f0fe28a090324d33151c8fccc2fc3c5d3e0c622affe0d2bfe8bb031a7",
+     "L"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 59,
+   "wallet": "qwrjAJYC6HmNyjR3sNA1rrp81oNpVtoyC6wE8URUW2k",
+   "raw_balance": 651700261619,
+   "leaf": "cb570f45a9cecade0fe656ef3fc7e8d9e2af68fbae9d19a6ae63803fb33dba8d",
+   "proof": [
+    [
+     "75b83e56af5d45992eac5fd67f5abd2d274c8687bb0ed1d57fcf6ee500e77ef1",
+     "R"
+    ],
+    [
+     "6ee95f5ff527e1a4fa7e54b61d818aba0d21a42e88d80114ebd4404076b36280",
+     "L"
+    ],
+    [
+     "635a1ac3921342cf802440fbfb474c5216ee27a3f16032c7fd72d3e21b3e908f",
+     "R"
+    ],
+    [
+     "3b695957a0687e3f5d30b331871a80455c75a7b2274aa72e8d44c5a69f12a59d",
+     "L"
+    ],
+    [
+     "54b25f7c7b62bb7ff2192b7c7077bdd4f93ebc36d91ceaaad663ac1a58bedf2e",
+     "L"
+    ],
+    [
+     "f88e258f0fe28a090324d33151c8fccc2fc3c5d3e0c622affe0d2bfe8bb031a7",
+     "L"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 60,
+   "wallet": "CYv5EJtQCUvjfCXUuTAimB85ZzpzRjxEGYjES8WAnwQA",
+   "raw_balance": 649306964182,
+   "leaf": "75b83e56af5d45992eac5fd67f5abd2d274c8687bb0ed1d57fcf6ee500e77ef1",
+   "proof": [
+    [
+     "cb570f45a9cecade0fe656ef3fc7e8d9e2af68fbae9d19a6ae63803fb33dba8d",
+     "L"
+    ],
+    [
+     "6ee95f5ff527e1a4fa7e54b61d818aba0d21a42e88d80114ebd4404076b36280",
+     "L"
+    ],
+    [
+     "635a1ac3921342cf802440fbfb474c5216ee27a3f16032c7fd72d3e21b3e908f",
+     "R"
+    ],
+    [
+     "3b695957a0687e3f5d30b331871a80455c75a7b2274aa72e8d44c5a69f12a59d",
+     "L"
+    ],
+    [
+     "54b25f7c7b62bb7ff2192b7c7077bdd4f93ebc36d91ceaaad663ac1a58bedf2e",
+     "L"
+    ],
+    [
+     "f88e258f0fe28a090324d33151c8fccc2fc3c5d3e0c622affe0d2bfe8bb031a7",
+     "L"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 61,
+   "wallet": "BFVbjUCarjwDELo3XmMgZ5xHr7cGqaUQuFmpzN2ez7kq",
+   "raw_balance": 633721719696,
+   "leaf": "dd4393212afccaeaf0c0de23a0dc7479623d692bd2a97004527afbc12a214103",
+   "proof": [
+    [
+     "44fc8f8fbd813fcbf5fa8b3c7bed48370faaf63a62101171fcdf1eb282449e9d",
+     "R"
+    ],
+    [
+     "97cb26c61da3eeab3bd211d7ca6391fd7c6c3a757bc5b6014d24f589551c8caa",
+     "R"
+    ],
+    [
+     "ae968d6d414a5c75bd690a5d70d671713c2486332be204355c2866543883683d",
+     "L"
+    ],
+    [
+     "3b695957a0687e3f5d30b331871a80455c75a7b2274aa72e8d44c5a69f12a59d",
+     "L"
+    ],
+    [
+     "54b25f7c7b62bb7ff2192b7c7077bdd4f93ebc36d91ceaaad663ac1a58bedf2e",
+     "L"
+    ],
+    [
+     "f88e258f0fe28a090324d33151c8fccc2fc3c5d3e0c622affe0d2bfe8bb031a7",
+     "L"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 62,
+   "wallet": "32RPgMkeavGU31zPrky1Q6hNQFagpVDZTFXE7t5UEzVS",
+   "raw_balance": 594928930712,
+   "leaf": "44fc8f8fbd813fcbf5fa8b3c7bed48370faaf63a62101171fcdf1eb282449e9d",
+   "proof": [
+    [
+     "dd4393212afccaeaf0c0de23a0dc7479623d692bd2a97004527afbc12a214103",
+     "L"
+    ],
+    [
+     "97cb26c61da3eeab3bd211d7ca6391fd7c6c3a757bc5b6014d24f589551c8caa",
+     "R"
+    ],
+    [
+     "ae968d6d414a5c75bd690a5d70d671713c2486332be204355c2866543883683d",
+     "L"
+    ],
+    [
+     "3b695957a0687e3f5d30b331871a80455c75a7b2274aa72e8d44c5a69f12a59d",
+     "L"
+    ],
+    [
+     "54b25f7c7b62bb7ff2192b7c7077bdd4f93ebc36d91ceaaad663ac1a58bedf2e",
+     "L"
+    ],
+    [
+     "f88e258f0fe28a090324d33151c8fccc2fc3c5d3e0c622affe0d2bfe8bb031a7",
+     "L"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 63,
+   "wallet": "mP4tnNkwAtRLpSZG5CqcH3CVPJHgVw7XH3j6YRyayQP",
+   "raw_balance": 519195112829,
+   "leaf": "d67388d54721cc29b3b30a734efc3b142b96063365a02d236603b5998bb37233",
+   "proof": [
+    [
+     "44b214abe021ea2135d8d0af167699c5967bc87a953f7c37a51d0a782b149526",
+     "R"
+    ],
+    [
+     "954c5cad59ff4504f40f02064b7d13c64a4cd5b99458cb72a28032f8432a41cc",
+     "L"
+    ],
+    [
+     "ae968d6d414a5c75bd690a5d70d671713c2486332be204355c2866543883683d",
+     "L"
+    ],
+    [
+     "3b695957a0687e3f5d30b331871a80455c75a7b2274aa72e8d44c5a69f12a59d",
+     "L"
+    ],
+    [
+     "54b25f7c7b62bb7ff2192b7c7077bdd4f93ebc36d91ceaaad663ac1a58bedf2e",
+     "L"
+    ],
+    [
+     "f88e258f0fe28a090324d33151c8fccc2fc3c5d3e0c622affe0d2bfe8bb031a7",
+     "L"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 64,
+   "wallet": "EJuBU76Z8ZSqfhiux6FCmB7HveXCYeJk3hf8U2XqBZcg",
+   "raw_balance": 505632570955,
+   "leaf": "44b214abe021ea2135d8d0af167699c5967bc87a953f7c37a51d0a782b149526",
+   "proof": [
+    [
+     "d67388d54721cc29b3b30a734efc3b142b96063365a02d236603b5998bb37233",
+     "L"
+    ],
+    [
+     "954c5cad59ff4504f40f02064b7d13c64a4cd5b99458cb72a28032f8432a41cc",
+     "L"
+    ],
+    [
+     "ae968d6d414a5c75bd690a5d70d671713c2486332be204355c2866543883683d",
+     "L"
+    ],
+    [
+     "3b695957a0687e3f5d30b331871a80455c75a7b2274aa72e8d44c5a69f12a59d",
+     "L"
+    ],
+    [
+     "54b25f7c7b62bb7ff2192b7c7077bdd4f93ebc36d91ceaaad663ac1a58bedf2e",
+     "L"
+    ],
+    [
+     "f88e258f0fe28a090324d33151c8fccc2fc3c5d3e0c622affe0d2bfe8bb031a7",
+     "L"
+    ],
+    [
+     "6139ec80836ef0e59d715fcf8edf293c2efb27fcf38e13a26b733e0c4e6b0c67",
+     "R"
+    ]
+   ]
+  },
+  {
+   "rank": 65,
+   "wallet": "BYbqTpJAqh8zpbC47BL4PV9jPyizgDXrEcMspMyBhwjb",
+   "raw_balance": 500990499196,
+   "leaf": "023eff0bb43643422ca9d991dc514f70234872db1ebc9427becd536177d36f86",
+   "proof": [
+    [
+     "b0521a21c965378579734899c04e05b2e33cb17b0fb147123159ddc5ea47497c",
+     "R"
+    ],
+    [
+     "69b192c170bc975c80ac3fd58a623c9ecf814c945bd1f50bd7da3be7003fec2f",
+     "R"
+    ],
+    [
+     "fa45398b345aa61f1f74ad48c311e085f2b572da89817b9da9fef806462139ba",
+     "R"
+    ],
+    [
+     "6d833e27a3020d14e76f208c7a3d844951711205d52c5121f96df5257e60d2f8",
+     "R"
+    ],
+    [
+     "51b43c91ca18203ca1cee3321d32360b92ff50ed7071c6fc92651bcb66907be8",
+     "R"
+    ],
+    [
+     "14d123e8659dd84ca0f98b1c9fa75f63f18a46095503e10c02b8b3d812044305",
+     "R"
+    ],
+    [
+     "f0a164f77d342d877f1013f869fbfaa9ed0367772f4c230d45dcbd9dbb871939",
+     "L"
+    ]
+   ]
+  },
+  {
+   "rank": 66,
+   "wallet": "C86CSbaDv3EpAjj59yPx5FYhNX3tUjYEq4Y2B8xZdQcm",
+   "raw_balance": 446376346321,
+   "leaf": "b0521a21c965378579734899c04e05b2e33cb17b0fb147123159ddc5ea47497c",
+   "proof": [
+    [
+     "023eff0bb43643422ca9d991dc514f70234872db1ebc9427becd536177d36f86",
+     "L"
+    ],
+    [
+     "69b192c170bc975c80ac3fd58a623c9ecf814c945bd1f50bd7da3be7003fec2f",
+     "R"
+    ],
+    [
+     "fa45398b345aa61f1f74ad48c311e085f2b572da89817b9da9fef806462139ba",
+     "R"
+    ],
+    [
+     "6d833e27a3020d14e76f208c7a3d844951711205d52c5121f96df5257e60d2f8",
+     "R"
+    ],
+    [
+     "51b43c91ca18203ca1cee3321d32360b92ff50ed7071c6fc92651bcb66907be8",
+     "R"
+    ],
+    [
+     "14d123e8659dd84ca0f98b1c9fa75f63f18a46095503e10c02b8b3d812044305",
+     "R"
+    ],
+    [
+     "f0a164f77d342d877f1013f869fbfaa9ed0367772f4c230d45dcbd9dbb871939",
+     "L"
+    ]
+   ]
+  },
+  {
+   "rank": 67,
+   "wallet": "7bYduC5HiSdAN3R5GW9qEpwUSm6wrNHwpmRby6wbGviG",
+   "raw_balance": 416038628974,
+   "leaf": "6e999b5a014a3dfd47d8987b90c412c49726b3a3f022aa73cb1dfa14c2db186d",
+   "proof": [
+    [
+     "5aa7f2a4fe08662d56ec6167afbe7cd1fdd5c15841c5fff7b004020894ffc460",
+     "R"
+    ],
+    [
+     "fc8ecbdad3de6bda4ef990036c010e083207547827ef4fe2c956c8046a4ae93f",
+     "L"
+    ],
+    [
+     "fa45398b345aa61f1f74ad48c311e085f2b572da89817b9da9fef806462139ba",
+     "R"
+    ],
+    [
+     "6d833e27a3020d14e76f208c7a3d844951711205d52c5121f96df5257e60d2f8",
+     "R"
+    ],
+    [
+     "51b43c91ca18203ca1cee3321d32360b92ff50ed7071c6fc92651bcb66907be8",
+     "R"
+    ],
+    [
+     "14d123e8659dd84ca0f98b1c9fa75f63f18a46095503e10c02b8b3d812044305",
+     "R"
+    ],
+    [
+     "f0a164f77d342d877f1013f869fbfaa9ed0367772f4c230d45dcbd9dbb871939",
+     "L"
+    ]
+   ]
+  },
+  {
+   "rank": 68,
+   "wallet": "jhxWnWdtHydZ9vHGBCLfn7Fyy1zBuugA2hseHpzWpL5",
+   "raw_balance": 410902677904,
+   "leaf": "5aa7f2a4fe08662d56ec6167afbe7cd1fdd5c15841c5fff7b004020894ffc460",
+   "proof": [
+    [
+     "6e999b5a014a3dfd47d8987b90c412c49726b3a3f022aa73cb1dfa14c2db186d",
+     "L"
+    ],
+    [
+     "fc8ecbdad3de6bda4ef990036c010e083207547827ef4fe2c956c8046a4ae93f",
+     "L"
+    ],
+    [
+     "fa45398b345aa61f1f74ad48c311e085f2b572da89817b9da9fef806462139ba",
+     "R"
+    ],
+    [
+     "6d833e27a3020d14e76f208c7a3d844951711205d52c5121f96df5257e60d2f8",
+     "R"
+    ],
+    [
+     "51b43c91ca18203ca1cee3321d32360b92ff50ed7071c6fc92651bcb66907be8",
+     "R"
+    ],
+    [
+     "14d123e8659dd84ca0f98b1c9fa75f63f18a46095503e10c02b8b3d812044305",
+     "R"
+    ],
+    [
+     "f0a164f77d342d877f1013f869fbfaa9ed0367772f4c230d45dcbd9dbb871939",
+     "L"
+    ]
+   ]
+  },
+  {
+   "rank": 69,
+   "wallet": "9biBcAbi3G4vuLcjmZsTnbV11Mx6z54abEQMZwqDdf2J",
+   "raw_balance": 401960641926,
+   "leaf": "62929c5c032c8d4f38331809307b429a49726dfdb8978ae63ece6a873be5b4e8",
+   "proof": [
+    [
+     "c3ffe65175b631be5938a9da8d30ddb49fa674407eff81c00adcb8477c9b3cc5",
+     "R"
+    ],
+    [
+     "411856f7ce5127e1b07b658ac38a9de22d9b4df77328ea8628d0d3e3a52ec9d1",
+     "R"
+    ],
+    [
+     "95e088f0f54a6e757c58a4eb92cd327ecff24d91eb2c1aeec8ec60cda92faee6",
+     "L"
+    ],
+    [
+     "6d833e27a3020d14e76f208c7a3d844951711205d52c5121f96df5257e60d2f8",
+     "R"
+    ],
+    [
+     "51b43c91ca18203ca1cee3321d32360b92ff50ed7071c6fc92651bcb66907be8",
+     "R"
+    ],
+    [
+     "14d123e8659dd84ca0f98b1c9fa75f63f18a46095503e10c02b8b3d812044305",
+     "R"
+    ],
+    [
+     "f0a164f77d342d877f1013f869fbfaa9ed0367772f4c230d45dcbd9dbb871939",
+     "L"
+    ]
+   ]
+  },
+  {
+   "rank": 70,
+   "wallet": "HHLLMbCKZScCC47VZTNq53dRz6f9zhrdRgaqCRXvYswb",
+   "raw_balance": 372695535850,
+   "leaf": "c3ffe65175b631be5938a9da8d30ddb49fa674407eff81c00adcb8477c9b3cc5",
+   "proof": [
+    [
+     "62929c5c032c8d4f38331809307b429a49726dfdb8978ae63ece6a873be5b4e8",
+     "L"
+    ],
+    [
+     "411856f7ce5127e1b07b658ac38a9de22d9b4df77328ea8628d0d3e3a52ec9d1",
+     "R"
+    ],
+    [
+     "95e088f0f54a6e757c58a4eb92cd327ecff24d91eb2c1aeec8ec60cda92faee6",
+     "L"
+    ],
+    [
+     "6d833e27a3020d14e76f208c7a3d844951711205d52c5121f96df5257e60d2f8",
+     "R"
+    ],
+    [
+     "51b43c91ca18203ca1cee3321d32360b92ff50ed7071c6fc92651bcb66907be8",
+     "R"
+    ],
+    [
+     "14d123e8659dd84ca0f98b1c9fa75f63f18a46095503e10c02b8b3d812044305",
+     "R"
+    ],
+    [
+     "f0a164f77d342d877f1013f869fbfaa9ed0367772f4c230d45dcbd9dbb871939",
+     "L"
+    ]
+   ]
+  },
+  {
+   "rank": 71,
+   "wallet": "5YwodrNkmG4AYXMhqh9DHU36onTWBHhhABHmwfBiBJY4",
+   "raw_balance": 347777700493,
+   "leaf": "496eacd1493197961638e1f681a2efe31256933236f242dce7fcc932d773c99b",
+   "proof": [
+    [
+     "7128c1cf660a0e18784df733a56e9a4785aeb530497f814d84a70cc5a968bc21",
+     "R"
+    ],
+    [
+     "945d2862a7b8466fe12c23bb07a54e744b5187cf1e16cdb136f3f272f2ea619d",
+     "L"
+    ],
+    [
+     "95e088f0f54a6e757c58a4eb92cd327ecff24d91eb2c1aeec8ec60cda92faee6",
+     "L"
+    ],
+    [
+     "6d833e27a3020d14e76f208c7a3d844951711205d52c5121f96df5257e60d2f8",
+     "R"
+    ],
+    [
+     "51b43c91ca18203ca1cee3321d32360b92ff50ed7071c6fc92651bcb66907be8",
+     "R"
+    ],
+    [
+     "14d123e8659dd84ca0f98b1c9fa75f63f18a46095503e10c02b8b3d812044305",
+     "R"
+    ],
+    [
+     "f0a164f77d342d877f1013f869fbfaa9ed0367772f4c230d45dcbd9dbb871939",
+     "L"
+    ]
+   ]
+  },
+  {
+   "rank": 72,
+   "wallet": "76FfWqBV49fJJfEuMqJd3ti9itx27tgEmPPu6TrTehzC",
+   "raw_balance": 340865745196,
+   "leaf": "7128c1cf660a0e18784df733a56e9a4785aeb530497f814d84a70cc5a968bc21",
+   "proof": [
+    [
+     "496eacd1493197961638e1f681a2efe31256933236f242dce7fcc932d773c99b",
+     "L"
+    ],
+    [
+     "945d2862a7b8466fe12c23bb07a54e744b5187cf1e16cdb136f3f272f2ea619d",
+     "L"
+    ],
+    [
+     "95e088f0f54a6e757c58a4eb92cd327ecff24d91eb2c1aeec8ec60cda92faee6",
+     "L"
+    ],
+    [
+     "6d833e27a3020d14e76f208c7a3d844951711205d52c5121f96df5257e60d2f8",
+     "R"
+    ],
+    [
+     "51b43c91ca18203ca1cee3321d32360b92ff50ed7071c6fc92651bcb66907be8",
+     "R"
+    ],
+    [
+     "14d123e8659dd84ca0f98b1c9fa75f63f18a46095503e10c02b8b3d812044305",
+     "R"
+    ],
+    [
+     "f0a164f77d342d877f1013f869fbfaa9ed0367772f4c230d45dcbd9dbb871939",
+     "L"
+    ]
+   ]
+  },
+  {
+   "rank": 73,
+   "wallet": "7NtoPw1XdgMoAmwtEFFziVwWNjWESzvRT8DKfTQLj364",
+   "raw_balance": 334842471486,
+   "leaf": "2634159df369862c4c3b52431bf5021634112538717d011f0b0fdf9f3c90c063",
+   "proof": [
+    [
+     "96209be712c0258613ccee6b2612eb791c9a5869a9d99fab10727ec6b816875e",
+     "R"
+    ],
+    [
+     "dc6d4638708ccca5340c95c00e9de5f327274030b25b2f9880df4ca200a60314",
+     "R"
+    ],
+    [
+     "c80f1f8efb0042943277240710a5697e3993f95c15373c05d709bfb890d9c69c",
+     "R"
+    ],
+    [
+     "c556a07deb8045e84c346cbf364cc2102bd1826146b240cef59e029446b37780",
+     "L"
+    ],
+    [
+     "51b43c91ca18203ca1cee3321d32360b92ff50ed7071c6fc92651bcb66907be8",
+     "R"
+    ],
+    [
+     "14d123e8659dd84ca0f98b1c9fa75f63f18a46095503e10c02b8b3d812044305",
+     "R"
+    ],
+    [
+     "f0a164f77d342d877f1013f869fbfaa9ed0367772f4c230d45dcbd9dbb871939",
+     "L"
+    ]
+   ]
+  },
+  {
+   "rank": 74,
+   "wallet": "8A7yVSaFNbcUgeEYNaeZFLxbyVzVaMYjc7izuhgHVaJq",
+   "raw_balance": 302253627266,
+   "leaf": "96209be712c0258613ccee6b2612eb791c9a5869a9d99fab10727ec6b816875e",
+   "proof": [
+    [
+     "2634159df369862c4c3b52431bf5021634112538717d011f0b0fdf9f3c90c063",
+     "L"
+    ],
+    [
+     "dc6d4638708ccca5340c95c00e9de5f327274030b25b2f9880df4ca200a60314",
+     "R"
+    ],
+    [
+     "c80f1f8efb0042943277240710a5697e3993f95c15373c05d709bfb890d9c69c",
+     "R"
+    ],
+    [
+     "c556a07deb8045e84c346cbf364cc2102bd1826146b240cef59e029446b37780",
+     "L"
+    ],
+    [
+     "51b43c91ca18203ca1cee3321d32360b92ff50ed7071c6fc92651bcb66907be8",
+     "R"
+    ],
+    [
+     "14d123e8659dd84ca0f98b1c9fa75f63f18a46095503e10c02b8b3d812044305",
+     "R"
+    ],
+    [
+     "f0a164f77d342d877f1013f869fbfaa9ed0367772f4c230d45dcbd9dbb871939",
+     "L"
+    ]
+   ]
+  },
+  {
+   "rank": 75,
+   "wallet": "FfzHCmJKbx137kFkps76oLmtipJK3rPGu8ysixZtzgNg",
+   "raw_balance": 288800035884,
+   "leaf": "2ddff81a4b0d61a4b1557dbbab84da1c0dc12bdf94e54933e7ae6247ae0f202a",
+   "proof": [
+    [
+     "0aa24b39e5ce651a20eaa390ae79cc040474cad5b3d4dca82b486b3b0b6578f0",
+     "R"
+    ],
+    [
+     "b6345753ae95344673f8886080f3928388e6173b710041ee52fa524750bdd9fa",
+     "L"
+    ],
+    [
+     "c80f1f8efb0042943277240710a5697e3993f95c15373c05d709bfb890d9c69c",
+     "R"
+    ],
+    [
+     "c556a07deb8045e84c346cbf364cc2102bd1826146b240cef59e029446b37780",
+     "L"
+    ],
+    [
+     "51b43c91ca18203ca1cee3321d32360b92ff50ed7071c6fc92651bcb66907be8",
+     "R"
+    ],
+    [
+     "14d123e8659dd84ca0f98b1c9fa75f63f18a46095503e10c02b8b3d812044305",
+     "R"
+    ],
+    [
+     "f0a164f77d342d877f1013f869fbfaa9ed0367772f4c230d45dcbd9dbb871939",
+     "L"
+    ]
+   ]
+  },
+  {
+   "rank": 76,
+   "wallet": "7Hzw68NxKuHw9Aq2sB9z6xVQNqd6vHoftK8NNyqVN1Wi",
+   "raw_balance": 288747341352,
+   "leaf": "0aa24b39e5ce651a20eaa390ae79cc040474cad5b3d4dca82b486b3b0b6578f0",
+   "proof": [
+    [
+     "2ddff81a4b0d61a4b1557dbbab84da1c0dc12bdf94e54933e7ae6247ae0f202a",
+     "L"
+    ],
+    [
+     "b6345753ae95344673f8886080f3928388e6173b710041ee52fa524750bdd9fa",
+     "L"
+    ],
+    [
+     "c80f1f8efb0042943277240710a5697e3993f95c15373c05d709bfb890d9c69c",
+     "R"
+    ],
+    [
+     "c556a07deb8045e84c346cbf364cc2102bd1826146b240cef59e029446b37780",
+     "L"
+    ],
+    [
+     "51b43c91ca18203ca1cee3321d32360b92ff50ed7071c6fc92651bcb66907be8",
+     "R"
+    ],
+    [
+     "14d123e8659dd84ca0f98b1c9fa75f63f18a46095503e10c02b8b3d812044305",
+     "R"
+    ],
+    [
+     "f0a164f77d342d877f1013f869fbfaa9ed0367772f4c230d45dcbd9dbb871939",
+     "L"
+    ]
+   ]
+  },
+  {
+   "rank": 77,
+   "wallet": "Ap99bzeSSyEcFbFtTrsuWkya1FHRVddAcGiJXgqF2L2S",
+   "raw_balance": 272984220901,
+   "leaf": "7f89809034d62b98bbdd582a6ad8095a5516613874c23493432cde1c5c43395c",
+   "proof": [
+    [
+     "d6fbe09ce415389b946b0a7e639e630c264dc77222b971e02cbdc90298c8abaa",
+     "R"
+    ],
+    [
+     "c09108597f0162d296411935b2b4893a5d45ee3f8897e2c664425c5d7b2378b0",
+     "R"
+    ],
+    [
+     "1fc210fc8467590ed63199fdfaedb8bed0ad7af0332cb0be9191f2ecf0dd8a0b",
+     "L"
+    ],
+    [
+     "c556a07deb8045e84c346cbf364cc2102bd1826146b240cef59e029446b37780",
+     "L"
+    ],
+    [
+     "51b43c91ca18203ca1cee3321d32360b92ff50ed7071c6fc92651bcb66907be8",
+     "R"
+    ],
+    [
+     "14d123e8659dd84ca0f98b1c9fa75f63f18a46095503e10c02b8b3d812044305",
+     "R"
+    ],
+    [
+     "f0a164f77d342d877f1013f869fbfaa9ed0367772f4c230d45dcbd9dbb871939",
+     "L"
+    ]
+   ]
+  },
+  {
+   "rank": 78,
+   "wallet": "i4RxaSu7kaXHhQmwCBpoAWGANmhWoV44WjyDfJzjdHK",
+   "raw_balance": 232405451788,
+   "leaf": "d6fbe09ce415389b946b0a7e639e630c264dc77222b971e02cbdc90298c8abaa",
+   "proof": [
+    [
+     "7f89809034d62b98bbdd582a6ad8095a5516613874c23493432cde1c5c43395c",
+     "L"
+    ],
+    [
+     "c09108597f0162d296411935b2b4893a5d45ee3f8897e2c664425c5d7b2378b0",
+     "R"
+    ],
+    [
+     "1fc210fc8467590ed63199fdfaedb8bed0ad7af0332cb0be9191f2ecf0dd8a0b",
+     "L"
+    ],
+    [
+     "c556a07deb8045e84c346cbf364cc2102bd1826146b240cef59e029446b37780",
+     "L"
+    ],
+    [
+     "51b43c91ca18203ca1cee3321d32360b92ff50ed7071c6fc92651bcb66907be8",
+     "R"
+    ],
+    [
+     "14d123e8659dd84ca0f98b1c9fa75f63f18a46095503e10c02b8b3d812044305",
+     "R"
+    ],
+    [
+     "f0a164f77d342d877f1013f869fbfaa9ed0367772f4c230d45dcbd9dbb871939",
+     "L"
+    ]
+   ]
+  },
+  {
+   "rank": 79,
+   "wallet": "EkRsDmWFNo49whxqN8KjLokB5yUdhM7i7DkBSkbdc7kX",
+   "raw_balance": 231637139159,
+   "leaf": "2dab6d8c65869cdf68667482a8b9e7c874c664afc669ff582f403669a5cac0f8",
+   "proof": [
+    [
+     "b0334d324f530377513660ff9a22f51bb8ff39f3d07177a076ca65e99eac44bc",
+     "R"
+    ],
+    [
+     "e791a5a03bdff391e9e20cafe40ef448890a7cf38bccaf43aae662a1688af663",
+     "L"
+    ],
+    [
+     "1fc210fc8467590ed63199fdfaedb8bed0ad7af0332cb0be9191f2ecf0dd8a0b",
+     "L"
+    ],
+    [
+     "c556a07deb8045e84c346cbf364cc2102bd1826146b240cef59e029446b37780",
+     "L"
+    ],
+    [
+     "51b43c91ca18203ca1cee3321d32360b92ff50ed7071c6fc92651bcb66907be8",
+     "R"
+    ],
+    [
+     "14d123e8659dd84ca0f98b1c9fa75f63f18a46095503e10c02b8b3d812044305",
+     "R"
+    ],
+    [
+     "f0a164f77d342d877f1013f869fbfaa9ed0367772f4c230d45dcbd9dbb871939",
+     "L"
+    ]
+   ]
+  },
+  {
+   "rank": 80,
+   "wallet": "EKMVWDprcrr3MTGCk2KZEJ1ob4435QxsamBaB1KHo8ic",
+   "raw_balance": 228745759500,
+   "leaf": "b0334d324f530377513660ff9a22f51bb8ff39f3d07177a076ca65e99eac44bc",
+   "proof": [
+    [
+     "2dab6d8c65869cdf68667482a8b9e7c874c664afc669ff582f403669a5cac0f8",
+     "L"
+    ],
+    [
+     "e791a5a03bdff391e9e20cafe40ef448890a7cf38bccaf43aae662a1688af663",
+     "L"
+    ],
+    [
+     "1fc210fc8467590ed63199fdfaedb8bed0ad7af0332cb0be9191f2ecf0dd8a0b",
+     "L"
+    ],
+    [
+     "c556a07deb8045e84c346cbf364cc2102bd1826146b240cef59e029446b37780",
+     "L"
+    ],
+    [
+     "51b43c91ca18203ca1cee3321d32360b92ff50ed7071c6fc92651bcb66907be8",
+     "R"
+    ],
+    [
+     "14d123e8659dd84ca0f98b1c9fa75f63f18a46095503e10c02b8b3d812044305",
+     "R"
+    ],
+    [
+     "f0a164f77d342d877f1013f869fbfaa9ed0367772f4c230d45dcbd9dbb871939",
+     "L"
+    ]
+   ]
+  },
+  {
+   "rank": 81,
+   "wallet": "H39YJXTY3RUXQ7ycVQvd8U3D5N1sS3iCAVLtkQgCj8Cz",
+   "raw_balance": 223664749319,
+   "leaf": "69f8e7364b8fa54e67d08c3371dd4315f06df1e0d8108baacda1696851d85599",
+   "proof": [
+    [
+     "0f48e118c40349dc5923cb79a0bb88b937fc00e23a7ce959e35826d9acaeaebb",
+     "R"
+    ],
+    [
+     "c49ae2e2e0e444c0a54b1bebcf4dde28a69b25d8b78429fc27cf69fca78f06ca",
+     "R"
+    ],
+    [
+     "7a58b293322e4078598fdc269e7d3b2512ce3d96142d97e00f0f963aa3da8010",
+     "R"
+    ],
+    [
+     "5ef250bd4d6f9bf15ead53e5d4f50e5998af425a365f3a521aa4d7c64e813c12",
+     "R"
+    ],
+    [
+     "8d5a37bb5159a0edfd13b30b0decb617c8c456885b9b65e0943af5ff79bbee6b",
+     "L"
+    ],
+    [
+     "14d123e8659dd84ca0f98b1c9fa75f63f18a46095503e10c02b8b3d812044305",
+     "R"
+    ],
+    [
+     "f0a164f77d342d877f1013f869fbfaa9ed0367772f4c230d45dcbd9dbb871939",
+     "L"
+    ]
+   ]
+  },
+  {
+   "rank": 82,
+   "wallet": "HQ8LB9jAzHqkkvJBmunwMMM3Pkpm89FPV7cAcHXZ8hF",
+   "raw_balance": 219713323928,
+   "leaf": "0f48e118c40349dc5923cb79a0bb88b937fc00e23a7ce959e35826d9acaeaebb",
+   "proof": [
+    [
+     "69f8e7364b8fa54e67d08c3371dd4315f06df1e0d8108baacda1696851d85599",
+     "L"
+    ],
+    [
+     "c49ae2e2e0e444c0a54b1bebcf4dde28a69b25d8b78429fc27cf69fca78f06ca",
+     "R"
+    ],
+    [
+     "7a58b293322e4078598fdc269e7d3b2512ce3d96142d97e00f0f963aa3da8010",
+     "R"
+    ],
+    [
+     "5ef250bd4d6f9bf15ead53e5d4f50e5998af425a365f3a521aa4d7c64e813c12",
+     "R"
+    ],
+    [
+     "8d5a37bb5159a0edfd13b30b0decb617c8c456885b9b65e0943af5ff79bbee6b",
+     "L"
+    ],
+    [
+     "14d123e8659dd84ca0f98b1c9fa75f63f18a46095503e10c02b8b3d812044305",
+     "R"
+    ],
+    [
+     "f0a164f77d342d877f1013f869fbfaa9ed0367772f4c230d45dcbd9dbb871939",
+     "L"
+    ]
+   ]
+  },
+  {
+   "rank": 83,
+   "wallet": "8qg71ftemtKFxDC9neA3b9eX2wkRKuWZ2pYtRDLbMmAF",
+   "raw_balance": 215695568582,
+   "leaf": "a7de25f9a4be0886d977c75b0e6552ca0732dae5651e1538f9bc6d5617d142d8",
+   "proof": [
+    [
+     "91ab06a95f344a7ed0ee5e98ddc97692223c2ab5d3a2bf3f0ab32cf3d6bb1bd9",
+     "R"
+    ],
+    [
+     "151c9803d8e1cb266a0e0f75722c98c0b342ff63ff7daa8e00aeccc4c2339e0e",
+     "L"
+    ],
+    [
+     "7a58b293322e4078598fdc269e7d3b2512ce3d96142d97e00f0f963aa3da8010",
+     "R"
+    ],
+    [
+     "5ef250bd4d6f9bf15ead53e5d4f50e5998af425a365f3a521aa4d7c64e813c12",
+     "R"
+    ],
+    [
+     "8d5a37bb5159a0edfd13b30b0decb617c8c456885b9b65e0943af5ff79bbee6b",
+     "L"
+    ],
+    [
+     "14d123e8659dd84ca0f98b1c9fa75f63f18a46095503e10c02b8b3d812044305",
+     "R"
+    ],
+    [
+     "f0a164f77d342d877f1013f869fbfaa9ed0367772f4c230d45dcbd9dbb871939",
+     "L"
+    ]
+   ]
+  },
+  {
+   "rank": 84,
+   "wallet": "VCpbLkFLQbtfaqPzknySgjJjaz8uvJcoVzi4J7BhCRQ",
+   "raw_balance": 207682837261,
+   "leaf": "91ab06a95f344a7ed0ee5e98ddc97692223c2ab5d3a2bf3f0ab32cf3d6bb1bd9",
+   "proof": [
+    [
+     "a7de25f9a4be0886d977c75b0e6552ca0732dae5651e1538f9bc6d5617d142d8",
+     "L"
+    ],
+    [
+     "151c9803d8e1cb266a0e0f75722c98c0b342ff63ff7daa8e00aeccc4c2339e0e",
+     "L"
+    ],
+    [
+     "7a58b293322e4078598fdc269e7d3b2512ce3d96142d97e00f0f963aa3da8010",
+     "R"
+    ],
+    [
+     "5ef250bd4d6f9bf15ead53e5d4f50e5998af425a365f3a521aa4d7c64e813c12",
+     "R"
+    ],
+    [
+     "8d5a37bb5159a0edfd13b30b0decb617c8c456885b9b65e0943af5ff79bbee6b",
+     "L"
+    ],
+    [
+     "14d123e8659dd84ca0f98b1c9fa75f63f18a46095503e10c02b8b3d812044305",
+     "R"
+    ],
+    [
+     "f0a164f77d342d877f1013f869fbfaa9ed0367772f4c230d45dcbd9dbb871939",
+     "L"
+    ]
+   ]
+  },
+  {
+   "rank": 85,
+   "wallet": "8TaxyAC5qR5Z1Nq6d8aSiyKbc7Aqhm1wmpcDDsWh8yAY",
+   "raw_balance": 206347792246,
+   "leaf": "869267e64a1f1727146b30732d53211506f1739b78eb3e32075450a83ed80632",
+   "proof": [
+    [
+     "8a329591b5a371eaf08b4a8759d7143ce409bc27edd8403b137017ac5fdd32b7",
+     "R"
+    ],
+    [
+     "71721076871bcfa3fe0d337ba7f175e7a095d925ef2cc21ec8d4018a8a618c21",
+     "R"
+    ],
+    [
+     "097410de77c7918723b4afc86e0728b530ea75955bf1c41954e0acfc3f4306eb",
+     "L"
+    ],
+    [
+     "5ef250bd4d6f9bf15ead53e5d4f50e5998af425a365f3a521aa4d7c64e813c12",
+     "R"
+    ],
+    [
+     "8d5a37bb5159a0edfd13b30b0decb617c8c456885b9b65e0943af5ff79bbee6b",
+     "L"
+    ],
+    [
+     "14d123e8659dd84ca0f98b1c9fa75f63f18a46095503e10c02b8b3d812044305",
+     "R"
+    ],
+    [
+     "f0a164f77d342d877f1013f869fbfaa9ed0367772f4c230d45dcbd9dbb871939",
+     "L"
+    ]
+   ]
+  },
+  {
+   "rank": 86,
+   "wallet": "7dbMSsmWdeHRfST7LeajkkDrDFfCq9iXDsHFXgqxMgr8",
+   "raw_balance": 190830216565,
+   "leaf": "8a329591b5a371eaf08b4a8759d7143ce409bc27edd8403b137017ac5fdd32b7",
+   "proof": [
+    [
+     "869267e64a1f1727146b30732d53211506f1739b78eb3e32075450a83ed80632",
+     "L"
+    ],
+    [
+     "71721076871bcfa3fe0d337ba7f175e7a095d925ef2cc21ec8d4018a8a618c21",
+     "R"
+    ],
+    [
+     "097410de77c7918723b4afc86e0728b530ea75955bf1c41954e0acfc3f4306eb",
+     "L"
+    ],
+    [
+     "5ef250bd4d6f9bf15ead53e5d4f50e5998af425a365f3a521aa4d7c64e813c12",
+     "R"
+    ],
+    [
+     "8d5a37bb5159a0edfd13b30b0decb617c8c456885b9b65e0943af5ff79bbee6b",
+     "L"
+    ],
+    [
+     "14d123e8659dd84ca0f98b1c9fa75f63f18a46095503e10c02b8b3d812044305",
+     "R"
+    ],
+    [
+     "f0a164f77d342d877f1013f869fbfaa9ed0367772f4c230d45dcbd9dbb871939",
+     "L"
+    ]
+   ]
+  },
+  {
+   "rank": 87,
+   "wallet": "7TSvAKKvGbokfPRirQM1eaGu5867ATQXEN2r3hC5nqaj",
+   "raw_balance": 180261814151,
+   "leaf": "082fa8a687ae48c213b168ac2d44214f5aedfd70946c1e38499c0859ff6b794d",
+   "proof": [
+    [
+     "8fc424f4cbf0bcf4d0231e369b2afdfa8ea6c8e02288e2ca5c83c4fe182bb1e3",
+     "R"
+    ],
+    [
+     "eeaea7577fe275318ec4725c10e151b9be195d18944a5ed05c047d618212310f",
+     "L"
+    ],
+    [
+     "097410de77c7918723b4afc86e0728b530ea75955bf1c41954e0acfc3f4306eb",
+     "L"
+    ],
+    [
+     "5ef250bd4d6f9bf15ead53e5d4f50e5998af425a365f3a521aa4d7c64e813c12",
+     "R"
+    ],
+    [
+     "8d5a37bb5159a0edfd13b30b0decb617c8c456885b9b65e0943af5ff79bbee6b",
+     "L"
+    ],
+    [
+     "14d123e8659dd84ca0f98b1c9fa75f63f18a46095503e10c02b8b3d812044305",
+     "R"
+    ],
+    [
+     "f0a164f77d342d877f1013f869fbfaa9ed0367772f4c230d45dcbd9dbb871939",
+     "L"
+    ]
+   ]
+  },
+  {
+   "rank": 88,
+   "wallet": "AxTo93zo7ooToK76tFvaK978CiPtAPH3s7aUXzDfRKjG",
+   "raw_balance": 156116403785,
+   "leaf": "8fc424f4cbf0bcf4d0231e369b2afdfa8ea6c8e02288e2ca5c83c4fe182bb1e3",
+   "proof": [
+    [
+     "082fa8a687ae48c213b168ac2d44214f5aedfd70946c1e38499c0859ff6b794d",
+     "L"
+    ],
+    [
+     "eeaea7577fe275318ec4725c10e151b9be195d18944a5ed05c047d618212310f",
+     "L"
+    ],
+    [
+     "097410de77c7918723b4afc86e0728b530ea75955bf1c41954e0acfc3f4306eb",
+     "L"
+    ],
+    [
+     "5ef250bd4d6f9bf15ead53e5d4f50e5998af425a365f3a521aa4d7c64e813c12",
+     "R"
+    ],
+    [
+     "8d5a37bb5159a0edfd13b30b0decb617c8c456885b9b65e0943af5ff79bbee6b",
+     "L"
+    ],
+    [
+     "14d123e8659dd84ca0f98b1c9fa75f63f18a46095503e10c02b8b3d812044305",
+     "R"
+    ],
+    [
+     "f0a164f77d342d877f1013f869fbfaa9ed0367772f4c230d45dcbd9dbb871939",
+     "L"
+    ]
+   ]
+  },
+  {
+   "rank": 89,
+   "wallet": "ECMMuhFXrKmzUxfuSV85qaCFzwp7pKFA7eeQmPWcBU45",
+   "raw_balance": 155098494756,
+   "leaf": "6abe2b2eddf89f21f268b92d30c2ddb9259eacc52c0d2908642ba0ccea10f5fd",
+   "proof": [
+    [
+     "833052385345b6c059a1dcc85865217ffce50feff13401a9d406506e95e3750c",
+     "R"
+    ],
+    [
+     "59fd4a8e7ad49a1dfa06d45cef31693a099ce46916e26bdc2eb7de82b18bd237",
+     "R"
+    ],
+    [
+     "a2ce7fcacf3c0a17b9eb66a9c2a475dc6eb1ea5a5ecf833a4ab3c124cf224d41",
+     "R"
+    ],
+    [
+     "35efff5f48a44d795f1e14fa643870da42aac72b3101b53b8877451055bfb417",
+     "L"
+    ],
+    [
+     "8d5a37bb5159a0edfd13b30b0decb617c8c456885b9b65e0943af5ff79bbee6b",
+     "L"
+    ],
+    [
+     "14d123e8659dd84ca0f98b1c9fa75f63f18a46095503e10c02b8b3d812044305",
+     "R"
+    ],
+    [
+     "f0a164f77d342d877f1013f869fbfaa9ed0367772f4c230d45dcbd9dbb871939",
+     "L"
+    ]
+   ]
+  },
+  {
+   "rank": 90,
+   "wallet": "B6j1QyRMJHS32QdfydnfNGw4HrTjtYrFszGkTmizCDau",
+   "raw_balance": 141322469738,
+   "leaf": "833052385345b6c059a1dcc85865217ffce50feff13401a9d406506e95e3750c",
+   "proof": [
+    [
+     "6abe2b2eddf89f21f268b92d30c2ddb9259eacc52c0d2908642ba0ccea10f5fd",
+     "L"
+    ],
+    [
+     "59fd4a8e7ad49a1dfa06d45cef31693a099ce46916e26bdc2eb7de82b18bd237",
+     "R"
+    ],
+    [
+     "a2ce7fcacf3c0a17b9eb66a9c2a475dc6eb1ea5a5ecf833a4ab3c124cf224d41",
+     "R"
+    ],
+    [
+     "35efff5f48a44d795f1e14fa643870da42aac72b3101b53b8877451055bfb417",
+     "L"
+    ],
+    [
+     "8d5a37bb5159a0edfd13b30b0decb617c8c456885b9b65e0943af5ff79bbee6b",
+     "L"
+    ],
+    [
+     "14d123e8659dd84ca0f98b1c9fa75f63f18a46095503e10c02b8b3d812044305",
+     "R"
+    ],
+    [
+     "f0a164f77d342d877f1013f869fbfaa9ed0367772f4c230d45dcbd9dbb871939",
+     "L"
+    ]
+   ]
+  },
+  {
+   "rank": 91,
+   "wallet": "D7TaE6R1jyxctVJDqa9asXQkbQ9UNdcAGvUsjc9nZpM3",
+   "raw_balance": 140266767426,
+   "leaf": "e2adb31704c52c3151ee205f85bb4541e8ebe845139621f52d83b9a8896079ba",
+   "proof": [
+    [
+     "829879d51402be718b0704071e4297ccf553335c847582ffaba0fe3050f5ff4a",
+     "R"
+    ],
+    [
+     "19c42819ab4f9e32c1affcc5c5ed7d3c692c3cbc941a21a042e7437863b35f30",
+     "L"
+    ],
+    [
+     "a2ce7fcacf3c0a17b9eb66a9c2a475dc6eb1ea5a5ecf833a4ab3c124cf224d41",
+     "R"
+    ],
+    [
+     "35efff5f48a44d795f1e14fa643870da42aac72b3101b53b8877451055bfb417",
+     "L"
+    ],
+    [
+     "8d5a37bb5159a0edfd13b30b0decb617c8c456885b9b65e0943af5ff79bbee6b",
+     "L"
+    ],
+    [
+     "14d123e8659dd84ca0f98b1c9fa75f63f18a46095503e10c02b8b3d812044305",
+     "R"
+    ],
+    [
+     "f0a164f77d342d877f1013f869fbfaa9ed0367772f4c230d45dcbd9dbb871939",
+     "L"
+    ]
+   ]
+  },
+  {
+   "rank": 92,
+   "wallet": "mmZwRD8Jx19terUc7K5u2jCfZMziD2FoKHq6hoyR9mK",
+   "raw_balance": 131778129532,
+   "leaf": "829879d51402be718b0704071e4297ccf553335c847582ffaba0fe3050f5ff4a",
+   "proof": [
+    [
+     "e2adb31704c52c3151ee205f85bb4541e8ebe845139621f52d83b9a8896079ba",
+     "L"
+    ],
+    [
+     "19c42819ab4f9e32c1affcc5c5ed7d3c692c3cbc941a21a042e7437863b35f30",
+     "L"
+    ],
+    [
+     "a2ce7fcacf3c0a17b9eb66a9c2a475dc6eb1ea5a5ecf833a4ab3c124cf224d41",
+     "R"
+    ],
+    [
+     "35efff5f48a44d795f1e14fa643870da42aac72b3101b53b8877451055bfb417",
+     "L"
+    ],
+    [
+     "8d5a37bb5159a0edfd13b30b0decb617c8c456885b9b65e0943af5ff79bbee6b",
+     "L"
+    ],
+    [
+     "14d123e8659dd84ca0f98b1c9fa75f63f18a46095503e10c02b8b3d812044305",
+     "R"
+    ],
+    [
+     "f0a164f77d342d877f1013f869fbfaa9ed0367772f4c230d45dcbd9dbb871939",
+     "L"
+    ]
+   ]
+  },
+  {
+   "rank": 93,
+   "wallet": "AqagJ6b3aFD2prrhyQbfZXWApRMQrzv8hc2ct63aMwPw",
+   "raw_balance": 131567496442,
+   "leaf": "68575ef79c8ff5e9ab92acdefb8cd678e6436e4e7ca968d77b7da535084919c0",
+   "proof": [
+    [
+     "e9421d7fe120978ef704814dbc59166f433a8e02c53fbe4257ff009a4cf9f92c",
+     "R"
+    ],
+    [
+     "42a2dd39ed880a44716d8832aa1aa7b1018c55b389b38f44ef12206b58b044ba",
+     "R"
+    ],
+    [
+     "5c9440a73e3e69c43722208191b89885c82e3fc4d936cf81f601b4cf29360949",
+     "L"
+    ],
+    [
+     "35efff5f48a44d795f1e14fa643870da42aac72b3101b53b8877451055bfb417",
+     "L"
+    ],
+    [
+     "8d5a37bb5159a0edfd13b30b0decb617c8c456885b9b65e0943af5ff79bbee6b",
+     "L"
+    ],
+    [
+     "14d123e8659dd84ca0f98b1c9fa75f63f18a46095503e10c02b8b3d812044305",
+     "R"
+    ],
+    [
+     "f0a164f77d342d877f1013f869fbfaa9ed0367772f4c230d45dcbd9dbb871939",
+     "L"
+    ]
+   ]
+  },
+  {
+   "rank": 94,
+   "wallet": "69o1rHa4FWRdq9p3yYwtjyFC5CkqFhfEmbfSYFPeA2WC",
+   "raw_balance": 128034102902,
+   "leaf": "e9421d7fe120978ef704814dbc59166f433a8e02c53fbe4257ff009a4cf9f92c",
+   "proof": [
+    [
+     "68575ef79c8ff5e9ab92acdefb8cd678e6436e4e7ca968d77b7da535084919c0",
+     "L"
+    ],
+    [
+     "42a2dd39ed880a44716d8832aa1aa7b1018c55b389b38f44ef12206b58b044ba",
+     "R"
+    ],
+    [
+     "5c9440a73e3e69c43722208191b89885c82e3fc4d936cf81f601b4cf29360949",
+     "L"
+    ],
+    [
+     "35efff5f48a44d795f1e14fa643870da42aac72b3101b53b8877451055bfb417",
+     "L"
+    ],
+    [
+     "8d5a37bb5159a0edfd13b30b0decb617c8c456885b9b65e0943af5ff79bbee6b",
+     "L"
+    ],
+    [
+     "14d123e8659dd84ca0f98b1c9fa75f63f18a46095503e10c02b8b3d812044305",
+     "R"
+    ],
+    [
+     "f0a164f77d342d877f1013f869fbfaa9ed0367772f4c230d45dcbd9dbb871939",
+     "L"
+    ]
+   ]
+  },
+  {
+   "rank": 95,
+   "wallet": "4A9HxCsazyxPqaz7J4fKvgAbhHoYq8FJ1cnNZXcXnevQ",
+   "raw_balance": 126282462900,
+   "leaf": "518aa4d3c62161b5e56851b68fe2c39da62944b527026093f7b20c44e3cfd28d",
+   "proof": [
+    [
+     "389371579131b4f23b93ca29b9c896fde88ec97c795e396050c0d25c01a1ef77",
+     "R"
+    ],
+    [
+     "49fec534775995f4ee82d1bd6cbf0457d4806c687a26bb4cea88dca51280ae8d",
+     "L"
+    ],
+    [
+     "5c9440a73e3e69c43722208191b89885c82e3fc4d936cf81f601b4cf29360949",
+     "L"
+    ],
+    [
+     "35efff5f48a44d795f1e14fa643870da42aac72b3101b53b8877451055bfb417",
+     "L"
+    ],
+    [
+     "8d5a37bb5159a0edfd13b30b0decb617c8c456885b9b65e0943af5ff79bbee6b",
+     "L"
+    ],
+    [
+     "14d123e8659dd84ca0f98b1c9fa75f63f18a46095503e10c02b8b3d812044305",
+     "R"
+    ],
+    [
+     "f0a164f77d342d877f1013f869fbfaa9ed0367772f4c230d45dcbd9dbb871939",
+     "L"
+    ]
+   ]
+  },
+  {
+   "rank": 96,
+   "wallet": "4XXh2q71SaE9nPXyKQ9Ad6tFymXsu1cqg6N33WNuNxnR",
+   "raw_balance": 122478483186,
+   "leaf": "389371579131b4f23b93ca29b9c896fde88ec97c795e396050c0d25c01a1ef77",
+   "proof": [
+    [
+     "518aa4d3c62161b5e56851b68fe2c39da62944b527026093f7b20c44e3cfd28d",
+     "L"
+    ],
+    [
+     "49fec534775995f4ee82d1bd6cbf0457d4806c687a26bb4cea88dca51280ae8d",
+     "L"
+    ],
+    [
+     "5c9440a73e3e69c43722208191b89885c82e3fc4d936cf81f601b4cf29360949",
+     "L"
+    ],
+    [
+     "35efff5f48a44d795f1e14fa643870da42aac72b3101b53b8877451055bfb417",
+     "L"
+    ],
+    [
+     "8d5a37bb5159a0edfd13b30b0decb617c8c456885b9b65e0943af5ff79bbee6b",
+     "L"
+    ],
+    [
+     "14d123e8659dd84ca0f98b1c9fa75f63f18a46095503e10c02b8b3d812044305",
+     "R"
+    ],
+    [
+     "f0a164f77d342d877f1013f869fbfaa9ed0367772f4c230d45dcbd9dbb871939",
+     "L"
+    ]
+   ]
+  },
+  {
+   "rank": 97,
+   "wallet": "2uLNVHPFxsM8rPd5aYw4pqbAcFPFuA18t8nLx7b3jWtx",
+   "raw_balance": 116153271725,
+   "leaf": "05d4d3299471f4dec3d6137073a3b8774d9b430ee542341b7bcea4570042596e",
+   "proof": [
+    [
+     "0e96c78a284579d8bfc0fa5303f46a8582c9cc255e50b7227f108e410d38a0b6",
+     "R"
+    ],
+    [
+     "c83fe7c52a0a673162c83fe5f328d7bbd38ec24588c6263ba54211548a0d422b",
+     "R"
+    ],
+    [
+     "c4a3aaea6088491418cba688164f7dfcfcc8d281ac4d0c1d8b783f213bbef5cc",
+     "R"
+    ],
+    [
+     "6158e25afed91dea2af8172c0427ada31abf5043d3dbaa72e69b7ba3c2231112",
+     "R"
+    ],
+    [
+     "fe178791c5616946980faa9fc3b81c899e88b04e60fd1b26fd6d6950f43a1380",
+     "R"
+    ],
+    [
+     "0cae58e8cee2dffb8b1c03815ddfd8e3e5e8c6fdb3ef0a0a07d0846bd2d1c1b0",
+     "L"
+    ],
+    [
+     "f0a164f77d342d877f1013f869fbfaa9ed0367772f4c230d45dcbd9dbb871939",
+     "L"
+    ]
+   ]
+  },
+  {
+   "rank": 98,
+   "wallet": "EpdLNHBQ5SLciNCpn5qAqHa5Rrjk9qz2yzYEAjyAjhwJ",
+   "raw_balance": 114054324591,
+   "leaf": "0e96c78a284579d8bfc0fa5303f46a8582c9cc255e50b7227f108e410d38a0b6",
+   "proof": [
+    [
+     "05d4d3299471f4dec3d6137073a3b8774d9b430ee542341b7bcea4570042596e",
+     "L"
+    ],
+    [
+     "c83fe7c52a0a673162c83fe5f328d7bbd38ec24588c6263ba54211548a0d422b",
+     "R"
+    ],
+    [
+     "c4a3aaea6088491418cba688164f7dfcfcc8d281ac4d0c1d8b783f213bbef5cc",
+     "R"
+    ],
+    [
+     "6158e25afed91dea2af8172c0427ada31abf5043d3dbaa72e69b7ba3c2231112",
+     "R"
+    ],
+    [
+     "fe178791c5616946980faa9fc3b81c899e88b04e60fd1b26fd6d6950f43a1380",
+     "R"
+    ],
+    [
+     "0cae58e8cee2dffb8b1c03815ddfd8e3e5e8c6fdb3ef0a0a07d0846bd2d1c1b0",
+     "L"
+    ],
+    [
+     "f0a164f77d342d877f1013f869fbfaa9ed0367772f4c230d45dcbd9dbb871939",
+     "L"
+    ]
+   ]
+  },
+  {
+   "rank": 99,
+   "wallet": "BqiMeXctLLVhdi5z3fyS3oAdvU7JeCu6bxnJazWnUK7i",
+   "raw_balance": 112650340753,
+   "leaf": "372b1e1bebddbb84c6625e46ab87fa7ed6b28298e9dc61d41bd950eed3fe2109",
+   "proof": [
+    [
+     "121e919b7c20d70098c2c3f7f8eb512b36bc31033699750b886da68e78a6419b",
+     "R"
+    ],
+    [
+     "40f4e7c4ae92e074c4c32eefa2ee7c61b1a281a7152ec26ce445f5c51c40f6ec",
+     "L"
+    ],
+    [
+     "c4a3aaea6088491418cba688164f7dfcfcc8d281ac4d0c1d8b783f213bbef5cc",
+     "R"
+    ],
+    [
+     "6158e25afed91dea2af8172c0427ada31abf5043d3dbaa72e69b7ba3c2231112",
+     "R"
+    ],
+    [
+     "fe178791c5616946980faa9fc3b81c899e88b04e60fd1b26fd6d6950f43a1380",
+     "R"
+    ],
+    [
+     "0cae58e8cee2dffb8b1c03815ddfd8e3e5e8c6fdb3ef0a0a07d0846bd2d1c1b0",
+     "L"
+    ],
+    [
+     "f0a164f77d342d877f1013f869fbfaa9ed0367772f4c230d45dcbd9dbb871939",
+     "L"
+    ]
+   ]
+  },
+  {
+   "rank": 100,
+   "wallet": "3LoAYHuSd7Gh8d7RTFnhvYtiTiefdZ5ByamU42vkzd76",
+   "raw_balance": 109682801736,
+   "leaf": "121e919b7c20d70098c2c3f7f8eb512b36bc31033699750b886da68e78a6419b",
+   "proof": [
+    [
+     "372b1e1bebddbb84c6625e46ab87fa7ed6b28298e9dc61d41bd950eed3fe2109",
+     "L"
+    ],
+    [
+     "40f4e7c4ae92e074c4c32eefa2ee7c61b1a281a7152ec26ce445f5c51c40f6ec",
+     "L"
+    ],
+    [
+     "c4a3aaea6088491418cba688164f7dfcfcc8d281ac4d0c1d8b783f213bbef5cc",
+     "R"
+    ],
+    [
+     "6158e25afed91dea2af8172c0427ada31abf5043d3dbaa72e69b7ba3c2231112",
+     "R"
+    ],
+    [
+     "fe178791c5616946980faa9fc3b81c899e88b04e60fd1b26fd6d6950f43a1380",
+     "R"
+    ],
+    [
+     "0cae58e8cee2dffb8b1c03815ddfd8e3e5e8c6fdb3ef0a0a07d0846bd2d1c1b0",
+     "L"
+    ],
+    [
+     "f0a164f77d342d877f1013f869fbfaa9ed0367772f4c230d45dcbd9dbb871939",
+     "L"
+    ]
+   ]
+  }
+ ]
+}
